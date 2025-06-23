@@ -2,6 +2,10 @@
 import { useState, useEffect } from 'react'
 import { supabase, Booking } from '@/lib/supabase'
 import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+
+// Extend dayjs with isBetween plugin
+dayjs.extend(isBetween)
 
 export const useRealtimeBookings = (unitId?: string) => {
   const [bookings, setBookings] = useState<Booking[]>([])

@@ -10,20 +10,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { CalendarIcon, X } from 'lucide-react';
 import { format } from 'date-fns';
 import { toast } from '@/hooks/use-toast';
-
-interface Apartment {
-  id: string;
-  title: string;
-  maxGuests: number;
-  sizeM2: number;
-  pricePerNight: number;
-  images: string[];
-  description: string;
-  amenities: string[];
-}
+import { Unit } from '@/lib/supabase';
+import { reserveApartment } from '@/hooks/useBookings';
 
 interface BookingDrawerProps {
-  apartment: Apartment;
+  apartment: Unit;
   onClose: () => void;
 }
 
@@ -36,14 +27,6 @@ interface BookingData {
   email: string;
   phone: string;
 }
-
-// TODO - replace with Supabase RPC later
-const reserveApartment = async (data: any) => {
-  console.log('Booking data:', data);
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  return { success: true };
-};
 
 const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -92,7 +75,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
     try {
       const bookingPayload = {
         apartmentId: apartment.id,
-        apartmentTitle: apartment.title,
+        apartmentName: apartment.name,
         ...formData,
         checkIn: formData.checkIn.toISOString(),
         checkOut: formData.checkOut.toISOString(),
@@ -102,15 +85,15 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
       await reserveApartment(bookingPayload);
       
       toast({
-        title: "Request received!",
-        description: "We'll confirm availability shortly.",
+        title: "Zahtev je poslat!",
+        description: "Uskoro ćemo potvrditi dostupnost.",
       });
       
       onClose();
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Greška",
+        description: "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
         variant: "destructive"
       });
     } finally {
@@ -126,21 +109,21 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
         <SheetHeader className="mb-6">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-xl font-bold text-[#0c1930]">
-              Book {apartment.title}
+              Rezerviši {apartment.name}
             </SheetTitle>
             <Button onClick={onClose} variant="ghost" size="icon">
               <X className="h-4 w-4" />
             </Button>
           </div>
           <div className="text-lg font-semibold text-[#ffbe24]">
-            €{apartment.pricePerNight}/night
+            €{apartment.price_per_night}/noć
           </div>
         </SheetHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Check-in Date */}
           <div>
-            <Label htmlFor="checkin">Check-in Date *</Label>
+            <Label htmlFor="checkin">Datum dolaska *</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -148,7 +131,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
                   className="w-full justify-start text-left font-normal"
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {formData.checkIn ? format(formData.checkIn, "PPP") : "Select date"}
+                  {formData.checkIn ? format(formData.checkIn, "PPP") : "Izaberite datum"}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
@@ -166,7 +149,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
 
           {/* Check-out Date */}
           <div>
-            <Label htmlFor="checkout">Check-out Date *</Label>
+            <Label htmlFor="checkout">Datum odlaska *</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -174,7 +157,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
                   className="w-full justify-start text-left font-normal"
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {formData.checkOut ? format(formData.checkOut, "PPP") : "Select date"}
+                  {formData.checkOut ? format(formData.checkOut, "PPP") : "Izaberite datum"}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
@@ -193,10 +176,10 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
           {/* Guests */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="adults">Adults *</Label>
+              <Label htmlFor="adults">Odrasli *</Label>
               <Select value={formData.adults} onValueChange={(value) => setFormData(prev => ({ ...prev, adults: value }))}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Adults" />
+                  <SelectValue placeholder="Odrasli" />
                 </SelectTrigger>
                 <SelectContent>
                   {[1, 2, 3, 4, 5, 6].map(num => (
@@ -206,10 +189,10 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
               </Select>
             </div>
             <div>
-              <Label htmlFor="children">Children</Label>
+              <Label htmlFor="children">Deca</Label>
               <Select value={formData.children} onValueChange={(value) => setFormData(prev => ({ ...prev, children: value }))}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Children" />
+                  <SelectValue placeholder="Deca" />
                 </SelectTrigger>
                 <SelectContent>
                   {[0, 1, 2, 3, 4].map(num => (
@@ -222,12 +205,12 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
 
           {/* Personal Information */}
           <div>
-            <Label htmlFor="name">Full Name *</Label>
+            <Label htmlFor="name">Ime i prezime *</Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              placeholder="Your full name"
+              placeholder="Vaše ime i prezime"
               required
             />
           </div>
@@ -239,19 +222,19 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              placeholder="your@email.com"
+              placeholder="vas@email.com"
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="phone">Phone (Optional)</Label>
+            <Label htmlFor="phone">Telefon (opciono)</Label>
             <Input
               id="phone"
               type="tel"
               value={formData.phone}
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-              placeholder="+385 ..."
+              placeholder="+381 ..."
             />
           </div>
 
@@ -260,7 +243,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
             disabled={isSubmitting}
             className="w-full bg-[#ffbe24] hover:bg-[#ffbe24]/90 text-[#0c1930] font-semibold py-3"
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
+            {isSubmitting ? 'Šalje se...' : 'Pošalji zahtev za rezervaciju'}
           </Button>
         </form>
       </SheetContent>
