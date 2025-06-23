@@ -18,10 +18,7 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
-        generateSW: {
-          swDest: 'sw.js',
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg}']
-        }
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg}']
       },
       manifest: {
         name: 'Borak Apartmani - Brač',
