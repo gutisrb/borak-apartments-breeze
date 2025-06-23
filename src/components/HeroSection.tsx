@@ -14,7 +14,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 6000); // Changed to 6 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -54,20 +54,29 @@ const HeroSection = () => {
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center text-white px-4 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-            Wake Up to the Waves
+            Probudite se uz šum talasa
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto">
-            Book your stay at Borak Apartmani – Brač
+            Rezervišite svoj boravak u Borak Apartmanima – Brač
           </p>
           <Button
             onClick={scrollToApartments}
             size="lg"
             className="bg-[#ffbe24] hover:bg-[#ffbe24]/90 text-[#0c1930] font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+            aria-label="Pogledaj apartmane"
           >
-            See Apartments
+            Pogledaj apartmane
           </Button>
         </div>
       </div>
+
+      {/* Skip to content link */}
+      <a 
+        href="#apartments" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#ffbe24] text-[#0c1930] px-4 py-2 rounded z-50"
+      >
+        Preskoči na sadržaj
+      </a>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
