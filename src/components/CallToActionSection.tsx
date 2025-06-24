@@ -1,7 +1,10 @@
 
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const CallToActionSection = () => {
+  const { t } = useTranslation();
+  
   const scrollToApartments = () => {
     const apartmentsSection = document.getElementById('apartments');
     if (apartmentsSection) {
@@ -22,24 +25,24 @@ const CallToActionSection = () => {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-luxury-charcoal/50" />
+      <div className="absolute inset-0 bg-[rgba(12,25,48,0.65)]" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center text-white px-6 max-w-4xl mx-auto">
-          <h2 className="mb-6 text-white animate-fade-in">
-            Find Your Perfect Dates
+          <h2 className="mb-6 text-white animate-fade-in font-playfair">
+            {t('cta.title')}
           </h2>
-          <p className="text-lg md:text-xl mb-10 font-lato font-light leading-relaxed animate-fade-in">
-            Your exclusive Croatian retreat awaits. Experience luxury redefined where the Mediterranean meets modern elegance.
+          <p className="text-lg md:text-xl mb-10 font-app font-light leading-relaxed animate-fade-in">
+            {t('cta.description')}
           </p>
           <Button
             onClick={scrollToApartments}
             size="lg"
-            className="luxury-button text-base md:text-lg px-12 py-5 animate-fade-in"
+            className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-base md:text-lg px-12 py-5 animate-fade-in"
             aria-label="Book your luxury stay"
           >
-            Book Your Stay
+            {t('cta.book')}
           </Button>
         </div>
       </div>

@@ -1,26 +1,29 @@
 
+import { useTranslation } from '@/hooks/useTranslation';
+
 const Footer = () => {
+  const { t } = useTranslation();
+  
   return (
-    <footer id="contact" className="bg-luxury-charcoal text-luxury-off-white section-padding">
+    <footer id="contact" className="bg-primary text-white py-10">
       <div className="container-luxury">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/caaa6a44-547d-4ce5-9557-e33e5ed23016.png" 
+              src="/lovable-uploads/image-1"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-20 md:h-24 w-auto mb-6 filter brightness-0 invert"
+              className="h-20 md:h-24 w-auto mb-6"
+              style={{ filter: 'brightness(0) invert(1)' }}
               width="320"
               height="96"
             />
-            <p className="text-luxury-off-white/80 mb-8 leading-relaxed max-w-md font-lato text-lg">
-              Experience the epitome of Croatian coastal luxury. Our exclusive collection of apartments 
-              offers discerning travelers an unparalleled retreat where Mediterranean elegance meets 
-              modern sophistication.
+            <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
+              {t('footer.description')}
             </p>
-            <div className="text-sm text-luxury-off-white/60 font-lato">
+            <div className="text-sm text-white/60 font-app">
               Crafted with excellence by{' '}
-              <a href="https://lovable.dev" className="text-luxury-teal hover:text-luxury-teal/80 transition-colors">
+              <a href="https://lovable.dev" className="text-accent hover:text-highlight transition-colors">
                 Lovable
               </a>
             </div>
@@ -28,29 +31,29 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h4 className="text-xl font-playfair font-medium mb-6 text-luxury-off-white">Contact</h4>
-            <div className="space-y-4 text-luxury-off-white/80 font-lato">
+            <h4 className="text-xl font-playfair font-medium mb-6 text-white">{t('footer.contact')}</h4>
+            <div className="space-y-4 text-white/80 font-app">
               <div>
-                <div className="font-medium text-luxury-off-white mb-1">Address</div>
+                <div className="font-medium text-white mb-1">{t('footer.address')}</div>
                 <div className="text-sm leading-relaxed">
                   Supetar, Island of Brač<br />
                   21400, Croatia
                 </div>
               </div>
               <div>
-                <div className="font-medium text-luxury-off-white mb-1">Phone</div>
+                <div className="font-medium text-white mb-1">{t('footer.phone')}</div>
                 <a 
                   href="tel:+385123456789" 
-                  className="text-sm hover:text-luxury-teal transition-colors"
+                  className="text-sm hover:text-accent transition-colors"
                 >
                   +385 12 345 6789
                 </a>
               </div>
               <div>
-                <div className="font-medium text-luxury-off-white mb-1">Email</div>
+                <div className="font-medium text-white mb-1">{t('footer.email')}</div>
                 <a 
                   href="mailto:reservations@borakapartments.com" 
-                  className="text-sm hover:text-luxury-teal transition-colors"
+                  className="text-sm hover:text-accent transition-colors"
                 >
                   reservations@borakapartments.com
                 </a>
@@ -60,25 +63,25 @@ const Footer = () => {
 
           {/* Quick Links & Social */}
           <div>
-            <h4 className="text-xl font-playfair font-medium mb-6 text-luxury-off-white">Experience</h4>
+            <h4 className="text-xl font-playfair font-medium mb-6 text-white">{t('footer.experience')}</h4>
             <div className="space-y-3 mb-8">
               <a 
                 href="#apartments" 
-                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
+                className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
-                Luxury Apartments
+                {t('footer.apartments')}
               </a>
               <a 
                 href="#location" 
-                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
+                className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
-                Prime Location
+                {t('footer.location')}
               </a>
               <a 
                 href="#testimonials" 
-                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
+                className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
-                Guest Reviews
+                {t('footer.reviews')}
               </a>
             </div>
             
@@ -86,7 +89,7 @@ const Footer = () => {
               href="https://wa.me/385123456789" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-luxury-teal hover:bg-luxury-teal/90 text-luxury-off-white px-6 py-3 rounded-md transition-colors text-sm font-lato font-medium"
+              className="inline-flex items-center space-x-3 bg-accent hover:bg-highlight text-primary hover:text-white px-6 py-3 rounded-md transition-colors text-sm font-app font-medium"
               aria-label="Contact via WhatsApp"
             >
               <span>📱</span>
@@ -95,7 +98,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-luxury-off-white/20 mt-16 pt-8 text-center text-luxury-off-white/60 text-sm font-lato">
+        <div className="border-t border-white/20 mt-16 pt-8 text-center text-white/60 text-sm font-app">
           <p>&copy; 2025 Borak Apartments. All rights reserved. | Luxury Croatian Coastal Retreats</p>
         </div>
       </div>

@@ -1,9 +1,12 @@
 
 import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useState, useEffect } from 'react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t, changeLanguage, currentLang } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,10 +23,20 @@ const Header = () => {
     }
   }
 
+  const languages = [
+    { code: 'sr', label: '🇷🇸 Srpski' },
+    { code: 'hr', label: '🇭🇷 Hrvatski' },
+    { code: 'de', label: '🇩🇪 Deutsch' },
+    { code: 'en', label: '🇬🇧 English' },
+    { code: 'ru', label: '🇷🇺 Русский' }
+  ]
+
+  const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0]
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-luxury-off-white/95 backdrop-blur-lg shadow-lg border-b border-luxury-beige/20' 
+        ? 'bg-surface/95 backdrop-blur-lg shadow-lg border-b border-mist' 
         : 'bg-transparent'
     }`}>
       <nav className="container-luxury py-4 md:py-6">
@@ -31,7 +44,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/caaa6a44-547d-4ce5-9557-e33e5ed23016.png" 
+              src="/lovable-uploads/image-1"
               alt="Borak Apartments - Luxury Croatian Retreat" 
               className="h-12 md:h-16 w-auto"
               width="240"
@@ -43,43 +56,84 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-luxury-charcoal hover:text-luxury-teal transition-colors font-lato font-medium"
+              className="text-primary hover:text-highlight transition-colors font-app font-medium"
             >
-              Home
+              {t('nav.home')}
             </button>
             <button 
               onClick={() => scrollToSection('apartments')}
-              className="text-luxury-charcoal hover:text-luxury-teal transition-colors font-lato font-medium"
+              className="text-primary hover:text-highlight transition-colors font-app font-medium"
             >
-              The Apartments
+              {t('nav.apartments')}
             </button>
             <button 
               onClick={() => scrollToSection('location')}
-              className="text-luxury-charcoal hover:text-luxury-teal transition-colors font-lato font-medium"
+              className="text-primary hover:text-highlight transition-colors font-app font-medium"
             >
-              Our Location
+              {t('nav.location')}
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-luxury-charcoal hover:text-luxury-teal transition-colors font-lato font-medium"
+              className="text-primary hover:text-highlight transition-colors font-app font-medium"
             >
-              Contact
+              {t('nav.contact')}
             </button>
+            
+            {/* Language Switcher */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="font-app">
+                  {currentLanguage.label.split(' ')[0]}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className="cursor-pointer font-app"
+                  >
+                    {lang.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="luxury-button text-sm md:text-base"
+              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-sm md:text-base"
             >
-              Book Now
+              {t('nav.book')}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center gap-2">
+            {/* Language Switcher Mobile */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="font-app">
+                  {currentLanguage.label.split(' ')[0]}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className="cursor-pointer font-app"
+                  >
+                    {lang.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="luxury-button text-sm"
+              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-sm"
             >
-              Book Now
+              {t('nav.book')}
             </Button>
           </div>
         </div>

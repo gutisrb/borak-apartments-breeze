@@ -1,5 +1,5 @@
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Users, Square, Wifi, Car, Utensils, Snowflake } from 'lucide-react';
@@ -31,15 +31,17 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-surface shadow-2xl rounded-2xl p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent">
         <DialogHeader className="mb-4">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl font-bold text-[#0c1930]">
+            <DialogTitle className="text-2xl font-bold text-primary font-playfair">
               {apartment.name}
             </DialogTitle>
-            <Button onClick={onClose} variant="ghost" size="icon">
-              <X className="h-4 w-4" />
-            </Button>
+            <DialogClose asChild>
+              <Button variant="ghost" size="icon">
+                <X className="w-5 h-5 text-slate2" />
+              </Button>
+            </DialogClose>
           </div>
         </DialogHeader>
 
@@ -59,30 +61,30 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
         {/* Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-semibold text-[#0c1930] mb-4">Detalji</h3>
+            <h3 className="text-xl font-semibold text-primary mb-4 font-playfair">Detalji</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Users className="h-5 w-5 text-[#ffbe24]" />
-                <span>Do {apartment.max_guests} gostiju</span>
+                <Users className="h-5 w-5 text-accent" />
+                <span className="font-app">Do {apartment.max_guests} gostiju</span>
               </div>
               <div className="flex items-center gap-3">
-                <Square className="h-5 w-5 text-[#ffbe24]" />
-                <span>{apartment.size_m2}m² površine</span>
+                <Square className="h-5 w-5 text-accent" />
+                <span className="font-app">{apartment.size_m2}m² površine</span>
               </div>
-              <div className="text-2xl font-bold text-[#ffbe24]">
+              <div className="text-2xl font-bold text-accent font-app">
                 €{apartment.price_per_night}/noć
               </div>
             </div>
 
             <div className="mt-6">
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-slate2 leading-relaxed font-app">
                 {apartment.description}
               </p>
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-[#0c1930] mb-4">Sadržaj apartmana</h3>
+            <h3 className="text-xl font-semibold text-primary mb-4 font-playfair">Sadržaj apartmana</h3>
             <div className="grid grid-cols-2 gap-3">
               {apartment.amenities?.map((amenity, index) => {
                 const IconComponent = amenityIcons[amenity as keyof typeof amenityIcons] || Square;
@@ -90,7 +92,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
                   <Badge 
                     key={index} 
                     variant="secondary" 
-                    className="flex items-center gap-2 p-3 justify-start bg-[#E8F4FD] text-[#0c1930]"
+                    className="flex items-center gap-2 p-3 justify-start bg-mist text-primary font-app"
                   >
                     <IconComponent className="h-4 w-4" />
                     {amenity}
@@ -106,7 +108,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
           <Button
             onClick={() => onBookNow(apartment)}
             size="lg"
-            className="w-full bg-[#ffbe24] hover:bg-[#ffbe24]/90 text-[#0c1930] font-semibold text-lg py-3"
+            className="w-full bg-accent hover:bg-highlight text-primary hover:text-white transition font-app font-semibold text-lg py-3"
           >
             Rezerviši apartman
           </Button>

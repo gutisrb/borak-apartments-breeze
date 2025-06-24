@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const heroImages = [
   '/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png',
@@ -10,6 +11,7 @@ const heroImages = [
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,26 +49,26 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Elegant Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-luxury-charcoal/20 via-transparent to-luxury-charcoal/40" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-[rgba(12,25,48,0.65)] md:bg-gradient-to-r md:from-[rgba(12,25,48,0.65)] md:to-transparent" />
 
       {/* Hero Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center text-white px-6 max-w-5xl mx-auto">
-          <h1 className="animate-fade-in mb-6 tracking-wide">
-            Your Exclusive Croatian<br />Seaside Retreat
+          <h1 className="text-white shadow-lg lg:text-5xl animate-fade-in mb-6 tracking-wide font-playfair">
+            {t('hero.title')}
           </h1>
-          <h2 className="text-xl md:text-2xl lg:text-3xl mb-12 font-lato font-light max-w-3xl mx-auto leading-relaxed">
-            Luxury apartments where the sky meets the sea
+          <h2 className="text-xl md:text-2xl lg:text-3xl mb-12 font-app font-light max-w-3xl mx-auto leading-relaxed">
+            {t('hero.subtitle')}
           </h2>
           <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
             <Button
               onClick={scrollToApartments}
               size="lg"
-              className="luxury-button text-base md:text-lg px-12 py-5"
+              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-base md:text-lg px-12 py-5"
               aria-label="Explore our luxury apartments"
             >
-              Explore Apartments
+              {t('hero.explore')}
             </Button>
           </div>
         </div>

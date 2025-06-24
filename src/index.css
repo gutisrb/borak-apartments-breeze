@@ -5,82 +5,82 @@
 
 @layer base {
   :root {
-    --background: 248 248 248; /* #F8F8F8 */
-    --foreground: 51 51 51; /* #333333 */
+    --background: 255 255 255; /* #FFFFFF */
+    --foreground: 12 25 48; /* #0C1930 */
 
-    --card: 248 248 248;
-    --card-foreground: 51 51 51;
+    --card: 255 255 255;
+    --card-foreground: 12 25 48;
 
-    --popover: 248 248 248;
-    --popover-foreground: 51 51 51;
+    --popover: 255 255 255;
+    --popover-foreground: 12 25 48;
 
-    --primary: 0 128 128; /* #008080 */
-    --primary-foreground: 248 248 248;
+    --primary: 12 25 48; /* #0C1930 */
+    --primary-foreground: 255 255 255;
 
-    --secondary: 234 224 213; /* #EAE0D5 */
-    --secondary-foreground: 51 51 51;
+    --secondary: 244 249 253; /* #F4F9FD */
+    --secondary-foreground: 12 25 48;
 
-    --muted: 234 224 213;
+    --muted: 244 249 253;
     --muted-foreground: 115 115 115;
 
-    --accent: 0 128 128;
-    --accent-foreground: 248 248 248;
+    --accent: 255 190 36; /* #FFBE24 */
+    --accent-foreground: 12 25 48;
 
     --destructive: 239 68 68;
-    --destructive-foreground: 248 248 248;
+    --destructive-foreground: 255 255 255;
 
-    --border: 234 224 213;
-    --input: 234 224 213;
-    --ring: 0 128 128;
+    --border: 244 249 253;
+    --input: 244 249 253;
+    --ring: 0 119 182; /* #0077B6 */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 248 248 248;
-    --sidebar-foreground: 51 51 51;
-    --sidebar-primary: 0 128 128;
-    --sidebar-primary-foreground: 248 248 248;
-    --sidebar-accent: 234 224 213;
-    --sidebar-accent-foreground: 51 51 51;
-    --sidebar-border: 234 224 213;
-    --sidebar-ring: 0 128 128;
+    --sidebar-background: 255 255 255;
+    --sidebar-foreground: 12 25 48;
+    --sidebar-primary: 12 25 48;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 244 249 253;
+    --sidebar-accent-foreground: 12 25 48;
+    --sidebar-border: 244 249 253;
+    --sidebar-ring: 0 119 182;
   }
 
   .dark {
-    --background: 51 51 51;
-    --foreground: 248 248 248;
+    --background: 12 25 48;
+    --foreground: 255 255 255;
 
-    --card: 51 51 51;
-    --card-foreground: 248 248 248;
+    --card: 12 25 48;
+    --card-foreground: 255 255 255;
 
-    --popover: 51 51 51;
-    --popover-foreground: 248 248 248;
+    --popover: 12 25 48;
+    --popover-foreground: 255 255 255;
 
-    --primary: 0 128 128;
-    --primary-foreground: 248 248 248;
+    --primary: 255 190 36;
+    --primary-foreground: 12 25 48;
 
-    --secondary: 64 64 64;
-    --secondary-foreground: 248 248 248;
+    --secondary: 32 66 92;
+    --secondary-foreground: 255 255 255;
 
-    --muted: 64 64 64;
+    --muted: 32 66 92;
     --muted-foreground: 161 161 170;
 
-    --accent: 0 128 128;
-    --accent-foreground: 248 248 248;
+    --accent: 255 190 36;
+    --accent-foreground: 12 25 48;
 
     --destructive: 239 68 68;
-    --destructive-foreground: 248 248 248;
+    --destructive-foreground: 255 255 255;
 
-    --border: 64 64 64;
-    --input: 64 64 64;
-    --ring: 0 128 128;
-    --sidebar-background: 51 51 51;
-    --sidebar-foreground: 248 248 248;
-    --sidebar-primary: 0 128 128;
-    --sidebar-primary-foreground: 248 248 248;
-    --sidebar-accent: 64 64 64;
-    --sidebar-accent-foreground: 248 248 248;
-    --sidebar-border: 64 64 64;
-    --sidebar-ring: 0 128 128;
+    --border: 32 66 92;
+    --input: 32 66 92;
+    --ring: 0 119 182;
+    --sidebar-background: 12 25 48;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 255 190 36;
+    --sidebar-primary-foreground: 12 25 48;
+    --sidebar-accent: 32 66 92;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 32 66 92;
+    --sidebar-ring: 0 119 182;
   }
 }
 
@@ -90,13 +90,14 @@
   }
 
   body {
-    @apply bg-luxury-off-white text-luxury-charcoal font-lato;
+    @apply bg-surface text-primary font-app;
     font-size: 16px;
     line-height: 1.6;
+    font-display: swap;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair text-luxury-charcoal;
+    @apply font-playfair text-primary;
   }
 
   h1 {
@@ -118,11 +119,11 @@
 
 @layer components {
   .luxury-button {
-    @apply bg-luxury-teal hover:bg-luxury-teal/90 text-luxury-off-white font-lato font-medium px-8 py-4 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply bg-accent hover:bg-highlight text-primary hover:text-white font-app font-medium px-8 py-4 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5;
   }
 
   .luxury-button-secondary {
-    @apply border-2 border-luxury-teal text-luxury-teal hover:bg-luxury-teal hover:text-luxury-off-white font-lato font-medium px-8 py-4 rounded-md transition-all duration-300;
+    @apply border-2 border-accent text-accent hover:bg-accent hover:text-primary font-app font-medium px-8 py-4 rounded-md transition-all duration-300;
   }
 
   .section-padding {

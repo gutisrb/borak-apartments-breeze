@@ -25,23 +25,15 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				primary: {
-					DEFAULT: '#008080', // Deep teal
-					foreground: '#F8F8F8'
-				},
+				primary: '#0C1930',
+				slate2: '#20425C',
+				accent: '#FFBE24',
+				highlight: '#0077B6',
+				surface: '#FFFFFF',
+				mist: '#F4F9FD',
 				secondary: {
-					DEFAULT: '#EAE0D5', // Sandy beige
-					foreground: '#333333'
-				},
-				accent: {
-					DEFAULT: '#008080',
-					foreground: '#F8F8F8'
-				},
-				luxury: {
-					'off-white': '#F8F8F8',
-					'charcoal': '#333333',
-					'teal': '#008080',
-					'beige': '#EAE0D5'
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -73,6 +65,7 @@ export default {
 			fontFamily: {
 				'playfair': ['Playfair Display', 'serif'],
 				'lato': ['Lato', 'sans-serif'],
+				'app': ['Poppins', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
