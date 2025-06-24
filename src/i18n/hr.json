@@ -1,4 +1,3 @@
-
 {
   "nav.home": "Početna",
   "nav.apartments": "Apartmani",
@@ -50,5 +49,6 @@
   "location.description": "Otkrijte čari Brača",
   "testimonials.title": "Što kažu naši gosti",
   "apartment.viewDetails": "Pogledaj detalje",
-  "apartment.bookNow": "Rezerviraj odmah"
+  "apartment.bookNow": "Rezerviraj odmah",
+  "apartment.backToHome": "Nazad na početnu"
 }

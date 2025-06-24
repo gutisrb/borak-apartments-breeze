@@ -1,12 +1,13 @@
-
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Users, Square, Wifi, Car, Utensils, Snowflake } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useNavigate } from 'react-router-dom';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Navigation from "yet-another-react-lightbox/plugins/navigation";
 import { Unit } from '@/lib/supabase';
 
 interface ApartmentModalProps {
@@ -17,6 +18,7 @@ interface ApartmentModalProps {
 
 const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -44,30 +46,36 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
     setLightboxOpen(true);
   };
 
+  const handleViewFullDetails = () => {
+    const slug = apartment.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    navigate(`/apartments/${slug}`);
+    onClose();
+  };
+
   return (
     <>
       <Dialog open={true} onOpenChange={onClose}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-surface shadow-2xl rounded-2xl p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent border-0">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl rounded-2xl p-6 relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24] border-0">
           <DialogHeader className="mb-4">
             <div className="flex items-center justify-between">
-              <DialogTitle className="text-2xl font-bold text-primary font-playfair">
+              <DialogTitle className="text-2xl font-bold text-[#0C1930] font-playfair">
                 {apartment.name}
               </DialogTitle>
               <DialogClose asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-mist">
-                  <X className="w-5 h-5 text-secondary" />
+                <Button variant="ghost" size="icon" className="hover:bg-[#F4F9FD]">
+                  <X className="w-5 h-5 text-[#20425C]" />
                 </Button>
               </DialogClose>
             </div>
           </DialogHeader>
 
-          {/* Image Gallery */}
+          {/* Image Gallery Preview */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {apartment.images?.map((image, index) => (
+            {apartment.images?.slice(0, 3).map((image, index) => (
               <img
                 key={index}
                 src={image}
-                alt={`${apartment.name} - slika ${index + 1}`}
+                alt={`${apartment.name} - image ${index + 1}`}
                 className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                 loading="lazy"
                 onClick={() => openLightbox(index)}
@@ -120,12 +128,20 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
             </div>
           </div>
 
-          {/* Book Now Button */}
-          <div className="mt-8 pt-6 border-t border-mist">
+          {/* Action Buttons */}
+          <div className="mt-8 pt-6 border-t border-[#F4F9FD] grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Button
+              onClick={handleViewFullDetails}
+              size="lg"
+              variant="outline"
+              className="border-[#0077B6] text-[#0077B6] hover:bg-[#0077B6] hover:text-white transition font-app font-semibold"
+            >
+              {t('apartment.viewDetails')}
+            </Button>
             <Button
               onClick={() => onBookNow(apartment)}
               size="lg"
-              className="w-full bg-link text-white hover:bg-accent hover:text-primary transition font-app font-semibold text-lg py-3 focus-visible:ring-link"
+              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold"
             >
               {t('modal.reserve')}
             </Button>
@@ -138,6 +154,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
         close={() => setLightboxOpen(false)}
         slides={lightboxSlides}
         index={currentImageIndex}
+        plugins={[Navigation]}
       />
     </>
   );

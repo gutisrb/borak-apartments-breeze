@@ -1,4 +1,3 @@
-
 {
   "nav.home": "Главная",
   "nav.apartments": "Апартаменты",
@@ -50,5 +49,6 @@
   "location.description": "Откройте для себя очарование Брача",
   "testimonials.title": "Что говорят наши гости",
   "apartment.viewDetails": "Посмотреть детали",
-  "apartment.bookNow": "Забронировать сейчас"
+  "apartment.bookNow": "Забронировать сейчас",
+  "apartment.backToHome": "Назад на главную"
 }

@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-primary shadow-lg' 
+        ? 'bg-[#0C1930] shadow-lg' 
         : 'bg-transparent'
     }`}>
       <nav className="container-luxury py-4 md:py-6">
@@ -46,9 +46,10 @@ const Header = () => {
             <img 
               src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-8 w-auto"
-              width="240"
-              height="32"
+              className="h-8 md:h-10 w-auto object-contain"
+              style={{ width: 'auto', maxWidth: '140px' }}
+              width="140"
+              height="40"
             />
           </div>
           
@@ -56,25 +57,25 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
+              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.home')}
             </button>
             <button 
               onClick={() => scrollToSection('apartments')}
-              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
+              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.apartments')}
             </button>
             <button 
               onClick={() => scrollToSection('location')}
-              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
+              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.location')}
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
+              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.contact')}
             </button>
@@ -82,16 +83,16 @@ const Header = () => {
             {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app text-white hover:text-accent">
+                <Button variant="ghost" size="sm" className="font-app text-white hover:text-[#FFBE24]">
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-surface border-secondary">
+              <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="cursor-pointer font-app hover:bg-mist focus:ring-link"
+                    className="cursor-pointer font-app hover:bg-[#F4F9FD]"
                   >
                     {lang.label}
                   </DropdownMenuItem>
@@ -101,7 +102,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm md:text-base focus-visible:ring-link"
+              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm md:text-base"
             >
               {t('nav.book')}
             </Button>
@@ -112,16 +113,16 @@ const Header = () => {
             {/* Language Switcher Mobile */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app text-white hover:text-accent">
+                <Button variant="ghost" size="sm" className="font-app text-white hover:text-[#FFBE24]">
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-surface border-secondary">
+              <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="cursor-pointer font-app hover:bg-mist focus:ring-link"
+                    className="cursor-pointer font-app hover:bg-[#F4F9FD]"
                   >
                     {lang.label}
                   </DropdownMenuItem>
@@ -131,7 +132,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm focus-visible:ring-link"
+              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm"
             >
               {t('nav.book')}
             </Button>

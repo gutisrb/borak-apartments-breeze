@@ -1,4 +1,3 @@
-
 {
   "nav.home": "Startseite",
   "nav.apartments": "Die Apartments",
@@ -50,5 +49,6 @@
   "location.description": "Entdecken Sie die Reize von Brač",
   "testimonials.title": "Was unsere Gäste sagen",
   "apartment.viewDetails": "Details anzeigen",
-  "apartment.bookNow": "Jetzt buchen"
+  "apartment.bookNow": "Jetzt buchen",
+  "apartment.backToHome": "Zurück zur Startseite"
 }
