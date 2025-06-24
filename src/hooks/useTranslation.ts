@@ -29,13 +29,23 @@ export const useTranslation = () => {
     loadTranslations();
   }, [currentLang]);
 
-  const t = (key: string): string => {
-    return translations[key] || key;
+  const t = (key: string, options?: { count?: number; size?: number }): string => {
+    let translation = translations[key] || key;
+    
+    // Handle interpolation for count and size
+    if (options?.count !== undefined) {
+      translation = translation.replace('{count}', options.count.toString());
+    }
+    if (options?.size !== undefined) {
+      translation = translation.replace('{size}', options.size.toString());
+    }
+    
+    return translation;
   };
 
   const changeLanguage = (lang: string) => {
     localStorage.setItem('lang', lang);
-    window.location.reload();
+    setCurrentLang(lang);
   };
 
   return { t, changeLanguage, currentLang };

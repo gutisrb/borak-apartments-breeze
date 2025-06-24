@@ -2,13 +2,11 @@
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useLang } from '@/hooks/useLang'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const { t } = useTranslation()
-  const [currentLang, changeLanguage] = useLang()
+  const { t, changeLanguage, currentLang } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {

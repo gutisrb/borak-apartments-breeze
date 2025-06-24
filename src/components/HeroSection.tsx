@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const heroImages = [
   '/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png',
