@@ -1,98 +1,102 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0c1930] text-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer id="contact" className="bg-luxury-charcoal text-luxury-off-white section-padding">
+      <div className="container-luxury">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Description */}
-          <div className="md:col-span-2">
+          <div className="lg:col-span-2">
             <img 
               src="/lovable-uploads/caaa6a44-547d-4ce5-9557-e33e5ed23016.png" 
-              alt="Borak Apartmani Logo" 
-              className="h-20 w-auto mb-4"
+              alt="Borak Apartments - Luxury Croatian Retreat" 
+              className="h-20 md:h-24 w-auto mb-6 filter brightness-0 invert"
               width="320"
-              height="80"
+              height="96"
             />
-            <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              Doživite lepotu hrvatskog primorja sa našim luksuznim apartmanima uz more. 
-              Probudite se uz prekrasan pogled na Jadransko more i stvorite nezaboravne uspomene.
+            <p className="text-luxury-off-white/80 mb-8 leading-relaxed max-w-md font-lato text-lg">
+              Experience the epitome of Croatian coastal luxury. Our exclusive collection of apartments 
+              offers discerning travelers an unparalleled retreat where Mediterranean elegance meets 
+              modern sophistication.
             </p>
-            <div className="text-sm text-gray-400">
-              Napravljeno sa{' '}
-              <a href="https://lovable.dev" className="text-[#ffbe24] hover:underline">
+            <div className="text-sm text-luxury-off-white/60 font-lato">
+              Crafted with excellence by{' '}
+              <a href="https://lovable.dev" className="text-luxury-teal hover:text-luxury-teal/80 transition-colors">
                 Lovable
               </a>
             </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Information */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Kontakt</h4>
-            <div className="space-y-3 text-gray-300">
+            <h4 className="text-xl font-playfair font-medium mb-6 text-luxury-off-white">Contact</h4>
+            <div className="space-y-4 text-luxury-off-white/80 font-lato">
               <div>
-                <div className="font-medium">Adresa</div>
-                <div className="text-sm">Supetar, Ostrvo Brač</div>
-                <div className="text-sm">21400, Hrvatska</div>
+                <div className="font-medium text-luxury-off-white mb-1">Address</div>
+                <div className="text-sm leading-relaxed">
+                  Supetar, Island of Brač<br />
+                  21400, Croatia
+                </div>
               </div>
               <div>
-                <div className="font-medium">Telefon</div>
+                <div className="font-medium text-luxury-off-white mb-1">Phone</div>
                 <a 
                   href="tel:+385123456789" 
-                  className="text-sm hover:text-[#ffbe24] transition-colors focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
+                  className="text-sm hover:text-luxury-teal transition-colors"
                 >
                   +385 12 345 6789
                 </a>
               </div>
               <div>
-                <div className="font-medium">Email</div>
+                <div className="font-medium text-luxury-off-white mb-1">Email</div>
                 <a 
-                  href="mailto:info@borakapartmani.com" 
-                  className="text-sm hover:text-[#ffbe24] transition-colors focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
+                  href="mailto:reservations@borakapartments.com" 
+                  className="text-sm hover:text-luxury-teal transition-colors"
                 >
-                  info@borakapartmani.com
+                  reservations@borakapartments.com
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links & Social */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Brzi linkovi</h4>
-            <div className="space-y-2">
+            <h4 className="text-xl font-playfair font-medium mb-6 text-luxury-off-white">Experience</h4>
+            <div className="space-y-3 mb-8">
               <a 
                 href="#apartments" 
-                className="block text-gray-300 hover:text-[#ffbe24] transition-colors text-sm focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
+                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
               >
-                Naši apartmani
+                Luxury Apartments
               </a>
               <a 
                 href="#location" 
-                className="block text-gray-300 hover:text-[#ffbe24] transition-colors text-sm focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
+                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
               >
-                Lokacija
+                Prime Location
               </a>
               <a 
                 href="#testimonials" 
-                className="block text-gray-300 hover:text-[#ffbe24] transition-colors text-sm focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
+                className="block text-luxury-off-white/80 hover:text-luxury-teal transition-colors text-sm font-lato"
               >
-                Recenzije
-              </a>
-              <a 
-                href="https://wa.me/385123456789" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors text-sm mt-4 focus-visible:outline-2 focus-visible:outline-[#ffbe24]"
-                aria-label="Kontakt preko WhatsApp"
-              >
-                <span>📱</span>
-                <span>WhatsApp</span>
+                Guest Reviews
               </a>
             </div>
+            
+            <a 
+              href="https://wa.me/385123456789" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-3 bg-luxury-teal hover:bg-luxury-teal/90 text-luxury-off-white px-6 py-3 rounded-md transition-colors text-sm font-lato font-medium"
+              aria-label="Contact via WhatsApp"
+            >
+              <span>📱</span>
+              <span>WhatsApp</span>
+            </a>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; 2025 Borak Apartmani. Sva prava zadržana.</p>
+        <div className="border-t border-luxury-off-white/20 mt-16 pt-8 text-center text-luxury-off-white/60 text-sm font-lato">
+          <p>&copy; 2025 Borak Apartments. All rights reserved. | Luxury Croatian Coastal Retreats</p>
         </div>
       </div>
     </footer>

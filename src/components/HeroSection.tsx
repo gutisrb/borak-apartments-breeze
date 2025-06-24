@@ -14,7 +14,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 6000); // Changed to 6 seconds
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -27,19 +27,19 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Image Slider */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-2000 ${
               index === currentImage ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <img
               src={image}
-              alt={`Beautiful coastal view ${index + 1}`}
+              alt={`Luxury Croatian seaside apartments ${index + 1}`}
               className="h-full w-full object-cover"
               loading={index === 0 ? 'eager' : 'lazy'}
             />
@@ -47,41 +47,35 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0c1930]/40 via-transparent to-[#0c1930]/60" />
+      {/* Elegant Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-luxury-charcoal/20 via-transparent to-luxury-charcoal/40" />
 
-      {/* Content */}
+      {/* Hero Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="text-center text-white px-4 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-            Probudite se uz šum talasa
+        <div className="text-center text-white px-6 max-w-5xl mx-auto">
+          <h1 className="animate-fade-in mb-6 tracking-wide">
+            Your Exclusive Croatian<br />Seaside Retreat
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light max-w-2xl mx-auto">
-            Rezervišite svoj boravak u Borak Apartmanima – Brač
-          </p>
-          <Button
-            onClick={scrollToApartments}
-            size="lg"
-            className="bg-[#ffbe24] hover:bg-[#ffbe24]/90 text-[#0c1930] font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
-            aria-label="Pogledaj apartmane"
-          >
-            Pogledaj apartmane
-          </Button>
+          <h2 className="text-xl md:text-2xl lg:text-3xl mb-12 font-lato font-light max-w-3xl mx-auto leading-relaxed">
+            Luxury apartments where the sky meets the sea
+          </h2>
+          <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
+            <Button
+              onClick={scrollToApartments}
+              size="lg"
+              className="luxury-button text-base md:text-lg px-12 py-5"
+              aria-label="Explore our luxury apartments"
+            >
+              Explore Apartments
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Skip to content link */}
-      <a 
-        href="#apartments" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#ffbe24] text-[#0c1930] px-4 py-2 rounded z-50"
-      >
-        Preskoči na sadržaj
-      </a>
-
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

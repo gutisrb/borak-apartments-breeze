@@ -8,25 +8,25 @@ const testimonials = [
   {
     id: 1,
     name: 'Maria & Stefan',
-    location: 'Germany',
+    location: 'Munich, Germany',
     rating: 5,
-    text: 'Absolutely perfect location with stunning sea views! The apartment was immaculate and the hosts were incredibly welcoming. We will definitely return next summer.',
+    text: 'An absolutely extraordinary experience. The apartment exceeded every expectation with its impeccable design and stunning sea views. The attention to detail and level of service made this our most memorable vacation. We are already planning our return.',
     image: '👨‍👩‍👧‍👦'
   },
   {
     id: 2,
     name: 'James Wilson',
-    location: 'United Kingdom',
+    location: 'London, United Kingdom',
     rating: 5,
-    text: 'Best vacation rental we have ever stayed in. The kitchen was fully equipped, the balcony views were breathtaking, and being so close to the beach was perfect.',
+    text: 'Pure luxury from the moment we arrived. The apartment was a masterpiece of elegant design, and the panoramic views were simply breathtaking. Every amenity was thoughtfully curated. This is what five-star hospitality should be.',
     image: '👨'
   },
   {
     id: 3,
     name: 'Emma & Luca',
-    location: 'Italy',
+    location: 'Milan, Italy',
     rating: 5,
-    text: 'A hidden gem on Brač! The apartment exceeded our expectations in every way. Clean, comfortable, and the location is unbeatable. Highly recommended!',
+    text: 'A hidden gem that redefined our understanding of luxury travel. The sophisticated design, prime location, and exceptional service created an unforgettable retreat. Borak Apartments sets the gold standard for premium accommodations.',
     image: '👩‍❤️‍👨'
   }
 ];
@@ -37,7 +37,7 @@ const Testimonials = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -53,42 +53,42 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0c1930] mb-4">
+    <section id="testimonials" className="section-padding bg-luxury-off-white">
+      <div className="container-luxury">
+        <div className="text-center mb-20">
+          <h2 className="mb-6 animate-fade-in">
             What Our Guests Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Real experiences from guests who have stayed at Borak Apartmani
+          <p className="text-lg md:text-xl text-luxury-charcoal/80 max-w-3xl mx-auto font-lato leading-relaxed animate-fade-in">
+            Testimonials from discerning travelers who have experienced our luxury retreats
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
           <div className="overflow-hidden">
             <div 
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
             >
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <Card className="p-8 text-center shadow-lg">
-                    <div className="text-6xl mb-6">{testimonial.image}</div>
+                  <Card className="p-8 md:p-12 text-center bg-white border-luxury-beige/50 shadow-xl">
+                    <div className="text-6xl md:text-7xl mb-8">{testimonial.image}</div>
                     
-                    <div className="flex justify-center mb-4">
+                    <div className="flex justify-center mb-8">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-[#ffbe24] text-xl">★</span>
+                        <span key={i} className="text-luxury-teal text-2xl">★</span>
                       ))}
                     </div>
                     
-                    <blockquote className="text-lg text-gray-700 mb-6 italic leading-relaxed">
+                    <blockquote className="text-lg md:text-xl text-luxury-charcoal/80 mb-8 italic leading-relaxed font-lato max-w-3xl mx-auto">
                       "{testimonial.text}"
                     </blockquote>
                     
-                    <div className="font-semibold text-[#0c1930]">
+                    <div className="font-playfair text-xl md:text-2xl font-medium text-luxury-charcoal mb-2">
                       {testimonial.name}
                     </div>
-                    <div className="text-gray-600 text-sm">
+                    <div className="text-luxury-charcoal/60 font-lato">
                       {testimonial.location}
                     </div>
                   </Card>
@@ -102,30 +102,30 @@ const Testimonials = () => {
             onClick={prevTestimonial}
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white shadow-lg"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 bg-white shadow-xl border-luxury-beige hover:bg-luxury-teal hover:text-white hover:border-luxury-teal w-12 h-12"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-5 w-5" />
           </Button>
 
           <Button
             onClick={nextTestimonial}
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white shadow-lg"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 bg-white shadow-xl border-luxury-beige hover:bg-luxury-teal hover:text-white hover:border-luxury-teal w-12 h-12"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-5 w-5" />
           </Button>
 
           {/* Indicators */}
-          <div className="flex justify-center mt-8 space-x-3">
+          <div className="flex justify-center mt-12 space-x-3">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentTestimonial ? 'bg-[#ffbe24]' : 'bg-gray-300'
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  index === currentTestimonial ? 'bg-luxury-teal' : 'bg-luxury-beige'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
