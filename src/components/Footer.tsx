@@ -11,19 +11,19 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/image-1"
+              src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-20 md:h-24 w-auto mb-6"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              className="h-10 w-auto mb-6 invert"
+              style={{ filter: 'invert(1)' }}
               width="320"
-              height="96"
+              height="40"
             />
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
               {t('footer.description')}
             </p>
             <div className="text-sm text-white/60 font-app">
               Crafted with excellence by{' '}
-              <a href="https://lovable.dev" className="text-accent hover:text-highlight transition-colors">
+              <a href="https://lovable.dev" className="text-accent hover:text-link transition-colors">
                 Lovable
               </a>
             </div>
@@ -89,7 +89,7 @@ const Footer = () => {
               href="https://wa.me/385123456789" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-accent hover:bg-highlight text-primary hover:text-white px-6 py-3 rounded-md transition-colors text-sm font-app font-medium"
+              className="inline-flex items-center space-x-3 bg-link hover:bg-accent text-white hover:text-primary px-6 py-3 rounded-md transition-colors text-sm font-app font-medium"
               aria-label="Contact via WhatsApp"
             >
               <span>📱</span>

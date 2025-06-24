@@ -31,7 +31,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-surface shadow-2xl rounded-2xl p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl rounded-2xl p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent">
         <DialogHeader className="mb-4">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-2xl font-bold text-primary font-playfair">
@@ -39,7 +39,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
             </DialogTitle>
             <DialogClose asChild>
               <Button variant="ghost" size="icon">
-                <X className="w-5 h-5 text-slate2" />
+                <X className="w-5 h-5 text-secondary" />
               </Button>
             </DialogClose>
           </div>
@@ -77,7 +77,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
             </div>
 
             <div className="mt-6">
-              <p className="text-slate2 leading-relaxed font-app">
+              <p className="text-secondary leading-relaxed font-app">
                 {apartment.description}
               </p>
             </div>
@@ -108,7 +108,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
           <Button
             onClick={() => onBookNow(apartment)}
             size="lg"
-            className="w-full bg-accent hover:bg-highlight text-primary hover:text-white transition font-app font-semibold text-lg py-3"
+            className="w-full bg-link text-white hover:bg-accent hover:text-primary transition font-app font-semibold text-lg py-3"
           >
             Rezerviši apartman
           </Button>

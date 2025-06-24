@@ -44,11 +44,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/image-1"
+              src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-12 md:h-16 w-auto"
+              className="h-8 w-auto"
               width="240"
-              height="64"
+              height="32"
             />
           </div>
           
@@ -56,25 +56,25 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-primary hover:text-highlight transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
             >
               {t('nav.home')}
             </button>
             <button 
               onClick={() => scrollToSection('apartments')}
-              className="text-primary hover:text-highlight transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
             >
               {t('nav.apartments')}
             </button>
             <button 
               onClick={() => scrollToSection('location')}
-              className="text-primary hover:text-highlight transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
             >
               {t('nav.location')}
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-primary hover:text-highlight transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium focus-visible:ring-accent"
             >
               {t('nav.contact')}
             </button>
@@ -82,7 +82,7 @@ const Header = () => {
             {/* Language Switcher */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app">
+                <Button variant="ghost" size="sm" className="font-app text-white hover:text-accent">
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
@@ -101,7 +101,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-sm md:text-base"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm md:text-base"
             >
               {t('nav.book')}
             </Button>
@@ -112,7 +112,7 @@ const Header = () => {
             {/* Language Switcher Mobile */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app">
+                <Button variant="ghost" size="sm" className="font-app text-white hover:text-accent">
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
@@ -131,7 +131,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-sm"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm"
             >
               {t('nav.book')}
             </Button>

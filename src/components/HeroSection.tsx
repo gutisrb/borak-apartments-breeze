@@ -50,7 +50,7 @@ const HeroSection = () => {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[rgba(12,25,48,0.65)] md:bg-gradient-to-r md:from-[rgba(12,25,48,0.65)] md:to-transparent" />
+      <div className="absolute inset-0 bg-primary/70 md:bg-gradient-to-r md:from-primary/80 md:to-transparent" />
 
       {/* Hero Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
@@ -65,7 +65,7 @@ const HeroSection = () => {
             <Button
               onClick={scrollToApartments}
               size="lg"
-              className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-base md:text-lg px-12 py-5"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-base md:text-lg px-12 py-5"
               aria-label="Explore our luxury apartments"
             >
               {t('hero.explore')}

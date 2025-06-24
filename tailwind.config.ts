@@ -26,15 +26,11 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: '#0C1930',
-				slate2: '#20425C',
+				secondary: '#20425C',
 				accent: '#FFBE24',
-				highlight: '#0077B6',
-				surface: '#FFFFFF',
+				link: '#0077B6',
 				mist: '#F4F9FD',
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
-				},
+				surface: '#FFFFFF',
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
