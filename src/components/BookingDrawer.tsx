@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,12 +11,10 @@ import { format } from 'date-fns';
 import { toast } from '@/hooks/use-toast';
 import { Unit } from '@/lib/supabase';
 import { reserveApartment } from '@/hooks/useBookings';
-
 interface BookingDrawerProps {
   apartment: Unit;
   onClose: () => void;
 }
-
 interface BookingData {
   checkIn: Date | undefined;
   checkOut: Date | undefined;
@@ -27,8 +24,10 @@ interface BookingData {
   email: string;
   phone: string;
 }
-
-const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
+const BookingDrawer = ({
+  apartment,
+  onClose
+}: BookingDrawerProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<BookingData>({
     checkIn: undefined,
@@ -39,10 +38,8 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
     email: '',
     phone: ''
   });
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!formData.checkIn || !formData.checkOut) {
       toast({
         title: "Error",
@@ -51,7 +48,6 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
       });
       return;
     }
-
     if (formData.checkOut <= formData.checkIn) {
       toast({
         title: "Error",
@@ -60,7 +56,6 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
       });
       return;
     }
-
     if (!formData.name || !formData.email) {
       toast({
         title: "Error",
@@ -69,9 +64,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
       });
       return;
     }
-
     setIsSubmitting(true);
-    
     try {
       const bookingPayload = {
         apartmentId: apartment.id,
@@ -81,14 +74,11 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
         checkOut: formData.checkOut.toISOString(),
         totalGuests: parseInt(formData.adults) + parseInt(formData.children)
       };
-
       await reserveApartment(bookingPayload);
-      
       toast({
         title: "Zahtev je poslat!",
-        description: "Uskoro ćemo potvrditi dostupnost.",
+        description: "Uskoro ćemo potvrditi dostupnost."
       });
-      
       onClose();
     } catch (error) {
       toast({
@@ -100,20 +90,15 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
       setIsSubmitting(false);
     }
   };
-
   const today = new Date();
-
-  return (
-    <Sheet open={true} onOpenChange={onClose}>
+  return <Sheet open={true} onOpenChange={onClose}>
       <SheetContent className="w-full sm:max-w-md overflow-y-auto bg-surface shadow-2xl rounded-2xl before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent">
         <SheetHeader className="mb-6">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-xl font-bold text-primary font-playfair">
               Rezerviši {apartment.name}
             </SheetTitle>
-            <Button onClick={onClose} variant="ghost" size="icon">
-              <X className="w-5 h-5 text-slate2" />
-            </Button>
+            
           </div>
           <div className="text-lg font-semibold text-accent font-app">
             €{apartment.price_per_night}/noć
@@ -126,23 +111,16 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
             <Label htmlFor="checkin" className="font-app text-primary">Datum dolaska *</Label>
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start text-left font-normal font-app"
-                >
+                <Button variant="outline" className="w-full justify-start text-left font-normal font-app">
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   {formData.checkIn ? format(formData.checkIn, "PPP") : "Izaberite datum"}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={formData.checkIn}
-                  onSelect={(date) => setFormData(prev => ({ ...prev, checkIn: date }))}
-                  disabled={(date) => date < today}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
+                <Calendar mode="single" selected={formData.checkIn} onSelect={date => setFormData(prev => ({
+                ...prev,
+                checkIn: date
+              }))} disabled={date => date < today} initialFocus className="pointer-events-auto" />
               </PopoverContent>
             </Popover>
           </div>
@@ -152,23 +130,16 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
             <Label htmlFor="checkout" className="font-app text-primary">Datum odlaska *</Label>
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start text-left font-normal font-app"
-                >
+                <Button variant="outline" className="w-full justify-start text-left font-normal font-app">
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   {formData.checkOut ? format(formData.checkOut, "PPP") : "Izaberite datum"}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={formData.checkOut}
-                  onSelect={(date) => setFormData(prev => ({ ...prev, checkOut: date }))}
-                  disabled={(date) => date <= (formData.checkIn || today)}
-                  initialFocus
-                  className="pointer-events-auto"
-                />
+                <Calendar mode="single" selected={formData.checkOut} onSelect={date => setFormData(prev => ({
+                ...prev,
+                checkOut: date
+              }))} disabled={date => date <= (formData.checkIn || today)} initialFocus className="pointer-events-auto" />
               </PopoverContent>
             </Popover>
           </div>
@@ -177,27 +148,29 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label htmlFor="adults" className="font-app text-primary">Odrasli *</Label>
-              <Select value={formData.adults} onValueChange={(value) => setFormData(prev => ({ ...prev, adults: value }))}>
+              <Select value={formData.adults} onValueChange={value => setFormData(prev => ({
+              ...prev,
+              adults: value
+            }))}>
                 <SelectTrigger className="font-app">
                   <SelectValue placeholder="Odrasli" />
                 </SelectTrigger>
                 <SelectContent>
-                  {[1, 2, 3, 4, 5, 6].map(num => (
-                    <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>
-                  ))}
+                  {[1, 2, 3, 4, 5, 6].map(num => <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>
             <div>
               <Label htmlFor="children" className="font-app text-primary">Deca</Label>
-              <Select value={formData.children} onValueChange={(value) => setFormData(prev => ({ ...prev, children: value }))}>
+              <Select value={formData.children} onValueChange={value => setFormData(prev => ({
+              ...prev,
+              children: value
+            }))}>
                 <SelectTrigger className="font-app">
                   <SelectValue placeholder="Deca" />
                 </SelectTrigger>
                 <SelectContent>
-                  {[0, 1, 2, 3, 4].map(num => (
-                    <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>
-                  ))}
+                  {[0, 1, 2, 3, 4].map(num => <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>
@@ -206,52 +179,33 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
           {/* Personal Information */}
           <div>
             <Label htmlFor="name" className="font-app text-primary">Ime i prezime *</Label>
-            <Input
-              id="name"
-              value={formData.name}
-              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              placeholder="Vaše ime i prezime"
-              required
-              className="font-app"
-            />
+            <Input id="name" value={formData.name} onChange={e => setFormData(prev => ({
+            ...prev,
+            name: e.target.value
+          }))} placeholder="Vaše ime i prezime" required className="font-app" />
           </div>
 
           <div>
             <Label htmlFor="email" className="font-app text-primary">Email *</Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              placeholder="vas@email.com"
-              required
-              className="font-app"
-            />
+            <Input id="email" type="email" value={formData.email} onChange={e => setFormData(prev => ({
+            ...prev,
+            email: e.target.value
+          }))} placeholder="vas@email.com" required className="font-app" />
           </div>
 
           <div>
             <Label htmlFor="phone" className="font-app text-primary">Telefon (opciono)</Label>
-            <Input
-              id="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-              placeholder="+381 ..."
-              className="font-app"
-            />
+            <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData(prev => ({
+            ...prev,
+            phone: e.target.value
+          }))} placeholder="+381 ..." className="font-app" />
           </div>
 
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-accent hover:bg-highlight text-primary hover:text-white transition font-app font-semibold py-3"
-          >
+          <Button type="submit" disabled={isSubmitting} className="w-full bg-accent hover:bg-highlight text-primary hover:text-white transition font-app font-semibold py-3">
             {isSubmitting ? 'Šalje se...' : 'Pošalji zahtev za rezervaciju'}
           </Button>
         </form>
       </SheetContent>
-    </Sheet>
-  );
+    </Sheet>;
 };
-
 export default BookingDrawer;
