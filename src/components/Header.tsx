@@ -2,15 +2,17 @@
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useState, useEffect } from 'react'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useTranslation } from 'react-i18next'
+import { useLang } from '@/hooks/useLang'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const { t, changeLanguage, currentLang } = useTranslation()
+  const { t } = useTranslation()
+  const [currentLang, changeLanguage] = useLang()
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
+      setIsScrolled(window.scrollY > 80)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -36,7 +38,7 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-surface/95 backdrop-blur-lg shadow-lg border-b border-mist' 
+        ? 'bg-primary shadow-lg' 
         : 'bg-transparent'
     }`}>
       <nav className="container-luxury py-4 md:py-6">
@@ -86,12 +88,12 @@ const Header = () => {
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-surface border-secondary">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="cursor-pointer font-app"
+                    className="cursor-pointer font-app hover:bg-mist focus:ring-link"
                   >
                     {lang.label}
                   </DropdownMenuItem>
@@ -101,7 +103,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm md:text-base"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm md:text-base focus-visible:ring-link"
             >
               {t('nav.book')}
             </Button>
@@ -116,12 +118,12 @@ const Header = () => {
                   {currentLanguage.label.split(' ')[0]}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-surface border-secondary">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="cursor-pointer font-app"
+                    className="cursor-pointer font-app hover:bg-mist focus:ring-link"
                   >
                     {lang.label}
                   </DropdownMenuItem>
@@ -131,7 +133,7 @@ const Header = () => {
             
             <Button
               onClick={() => scrollToSection('apartments')}
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-sm focus-visible:ring-link"
             >
               {t('nav.book')}
             </Button>

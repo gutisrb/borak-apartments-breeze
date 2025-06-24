@@ -119,11 +119,11 @@
 
 @layer components {
   .luxury-button {
-    @apply bg-accent hover:bg-highlight text-primary hover:text-white font-app font-medium px-8 py-4 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5;
+    @apply bg-link hover:bg-accent text-white hover:text-primary font-app font-medium px-8 py-4 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 focus-visible:ring-link;
   }
 
   .luxury-button-secondary {
-    @apply border-2 border-accent text-accent hover:bg-accent hover:text-primary font-app font-medium px-8 py-4 rounded-md transition-all duration-300;
+    @apply border-2 border-link text-link hover:bg-link hover:text-white font-app font-medium px-8 py-4 rounded-md transition-all duration-300 focus-visible:ring-link;
   }
 
   .section-padding {

@@ -1,5 +1,5 @@
 
-import { useTranslation } from '@/hooks/useTranslation';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -13,10 +13,10 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-10 w-auto mb-6 invert"
-              style={{ filter: 'invert(1)' }}
+              className="h-16 w-auto mb-6"
+              style={{ filter: 'invert(1) brightness(0) saturate(100%) contrast(100%)' }}
               width="320"
-              height="40"
+              height="64"
             />
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
               {t('footer.description')}
@@ -89,7 +89,7 @@ const Footer = () => {
               href="https://wa.me/385123456789" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-link hover:bg-accent text-white hover:text-primary px-6 py-3 rounded-md transition-colors text-sm font-app font-medium"
+              className="inline-flex items-center space-x-3 bg-link hover:bg-accent text-white hover:text-primary px-6 py-3 rounded-md transition-colors text-sm font-app font-medium focus-visible:ring-link"
               aria-label="Contact via WhatsApp"
             >
               <span>📱</span>

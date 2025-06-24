@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useTranslation } from '@/hooks/useTranslation';
+import { useTranslation } from 'react-i18next';
 
 const heroImages = [
   '/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png',
@@ -49,7 +49,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Overlay */}
+      {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-primary/70 md:bg-gradient-to-r md:from-primary/80 md:to-transparent" />
 
       {/* Hero Content */}
@@ -65,7 +65,7 @@ const HeroSection = () => {
             <Button
               onClick={scrollToApartments}
               size="lg"
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-base md:text-lg px-12 py-5"
+              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-base md:text-lg px-12 py-5 focus-visible:ring-link"
               aria-label="Explore our luxury apartments"
             >
               {t('hero.explore')}

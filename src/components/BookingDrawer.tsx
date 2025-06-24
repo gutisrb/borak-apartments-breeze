@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +9,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 import { toast } from '@/hooks/use-toast';
 import { Unit } from '@/lib/supabase';
 import { reserveApartment } from '@/hooks/useBookings';
@@ -27,10 +29,8 @@ interface BookingData {
   phone: string;
 }
 
-const BookingDrawer = ({
-  apartment,
-  onClose
-}: BookingDrawerProps) => {
+const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<BookingData>({
     checkIn: undefined,
@@ -46,24 +46,24 @@ const BookingDrawer = ({
     e.preventDefault();
     if (!formData.checkIn || !formData.checkOut) {
       toast({
-        title: "Error",
-        description: "Please select check-in and check-out dates",
+        title: t('booking.error'),
+        description: t('booking.selectDates'),
         variant: "destructive"
       });
       return;
     }
     if (formData.checkOut <= formData.checkIn) {
       toast({
-        title: "Error",
-        description: "Check-out date must be after check-in date",
+        title: t('booking.error'),
+        description: t('booking.invalidDates'),
         variant: "destructive"
       });
       return;
     }
     if (!formData.name || !formData.email) {
       toast({
-        title: "Error",
-        description: "Please fill in all required fields",
+        title: t('booking.error'),
+        description: t('booking.fillRequired'),
         variant: "destructive"
       });
       return;
@@ -80,14 +80,14 @@ const BookingDrawer = ({
       };
       await reserveApartment(bookingPayload);
       toast({
-        title: "Zahtev je poslat!",
-        description: "Uskoro ćemo potvrditi dostupnost."
+        title: t('booking.success'),
+        description: t('booking.successDesc')
       });
       onClose();
     } catch (error) {
       toast({
-        title: "Greška",
-        description: "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
+        title: t('booking.error'),
+        description: t('booking.errorDesc'),
         variant: "destructive"
       });
     } finally {
@@ -99,53 +99,61 @@ const BookingDrawer = ({
 
   return (
     <Sheet open={true} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-md overflow-y-auto bg-white shadow-2xl rounded-2xl before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent">
+      <SheetContent className="w-full sm:max-w-md overflow-y-auto bg-surface shadow-2xl rounded-2xl before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent border-0">
         <SheetHeader className="mb-6">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-xl font-bold text-primary font-playfair">
-              Rezerviši {apartment.name}
+              {t('booking.title')} {apartment.name}
             </SheetTitle>
           </div>
           <div className="text-lg font-semibold text-accent font-app">
-            €{apartment.price_per_night}/noć
+            €{apartment.price_per_night}{t('modal.perNight')}
           </div>
         </SheetHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Check-in Date */}
           <div>
-            <Label htmlFor="checkin" className="font-app text-primary">Datum dolaska *</Label>
+            <Label htmlFor="checkin" className="font-app text-primary">{t('booking.checkin')} *</Label>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" className="w-full justify-start text-left font-normal font-app">
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {formData.checkIn ? format(formData.checkIn, "PPP") : "Izaberite datum"}
+                <Button variant="outline" className="w-full justify-start text-left font-normal font-app bg-surface border-secondary hover:bg-mist focus-visible:ring-link">
+                  <CalendarIcon className="mr-2 h-4 w-4 text-secondary" />
+                  {formData.checkIn ? format(formData.checkIn, "PPP") : t('booking.pickDate')}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar mode="single" selected={formData.checkIn} onSelect={date => setFormData(prev => ({
-                ...prev,
-                checkIn: date
-              }))} disabled={date => date < today} initialFocus className="pointer-events-auto" />
+              <PopoverContent className="w-auto p-0 bg-surface border-secondary" align="start">
+                <Calendar 
+                  mode="single" 
+                  selected={formData.checkIn} 
+                  onSelect={date => setFormData(prev => ({ ...prev, checkIn: date }))} 
+                  disabled={date => date < today} 
+                  initialFocus 
+                  className="pointer-events-auto" 
+                />
               </PopoverContent>
             </Popover>
           </div>
 
           {/* Check-out Date */}
           <div>
-            <Label htmlFor="checkout" className="font-app text-primary">Datum odlaska *</Label>
+            <Label htmlFor="checkout" className="font-app text-primary">{t('booking.checkout')} *</Label>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" className="w-full justify-start text-left font-normal font-app">
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {formData.checkOut ? format(formData.checkOut, "PPP") : "Izaberite datum"}
+                <Button variant="outline" className="w-full justify-start text-left font-normal font-app bg-surface border-secondary hover:bg-mist focus-visible:ring-link">
+                  <CalendarIcon className="mr-2 h-4 w-4 text-secondary" />
+                  {formData.checkOut ? format(formData.checkOut, "PPP") : t('booking.pickDate')}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar mode="single" selected={formData.checkOut} onSelect={date => setFormData(prev => ({
-                ...prev,
-                checkOut: date
-              }))} disabled={date => date <= (formData.checkIn || today)} initialFocus className="pointer-events-auto" />
+              <PopoverContent className="w-auto p-0 bg-surface border-secondary" align="start">
+                <Calendar 
+                  mode="single" 
+                  selected={formData.checkOut} 
+                  onSelect={date => setFormData(prev => ({ ...prev, checkOut: date }))} 
+                  disabled={date => date <= (formData.checkIn || today)} 
+                  initialFocus 
+                  className="pointer-events-auto" 
+                />
               </PopoverContent>
             </Popover>
           </div>
@@ -153,30 +161,32 @@ const BookingDrawer = ({
           {/* Guests */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="adults" className="font-app text-primary">Odrasli *</Label>
-              <Select value={formData.adults} onValueChange={value => setFormData(prev => ({
-              ...prev,
-              adults: value
-            }))}>
-                <SelectTrigger className="font-app">
-                  <SelectValue placeholder="Odrasli" />
+              <Label htmlFor="adults" className="font-app text-primary">{t('booking.adults')} *</Label>
+              <Select value={formData.adults} onValueChange={value => setFormData(prev => ({ ...prev, adults: value }))}>
+                <SelectTrigger className="font-app bg-surface border-secondary focus-visible:ring-link">
+                  <SelectValue placeholder={t('booking.adults')} />
                 </SelectTrigger>
-                <SelectContent>
-                  {[1, 2, 3, 4, 5, 6].map(num => <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>)}
+                <SelectContent className="bg-surface border-secondary">
+                  {[1, 2, 3, 4, 5, 6].map(num => (
+                    <SelectItem key={num} value={num.toString()} className="font-app hover:bg-mist focus:bg-mist">
+                      {num}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label htmlFor="children" className="font-app text-primary">Deca</Label>
-              <Select value={formData.children} onValueChange={value => setFormData(prev => ({
-              ...prev,
-              children: value
-            }))}>
-                <SelectTrigger className="font-app">
-                  <SelectValue placeholder="Deca" />
+              <Label htmlFor="children" className="font-app text-primary">{t('booking.children')}</Label>
+              <Select value={formData.children} onValueChange={value => setFormData(prev => ({ ...prev, children: value }))}>
+                <SelectTrigger className="font-app bg-surface border-secondary focus-visible:ring-link">
+                  <SelectValue placeholder={t('booking.children')} />
                 </SelectTrigger>
-                <SelectContent>
-                  {[0, 1, 2, 3, 4].map(num => <SelectItem key={num} value={num.toString()} className="font-app">{num}</SelectItem>)}
+                <SelectContent className="bg-surface border-secondary">
+                  {[0, 1, 2, 3, 4].map(num => (
+                    <SelectItem key={num} value={num.toString()} className="font-app hover:bg-mist focus:bg-mist">
+                      {num}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -184,31 +194,48 @@ const BookingDrawer = ({
 
           {/* Personal Information */}
           <div>
-            <Label htmlFor="name" className="font-app text-primary">Ime i prezime *</Label>
-            <Input id="name" value={formData.name} onChange={e => setFormData(prev => ({
-            ...prev,
-            name: e.target.value
-          }))} placeholder="Vaše ime i prezime" required className="font-app" />
+            <Label htmlFor="name" className="font-app text-primary">{t('booking.name')} *</Label>
+            <Input 
+              id="name" 
+              value={formData.name} 
+              onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))} 
+              placeholder={t('booking.name')} 
+              required 
+              className="font-app bg-surface border-secondary focus-visible:ring-link" 
+            />
           </div>
 
           <div>
-            <Label htmlFor="email" className="font-app text-primary">Email *</Label>
-            <Input id="email" type="email" value={formData.email} onChange={e => setFormData(prev => ({
-            ...prev,
-            email: e.target.value
-          }))} placeholder="vas@email.com" required className="font-app" />
+            <Label htmlFor="email" className="font-app text-primary">{t('booking.email')} *</Label>
+            <Input 
+              id="email" 
+              type="email" 
+              value={formData.email} 
+              onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))} 
+              placeholder={t('booking.email')} 
+              required 
+              className="font-app bg-surface border-secondary focus-visible:ring-link" 
+            />
           </div>
 
           <div>
-            <Label htmlFor="phone" className="font-app text-primary">Telefon (opciono)</Label>
-            <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData(prev => ({
-            ...prev,
-            phone: e.target.value
-          }))} placeholder="+381 ..." className="font-app" />
+            <Label htmlFor="phone" className="font-app text-primary">{t('booking.phone')}</Label>
+            <Input 
+              id="phone" 
+              type="tel" 
+              value={formData.phone} 
+              onChange={e => setFormData(prev => ({ ...prev, phone: e.target.value }))} 
+              placeholder={t('booking.phone')} 
+              className="font-app bg-surface border-secondary focus-visible:ring-link" 
+            />
           </div>
 
-          <Button type="submit" disabled={isSubmitting} className="w-full bg-link text-white hover:bg-accent hover:text-primary transition font-app font-semibold py-3">
-            {isSubmitting ? 'Šalje se...' : 'Pošalji zahtev za rezervaciju'}
+          <Button 
+            type="submit" 
+            disabled={isSubmitting} 
+            className="w-full bg-link text-white hover:bg-accent hover:text-primary transition font-app font-semibold py-3 focus-visible:ring-link"
+          >
+            {isSubmitting ? t('booking.submitting') : t('booking.submit')}
           </Button>
         </form>
       </SheetContent>
