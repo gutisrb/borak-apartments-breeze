@@ -13,9 +13,9 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-20 w-auto mb-6 object-contain"
+              className="h-24 md:h-[140px] w-auto mb-6 object-contain"
               width="320"
-              height="80"
+              height="140"
             />
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
               {t('footer.description')}

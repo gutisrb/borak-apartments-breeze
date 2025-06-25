@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import ApartmentDetail from "./pages/ApartmentDetail";
+import Apartments from "./pages/Apartments";
 import NotFound from "./pages/NotFound";
 import LanguageWrapper from "./components/LanguageWrapper";
 
@@ -24,6 +25,7 @@ const App = () => (
           
           {/* Language-based routes */}
           <Route path="/:lang" element={<LanguageWrapper><Index /></LanguageWrapper>} />
+          <Route path="/:lang/apartments" element={<LanguageWrapper><Apartments /></LanguageWrapper>} />
           <Route path="/:lang/apartments/:slug" element={<LanguageWrapper><ApartmentDetail /></LanguageWrapper>} />
           
           {/* 404 route */}

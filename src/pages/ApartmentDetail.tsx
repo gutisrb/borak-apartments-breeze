@@ -3,10 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft } from 'lucide-react';
+import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import { Unit } from '@/lib/supabase';
 import BookingDrawer from '@/components/BookingDrawer';
 import Header from '@/components/Header';
@@ -17,7 +15,6 @@ const ApartmentDetail = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [apartment, setApartment] = useState<Unit | null>(null);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -86,11 +83,16 @@ const ApartmentDetail = () => {
     'Full Kitchen': Utensils
   };
 
-  const lightboxSlides = apartment.images?.map(image => ({ src: image })) || [];
+  const nextImage = () => {
+    if (apartment.images && apartment.images.length > 1) {
+      setCurrentImageIndex((prev) => (prev + 1) % apartment.images.length);
+    }
+  };
 
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
+  const prevImage = () => {
+    if (apartment.images && apartment.images.length > 1) {
+      setCurrentImageIndex((prev) => (prev - 1 + apartment.images.length) % apartment.images.length);
+    }
   };
 
   return (
@@ -99,7 +101,7 @@ const ApartmentDetail = () => {
       <main className="min-h-screen bg-[#F4F9FD] pt-20">
         <div className="container-luxury py-8">
           <Button 
-            onClick={() => navigate(`/${lang || 'en'}`)} 
+            onClick={() => navigate(`/${lang || 'en'}/apartments`)} 
             variant="ghost" 
             className="mb-6 text-[#0077B6] hover:text-[#0C1930]"
           >
@@ -112,19 +114,54 @@ const ApartmentDetail = () => {
               {apartment.name}
             </h1>
 
-            {/* Image Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {apartment.images?.map((image, index) => (
-                <div key={index} className="relative group">
-                  <img
-                    src={image}
-                    alt={`${apartment.name} - image ${index + 1}`}
-                    className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                    loading="lazy"
-                    onClick={() => openLightbox(index)}
-                  />
-                </div>
-              ))}
+            {/* Image Gallery with Navigation */}
+            <div className="relative mb-8">
+              {apartment.images && apartment.images.length > 0 && (
+                <>
+                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <img
+                      src={apartment.images[currentImageIndex]}
+                      alt={`${apartment.name} - image ${currentImageIndex + 1}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    
+                    {apartment.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevImage}
+                          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+                          aria-label="Previous image"
+                        >
+                          <ChevronLeft className="w-6 h-6" />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+                          aria-label="Next image"
+                        >
+                          <ChevronRight className="w-6 h-6" />
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  {apartment.images.length > 1 && (
+                    <div className="flex justify-center mt-4 gap-2">
+                      {apartment.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`w-3 h-3 rounded-full transition-colors ${
+                            index === currentImageIndex ? 'bg-[#0077B6]' : 'bg-gray-300'
+                          }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </div>
 
             {/* Details */}
@@ -182,21 +219,6 @@ const ApartmentDetail = () => {
             </Button>
           </div>
         </div>
-
-        <Lightbox
-          open={lightboxOpen}
-          close={() => setLightboxOpen(false)}
-          slides={lightboxSlides}
-          index={currentImageIndex}
-          controller={{
-            closeOnBackdropClick: true,
-            closeOnPullDown: true,
-            closeOnPullUp: true,
-          }}
-          carousel={{
-            finite: apartment.images?.length === 1,
-          }}
-        />
 
         {isBookingOpen && (
           <BookingDrawer

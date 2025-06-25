@@ -33,9 +33,21 @@ const Header = () => {
   const currentLanguage = languages.find(l => l.code === currentLang) || languages[0];
 
   const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    // If we're not on the home page, navigate there first
+    if (window.location.pathname !== `/${lang || 'en'}`) {
+      navigate(`/${lang || 'en'}`);
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };
@@ -65,7 +77,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
               alt="Borak Apartments"
-              className="h-16 md:h-20 w-auto object-contain cursor-pointer"
+              className="h-20 md:h-[140px] w-auto object-contain cursor-pointer"
               onClick={() => navigate(`/${lang || 'en'}`)}
             />
           </div>
@@ -79,7 +91,7 @@ const Header = () => {
               {t('nav.home')}
             </button>
             <button
-              onClick={() => scrollToSection('apartments')}
+              onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
               className="text-white hover:text-accent transition-colors font-app font-medium"
             >
               {t('nav.apartments')}
@@ -127,7 +139,7 @@ const Header = () => {
             </div>
 
             <Button 
-              onClick={() => scrollToSection('apartments')}
+              onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
               className="bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold"
             >
               {t('nav.book')}
@@ -155,7 +167,7 @@ const Header = () => {
                 {t('nav.home')}
               </button>
               <button
-                onClick={() => scrollToSection('apartments')}
+                onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
                 className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
               >
                 {t('nav.apartments')}
@@ -191,7 +203,7 @@ const Header = () => {
               </div>
               
               <Button 
-                onClick={() => scrollToSection('apartments')}
+                onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
                 className="w-full bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold mt-4"
               >
                 {t('nav.book')}

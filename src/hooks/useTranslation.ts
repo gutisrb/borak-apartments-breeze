@@ -55,6 +55,14 @@ export const useTranslation = () => {
       translation = enTranslations[key as keyof typeof enTranslations] || key;
     }
     
+    // Handle interpolation manually if needed
+    if (options?.count !== undefined) {
+      translation = translation.replace('{{count}}', options.count.toString());
+    }
+    if (options?.size !== undefined) {
+      translation = translation.replace('{{size}}', options.size.toString());
+    }
+    
     return translation;
   };
 
@@ -62,6 +70,16 @@ export const useTranslation = () => {
     if (Object.keys(resources).includes(newLang)) {
       const currentPath = location.pathname.replace(/^\/[a-z]{2}/, '') || '';
       navigate(`/${newLang}${currentPath}`, { replace: true });
+      
+      // Force re-render by updating i18n immediately
+      i18n.changeLanguage(newLang);
+      setCurrentLang(newLang);
+      localStorage.setItem('borak-lang', newLang);
+      
+      // Force a page refresh to ensure all components re-render
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }
   };
 

@@ -10,7 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { X, Calendar as CalendarIcon, CheckCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { useTranslation } from '@/hooks/useTranslation';
-import { Unit } from '@/lib/supabase';
+import { Unit, supabase } from '@/lib/supabase';
+import { useToast } from '@/hooks/use-toast';
 
 interface BookingDrawerProps {
   apartment: Unit;
@@ -19,6 +20,7 @@ interface BookingDrawerProps {
 
 const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [checkIn, setCheckIn] = useState<Date>();
   const [checkOut, setCheckOut] = useState<Date>();
   const [adults, setAdults] = useState('2');
@@ -33,43 +35,100 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
     e.preventDefault();
     
     if (!checkIn || !checkOut) {
-      alert(t('booking.selectDates'));
+      toast({
+        title: t('booking.error'),
+        description: t('booking.selectDates'),
+        variant: "destructive",
+      });
       return;
     }
 
     if (checkOut <= checkIn) {
-      alert(t('booking.invalidDates'));
+      toast({
+        title: t('booking.error'),
+        description: t('booking.invalidDates'),
+        variant: "destructive",
+      });
       return;
     }
 
     if (!name || !email) {
-      alert(t('booking.fillRequired'));
+      toast({
+        title: t('booking.error'),
+        description: t('booking.fillRequired'),
+        variant: "destructive",
+      });
       return;
     }
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const { error } = await supabase
+        .from('bookings')
+        .insert({
+          unit_id: apartment.id,
+          start_date: format(checkIn, 'yyyy-MM-dd'),
+          end_date: format(checkOut, 'yyyy-MM-dd'),
+          source: 'website',
+          user_id: crypto.randomUUID(), // Generate a temp user ID for now
+          channel: 'direct',
+          external_uid: `web_${Date.now()}`
+        });
+
+      if (error) {
+        console.error('Booking error:', error);
+        toast({
+          title: t('booking.error'),
+          description: t('booking.errorDesc'),
+          variant: "destructive",
+        });
+        return;
+      }
+
       setShowSuccess(true);
       
+      // Clear form
+      setCheckIn(undefined);
+      setCheckOut(undefined);
+      setAdults('2');
+      setChildren('0');
+      setName('');
+      setEmail('');
+      setPhone('');
+
       // Auto close after 3 seconds
       setTimeout(() => {
+        setShowSuccess(false);
         onClose();
       }, 3000);
-    }, 2000);
+
+      toast({
+        title: t('booking.success'),
+        description: t('booking.successDesc'),
+      });
+
+    } catch (error) {
+      console.error('Booking submission error:', error);
+      toast({
+        title: t('booking.error'),
+        description: t('booking.errorDesc'),
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (showSuccess) {
     return (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div className="bg-white rounded-2xl p-12 text-center max-w-md mx-4 shadow-2xl">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">
+        <div className="bg-white rounded-2xl p-16 text-center max-w-lg mx-4 shadow-2xl">
+          <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-8" />
+          <h2 className="text-3xl font-bold text-[#0C1930] mb-6 font-playfair">
             {t('booking.success')}
           </h2>
-          <p className="text-[#20425C] font-app text-lg">
+          <p className="text-[#20425C] font-app text-xl">
             {t('booking.successDesc')}
           </p>
         </div>
@@ -79,7 +138,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
 
   return (
     <Sheet open={true} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-lg bg-white border-[#20425C] relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24]">
+      <SheetContent className="w-full sm:max-w-lg bg-white border-[#20425C] relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24] overflow-y-auto">
         <SheetHeader className="mb-6">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
