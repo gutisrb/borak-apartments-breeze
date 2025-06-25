@@ -1,77 +1,75 @@
 
-const LocationHighlights = () => {
-  const highlights = [
-    { icon: '🏖️', text: 'Beach distance: 150m', description: 'Crystal clear Adriatic waters' },
-    { icon: '🚶', text: 'Old-town promenade: 5 min walk', description: 'Historic charm and local restaurants' },
-    { icon: '🚗', text: 'Free parking included', description: 'Secure on-site parking' },
-    { icon: '✈️', text: 'Airport transfer on request', description: 'Convenient arrival and departure' }
-  ];
+import { MapPin, Waves, Sun, Camera } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
-  const locationImages = [
-    '/lovable-uploads/0ed2d36a-7632-4869-ac20-e95064f4a508.png',
-    '/lovable-uploads/a412065e-92e3-4725-b7a6-e1b9fe814b20.png',
-    '/lovable-uploads/bf0e5e79-170a-4134-8bd6-c4b40d0b7277.png'
+const LocationHighlights = () => {
+  const { t } = useTranslation();
+
+  const highlights = [
+    {
+      icon: MapPin,
+      title: 'Prime Location',
+      description: 'Steps away from pristine beaches and crystal-clear waters'
+    },
+    {
+      icon: Waves,
+      title: 'Beach Access',
+      description: 'Direct access to secluded coves and swimming spots'
+    },
+    {
+      icon: Sun,
+      title: 'Year-Round Beauty',
+      description: 'Perfect Mediterranean climate with 300+ sunny days'
+    },
+    {
+      icon: Camera,
+      title: 'Scenic Views',
+      description: 'Breathtaking panoramic views of the Adriatic Sea'
+    }
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div className="animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0c1930] mb-6">
-              Perfect Location on Brač Island
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Experience the best of Croatian coastal living with unparalleled access to pristine beaches, 
-              historic sites, and authentic Mediterranean culture.
-            </p>
-            
-            <div className="space-y-6">
-              {highlights.map((highlight, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-start space-x-4 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="text-2xl">{highlight.icon}</div>
-                  <div>
-                    <div className="font-semibold text-[#0c1930] mb-1">
-                      {highlight.text}
-                    </div>
-                    <div className="text-gray-600 text-sm">
-                      {highlight.description}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+    <section id="location" className="section-padding bg-white">
+      <div className="container-luxury">
+        <div className="text-center mb-20">
+          <h2 className="mb-6 animate-fade-in text-[#0C1930] font-playfair">
+            {t('location.title')}
+          </h2>
+          <p className="text-lg md:text-xl text-[#20425C] max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
+            {t('location.description')}
+          </p>
+        </div>
 
-          {/* Image Mosaic */}
-          <div className="grid grid-cols-2 gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <div className="space-y-4">
-              <img
-                src={locationImages[0]}
-                alt="Stunning coastal view with traditional stone houses"
-                className="w-full h-48 object-cover rounded-lg shadow-lg"
-                loading="lazy"
-              />
-              <img
-                src={locationImages[1]}
-                alt="Beautiful beach with crystal clear waters"
-                className="w-full h-64 object-cover rounded-lg shadow-lg"
-                loading="lazy"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {highlights.map((highlight, index) => (
+            <div 
+              key={index}
+              className="text-center group animate-fade-in"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#F4F9FD] rounded-full mb-6 group-hover:bg-[#FFBE24] transition-colors duration-300">
+                <highlight.icon className="w-8 h-8 text-[#0077B6] group-hover:text-[#0C1930] transition-colors duration-300" />
+              </div>
+              <h3 className="text-xl font-bold text-[#0C1930] mb-4 font-playfair">
+                {highlight.title}
+              </h3>
+              <p className="text-[#20425C] leading-relaxed font-app">
+                {highlight.description}
+              </p>
             </div>
-            <div className="mt-8">
-              <img
-                src={locationImages[2]}
-                alt="Scenic beach view with mountains in background"
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-                loading="lazy"
-              />
-            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="bg-[#F4F9FD] rounded-2xl p-8 md:p-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#0C1930] mb-6 font-playfair">
+              Discover Brač Island
+            </h3>
+            <p className="text-lg text-[#20425C] max-w-4xl mx-auto leading-relaxed font-app">
+              Nestled in the heart of the Adriatic, Brač Island offers the perfect blend of natural beauty, 
+              rich history, and modern luxury. From the famous Golden Horn beach to ancient stone quarries, 
+              every corner of this Croatian paradise tells a story waiting to be discovered.
+            </p>
           </div>
         </div>
       </div>

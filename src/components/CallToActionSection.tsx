@@ -39,7 +39,7 @@ const CallToActionSection = () => {
           <Button
             onClick={scrollToApartments}
             size="lg"
-            className="bg-accent text-primary hover:bg-highlight hover:text-white transition font-app text-base md:text-lg px-12 py-5 animate-fade-in"
+            className="bg-[#FFBE24] text-[#0C1930] hover:bg-[#0077B6] hover:text-white transition font-app text-base md:text-lg px-12 py-5 animate-fade-in"
             aria-label="Book your luxury stay"
           >
             {t('cta.book')}

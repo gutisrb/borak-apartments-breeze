@@ -51,5 +51,9 @@
   "testimonials.title": "Šta kažu naši gosti",
   "apartment.viewDetails": "Pogledaj detalje",
   "apartment.bookNow": "Rezerviši odmah",
-  "apartment.backToHome": "Nazad na početnu"
+  "apartment.backToHome": "Nazad na početnu",
+  "apartment.notFound": "Apartman nije pronađen",
+  "apartmentSelector.title": "Izaberite svoje savršeno utočište",
+  "apartmentSelector.subtitle": "Četiri različita apartmana, svaki nudi beskompromisnu udobnost i zadivljujuće poglede na Jadransko more",
+  "apartmentSelector.viewDetails": "Pogledaj detalje i dostupnost"
 }

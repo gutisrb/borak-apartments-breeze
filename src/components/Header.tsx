@@ -46,8 +46,8 @@ const Header = () => {
             <img 
               src="/lovable-uploads/78e39d31-bdab-49bd-ae91-bdbe2143b966.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-16 md:h-20 w-36 md:w-40 object-contain"
-              width="160"
+              className="h-16 md:h-20 w-24 md:w-36 object-contain"
+              width="140"
               height="80"
             />
           </div>

@@ -50,9 +50,9 @@ const ApartmentDetail = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center bg-[#F4F9FD] pt-20">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-primary mb-4">{t('apartment.notFound') || 'Apartment not found'}</h1>
+            <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.notFound')}</h1>
             <Button onClick={() => navigate('/')} className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930]">
               <ArrowLeft className="mr-2 h-4 w-4" />
               {t('apartment.backToHome')}
@@ -88,6 +88,14 @@ const ApartmentDetail = () => {
     setLightboxOpen(true);
   };
 
+  const handlePrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + lightboxSlides.length) % lightboxSlides.length);
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % lightboxSlides.length);
+  };
+
   return (
     <>
       <Header />
@@ -107,18 +115,46 @@ const ApartmentDetail = () => {
               {apartment.name}
             </h1>
 
-            {/* Image Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {apartment.images?.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`${apartment.name} - image ${index + 1}`}
-                  className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                  loading="lazy"
-                  onClick={() => openLightbox(index)}
-                />
-              ))}
+            {/* Image Gallery with Navigation Arrows */}
+            <div className="relative mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {apartment.images?.map((image, index) => (
+                  <div key={index} className="relative group">
+                    <img
+                      src={image}
+                      alt={`${apartment.name} - image ${index + 1}`}
+                      className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                      onClick={() => openLightbox(index)}
+                    />
+                    {/* On-screen navigation arrows */}
+                    {apartment.images && apartment.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handlePrevious();
+                          }}
+                          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+                          aria-label="Previous image"
+                        >
+                          ←
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleNext();
+                          }}
+                          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
+                          aria-label="Next image"
+                        >
+                          →
+                        </button>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Details */}
@@ -182,6 +218,36 @@ const ApartmentDetail = () => {
           close={() => setLightboxOpen(false)}
           slides={lightboxSlides}
           index={currentImageIndex}
+          controller={{
+            closeOnBackdropClick: true,
+            closeOnPullDown: true,
+            closeOnPullUp: true,
+          }}
+          carousel={{
+            finite: apartment.images?.length === 1,
+          }}
+          render={{
+            buttonPrev: () => (
+              <button
+                type="button"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors z-10"
+                onClick={handlePrevious}
+                aria-label="Previous image"
+              >
+                ←
+              </button>
+            ),
+            buttonNext: () => (
+              <button
+                type="button"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors z-10"
+                onClick={handleNext}
+                aria-label="Next image"
+              >
+                →
+              </button>
+            ),
+          }}
         />
 
         {isBookingOpen && (

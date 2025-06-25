@@ -86,30 +86,30 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
           {/* Details */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold text-primary mb-4 font-playfair">{t('modal.details')}</h3>
+              <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.details')}</h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Users className="h-5 w-5 text-accent" />
-                  <span className="font-app text-secondary">{t('modal.guests', { count: apartment.max_guests })}</span>
+                  <Users className="h-5 w-5 text-[#FFBE24]" />
+                  <span className="font-app text-[#20425C]">{t('modal.guests', { count: apartment.max_guests })}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Square className="h-5 w-5 text-accent" />
-                  <span className="font-app text-secondary">{t('modal.size', { size: apartment.size_m2 })}</span>
+                  <Square className="h-5 w-5 text-[#FFBE24]" />
+                  <span className="font-app text-[#20425C]">{t('modal.size', { size: apartment.size_m2 })}</span>
                 </div>
-                <div className="text-2xl font-bold text-accent font-app">
+                <div className="text-2xl font-bold text-[#FFBE24] font-app">
                   €{apartment.price_per_night}{t('modal.perNight')}
                 </div>
               </div>
 
               <div className="mt-6">
-                <p className="text-secondary leading-relaxed font-app">
+                <p className="text-[#20425C] leading-relaxed font-app">
                   {apartment.description}
                 </p>
               </div>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-primary mb-4 font-playfair">{t('modal.amenities')}</h3>
+              <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.amenities')}</h3>
               <div className="grid grid-cols-2 gap-3">
                 {apartment.amenities?.map((amenity, index) => {
                   const IconComponent = amenityIcons[amenity as keyof typeof amenityIcons] || Square;
@@ -117,7 +117,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
                     <Badge 
                       key={index} 
                       variant="secondary" 
-                      className="flex items-center gap-2 p-3 justify-start bg-mist text-primary font-app border-0"
+                      className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
                     >
                       <IconComponent className="h-4 w-4" />
                       {amenity}

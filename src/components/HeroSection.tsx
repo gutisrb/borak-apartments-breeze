@@ -50,7 +50,7 @@ const HeroSection = () => {
       </div>
 
       {/* Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-primary/70 md:bg-gradient-to-r md:from-primary/80 md:to-transparent" />
+      <div className="absolute inset-0 bg-[#0C1930]/70 md:bg-gradient-to-r md:from-[#0C1930]/80 md:to-transparent" />
 
       {/* Hero Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
@@ -65,7 +65,7 @@ const HeroSection = () => {
             <Button
               onClick={scrollToApartments}
               size="lg"
-              className="bg-link text-white hover:bg-accent hover:text-primary transition font-app text-base md:text-lg px-12 py-5 focus-visible:ring-link"
+              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-base md:text-lg px-12 py-5 focus-visible:ring-[#0077B6]"
               aria-label="Explore our luxury apartments"
             >
               {t('hero.explore')}

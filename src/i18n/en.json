@@ -52,5 +52,8 @@
   "apartment.viewDetails": "View Details",
   "apartment.bookNow": "Book Now",
   "apartment.backToHome": "Back to Home",
-  "apartment.notFound": "Apartment not found"
+  "apartment.notFound": "Apartment not found",
+  "apartmentSelector.title": "Choose Your Perfect Sanctuary",
+  "apartmentSelector.subtitle": "Four distinctive apartments, each offering uncompromising comfort and breathtaking views of the Adriatic Sea",
+  "apartmentSelector.viewDetails": "View Details & Availability"
 }
