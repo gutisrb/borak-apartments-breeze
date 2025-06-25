@@ -1,153 +1,207 @@
 
-import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { useState, useEffect } from 'react'
-import { useTranslation } from '@/hooks/useTranslation'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { t, changeLanguage, currentLang } = useTranslation()
-  const navigate = useNavigate()
-  const { lang } = useParams<{ lang: string }>()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const { t, changeLanguage, currentLang } = useTranslation();
+  const navigate = useNavigate();
+  const { lang } = useParams<{ lang: string }>();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 80);
+    };
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const navigateToApartments = () => {
-    navigate(`/${lang || 'en'}`)
-    setTimeout(() => scrollToSection('apartments'), 100)
-  }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const languages = [
-    { code: 'sr', label: '🇷🇸 Srpski' },
-    { code: 'hr', label: '🇭🇷 Hrvatski' },
-    { code: 'de', label: '🇩🇪 Deutsch' },
-    { code: 'en', label: '🇬🇧 English' },
-    { code: 'ru', label: '🇷🇺 Русский' }
-  ]
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'sr', name: 'Srpski', flag: '🇷🇸' },
+    { code: 'hr', name: 'Hrvatski', flag: '🇭🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' }
+  ];
 
-  const currentLanguage = languages.find(language => language.code === currentLang) || languages[3]
+  const currentLanguage = languages.find(l => l.code === currentLang) || languages[0];
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleLanguageChange = (langCode: string) => {
+    changeLanguage(langCode);
+    setIsLanguageOpen(false);
+  };
+
+  const handleNavigation = (path: string) => {
+    if (path.startsWith('#')) {
+      scrollToSection(path.substring(1));
+    } else {
+      navigate(path);
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-[#0C1930] shadow-lg' 
-        : 'bg-transparent'
+      isScrolled ? 'bg-[#0C1930] shadow-lg' : 'bg-transparent'
     }`}>
-      <nav className="container-luxury py-4 md:py-6">
-        <div className="flex items-center justify-between">
+      <div className="container-luxury">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/78e39d31-bdab-49bd-ae91-bdbe2143b966.png"
-              alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-16 md:h-20 w-24 md:w-36 object-contain"
-              width="140"
-              height="80"
+              src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
+              alt="Borak Apartments"
+              className="h-16 md:h-20 w-auto object-contain cursor-pointer"
+              onClick={() => navigate(`/${lang || 'en'}`)}
             />
           </div>
-          
+
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <button 
-              onClick={() => navigate(`/${lang || 'en'}`)}
-              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
+          <nav className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => handleNavigation(`/${lang || 'en'}`)}
+              className="text-white hover:text-accent transition-colors font-app font-medium"
             >
               {t('nav.home')}
             </button>
-            <button 
-              onClick={navigateToApartments}
-              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
+            <button
+              onClick={() => scrollToSection('apartments')}
+              className="text-white hover:text-accent transition-colors font-app font-medium"
             >
               {t('nav.apartments')}
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('location')}
-              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium"
             >
               {t('nav.location')}
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
+              className="text-white hover:text-accent transition-colors font-app font-medium"
             >
               {t('nav.contact')}
             </button>
-            
-            {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app text-white hover:text-[#FFBE24]">
-                  {currentLanguage.label.split(' ')[0]}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
-                {languages.map((language) => (
-                  <DropdownMenuItem
-                    key={language.code}
-                    onClick={() => changeLanguage(language.code)}
-                    className="cursor-pointer font-app hover:bg-[#F4F9FD]"
-                  >
-                    {language.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            <Button
-              onClick={navigateToApartments}
-              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm md:text-base"
+
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                className="flex items-center space-x-2 text-white hover:text-accent transition-colors font-app font-medium"
+              >
+                <span>{currentLanguage.flag}</span>
+                <span>{currentLanguage.name}</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              
+              {isLanguageOpen && (
+                <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[140px] z-50">
+                  {languages.map((language) => (
+                    <button
+                      key={language.code}
+                      onClick={() => handleLanguageChange(language.code)}
+                      className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
+                        currentLang === language.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                      }`}
+                    >
+                      <span>{language.flag}</span>
+                      <span className="font-app">{language.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Button 
+              onClick={() => scrollToSection('apartments')}
+              className="bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold"
             >
               {t('nav.book')}
             </Button>
-          </div>
+          </nav>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center gap-2">
-            {/* Language Switcher Mobile */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-app text-white hover:text-[#FFBE24]">
-                  {currentLanguage.label.split(' ')[0]}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
-                {languages.map((language) => (
-                  <DropdownMenuItem
-                    key={language.code}
-                    onClick={() => changeLanguage(language.code)}
-                    className="cursor-pointer font-app hover:bg-[#F4F9FD]"
-                  >
-                    {language.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
-            <Button
-              onClick={navigateToApartments}
-              className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm"
-            >
-              {t('nav.book')}
-            </Button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white hover:text-accent transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-      </nav>
-    </header>
-  )
-}
 
-export default Header
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-[#0C1930] border-t border-white/10">
+            <nav className="py-4 space-y-4">
+              <button
+                onClick={() => handleNavigation(`/${lang || 'en'}`)}
+                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+              >
+                {t('nav.home')}
+              </button>
+              <button
+                onClick={() => scrollToSection('apartments')}
+                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+              >
+                {t('nav.apartments')}
+              </button>
+              <button
+                onClick={() => scrollToSection('location')}
+                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+              >
+                {t('nav.location')}
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+              >
+                {t('nav.contact')}
+              </button>
+              
+              {/* Mobile Language Selector */}
+              <div className="border-t border-white/10 pt-4">
+                <div className="text-white/60 text-sm font-app mb-2">Language:</div>
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    onClick={() => handleLanguageChange(language.code)}
+                    className={`flex items-center space-x-3 w-full px-2 py-2 text-left hover:text-accent transition-colors ${
+                      currentLang === language.code ? 'text-accent' : 'text-white'
+                    }`}
+                  >
+                    <span>{language.flag}</span>
+                    <span className="font-app">{language.name}</span>
+                  </button>
+                ))}
+              </div>
+              
+              <Button 
+                onClick={() => scrollToSection('apartments')}
+                className="w-full bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold mt-4"
+              >
+                {t('nav.book')}
+              </Button>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;

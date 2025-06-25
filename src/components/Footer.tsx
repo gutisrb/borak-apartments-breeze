@@ -11,12 +11,11 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
+              src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-16 w-auto mb-6"
-              style={{ filter: 'invert(1) brightness(0) saturate(100%) contrast(100%)' }}
+              className="h-20 w-auto mb-6 object-contain"
               width="320"
-              height="64"
+              height="80"
             />
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
               {t('footer.description')}

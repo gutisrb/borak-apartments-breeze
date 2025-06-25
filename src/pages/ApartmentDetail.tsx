@@ -21,6 +21,11 @@ const ApartmentDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const loadApartment = async () => {
       try {
@@ -142,7 +147,7 @@ const ApartmentDetail = () => {
 
                 <div className="mt-6">
                   <p className="text-[#20425C] leading-relaxed font-app">
-                    {apartment.description}
+                    {t(`apartment.${apartment.id}.description`)}
                   </p>
                 </div>
               </div>
@@ -159,7 +164,7 @@ const ApartmentDetail = () => {
                         className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
                       >
                         <IconComponent className="h-4 w-4" />
-                        {amenity}
+                        {t(`amenity.${amenity.toLowerCase().replace(/\s+/g, '_')}`)}
                       </Badge>
                     );
                   })}

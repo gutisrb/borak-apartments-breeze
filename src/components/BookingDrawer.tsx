@@ -7,8 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from '@/hooks/use-toast';
-import { X, Calendar as CalendarIcon, Users } from 'lucide-react';
+import { X, Calendar as CalendarIcon, CheckCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit } from '@/lib/supabase';
@@ -28,34 +27,23 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!checkIn || !checkOut) {
-      toast({
-        title: t('booking.error'),
-        description: t('booking.selectDates'),
-        variant: "destructive",
-      });
+      alert(t('booking.selectDates'));
       return;
     }
 
     if (checkOut <= checkIn) {
-      toast({
-        title: t('booking.error'),
-        description: t('booking.invalidDates'),
-        variant: "destructive",
-      });
+      alert(t('booking.invalidDates'));
       return;
     }
 
     if (!name || !email) {
-      toast({
-        title: t('booking.error'),
-        description: t('booking.fillRequired'),
-        variant: "destructive",
-      });
+      alert(t('booking.fillRequired'));
       return;
     }
 
@@ -63,14 +51,31 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
 
     // Simulate API call
     setTimeout(() => {
-      toast({
-        title: t('booking.success'),
-        description: t('booking.successDesc'),
-      });
       setIsSubmitting(false);
-      onClose();
+      setShowSuccess(true);
+      
+      // Auto close after 3 seconds
+      setTimeout(() => {
+        onClose();
+      }, 3000);
     }, 2000);
   };
+
+  if (showSuccess) {
+    return (
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="bg-white rounded-2xl p-12 text-center max-w-md mx-4 shadow-2xl">
+          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+          <h2 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">
+            {t('booking.success')}
+          </h2>
+          <p className="text-[#20425C] font-app text-lg">
+            {t('booking.successDesc')}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Sheet open={true} onOpenChange={onClose}>
