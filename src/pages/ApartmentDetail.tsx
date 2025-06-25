@@ -52,10 +52,10 @@ const ApartmentDetail = () => {
         <Header />
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-primary mb-4">Apartment not found</h1>
+            <h1 className="text-2xl font-bold text-primary mb-4">{t('apartment.notFound') || 'Apartment not found'}</h1>
             <Button onClick={() => navigate('/')} className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930]">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
+              {t('apartment.backToHome')}
             </Button>
           </div>
         </div>

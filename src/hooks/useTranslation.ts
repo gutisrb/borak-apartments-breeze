@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
-
-type Translations = Record<string, string>;
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 // Static imports of all translations
 import srTranslations from '../i18n/sr.json';
@@ -10,22 +10,36 @@ import deTranslations from '../i18n/de.json';
 import enTranslations from '../i18n/en.json';
 import ruTranslations from '../i18n/ru.json';
 
-const translations = {
-  sr: srTranslations,
-  hr: hrTranslations,
-  de: deTranslations,
-  en: enTranslations,
-  ru: ruTranslations,
+const resources = {
+  sr: { translation: srTranslations },
+  hr: { translation: hrTranslations },
+  de: { translation: deTranslations },
+  en: { translation: enTranslations },
+  ru: { translation: ruTranslations },
 };
+
+// Initialize i18next
+i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: 'en',
+    lng: localStorage.getItem('borak-lang') || navigator.language.slice(0, 2) || 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+    returnEmptyString: false,
+    returnNull: false,
+  });
 
 const getBrowserLanguage = (): string => {
   const browserLang = navigator.language.slice(0, 2);
-  return Object.keys(translations).includes(browserLang) ? browserLang : 'sr';
+  return Object.keys(resources).includes(browserLang) ? browserLang : 'en';
 };
 
 const getStoredLanguage = (): string => {
-  const stored = localStorage.getItem('lang');
-  if (stored && Object.keys(translations).includes(stored)) {
+  const stored = localStorage.getItem('borak-lang');
+  if (stored && Object.keys(resources).includes(stored)) {
     return stored;
   }
   return getBrowserLanguage();
@@ -34,23 +48,26 @@ const getStoredLanguage = (): string => {
 export const useTranslation = () => {
   const [currentLang, setCurrentLang] = useState<string>(getStoredLanguage());
 
+  useEffect(() => {
+    const storedLang = getStoredLanguage();
+    i18n.changeLanguage(storedLang);
+    setCurrentLang(storedLang);
+  }, []);
+
   const t = (key: string, options?: { count?: number; size?: number }): string => {
-    const currentTranslations = translations[currentLang as keyof typeof translations] || translations.en;
-    let translation = currentTranslations[key as keyof typeof currentTranslations] || translations.en[key as keyof typeof translations.en] || key;
+    let translation = i18n.t(key, options);
     
-    // Handle interpolation for count and size
-    if (options?.count !== undefined) {
-      translation = translation.replace('{count}', options.count.toString());
-    }
-    if (options?.size !== undefined) {
-      translation = translation.replace('{size}', options.size.toString());
+    // If translation returns the key (meaning it wasn't found), fall back to English
+    if (translation === key && currentLang !== 'en') {
+      translation = enTranslations[key as keyof typeof enTranslations] || key;
     }
     
     return translation;
   };
 
   const changeLanguage = (lang: string) => {
-    localStorage.setItem('lang', lang);
+    localStorage.setItem('borak-lang', lang);
+    i18n.changeLanguage(lang);
     setCurrentLang(lang);
   };
 

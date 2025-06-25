@@ -44,12 +44,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/fec2f2f3-2d79-4151-9021-a847d7bfe9ff.png"
+              src="/lovable-uploads/78e39d31-bdab-49bd-ae91-bdbe2143b966.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
-              className="h-8 md:h-10 w-auto object-contain"
-              style={{ width: 'auto', maxWidth: '140px' }}
-              width="140"
-              height="40"
+              className="h-16 md:h-20 w-36 md:w-40 object-contain"
+              width="160"
+              height="80"
             />
           </div>
           
