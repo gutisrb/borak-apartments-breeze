@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -24,7 +25,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    lng: localStorage.getItem('borak-lang') || navigator.language.slice(0, 2) || 'en',
+    lng: 'en',
     interpolation: {
       escapeValue: false,
     },
@@ -32,27 +33,19 @@ i18n
     returnNull: false,
   });
 
-const getBrowserLanguage = (): string => {
-  const browserLang = navigator.language.slice(0, 2);
-  return Object.keys(resources).includes(browserLang) ? browserLang : 'en';
-};
-
-const getStoredLanguage = (): string => {
-  const stored = localStorage.getItem('borak-lang');
-  if (stored && Object.keys(resources).includes(stored)) {
-    return stored;
-  }
-  return getBrowserLanguage();
-};
-
 export const useTranslation = () => {
-  const [currentLang, setCurrentLang] = useState<string>(getStoredLanguage());
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { lang } = useParams<{ lang: string }>();
+  const [currentLang, setCurrentLang] = useState<string>(lang || 'en');
 
   useEffect(() => {
-    const storedLang = getStoredLanguage();
-    i18n.changeLanguage(storedLang);
-    setCurrentLang(storedLang);
-  }, []);
+    if (lang && Object.keys(resources).includes(lang)) {
+      i18n.changeLanguage(lang);
+      setCurrentLang(lang);
+      localStorage.setItem('borak-lang', lang);
+    }
+  }, [lang]);
 
   const t = (key: string, options?: { count?: number; size?: number }): string => {
     let translation = i18n.t(key, options);
@@ -65,10 +58,11 @@ export const useTranslation = () => {
     return translation;
   };
 
-  const changeLanguage = (lang: string) => {
-    localStorage.setItem('borak-lang', lang);
-    i18n.changeLanguage(lang);
-    setCurrentLang(lang);
+  const changeLanguage = (newLang: string) => {
+    if (Object.keys(resources).includes(newLang)) {
+      const currentPath = location.pathname.replace(/^\/[a-z]{2}/, '') || '';
+      navigate(`/${newLang}${currentPath}`, { replace: true });
+    }
   };
 
   return { t, changeLanguage, currentLang };

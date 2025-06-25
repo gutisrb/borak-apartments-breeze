@@ -8,23 +8,23 @@ const LocationHighlights = () => {
   const highlights = [
     {
       icon: MapPin,
-      title: 'Prime Location',
-      description: 'Steps away from pristine beaches and crystal-clear waters'
+      titleKey: 'location.highlights.prime.title',
+      descriptionKey: 'location.highlights.prime.description'
     },
     {
       icon: Waves,
-      title: 'Beach Access',
-      description: 'Direct access to secluded coves and swimming spots'
+      titleKey: 'location.highlights.beach.title',
+      descriptionKey: 'location.highlights.beach.description'
     },
     {
       icon: Sun,
-      title: 'Year-Round Beauty',
-      description: 'Perfect Mediterranean climate with 300+ sunny days'
+      titleKey: 'location.highlights.climate.title',
+      descriptionKey: 'location.highlights.climate.description'
     },
     {
       icon: Camera,
-      title: 'Scenic Views',
-      description: 'Breathtaking panoramic views of the Adriatic Sea'
+      titleKey: 'location.highlights.views.title',
+      descriptionKey: 'location.highlights.views.description'
     }
   ];
 
@@ -51,10 +51,10 @@ const LocationHighlights = () => {
                 <highlight.icon className="w-8 h-8 text-[#0077B6] group-hover:text-[#0C1930] transition-colors duration-300" />
               </div>
               <h3 className="text-xl font-bold text-[#0C1930] mb-4 font-playfair">
-                {highlight.title}
+                {t(highlight.titleKey)}
               </h3>
               <p className="text-[#20425C] leading-relaxed font-app">
-                {highlight.description}
+                {t(highlight.descriptionKey)}
               </p>
             </div>
           ))}
@@ -63,12 +63,10 @@ const LocationHighlights = () => {
         <div className="mt-16 text-center">
           <div className="bg-[#F4F9FD] rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-[#0C1930] mb-6 font-playfair">
-              Discover Brač Island
+              {t('location.discover.title')}
             </h3>
             <p className="text-lg text-[#20425C] max-w-4xl mx-auto leading-relaxed font-app">
-              Nestled in the heart of the Adriatic, Brač Island offers the perfect blend of natural beauty, 
-              rich history, and modern luxury. From the famous Golden Horn beach to ancient stone quarries, 
-              every corner of this Croatian paradise tells a story waiting to be discovered.
+              {t('location.discover.description')}
             </p>
           </div>
         </div>

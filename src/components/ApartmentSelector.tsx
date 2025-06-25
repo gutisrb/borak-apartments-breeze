@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Unit } from '@/lib/supabase';
 import { Users, Square } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface ApartmentSelectorProps {
   onViewDetails: (unit: Unit) => void;
@@ -14,6 +15,8 @@ const ApartmentSelector = ({ onViewDetails }: ApartmentSelectorProps) => {
   const [units, setUnits] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { lang } = useParams<{ lang: string }>();
 
   useEffect(() => {
     const fetchUnits = async () => {
@@ -30,6 +33,11 @@ const ApartmentSelector = ({ onViewDetails }: ApartmentSelectorProps) => {
 
     fetchUnits();
   }, []);
+
+  const handleViewDetails = (unit: Unit) => {
+    const slug = unit.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    navigate(`/${lang || 'en'}/apartments/${slug}`);
+  };
 
   if (loading) {
     return (
@@ -91,7 +99,7 @@ const ApartmentSelector = ({ onViewDetails }: ApartmentSelectorProps) => {
                 </div>
                 
                 <Button
-                  onClick={() => onViewDetails(unit)}
+                  onClick={() => handleViewDetails(unit)}
                   className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold"
                   aria-label={`View details for ${unit.name}`}
                 >

@@ -7,21 +7,21 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Sarah & Michael Thompson",
-      location: "London, UK",
-      text: "The most incredible stay we've ever experienced. The apartment was stunning and the views absolutely breathtaking. We'll definitely be back!",
+      nameKey: "testimonials.sarah.name",
+      locationKey: "testimonials.sarah.location", 
+      textKey: "testimonials.sarah.text",
       rating: 5
     },
     {
-      name: "Ana & Marko Petković",
-      location: "Belgrade, Serbia", 
-      text: "Savršeno mesto za odmor! Apartman je bio luksuzan i udoban, a pogled na more nezaboravan. Toplo preporučujemo!",
+      nameKey: "testimonials.ana.name",
+      locationKey: "testimonials.ana.location",
+      textKey: "testimonials.ana.text",
       rating: 5
     },
     {
-      name: "Hans & Greta Mueller",
-      location: "Munich, Germany",
-      text: "Wunderbare Unterkunft mit atemberaubendem Blick aufs Meer. Alles war perfekt organisiert und sehr sauber. Vielen Dank!",
+      nameKey: "testimonials.hans.name",
+      locationKey: "testimonials.hans.location",
+      textKey: "testimonials.hans.text",
       rating: 5
     }
   ];
@@ -49,15 +49,15 @@ const Testimonials = () => {
               </div>
               
               <p className="text-[#20425C] leading-relaxed mb-6 font-app italic">
-                "{testimonial.text}"
+                "{t(testimonial.textKey)}"
               </p>
               
               <div className="border-t border-[#F4F9FD] pt-6">
                 <p className="font-semibold text-[#0C1930] font-app">
-                  {testimonial.name}
+                  {t(testimonial.nameKey)}
                 </p>
                 <p className="text-[#0077B6] text-sm font-app">
-                  {testimonial.location}
+                  {t(testimonial.locationKey)}
                 </p>
               </div>
             </div>

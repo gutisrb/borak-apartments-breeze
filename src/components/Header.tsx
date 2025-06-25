@@ -3,10 +3,13 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useState, useEffect } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const { t, changeLanguage, currentLang } = useTranslation()
+  const navigate = useNavigate()
+  const { lang } = useParams<{ lang: string }>()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,11 @@ const Header = () => {
     }
   }
 
+  const navigateToApartments = () => {
+    navigate(`/${lang || 'en'}`)
+    setTimeout(() => scrollToSection('apartments'), 100)
+  }
+
   const languages = [
     { code: 'sr', label: '🇷🇸 Srpski' },
     { code: 'hr', label: '🇭🇷 Hrvatski' },
@@ -31,7 +39,7 @@ const Header = () => {
     { code: 'ru', label: '🇷🇺 Русский' }
   ]
 
-  const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0]
+  const currentLanguage = languages.find(language => language.code === currentLang) || languages[3]
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -55,13 +63,13 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection('hero')}
+              onClick={() => navigate(`/${lang || 'en'}`)}
               className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.home')}
             </button>
             <button 
-              onClick={() => scrollToSection('apartments')}
+              onClick={navigateToApartments}
               className="text-white hover:text-[#FFBE24] transition-colors font-app font-medium"
             >
               {t('nav.apartments')}
@@ -87,20 +95,20 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
-                {languages.map((lang) => (
+                {languages.map((language) => (
                   <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
+                    key={language.code}
+                    onClick={() => changeLanguage(language.code)}
                     className="cursor-pointer font-app hover:bg-[#F4F9FD]"
                   >
-                    {lang.label}
+                    {language.label}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
             
             <Button
-              onClick={() => scrollToSection('apartments')}
+              onClick={navigateToApartments}
               className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm md:text-base"
             >
               {t('nav.book')}
@@ -117,20 +125,20 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white border-[#20425C] z-[60]">
-                {languages.map((lang) => (
+                {languages.map((language) => (
                   <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
+                    key={language.code}
+                    onClick={() => changeLanguage(language.code)}
                     className="cursor-pointer font-app hover:bg-[#F4F9FD]"
                   >
-                    {lang.label}
+                    {language.label}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
             
             <Button
-              onClick={() => scrollToSection('apartments')}
+              onClick={navigateToApartments}
               className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app text-sm"
             >
               {t('nav.book')}
