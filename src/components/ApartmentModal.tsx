@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,6 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Navigation from "yet-another-react-lightbox/plugins/navigation";
 import { Unit } from '@/lib/supabase';
 
 interface ApartmentModalProps {
@@ -154,7 +154,6 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
         close={() => setLightboxOpen(false)}
         slides={lightboxSlides}
         index={currentImageIndex}
-        plugins={[Navigation]}
       />
     </>
   );

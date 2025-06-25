@@ -7,7 +7,6 @@ import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft } from 'lucide
 import { useTranslation } from '@/hooks/useTranslation';
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Navigation from "yet-another-react-lightbox/plugins/navigation";
 import { Unit } from '@/lib/supabase';
 import BookingDrawer from '@/components/BookingDrawer';
 import Header from '@/components/Header';
@@ -183,7 +182,6 @@ const ApartmentDetail = () => {
           close={() => setLightboxOpen(false)}
           slides={lightboxSlides}
           index={currentImageIndex}
-          plugins={[Navigation]}
         />
 
         {isBookingOpen && (
