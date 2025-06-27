@@ -62,8 +62,16 @@ const ApartmentDetail = () => {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (isGalleryOpen && target.classList.contains('gallery-overlay')) {
+        setIsGalleryOpen(false);
+      }
+    };
+
     if (isGalleryOpen) {
       document.addEventListener('keydown', handleEscape);
+      document.addEventListener('click', handleClickOutside);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -71,6 +79,7 @@ const ApartmentDetail = () => {
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('click', handleClickOutside);
       document.body.style.overflow = 'unset';
     };
   }, [isGalleryOpen]);
@@ -79,7 +88,7 @@ const ApartmentDetail = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen flex items-center justify-center bg-[#F4F9FD] pt-20">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#0077B6] mx-auto mb-4"></div>
             <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.loading')}</h1>
@@ -94,7 +103,7 @@ const ApartmentDetail = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen flex items-center justify-center bg-[#F4F9FD] pt-20">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.notFound')}</h1>
             <Button onClick={() => navigate(`/${lang || 'en'}`)} className="bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930]">
@@ -142,20 +151,19 @@ const ApartmentDetail = () => {
     setIsGalleryOpen(true);
   };
 
-  const closeGallery = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const closeGallery = () => {
     setIsGalleryOpen(false);
   };
 
-  const nextGalleryImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextGalleryImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (apartment.images && apartment.images.length > 1) {
       setGalleryImageIndex((prev) => (prev + 1) % apartment.images.length);
     }
   };
 
-  const prevGalleryImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevGalleryImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (apartment.images && apartment.images.length > 1) {
       setGalleryImageIndex((prev) => (prev - 1 + apartment.images.length) % apartment.images.length);
     }
@@ -169,18 +177,18 @@ const ApartmentDetail = () => {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#F4F9FD] pt-20">
+      <main className="min-h-screen bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
         <div className="container-luxury py-8">
           <Button 
             onClick={() => navigate(`/${lang || 'en'}/apartments`)} 
             variant="ghost" 
-            className="mb-6 text-[#0077B6] hover:text-[#0C1930]"
+            className="mb-6 text-[#0077B6] hover:text-[#0C1930] hover:bg-white/50"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             {t('apartment.backToHome')}
           </Button>
 
-          <div className="bg-white rounded-2xl shadow-2xl p-8 relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24]">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#FFBE24] before:to-[#0077B6]">
             <h1 className="text-3xl font-bold text-[#0C1930] font-playfair mb-6">
               {apartment.name}
             </h1>
@@ -304,36 +312,36 @@ const ApartmentDetail = () => {
         {/* Fullscreen Gallery */}
         {isGalleryOpen && apartment.images && (
           <div 
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
-            onClick={closeGallery}
+            className="gallery-overlay fixed inset-0 bg-black/95 z-[100] flex items-center justify-center"
           >
             <button
               onClick={closeGallery}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-60 p-2"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-[110] p-3 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
               aria-label="Close gallery"
             >
               <X className="w-8 h-8" />
             </button>
             
-            <div className="relative w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full h-full flex items-center justify-center p-4">
               <img
                 src={apartment.images[galleryImageIndex]}
                 alt={`${apartment.name} - gallery image ${galleryImageIndex + 1}`}
                 className="max-w-full max-h-full object-contain"
+                onClick={(e) => e.stopPropagation()}
               />
               
               {apartment.images.length > 1 && (
                 <>
                   <button
                     onClick={prevGalleryImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors z-[105]"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="w-8 h-8" />
                   </button>
                   <button
                     onClick={nextGalleryImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors z-[105]"
                     aria-label="Next image"
                   >
                     <ChevronRight className="w-8 h-8" />
@@ -341,7 +349,7 @@ const ApartmentDetail = () => {
                 </>
               )}
               
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black/50 px-4 py-2 rounded-full">
                 {galleryImageIndex + 1} / {apartment.images.length}
               </div>
             </div>

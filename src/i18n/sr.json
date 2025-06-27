@@ -12,6 +12,10 @@
     "subtitle": "Luksuzni apartmani gde se nebo spaja sa morem",
     "explore": "Istražite apartmane"
   },
+  "intro": {
+    "title": "Nezaboravan bekstvo",
+    "description": "Smešteni na netaknutim obalama ostrva Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću."
+  },
   "introduction": {
     "title": "Nezaboravan bekstvo",
     "description": "Smešteni na netaknutim obalama ostrva Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću."
@@ -64,6 +68,11 @@
       "location": "Munich, Germany",
       "text": "Divno smeštanje sa zadivljujućim pogledom na more. Sve je bilo savršeno organizovano i vrlo čisto. Hvala!"
     }
+  },
+  "cta": {
+    "title": "Pronađite svoje savršene datume",
+    "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefinisan gde se Mediteran susreće sa modernom elegancijom.",
+    "book": "Rezervišite boravak"
   },
   "callToAction": {
     "title": "Pronađite svoje savršene datume",

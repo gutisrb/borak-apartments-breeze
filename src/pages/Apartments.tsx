@@ -39,8 +39,15 @@ const Apartments = () => {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#F4F9FD] pt-20">
-        <div className="container-luxury py-16">
+      <main className="min-h-screen bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230077B6' fill-opacity='0.1'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20zm20 35a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' fill-opacity='0.05'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
+        
+        <div className="container-luxury py-16 relative">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-[#0C1930] mb-6 font-playfair">
               {t('apartmentSelector.title')}
@@ -54,7 +61,7 @@ const Apartments = () => {
             {apartments.map((apartment) => (
               <div
                 key={apartment.id}
-                className="bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 group relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24]"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 group relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-[#FFBE24] before:to-[#0077B6] transform hover:scale-[1.02]"
               >
                 <div className="relative overflow-hidden">
                   {apartment.images && apartment.images[0] && (
@@ -112,7 +119,7 @@ const Apartments = () => {
                   </div>
 
                   <Link to={`/${lang || 'en'}/apartments/${getApartmentSlug(apartment)}`}>
-                    <Button className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold">
+                    <Button className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
                       {t('apartmentSelector.viewDetails')}
                     </Button>
                   </Link>

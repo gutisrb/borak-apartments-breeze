@@ -1,8 +1,9 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,11 @@ const Header = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { t, changeLanguage, currentLang } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { lang } = useParams<{ lang: string }>();
+
+  // Check if we're on apartment pages to always show dark background
+  const isApartmentPage = location.pathname.includes('/apartments');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,14 +65,29 @@ const Header = () => {
     if (path.startsWith('#')) {
       scrollToSection(path.substring(1));
     } else {
-      navigate(path);
+      if (path === `/${lang || 'en'}`) {
+        // Navigate to home and scroll to top
+        navigate(path);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      } else {
+        navigate(path);
+      }
     }
     setIsMenuOpen(false);
   };
 
+  const handleLogoClick = () => {
+    navigate(`/${lang || 'en'}`);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-[#0C1930] shadow-lg' : 'bg-transparent'
+      isScrolled || isApartmentPage ? 'bg-[#0C1930] shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container-luxury">
         <div className="flex items-center justify-between h-20">
@@ -76,8 +96,8 @@ const Header = () => {
             <img 
               src="/lovable-uploads/79272b68-db54-475f-8369-71219cd4cb46.png"
               alt="Borak Apartments"
-              className="h-16 md:h-20 w-auto object-contain cursor-pointer"
-              onClick={() => navigate(`/${lang || 'en'}`)}
+              className="h-20 md:h-24 w-auto object-contain cursor-pointer transition-transform hover:scale-105"
+              onClick={handleLogoClick}
             />
           </div>
 
@@ -85,25 +105,25 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => handleNavigation(`/${lang || 'en'}`)}
-              className="text-white hover:text-accent transition-colors font-app font-medium"
+              className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
               {t('nav.home')}
             </button>
             <button
               onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
-              className="text-white hover:text-accent transition-colors font-app font-medium"
+              className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
               {t('nav.apartments')}
             </button>
             <button
               onClick={() => scrollToSection('location')}
-              className="text-white hover:text-accent transition-colors font-app font-medium"
+              className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
               {t('nav.location')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-accent transition-colors font-app font-medium"
+              className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
               {t('nav.contact')}
             </button>
@@ -112,7 +132,7 @@ const Header = () => {
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className="flex items-center space-x-2 text-white hover:text-accent transition-colors font-app font-medium"
+                className="flex items-center space-x-2 text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
               >
                 <span>{currentLanguage.flag}</span>
                 <span>{currentLanguage.name}</span>
@@ -139,7 +159,7 @@ const Header = () => {
 
             <Button 
               onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
-              className="bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold"
+              className="bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl"
             >
               {t('nav.book')}
             </Button>
@@ -148,7 +168,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white hover:text-accent transition-colors"
+            className="md:hidden text-white hover:text-[#FFBE24] transition-colors p-2 rounded-lg hover:bg-white/10"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -161,38 +181,38 @@ const Header = () => {
             <nav className="py-4 space-y-4">
               <button
                 onClick={() => handleNavigation(`/${lang || 'en'}`)}
-                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+                className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.home')}
               </button>
               <button
                 onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
-                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+                className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.apartments')}
               </button>
               <button
                 onClick={() => scrollToSection('location')}
-                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+                className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.location')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="block text-white hover:text-accent transition-colors font-app font-medium w-full text-left"
+                className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.contact')}
               </button>
               
               {/* Mobile Language Selector */}
               <div className="border-t border-white/10 pt-4">
-                <div className="text-white/60 text-sm font-app mb-2">Language:</div>
+                <div className="text-white/60 text-sm font-app mb-2 px-4">Language:</div>
                 {languages.map((language) => (
                   <button
                     key={language.code}
                     onClick={() => handleLanguageChange(language.code)}
-                    className={`flex items-center space-x-3 w-full px-2 py-2 text-left hover:text-accent transition-colors ${
-                      currentLang === language.code ? 'text-accent' : 'text-white'
+                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:text-[#FFBE24] hover:bg-white/10 transition-colors rounded-lg ${
+                      currentLang === language.code ? 'text-[#FFBE24]' : 'text-white'
                     }`}
                   >
                     <span>{language.flag}</span>
@@ -203,7 +223,7 @@ const Header = () => {
               
               <Button 
                 onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
-                className="w-full bg-accent hover:bg-link text-primary hover:text-white transition font-app font-semibold mt-4"
+                className="w-full bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold mt-4 mx-4 max-w-[calc(100%-2rem)]"
               >
                 {t('nav.book')}
               </Button>
