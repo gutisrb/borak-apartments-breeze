@@ -80,6 +80,7 @@ export type Database = {
           location: string | null
           name: string | null
           user_id: string
+          website_slug: string | null
         }
         Insert: {
           airbnb_ical?: string | null
@@ -89,6 +90,7 @@ export type Database = {
           location?: string | null
           name?: string | null
           user_id: string
+          website_slug?: string | null
         }
         Update: {
           airbnb_ical?: string | null
@@ -98,6 +100,7 @@ export type Database = {
           location?: string | null
           name?: string | null
           user_id?: string
+          website_slug?: string | null
         }
         Relationships: [
           {

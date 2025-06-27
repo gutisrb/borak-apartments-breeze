@@ -77,7 +77,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
               alt="Borak Apartments"
-              className="h-20 md:h-[140px] w-auto object-contain cursor-pointer"
+              className="h-24 md:h-44 w-auto object-contain cursor-pointer"
               onClick={() => navigate(`/${lang || 'en'}`)}
             />
           </div>

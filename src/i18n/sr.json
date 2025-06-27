@@ -1,4 +1,3 @@
-
 {
   "nav.home": "Početna",
   "nav.apartments": "Apartmani",
@@ -70,7 +69,7 @@
   "testimonials.hans.text": "Divno smeštanje sa zadivljujućim pogledom na more. Sve je bilo savršeno organizovano i vrlo čisto. Hvala!",
   "apartment.viewDetails": "Pogledaj detalje",
   "apartment.bookNow": "Rezerviši odmah",
-  "apartment.backToHome": "Nazad na početnu",
+  "apartment.backToHome": "Nazad na apartmane", 
   "apartment.notFound": "Apartman nije pronađen",
   "apartmentSelector.title": "Izaberite svoje savršeno utočište",
   "apartmentSelector.subtitle": "Četiri različita apartmana, svaki nudi beskompromisnu udobnost i zadivljujuće poglede na Jadransko more",

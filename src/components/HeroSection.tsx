@@ -58,7 +58,7 @@ const HeroSection = () => {
           <h1 className="text-white shadow-lg lg:text-5xl animate-fade-in mb-6 tracking-wide font-playfair">
             {t('hero.title')}
           </h1>
-          <h2 className="text-xl md:text-2xl lg:text-3xl mb-12 font-app font-light max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-xl md:text-2xl lg:text-3xl mb-12 font-app font-light max-w-3xl mx-auto leading-relaxed text-white/95 drop-shadow-md">
             {t('hero.subtitle')}
           </h2>
           <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">

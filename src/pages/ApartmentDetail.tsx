@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit } from '@/lib/supabase';
 import BookingDrawer from '@/components/BookingDrawer';
@@ -15,8 +15,11 @@ const ApartmentDetail = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [apartment, setApartment] = useState<Unit | null>(null);
+  const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [galleryImageIndex, setGalleryImageIndex] = useState(0);
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -26,6 +29,7 @@ const ApartmentDetail = () => {
   useEffect(() => {
     const loadApartment = async () => {
       try {
+        setLoading(true);
         const response = await fetch('/data/units.json');
         const data = await response.json();
         const found = data.units.find((unit: Unit) => 
@@ -42,11 +46,28 @@ const ApartmentDetail = () => {
         }
       } catch (error) {
         console.error('Failed to load apartment:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     loadApartment();
   }, [slug]);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen flex items-center justify-center bg-[#F4F9FD] pt-20">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#0077B6] mx-auto mb-4"></div>
+            <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.loading')}</h1>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   if (!apartment) {
     return (
@@ -95,6 +116,23 @@ const ApartmentDetail = () => {
     }
   };
 
+  const openGallery = (index: number) => {
+    setGalleryImageIndex(index);
+    setIsGalleryOpen(true);
+  };
+
+  const nextGalleryImage = () => {
+    if (apartment.images && apartment.images.length > 1) {
+      setGalleryImageIndex((prev) => (prev + 1) % apartment.images.length);
+    }
+  };
+
+  const prevGalleryImage = () => {
+    if (apartment.images && apartment.images.length > 1) {
+      setGalleryImageIndex((prev) => (prev - 1 + apartment.images.length) % apartment.images.length);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -118,25 +156,35 @@ const ApartmentDetail = () => {
             <div className="relative mb-8">
               {apartment.images && apartment.images.length > 0 && (
                 <>
-                  <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <div className="relative aspect-video rounded-lg overflow-hidden group cursor-pointer" onClick={() => openGallery(currentImageIndex)}>
                     <img
                       src={apartment.images[currentImageIndex]}
                       alt={`${apartment.name} - image ${currentImageIndex + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
                       loading="lazy"
                     />
+                    
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <ZoomIn className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
                     
                     {apartment.images.length > 1 && (
                       <>
                         <button
-                          onClick={prevImage}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            prevImage();
+                          }}
                           className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
                           aria-label="Previous image"
                         >
                           <ChevronLeft className="w-6 h-6" />
                         </button>
                         <button
-                          onClick={nextImage}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            nextImage();
+                          }}
                           className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
                           aria-label="Next image"
                         >
@@ -219,6 +267,47 @@ const ApartmentDetail = () => {
             </Button>
           </div>
         </div>
+
+        {/* Fullscreen Gallery */}
+        {isGalleryOpen && apartment.images && (
+          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
+            <button
+              onClick={() => setIsGalleryOpen(false)}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-60"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            
+            <div className="relative w-full h-full flex items-center justify-center p-4">
+              <img
+                src={apartment.images[galleryImageIndex]}
+                alt={`${apartment.name} - gallery image ${galleryImageIndex + 1}`}
+                className="max-w-full max-h-full object-contain"
+              />
+              
+              {apartment.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevGalleryImage}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                  >
+                    <ChevronLeft className="w-8 h-8" />
+                  </button>
+                  <button
+                    onClick={nextGalleryImage}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                  >
+                    <ChevronRight className="w-8 h-8" />
+                  </button>
+                </>
+              )}
+              
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg">
+                {galleryImageIndex + 1} / {apartment.images.length}
+              </div>
+            </div>
+          </div>
+        )}
 
         {isBookingOpen && (
           <BookingDrawer

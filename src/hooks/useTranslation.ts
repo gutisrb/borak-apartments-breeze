@@ -75,11 +75,6 @@ export const useTranslation = () => {
       i18n.changeLanguage(newLang);
       setCurrentLang(newLang);
       localStorage.setItem('borak-lang', newLang);
-      
-      // Force a page refresh to ensure all components re-render
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
     }
   };
 
