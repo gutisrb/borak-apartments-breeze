@@ -169,7 +169,7 @@ const ApartmentDetail = () => {
   };
 
   const handleBookingClick = () => {
-    console.log('Opening booking drawer for apartment:', apartment.name);
+    console.log('Opening booking drawer for apartment:', apartment?.name);
     setIsBookingOpen(true);
   };
 
@@ -358,9 +358,10 @@ const ApartmentDetail = () => {
         )}
 
         {/* Booking Drawer */}
-        {isBookingOpen && apartment && (
+        {apartment && (
           <BookingDrawer
             apartment={apartment}
+            isOpen={isBookingOpen}
             onClose={handleCloseBooking}
           />
         )}

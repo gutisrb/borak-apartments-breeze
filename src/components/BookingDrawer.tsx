@@ -15,10 +15,11 @@ import { useToast } from '@/hooks/use-toast';
 
 interface BookingDrawerProps {
   apartment: Unit;
+  isOpen: boolean;
   onClose: () => void;
 }
 
-const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
+const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [checkIn, setCheckIn] = useState<Date>();
@@ -71,7 +72,7 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
           start_date: format(checkIn, 'yyyy-MM-dd'),
           end_date: format(checkOut, 'yyyy-MM-dd'),
           source: 'website',
-          user_id: crypto.randomUUID(), // Generate a temp user ID for now
+          user_id: crypto.randomUUID(),
           channel: 'direct',
           external_uid: `web_${Date.now()}`
         });
@@ -137,164 +138,179 @@ const BookingDrawer = ({ apartment, onClose }: BookingDrawerProps) => {
   }
 
   return (
-    <Sheet open={true} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-lg bg-white border-[#20425C] relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24] overflow-y-auto">
-        <SheetHeader className="mb-6">
-          <div className="flex items-center justify-between">
-            <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
-              {t('booking.title')} - {apartment.name}
-            </SheetTitle>
-            <SheetClose asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-[#F4F9FD]">
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent 
+        side="right" 
+        className="w-full sm:max-w-lg bg-white border-[#20425C] overflow-y-auto"
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          height: '100vh',
+          zIndex: 9999
+        }}
+      >
+        <div className="relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24]">
+          <SheetHeader className="mb-6 pt-4">
+            <div className="flex items-center justify-between">
+              <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
+                {t('booking.title')} - {apartment.name}
+              </SheetTitle>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="hover:bg-[#F4F9FD] h-8 w-8"
+                onClick={onClose}
+              >
                 <X className="w-5 h-5 text-[#20425C]" />
               </Button>
-            </SheetClose>
-          </div>
-        </SheetHeader>
+            </div>
+          </SheetHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Date Selection */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="checkin" className="text-[#0C1930] font-app font-medium">
-                {t('booking.checkin')}
-              </Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD]"
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
-                    {checkIn ? format(checkIn, 'PPP') : t('booking.pickDate')}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-white border-[#20425C]">
-                  <Calendar
-                    mode="single"
-                    selected={checkIn}
-                    onSelect={setCheckIn}
-                    disabled={(date) => date < new Date()}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
+          <form onSubmit={handleSubmit} className="space-y-6 px-1">
+            {/* Date Selection */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="checkin" className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.checkin')}
+                </Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD] h-10 text-sm"
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
+                      {checkIn ? format(checkIn, 'MMM dd') : t('booking.pickDate')}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0 bg-white border-[#20425C]" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={checkIn}
+                      onSelect={setCheckIn}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="checkout" className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.checkout')}
+                </Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD] h-10 text-sm"
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
+                      {checkOut ? format(checkOut, 'MMM dd') : t('booking.pickDate')}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0 bg-white border-[#20425C]" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={checkOut}
+                      onSelect={setCheckOut}
+                      disabled={(date) => date <= (checkIn || new Date())}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="checkout" className="text-[#0C1930] font-app font-medium">
-                {t('booking.checkout')}
-              </Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD]"
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
-                    {checkOut ? format(checkOut, 'PPP') : t('booking.pickDate')}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-white border-[#20425C]">
-                  <Calendar
-                    mode="single"
-                    selected={checkOut}
-                    onSelect={setCheckOut}
-                    disabled={(date) => date <= (checkIn || new Date())}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
-          </div>
+            {/* Guest Selection */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.adults')}
+                </Label>
+                <Select value={adults} onValueChange={setAdults}>
+                  <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6] h-10">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border-[#20425C]">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
+                      <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-          {/* Guest Selection */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label className="text-[#0C1930] font-app font-medium">
-                {t('booking.adults')}
-              </Label>
-              <Select value={adults} onValueChange={setAdults}>
-                <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-[#20425C]">
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
-                    <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="space-y-2">
+                <Label className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.children')}
+                </Label>
+                <Select value={children} onValueChange={setChildren}>
+                  <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6] h-10">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border-[#20425C]">
+                    {[0, 1, 2, 3, 4].map(num => (
+                      <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label className="text-[#0C1930] font-app font-medium">
-                {t('booking.children')}
-              </Label>
-              <Select value={children} onValueChange={setChildren}>
-                <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-[#20425C]">
-                  {[0, 1, 2, 3, 4].map(num => (
-                    <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
+            {/* Contact Information */}
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.name')} *
+                </Label>
+                <Input
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                  required
+                />
+              </div>
 
-          {/* Contact Information */}
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-[#0C1930] font-app font-medium">
-                {t('booking.name')} *
-              </Label>
-              <Input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="border-[#20425C] focus:ring-[#0077B6]"
-                required
-              />
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.email')} *
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                  required
+                />
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-[#0C1930] font-app font-medium">
-                {t('booking.email')} *
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="border-[#20425C] focus:ring-[#0077B6]"
-                required
-              />
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-[#0C1930] font-app font-medium text-sm">
+                  {t('booking.phone')}
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                />
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-[#0C1930] font-app font-medium">
-                {t('booking.phone')}
-              </Label>
-              <Input
-                id="phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="border-[#20425C] focus:ring-[#0077B6]"
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold text-lg py-3"
-          >
-            {isSubmitting ? t('booking.submitting') : t('booking.submit')}
-          </Button>
-        </form>
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold text-lg py-3 h-12"
+            >
+              {isSubmitting ? t('booking.submitting') : t('booking.submit')}
+            </Button>
+          </form>
+        </div>
       </SheetContent>
     </Sheet>
   );
