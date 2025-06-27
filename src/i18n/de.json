@@ -12,6 +12,10 @@
     "contact": "Kontakt",
     "book": "Buchen Sie jetzt"
   },
+  "intro": {
+    "title": "Ein unvergesslicher Rückzugsort",
+    "description": "Eingebettet in die unberührte Küste der Insel Brač bietet unsere exklusive Kollektion luxuriöser Apartments einen unvergleichlichen Rückzugsort, wo mediterrane Eleganz auf moderne Raffinesse trifft."
+  },
   "introduction": {
     "title": "Willkommen in den Borak Apartments",
     "description": "Eingebettet in die malerische Küstenlandschaft der Insel Brač, bieten die Borak Apartments eine exquisite Mischung aus Luxus und Komfort. Jedes unserer sorgfältig gestalteten Apartments bietet atemberaubende Ausblicke auf die Adria und ist mit erstklassigen Annehmlichkeiten ausgestattet, um einen unvergesslichen Aufenthalt zu gewährleisten.",
@@ -65,6 +69,11 @@
       "location": "München, Deutschland",
       "text": "Wunderbare Unterkunft mit atemberaubendem Meerblick. Alles war perfekt organisiert und sehr sauber. Vielen Dank!"
     }
+  },
+  "cta": {
+    "title": "Finden Sie Ihre perfekten Daten",
+    "description": "Ihr exklusiver kroatischer Rückzugsort erwartet Sie. Erleben Sie Luxus neu definiert, wo das Mittelmeer auf moderne Eleganz trifft.",
+    "book": "Buchen Sie Ihren Aufenthalt"
   },
   "callToAction": {
     "title": "Ihr luxuriöser Rückzugsort erwartet Sie",

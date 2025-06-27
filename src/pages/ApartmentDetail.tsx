@@ -57,29 +57,28 @@ const ApartmentDetail = () => {
   // Handle escape key for gallery
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isGalleryOpen) {
-        setIsGalleryOpen(false);
+      if (event.key === 'Escape') {
+        if (isGalleryOpen) {
+          setIsGalleryOpen(false);
+        }
       }
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isGalleryOpen && target.classList.contains('gallery-overlay')) {
-        setIsGalleryOpen(false);
-      }
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
     };
+  }, [isGalleryOpen]);
 
+  // Prevent body scroll when gallery is open
+  useEffect(() => {
     if (isGalleryOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.addEventListener('click', handleClickOutside);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('click', handleClickOutside);
       document.body.style.overflow = 'unset';
     };
   }, [isGalleryOpen]);
@@ -172,6 +171,11 @@ const ApartmentDetail = () => {
   const handleBookingClick = () => {
     console.log('Opening booking drawer for apartment:', apartment.name);
     setIsBookingOpen(true);
+  };
+
+  const handleCloseBooking = () => {
+    console.log('Closing booking drawer');
+    setIsBookingOpen(false);
   };
 
   return (
@@ -311,9 +315,7 @@ const ApartmentDetail = () => {
 
         {/* Fullscreen Gallery */}
         {isGalleryOpen && apartment.images && (
-          <div 
-            className="gallery-overlay fixed inset-0 bg-black/95 z-[100] flex items-center justify-center"
-          >
+          <div className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center">
             <button
               onClick={closeGallery}
               className="absolute top-4 right-4 text-white hover:text-gray-300 z-[110] p-3 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
@@ -327,7 +329,6 @@ const ApartmentDetail = () => {
                 src={apartment.images[galleryImageIndex]}
                 alt={`${apartment.name} - gallery image ${galleryImageIndex + 1}`}
                 className="max-w-full max-h-full object-contain"
-                onClick={(e) => e.stopPropagation()}
               />
               
               {apartment.images.length > 1 && (
@@ -356,10 +357,11 @@ const ApartmentDetail = () => {
           </div>
         )}
 
+        {/* Booking Drawer */}
         {isBookingOpen && apartment && (
           <BookingDrawer
             apartment={apartment}
-            onClose={() => setIsBookingOpen(false)}
+            onClose={handleCloseBooking}
           />
         )}
       </main>

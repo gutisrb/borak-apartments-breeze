@@ -12,6 +12,10 @@
     "subtitle": "Experience the ultimate in coastal living with our exclusive selection of apartments on the stunning island of Brač.",
     "explore": "Explore Our Apartments"
   },
+  "intro": {
+    "title": "An Unforgettable Escape",
+    "description": "Nestled on the pristine shores of Brač Island, our exclusive collection of luxury apartments offers an unparalleled retreat where Mediterranean elegance meets modern sophistication."
+  },
   "introduction": {
     "title": "Welcome to Borak Apartments",
     "description": "Nestled on the picturesque island of Brač, Borak Apartments offers a unique blend of luxury, comfort, and authentic Croatian hospitality. Our meticulously designed apartments provide an idyllic retreat for discerning travelers seeking an unforgettable seaside escape.",
@@ -70,6 +74,11 @@
       "location": "Munich, Germany",
       "text": "Wonderful accommodation with stunning sea views. Everything was perfectly organized and very clean. Thank you!"
     }
+  },
+  "cta": {
+    "title": "Find Your Perfect Dates",
+    "description": "Your exclusive Croatian getaway awaits. Experience luxury redefined where the Mediterranean meets modern elegance.",
+    "book": "Book Your Stay"
   },
   "callToAction": {
     "title": "Indulge in the Ultimate Croatian Escape",

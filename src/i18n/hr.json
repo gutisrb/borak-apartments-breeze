@@ -12,6 +12,10 @@
     "subtitle": "Otkrijte savršeno mjesto za vaš odmor iz snova. Rezervirajte svoj boravak danas!",
     "explore": "Istražite Apartmane"
   },
+  "intro": {
+    "title": "Nezaboravan bijeg",
+    "description": "Smješteni na netaknutim obalama otoka Brača, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gdje se mediteranska elegancija spaja s modernom sofisticiranošću."
+  },
   "introduction": {
     "title": "Dobrodošli u Borak Apartmane",
     "description": "Smješteni na predivnom otoku Braču, naši luksuzni apartmani nude vam nezaboravan odmor uz kristalno čisto more i prekrasne plaže. Uživajte u vrhunskoj udobnosti i modernom dizajnu naših smještajnih jedinica.",
@@ -65,6 +69,11 @@
       "location": "München, Njemačka",
       "text": "Divno smještanje s predivnim pogledom na more. Sve je bilo savršeno organizirano i vrlo čisto. Hvala!"
     }
+  },
+  "cta": {
+    "title": "Pronađite svoje savršene datume",
+    "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefiniran gdje se Mediteran susreće s modernom elegancijom.",
+    "book": "Rezervirajte boravak"
   },
   "callToAction": {
     "title": "Rezervirajte Vaš Odmor Iz Snova",
