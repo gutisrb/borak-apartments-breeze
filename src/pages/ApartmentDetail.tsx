@@ -54,6 +54,27 @@ const ApartmentDetail = () => {
     loadApartment();
   }, [slug]);
 
+  // Handle escape key for gallery
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isGalleryOpen) {
+        setIsGalleryOpen(false);
+      }
+    };
+
+    if (isGalleryOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isGalleryOpen]);
+
   if (loading) {
     return (
       <>
@@ -121,16 +142,28 @@ const ApartmentDetail = () => {
     setIsGalleryOpen(true);
   };
 
-  const nextGalleryImage = () => {
+  const closeGallery = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsGalleryOpen(false);
+  };
+
+  const nextGalleryImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (apartment.images && apartment.images.length > 1) {
       setGalleryImageIndex((prev) => (prev + 1) % apartment.images.length);
     }
   };
 
-  const prevGalleryImage = () => {
+  const prevGalleryImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (apartment.images && apartment.images.length > 1) {
       setGalleryImageIndex((prev) => (prev - 1 + apartment.images.length) % apartment.images.length);
     }
+  };
+
+  const handleBookingClick = () => {
+    console.log('Opening booking drawer for apartment:', apartment.name);
+    setIsBookingOpen(true);
   };
 
   return (
@@ -259,7 +292,7 @@ const ApartmentDetail = () => {
 
             {/* Book Now Button */}
             <Button
-              onClick={() => setIsBookingOpen(true)}
+              onClick={handleBookingClick}
               size="lg"
               className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-app font-semibold text-lg py-3"
             >
@@ -270,15 +303,19 @@ const ApartmentDetail = () => {
 
         {/* Fullscreen Gallery */}
         {isGalleryOpen && apartment.images && (
-          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
+          <div 
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+            onClick={closeGallery}
+          >
             <button
-              onClick={() => setIsGalleryOpen(false)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 z-60"
+              onClick={closeGallery}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-60 p-2"
+              aria-label="Close gallery"
             >
               <X className="w-8 h-8" />
             </button>
             
-            <div className="relative w-full h-full flex items-center justify-center p-4">
+            <div className="relative w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
               <img
                 src={apartment.images[galleryImageIndex]}
                 alt={`${apartment.name} - gallery image ${galleryImageIndex + 1}`}
@@ -290,12 +327,14 @@ const ApartmentDetail = () => {
                   <button
                     onClick={prevGalleryImage}
                     className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    aria-label="Previous image"
                   >
                     <ChevronLeft className="w-8 h-8" />
                   </button>
                   <button
                     onClick={nextGalleryImage}
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    aria-label="Next image"
                   >
                     <ChevronRight className="w-8 h-8" />
                   </button>
@@ -309,7 +348,7 @@ const ApartmentDetail = () => {
           </div>
         )}
 
-        {isBookingOpen && (
+        {isBookingOpen && apartment && (
           <BookingDrawer
             apartment={apartment}
             onClose={() => setIsBookingOpen(false)}

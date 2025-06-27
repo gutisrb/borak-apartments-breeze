@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -75,9 +74,9 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
+              src="/lovable-uploads/79272b68-db54-475f-8369-71219cd4cb46.png"
               alt="Borak Apartments"
-              className="h-24 md:h-44 w-auto object-contain cursor-pointer"
+              className="h-16 md:h-20 w-auto object-contain cursor-pointer"
               onClick={() => navigate(`/${lang || 'en'}`)}
             />
           </div>

@@ -1,3 +1,4 @@
+
 {
   "hero": {
     "title": "Exklusive Apartments an der Küste Kroatiens",
@@ -18,21 +19,52 @@
   },
   "apartmentSelector": {
     "title": "Unsere Luxusapartments",
+    "subtitle": "Entdecken Sie unsere handverlesene Auswahl an Luxusapartments, jedes bietet eine einzigartige Mischung aus Stil, Komfort und atemberaubenden Ausblicken.",
     "viewDetails": "Details ansehen"
   },
-  "locationHighlights": {
+  "location": {
     "title": "Entdecken Sie die Insel Brač",
     "description": "Von unberührten Stränden bis hin zu charmanten Dörfern bietet Brač eine Fülle von Erlebnissen. Erkunden Sie die berühmten Sehenswürdigkeiten, genießen Sie die lokale Küche und tauchen Sie ein in die reiche Kultur dieser wunderschönen kroatischen Insel.",
-    "explore": "Mehr erkunden"
+    "highlights": {
+      "prime": {
+        "title": "Erstklassige Lage",
+        "description": "Nur wenige Schritte von unberührten Stränden und kristallklarem Wasser entfernt"
+      },
+      "beach": {
+        "title": "Strandzugang",
+        "description": "Direkter Zugang zu versteckten Buchten und Badeplätzen"
+      },
+      "climate": {
+        "title": "Ganzjährige Schönheit",
+        "description": "Perfektes mediterranes Klima mit über 300 Sonnentagen"
+      },
+      "views": {
+        "title": "Malerische Aussichten",
+        "description": "Atemberaubende Panoramablicke auf die Adria"
+      }
+    },
+    "discover": {
+      "title": "Entdecken Sie die Insel Brač",
+      "description": "Im Herzen der Adria gelegen, bietet die Insel Brač eine perfekte Mischung aus natürlicher Schönheit, reicher Geschichte und modernem Luxus. Vom berühmten Strand Zlatni Rat bis zu antiken Steinbrüchen birgt jede Ecke dieses kroatischen Paradieses eine Geschichte, die darauf wartet, entdeckt zu werden."
+    }
   },
   "testimonials": {
     "title": "Was unsere Gäste sagen",
-    "quote1": "Ein außergewöhnlicher Aufenthalt! Die Apartments sind wunderschön, die Aussicht ist atemberaubend und der Service ist tadellos. Wir können es kaum erwarten, wiederzukommen.",
-    "author1": "Familie Schmidt",
-    "quote2": "Die perfekte Lage für einen erholsamen Urlaub. Die Apartments sind gut ausgestattet und die Lage ist unschlagbar. Sehr empfehlenswert!",
-    "author2": "Elena Petrova",
-    "quote3": "Wir waren von unserem Aufenthalt in den Borak Apartments begeistert. Das Personal war freundlich und hilfsbereit, und die Apartments waren makellos sauber und komfortabel.",
-    "author3": "Mark und Sarah"
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "Der unglaublichste Aufenthalt, den wir je erlebt haben. Das Apartment war atemberaubend und die Aussicht absolut spektakulär. Wir kommen definitiv wieder!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Belgrad, Serbien",
+      "text": "Perfekter Ort für einen Urlaub! Das Apartment war luxuriös und komfortabel, und der Meerblick war unvergesslich. Sehr empfehlenswert!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "München, Deutschland",
+      "text": "Wunderbare Unterkunft mit atemberaubendem Meerblick. Alles war perfekt organisiert und sehr sauber. Vielen Dank!"
+    }
   },
   "callToAction": {
     "title": "Ihr luxuriöser Rückzugsort erwartet Sie",
@@ -97,6 +129,18 @@
   "apartment": {
     "notFound": "Apartment nicht gefunden",
     "backToHome": "Zurück zu Apartments",
-    "loading": "Apartment wird geladen..."
+    "loading": "Apartment wird geladen...",
+    "1": {
+      "description": "Entfliehen Sie in unser elegantes Ein-Zimmer-Apartment mit geräumiger Terrasse und atemberaubendem Meerblick. Perfekt für Paare, die einen romantischen Kurzurlaub mit modernen Annehmlichkeiten und mediterranem Charme suchen."
+    },
+    "2": {
+      "description": "Genießen Sie den Luxus unseres Premium-Apartments mit zwei Schlafzimmern und Panorama-Meerblick. Ideal für Familien oder Gruppen, mit voll ausgestatteter Küche, mehreren Balkonen und anspruchsvollem Küstendesign."
+    },
+    "3": {
+      "description": "Erleben Sie Komfort in unserem gemütlichen Studio-Apartment mit Gartenblick. Perfekt für Alleinreisende oder Paare, mit modernen Annehmlichkeiten und ruhiger Atmosphäre nur wenige Schritte vom Strand entfernt."
+    },
+    "4": {
+      "description": "Entdecken Sie unser geräumiges Familienapartment mit mehreren Schlafzimmern und großer Terrasse. Für größere Gruppen konzipiert, mit Premium-Annehmlichkeiten und atemberaubendem Blick auf die Adriaküste."
+    }
   }
 }

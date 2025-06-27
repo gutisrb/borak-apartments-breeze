@@ -1,3 +1,4 @@
+
 {
   "nav": {
     "home": "Home",
@@ -20,35 +21,57 @@
     "highlight3": "Unparalleled access to Brač's pristine beaches and cultural attractions",
     "highlight4": "Personalized service ensuring a seamless and memorable stay"
   },
-  "apartments": {
+  "apartmentSelector": {
     "title": "Our Exclusive Apartments",
-    "description": "Discover our handpicked selection of luxury apartments, each offering a unique blend of style, comfort, and breathtaking views. Whether you're seeking a romantic getaway or a family adventure, we have the perfect accommodation to suit your needs.",
-    "viewDetails": "View Details",
-    "bookNow": "Book Now"
+    "subtitle": "Discover our handpicked selection of luxury apartments, each offering a unique blend of style, comfort, and breathtaking views.",
+    "viewDetails": "View Details"
   },
   "location": {
     "title": "Explore the Beauty of Brač",
     "description": "Immerse yourself in the captivating charm of Brač, an island renowned for its stunning beaches, crystal-clear waters, and rich cultural heritage. From the iconic Zlatni Rat beach to the historic streets of Supetar, adventure awaits at every turn.",
-    "highlight1Title": "Zlatni Rat Beach",
-    "highlight1Description": "Discover the world-famous 'Golden Horn' beach, a natural wonder that stretches gracefully into the Adriatic Sea.",
-    "highlight2Title": "Supetar Town",
-    "highlight2Description": "Explore the vibrant heart of Brač, with its charming harbor, bustling markets, and authentic Croatian restaurants.",
-    "highlight3Title": "Vidova Gora Peak",
-    "highlight3Description": "Hike to the highest point on the Adriatic islands for panoramic views of Brač and the surrounding archipelago.",
-    "highlight4Title": "Blaca Monastery",
-    "highlight4Description": "Uncover the secrets of this historic hermitage, carved into a cliffside and steeped in centuries of tradition."
+    "highlights": {
+      "prime": {
+        "title": "Prime Location",
+        "description": "Steps away from pristine beaches and crystal-clear waters"
+      },
+      "beach": {
+        "title": "Beach Access",
+        "description": "Direct access to secluded coves and swimming spots"
+      },
+      "climate": {
+        "title": "Year-Round Beauty",
+        "description": "Perfect Mediterranean climate with over 300 sunny days"
+      },
+      "views": {
+        "title": "Scenic Views",
+        "description": "Breathtaking panoramic views of the Adriatic Sea"
+      }
+    },
+    "discover": {
+      "title": "Discover the Island of Brač",
+      "description": "Nestled in the heart of the Adriatic, the island of Brač offers a perfect blend of natural beauty, rich history, and modern luxury. From the famous Zlatni Rat beach to ancient stone quarries, every corner of this Croatian paradise holds a story waiting to be discovered."
+    }
   },
   "testimonials": {
     "title": "What Our Guests Are Saying",
     "description": "Read firsthand accounts from travelers who have experienced the magic of Borak Apartments. Discover why our commitment to luxury, comfort, and personalized service has earned us a reputation as a premier Croatian destination.",
-    "testimonial1": "An unforgettable experience! The apartment was stunning, the views were breathtaking, and the service was impeccable.",
-    "testimonial2": "We couldn't have asked for a better vacation. Borak Apartments exceeded our expectations in every way.",
-    "testimonial3": "A true gem on the island of Brač. We'll be back for sure!",
-    "author1": "Sarah M.",
-    "author2": "John & Emily K.",
-    "author3": "David L."
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "The most incredible stay we've ever experienced. The apartment was stunning, and the views absolutely breathtaking. We'll definitely be back!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Belgrade, Serbia",
+      "text": "Perfect place for a vacation! The apartment was luxurious and comfortable, and the sea view was unforgettable. Highly recommend!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "Munich, Germany",
+      "text": "Wonderful accommodation with stunning sea views. Everything was perfectly organized and very clean. Thank you!"
+    }
   },
-  "cta": {
+  "callToAction": {
     "title": "Indulge in the Ultimate Croatian Escape",
     "description": "Ready to experience the luxury and beauty of Borak Apartments? Book your stay today and create memories that will last a lifetime.",
     "bookNow": "Book Your Dream Vacation"
@@ -89,7 +112,8 @@
     "errorDesc": "There was an error submitting your reservation. Please try again later.",
     "selectDates": "Please select check-in and check-out dates.",
     "invalidDates": "Check-out date must be after check-in date.",
-    "fillRequired": "Please fill in all required fields."
+    "fillRequired": "Please fill in all required fields.",
+    "pickDate": "Pick a date"
   },
   "amenity": {
     "wifi": "WiFi",
@@ -110,6 +134,18 @@
   "apartment": {
     "notFound": "Apartment not found",
     "backToHome": "Back to Apartments",
-    "loading": "Loading apartment..."
+    "loading": "Loading apartment...",
+    "1": {
+      "description": "Escape to our elegant one-bedroom apartment featuring a spacious terrace and stunning sea views. Perfect for couples seeking a romantic getaway with modern amenities and Mediterranean charm."
+    },
+    "2": {
+      "description": "Indulge in the luxury of our premium two-bedroom apartment with panoramic ocean vistas. Ideal for families or groups, featuring a full kitchen, multiple balconies, and sophisticated coastal design."
+    },
+    "3": {
+      "description": "Experience comfort in our cozy studio apartment with garden views. Perfect for solo travelers or couples, offering modern amenities and a peaceful atmosphere just steps from the beach."
+    },
+    "4": {
+      "description": "Discover our spacious family apartment with multiple bedrooms and a large terrace. Designed for larger groups, featuring premium amenities and breathtaking views of the Adriatic coastline."
+    }
   }
 }

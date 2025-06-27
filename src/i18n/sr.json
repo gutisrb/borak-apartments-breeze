@@ -1,95 +1,147 @@
+
 {
-  "nav.home": "Početna",
-  "nav.apartments": "Apartmani",
-  "nav.location": "Lokacija",
-  "nav.contact": "Kontakt",
-  "nav.book": "Rezerviši",
-  "hero.title": "Vaš ekskluzivni hrvatski primorski odmor",
-  "hero.subtitle": "Luksuzni apartmani gde se nebo spaja sa morem",
-  "hero.explore": "Istražite apartmane",
-  "intro.title": "Nezaboravan bekstvo",
-  "intro.description": "Smešteni na netaknutim obalama ostrva Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću.",
-  "cta.title": "Pronađite svoje savršene datume",
-  "cta.description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefinisan gde se Mediteran susreće sa modernom elegancijom.",
-  "cta.book": "Rezervišite boravak",
-  "footer.description": "Doživite vrhunac hrvatskog primorskog luksuza. Naša ekskluzivna kolekcija apartmana nudi zahtevnim putnicima nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću.",
-  "footer.contact": "Kontakt",
-  "footer.address": "Adresa",
-  "footer.phone": "Telefon",
-  "footer.email": "Email",
-  "footer.experience": "Iskustvo",
-  "footer.apartments": "Luksuzni apartmani",
-  "footer.location": "Vrhunska lokacija",
-  "footer.reviews": "Recenzije gostiju",
-  "booking.title": "Rezerviši",
-  "booking.checkin": "Datum dolaska",
-  "booking.checkout": "Datum odlaska",
-  "booking.adults": "Odrasli",
-  "booking.children": "Deca",
-  "booking.name": "Ime i prezime",
-  "booking.email": "Email",
-  "booking.phone": "Telefon (opciono)",
-  "booking.submit": "Pošalji zahtev za rezervaciju",
-  "booking.submitting": "Šalje se...",
-  "booking.success": "Zahtev je poslat!",
-  "booking.successDesc": "Uskoro ćemo potvrditi dostupnost.",
-  "booking.error": "Greška",
-  "booking.errorDesc": "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
-  "booking.selectDates": "Molimo izaberite datume dolaska i odlaska",
-  "booking.invalidDates": "Datum odlaska mora biti posle datuma dolaska",
-  "booking.fillRequired": "Molimo popunite sva obavezna polja",
-  "booking.pickDate": "Izaberite datum",
-  "modal.details": "Detalji",
-  "modal.guests": "Do {{count}} gostiju",
-  "modal.size": "{{size}}m² površine",
-  "modal.perNight": "/noć",
-  "modal.amenities": "Sadržaj apartmana",
-  "modal.reserve": "Rezerviši apartman",
-  "location.title": "Naša lokacija",
-  "location.description": "Otkrijte čari Brača",
-  "location.highlights.prime.title": "Vrhunska lokacija",
-  "location.highlights.prime.description": "Koraci udaljenosti od netaknutih plaža i kristalno čiste vode",
-  "location.highlights.beach.title": "Pristup plaži",
-  "location.highlights.beach.description": "Direktan pristup skrivenim uvalama i mestima za kupanje",
-  "location.highlights.climate.title": "Celogodišnja lepota",
-  "location.highlights.climate.description": "Savršena mediteranska klima sa preko 300 sunčanih dana",
-  "location.highlights.views.title": "Slikoviti pogledi",
-  "location.highlights.views.description": "Zadivljujući panoramski pogledi na Jadransko more",
-  "location.discover.title": "Otkrijte ostrvo Brač",
-  "location.discover.description": "Smešteno u srcu Jadrana, ostrvo Brač nudi savršen spoj prirodne lepote, bogate istorije i modernog luksuza. Od čuvene plaže Zlatni rat do drevnih kamenoloma, svaki ugao ovog hrvatskog raja krije priču koju treba otkriti.",
-  "testimonials.title": "Šta kažu naši gosti",
-  "testimonials.sarah.name": "Sarah & Michael Thompson",
-  "testimonials.sarah.location": "London, UK",
-  "testimonials.sarah.text": "Najneverojatniji boravak koji smo ikada doživeli. Apartman je bio zadivljujući, a pogledi apsolutno breathtaking. Definitivno ćemo se vratiti!",
-  "testimonials.ana.name": "Ana & Marko Petković",
-  "testimonials.ana.location": "Belgrade, Serbia",
-  "testimonials.ana.text": "Savršeno mesto za odmor! Apartman je bio luksuzan i udoban, a pogled na more nezaboravan. Toplo preporučujemo!",
-  "testimonials.hans.name": "Hans & Greta Mueller",
-  "testimonials.hans.location": "Munich, Germany",
-  "testimonials.hans.text": "Divno smeštanje sa zadivljujućim pogledom na more. Sve je bilo savršeno organizovano i vrlo čisto. Hvala!",
-  "apartment.viewDetails": "Pogledaj detalje",
-  "apartment.bookNow": "Rezerviši odmah",
-  "apartment.backToHome": "Nazad na apartmane", 
-  "apartment.notFound": "Apartman nije pronađen",
-  "apartmentSelector.title": "Izaberite svoje savršeno utočište",
-  "apartmentSelector.subtitle": "Četiri različita apartmana, svaki nudi beskompromisnu udobnost i zadivljujuće poglede na Jadransko more",
-  "apartmentSelector.viewDetails": "Pogledaj detalje i dostupnost",
-  "apartment.1.description": "Pobegnite u naš elegantan jednosoban apartman sa prostranom terasom i zadivljujućim pogledom na more. Savršen za parove koji traže romantičan odmor sa modernim sadržajima i mediteranskim šarmom.",
-  "apartment.2.description": "Uživajte u luksuzu našeg premijum apartmana sa dva spavaće sobe i panoramskim pogledom na okean. Idealan za porodice ili grupe, sa kompletnom kuhinjom, više balkona i sofisticiranim primorskim dizajnom.",
-  "apartment.3.description": "Doživite udobnost u našem ugodnom studio apartmanu sa pogledom na baštu. Savršen za samostalne putnike ili parove, nudi moderne sadržaje i mirnu atmosferu na korak od plaže.",
-  "apartment.4.description": "Otkrijte naš prostrani porodični apartman sa više spavaćih soba i velikom terasom. Dizajniran za veće grupe, sa premijum sadržajima i zadivljujućim pogledom na jadransku obalu.",
-  "amenity.wifi": "WiFi",
-  "amenity.ac": "Klima uređaj",
-  "amenity.kitchen": "Kuhinja",
-  "amenity.parking": "Parking",
-  "amenity.sea_view": "Pogled na more",
-  "amenity.garden_view": "Pogled na baštu",
-  "amenity.panoramic_view": "Panoramski pogled",
-  "amenity.beach_access": "Pristup plaži",
-  "amenity.balcony": "Balkon",
-  "amenity.terrace": "Terasa",
-  "amenity.premium_kitchen": "Premijum kuhinja",
-  "amenity.multiple_bedrooms": "Više spavaćih soba",
-  "amenity.large_terrace": "Velika terasa",
-  "amenity.full_kitchen": "Kompletna kuhinja"
+  "nav": {
+    "home": "Početna",
+    "apartments": "Apartmani",
+    "location": "Lokacija",
+    "contact": "Kontakt",
+    "book": "Rezerviši"
+  },
+  "hero": {
+    "title": "Vaš ekskluzivni hrvatski primorski odmor",
+    "subtitle": "Luksuzni apartmani gde se nebo spaja sa morem",
+    "explore": "Istražite apartmane"
+  },
+  "introduction": {
+    "title": "Nezaboravan bekstvo",
+    "description": "Smešteni na netaknutim obalama ostrva Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću."
+  },
+  "apartmentSelector": {
+    "title": "Izaberite svoje savršeno utočište",
+    "subtitle": "Četiri različita apartmana, svaki nudi beskompromisnu udobnost i zadivljujuće poglede na Jadransko more",
+    "viewDetails": "Pogledaj detalje i dostupnost"
+  },
+  "location": {
+    "title": "Naša lokacija",
+    "description": "Otkrijte čari Brača",
+    "highlights": {
+      "prime": {
+        "title": "Vrhunska lokacija",
+        "description": "Koraci udaljenosti od netaknutih plaža i kristalno čiste vode"
+      },
+      "beach": {
+        "title": "Pristup plaži",
+        "description": "Direktan pristup skrivenim uvalama i mestima za kupanje"
+      },
+      "climate": {
+        "title": "Celogodišnja lepota",
+        "description": "Savršena mediteranska klima sa preko 300 sunčanih dana"
+      },
+      "views": {
+        "title": "Slikoviti pogledi",
+        "description": "Zadivljujući panoramski pogledi na Jadransko more"
+      }
+    },
+    "discover": {
+      "title": "Otkrijte ostrvo Brač",
+      "description": "Smešteno u srcu Jadrana, ostrvo Brač nudi savršen spoj prirodne lepote, bogate istorije i modernog luksuza. Od čuvene plaže Zlatni rat do drevnih kamenoloma, svaki ugao ovog hrvatskog raja krije priču koju treba otkriti."
+    }
+  },
+  "testimonials": {
+    "title": "Šta kažu naši gosti",
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "Najneverojatniji boravak koji smo ikada doživeli. Apartman je bio zadivljujući, a pogledi apsolutno breathtaking. Definitivno ćemo se vratiti!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Belgrade, Serbia",
+      "text": "Savršeno mesto za odmor! Apartman je bio luksuzan i udoban, a pogled na more nezaboravan. Toplo preporučujemo!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "Munich, Germany",
+      "text": "Divno smeštanje sa zadivljujućim pogledom na more. Sve je bilo savršeno organizovano i vrlo čisto. Hvala!"
+    }
+  },
+  "callToAction": {
+    "title": "Pronađite svoje savršene datume",
+    "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefinisan gde se Mediteran susreće sa modernom elegancijom.",
+    "book": "Rezervišite boravak"
+  },
+  "footer": {
+    "description": "Doživite vrhunac hrvatskog primorskog luksuza. Naša ekskluzivna kolekcija apartmana nudi zahtevnim putnicima nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću.",
+    "contact": "Kontakt",
+    "address": "Adresa",
+    "phone": "Telefon",
+    "email": "Email",
+    "experience": "Iskustvo",
+    "apartments": "Luksuzni apartmani",
+    "location": "Vrhunska lokacija",
+    "reviews": "Recenzije gostiju"
+  },
+  "booking": {
+    "title": "Rezerviši",
+    "checkin": "Datum dolaska",
+    "checkout": "Datum odlaska",
+    "adults": "Odrasli",
+    "children": "Deca",
+    "name": "Ime i prezime",
+    "email": "Email",
+    "phone": "Telefon (opciono)",
+    "submit": "Pošalji zahtev za rezervaciju",
+    "submitting": "Šalje se...",
+    "success": "Zahtev je poslat!",
+    "successDesc": "Uskoro ćemo potvrditi dostupnost.",
+    "error": "Greška",
+    "errorDesc": "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
+    "selectDates": "Molimo izaberite datume dolaska i odlaska",
+    "invalidDates": "Datum odlaska mora biti posle datuma dolaska",
+    "fillRequired": "Molimo popunite sva obavezna polja",
+    "pickDate": "Izaberite datum"
+  },
+  "modal": {
+    "details": "Detalji",
+    "guests": "Do {{count}} gostiju",
+    "size": "{{size}}m² površine",
+    "perNight": "/noć",
+    "amenities": "Sadržaj apartmana",
+    "reserve": "Rezerviši apartman"
+  },
+  "apartment": {
+    "viewDetails": "Pogledaj detalje",
+    "bookNow": "Rezerviši odmah",
+    "backToHome": "Nazad na apartmane", 
+    "notFound": "Apartman nije pronađen",
+    "loading": "Učitavanje apartmana...",
+    "1": {
+      "description": "Pobegnite u naš elegantan jednosoban apartman sa prostranom terasom i zadivljujućim pogledom na more. Savršen za parove koji traže romantičan odmor sa modernim sadržajima i mediteranskim šarmom."
+    },
+    "2": {
+      "description": "Uživajte u luksuzu našeg premijum apartmana sa dva spavaće sobe i panoramskim pogledom na okean. Idealan za porodice ili grupe, sa kompletnom kuhinjom, više balkona i sofisticiranim primorskim dizajnom."
+    },
+    "3": {
+      "description": "Doživite udobnost u našem ugodnom studio apartmanu sa pogledom na baštu. Savršen za samostalne putnike ili parove, nudi moderne sadržaje i mirnu atmosferu na korak od plaže."
+    },
+    "4": {
+      "description": "Otkrijte naš prostrani porodični apartman sa više spavaćih soba i velikom terasom. Dizajniran za veće grupe, sa premijum sadržajima i zadivljujućim pogledom na jadransku obalu."
+    }
+  },
+  "amenity": {
+    "wifi": "WiFi",
+    "ac": "Klima uređaj",
+    "kitchen": "Kuhinja",
+    "parking": "Parking",
+    "sea_view": "Pogled na more",
+    "garden_view": "Pogled na baštu",
+    "panoramic_view": "Panoramski pogled",
+    "beach_access": "Pristup plaži",
+    "balcony": "Balkon",
+    "terrace": "Terasa",
+    "premium_kitchen": "Premijum kuhinja",
+    "multiple_bedrooms": "Više spavaćih soba",
+    "large_terrace": "Velika terasa",
+    "full_kitchen": "Kompletna kuhinja"
+  }
 }

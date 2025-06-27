@@ -1,3 +1,4 @@
+
 {
   "nav": {
     "home": "Početna",
@@ -18,22 +19,52 @@
   },
   "apartmentSelector": {
     "title": "Naši Apartmani",
+    "subtitle": "Otkrijte našu pažljivo odabranu kolekciju luksuznih apartmana, svaki nudi jedinstven spoj stila, udobnosti i prekrasnih pogleda.",
     "viewDetails": "Pogledaj Detalje"
   },
-  "locationHighlights": {
+  "location": {
     "title": "Otkrijte Brač",
-    "beach": "Prekrasne plaže",
-    "culture": "Bogata kultura",
-    "gastronomy": "Izvrsna gastronomija"
+    "description": "Zaronite u očaravajući šarm Brača, otoka poznatog po predivnim plažama, kristalno čistom moru i bogatoj kulturnoj baštini.",
+    "highlights": {
+      "prime": {
+        "title": "Vrhunska Lokacija",
+        "description": "Korak udaljenost od netaknutih plaža i kristalno čiste vode"
+      },
+      "beach": {
+        "title": "Pristup Plaži",
+        "description": "Direktan pristup skrivenim uvalama i kupališnim mjestima"
+      },
+      "climate": {
+        "title": "Celogodišnja Ljepota",
+        "description": "Savršena mediteranska klima s više od 300 sunčanih dana"
+      },
+      "views": {
+        "title": "Slikoviti Pogledi",
+        "description": "Zadivljujući panoramski pogledi na Jadransko more"
+      }
+    },
+    "discover": {
+      "title": "Otkrijte Otok Brač",
+      "description": "Smješten u srcu Jadrana, otok Brač nudi savršen spoj prirodne ljepote, bogate povijesti i modernog luksuza. Od čuvene plaže Zlatni rat do drevnih kamenoloma, svaki kutak ovog hrvatskog raja krije priču koju treba otkriti."
+    }
   },
   "testimonials": {
     "title": "Što Kažu Naši Gosti",
-    "quote1": "Savršen odmor! Apartman je bio prekrasan, čist i s predivnim pogledom. Osoblje je bilo izuzetno ljubazno i uslužno.",
-    "author1": "Ana M.",
-    "quote2": "Lokacija je fantastična, blizu plaže i svih važnih sadržaja. Uživali smo u svakom trenutku našeg boravka.",
-    "author2": "Marko K.",
-    "quote3": "Apartmani su moderno uređeni i opremljeni svime što vam je potrebno za ugodan boravak. Preporučujem svima!",
-    "author3": "Ivana S."
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "Najnevjerojatniji boravak koji smo ikada doživjeli. Apartman je bio predivan, a pogledi apsolutno zadivljujući. Definitivno ćemo se vratiti!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Beograd, Srbija",
+      "text": "Savršeno mjesto za odmor! Apartman je bio luksuzan i udoban, a pogled na more nezaboravan. Toplo preporučujemo!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "München, Njemačka",
+      "text": "Divno smještanje s predivnim pogledom na more. Sve je bilo savršeno organizirano i vrlo čisto. Hvala!"
+    }
   },
   "callToAction": {
     "title": "Rezervirajte Vaš Odmor Iz Snova",
@@ -98,6 +129,18 @@
   "apartment": {
     "notFound": "Apartman nije pronađen",
     "backToHome": "Natrag na apartmane",
-    "loading": "Učitavanje apartmana..."
+    "loading": "Učitavanje apartmana...",
+    "1": {
+      "description": "Pobegnite u naš elegantan jednosoban apartman sa prostranom terasom i zadivljujućim pogledom na more. Savršen za parove koji traže romantičan odmor sa modernim sadržajima i mediteranskim šarmom."
+    },
+    "2": {
+      "description": "Uživajte u luksuzu našeg premijum apartmana sa dva spavaće sobe i panoramskim pogledom na okean. Idealan za porodice ili grupe, sa kompletnom kuhinjom, više balkona i sofisticiranim primorskim dizajnom."
+    },
+    "3": {
+      "description": "Doživite udobnost u našem ugodnom studio apartmanu sa pogledom na baštu. Savršen za samostalne putnike ili parove, nudi moderne sadržaje i mirnu atmosferu na korak od plaže."
+    },
+    "4": {
+      "description": "Otkrijte naš prostrani porodični apartman sa više spavaćih soba i velikom terasom. Dizajniran za veće grupe, sa premijum sadržajima i zadivljujućim pogledom na jadransku obalu."
+    }
   }
 }
