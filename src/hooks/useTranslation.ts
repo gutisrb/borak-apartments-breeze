@@ -38,6 +38,7 @@ export const useTranslation = () => {
   const location = useLocation();
   const { lang } = useParams<{ lang: string }>();
   const [currentLang, setCurrentLang] = useState<string>(lang || 'en');
+  const [forceUpdate, setForceUpdate] = useState(0);
 
   useEffect(() => {
     if (lang && Object.keys(resources).includes(lang)) {
@@ -50,9 +51,15 @@ export const useTranslation = () => {
   const t = (key: string, options?: { count?: number; size?: number }): string => {
     let translation = i18n.t(key, options);
     
+    // Ensure we always return a string
+    if (typeof translation !== 'string') {
+      translation = key;
+    }
+    
     // If translation returns the key (meaning it wasn't found), fall back to English
     if (translation === key && currentLang !== 'en') {
-      translation = enTranslations[key as keyof typeof enTranslations] || key;
+      const fallbackTranslation = i18n.t(key, { ...options, lng: 'en' });
+      translation = typeof fallbackTranslation === 'string' ? fallbackTranslation : key;
     }
     
     // Handle interpolation manually if needed
@@ -71,12 +78,13 @@ export const useTranslation = () => {
       const currentPath = location.pathname.replace(/^\/[a-z]{2}/, '') || '';
       navigate(`/${newLang}${currentPath}`, { replace: true });
       
-      // Force re-render by updating i18n immediately
+      // Force immediate re-render
       i18n.changeLanguage(newLang);
       setCurrentLang(newLang);
       localStorage.setItem('borak-lang', newLang);
+      setForceUpdate(prev => prev + 1);
     }
   };
 
-  return { t, changeLanguage, currentLang };
+  return { t, changeLanguage, currentLang, forceUpdate };
 };
