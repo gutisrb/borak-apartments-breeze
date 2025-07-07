@@ -12,6 +12,7 @@ import { format } from 'date-fns';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit, supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 interface BookingDrawerProps {
   apartment: Unit;
@@ -178,19 +179,24 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
-                      className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD] h-10 text-sm"
+                      className={cn(
+                        "w-full justify-start text-left font-normal h-10 text-sm",
+                        "border-gray-300 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6]",
+                        !checkIn && "text-muted-foreground"
+                      )}
                     >
                       <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
                       {checkIn ? format(checkIn, 'MMM dd') : t('booking.pickDate')}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white border-[#20425C]" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white border-gray-300 shadow-lg" align="start">
                     <Calendar
                       mode="single"
                       selected={checkIn}
                       onSelect={setCheckIn}
                       disabled={(date) => date < new Date()}
                       initialFocus
+                      className="rounded-md border-0"
                     />
                   </PopoverContent>
                 </Popover>
@@ -204,19 +210,24 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
-                      className="w-full justify-start text-left border-[#20425C] focus:ring-[#0077B6] hover:bg-[#F4F9FD] h-10 text-sm"
+                      className={cn(
+                        "w-full justify-start text-left font-normal h-10 text-sm",
+                        "border-gray-300 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6]",
+                        !checkOut && "text-muted-foreground"
+                      )}
                     >
                       <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
                       {checkOut ? format(checkOut, 'MMM dd') : t('booking.pickDate')}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white border-[#20425C]" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white border-gray-300 shadow-lg" align="start">
                     <Calendar
                       mode="single"
                       selected={checkOut}
                       onSelect={setCheckOut}
                       disabled={(date) => date <= (checkIn || new Date())}
                       initialFocus
+                      className="rounded-md border-0"
                     />
                   </PopoverContent>
                 </Popover>
@@ -230,10 +241,10 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   {t('booking.adults')}
                 </Label>
                 <Select value={adults} onValueChange={setAdults}>
-                  <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6] h-10">
+                  <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-[#20425C]">
+                  <SelectContent className="bg-white border-gray-300 shadow-lg">
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                       <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
                     ))}
@@ -246,10 +257,10 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   {t('booking.children')}
                 </Label>
                 <Select value={children} onValueChange={setChildren}>
-                  <SelectTrigger className="border-[#20425C] focus:ring-[#0077B6] h-10">
+                  <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-[#20425C]">
+                  <SelectContent className="bg-white border-gray-300 shadow-lg">
                     {[0, 1, 2, 3, 4].map(num => (
                       <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
                     ))}
@@ -268,7 +279,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
                   required
                 />
               </div>
@@ -282,7 +293,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
                   required
                 />
               </div>
@@ -296,7 +307,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="border-[#20425C] focus:ring-[#0077B6] h-10"
+                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
                 />
               </div>
             </div>
