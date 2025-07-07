@@ -20,12 +20,6 @@ const Footer = () => {
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
               {t('footer.description')}
             </p>
-            <div className="text-sm text-white/60 font-app">
-              Crafted with excellence by{' '}
-              <a href="https://lovable.dev" className="text-accent hover:text-link transition-colors">
-                Lovable
-              </a>
-            </div>
           </div>
 
           {/* Contact Information */}
