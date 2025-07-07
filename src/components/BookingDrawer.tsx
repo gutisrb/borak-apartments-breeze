@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -33,23 +32,6 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // Prevent sheet from closing when clicking on calendar or select elements
-  const handleInteractOutside = (event: Event) => {
-    const target = event.target as Element;
-    
-    // Check if the click is on a calendar, select dropdown, or their content
-    if (
-      target.closest('[data-radix-popper-content-wrapper]') ||
-      target.closest('[data-radix-select-content]') ||
-      target.closest('[data-radix-popover-content]') ||
-      target.closest('.rdp') || // react-day-picker calendar
-      target.closest('[role="dialog"]') ||
-      target.closest('[role="listbox"]') ||
-      target.closest('[role="option"]')
-    ) {
-      event.preventDefault();
-    }
-  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -156,21 +138,37 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   }
 
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <Sheet open={isOpen} onOpenChange={onClose} modal={true}>
       <SheetContent 
         side="right" 
-        className="w-full sm:max-w-lg bg-white border-[#20425C] overflow-y-auto"
-        onInteractOutside={handleInteractOutside}
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          height: '100vh',
-          zIndex: 9999
+        className="w-full sm:max-w-lg bg-white border-gray-300 overflow-y-auto p-0"
+        onPointerDownOutside={(e) => {
+          // Allow interactions with calendar and select dropdowns
+          const target = e.target as Element;
+          if (
+            target.closest('[data-radix-popper-content-wrapper]') ||
+            target.closest('[data-radix-select-content]') ||
+            target.closest('[data-radix-popover-content]') ||
+            target.closest('.rdp') ||
+            target.closest('[role="dialog"]') ||
+            target.closest('[role="listbox"]') ||
+            target.closest('[role="option"]') ||
+            target.closest('[data-radix-calendar]')
+          ) {
+            e.preventDefault();
+          }
+        }}
+        onEscapeKeyDown={(e) => {
+          // Only close on escape if no popover/select is open
+          const openPopover = document.querySelector('[data-state="open"][data-radix-popover-content]');
+          const openSelect = document.querySelector('[data-state="open"][data-radix-select-content]');
+          if (openPopover || openSelect) {
+            e.preventDefault();
+          }
         }}
       >
-        <div className="relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24]">
-          <SheetHeader className="mb-6 pt-4">
+        <div className="relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24] h-full">
+          <SheetHeader className="mb-6 pt-4 px-6">
             <div className="flex items-center justify-between">
               <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
                 {t('booking.title')} - {apartment.name}
@@ -186,14 +184,14 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
             </div>
           </SheetHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-6 px-1">
+          <form onSubmit={handleSubmit} className="space-y-6 px-6 pb-6">
             {/* Date Selection */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="checkin" className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.checkin')}
                 </Label>
-                <Popover>
+                <Popover modal={true}>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
@@ -207,7 +205,14 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                       {checkIn ? format(checkIn, 'MMM dd') : t('booking.pickDate')}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white border-gray-300 shadow-lg" align="start">
+                  <PopoverContent 
+                    className="w-auto p-0 bg-white border-gray-300 shadow-lg z-[10001]" 
+                    align="start"
+                    side="bottom"
+                    sideOffset={4}
+                    avoidCollisions={true}
+                    onOpenAutoFocus={(e) => e.preventDefault()}
+                  >
                     <Calendar
                       mode="single"
                       selected={checkIn}
@@ -224,7 +229,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <Label htmlFor="checkout" className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.checkout')}
                 </Label>
-                <Popover>
+                <Popover modal={true}>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
@@ -238,7 +243,14 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                       {checkOut ? format(checkOut, 'MMM dd') : t('booking.pickDate')}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white border-gray-300 shadow-lg" align="start">
+                  <PopoverContent 
+                    className="w-auto p-0 bg-white border-gray-300 shadow-lg z-[10001]" 
+                    align="start"
+                    side="bottom"
+                    sideOffset={4}
+                    avoidCollisions={true}
+                    onOpenAutoFocus={(e) => e.preventDefault()}
+                  >
                     <Calendar
                       mode="single"
                       selected={checkOut}
@@ -258,11 +270,17 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <Label className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.adults')}
                 </Label>
-                <Select value={adults} onValueChange={setAdults}>
+                <Select value={adults} onValueChange={setAdults} modal={true}>
                   <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-300 shadow-lg">
+                  <SelectContent 
+                    className="bg-white border-gray-300 shadow-lg z-[10001]"
+                    position="popper"
+                    side="bottom"
+                    sideOffset={4}
+                    avoidCollisions={true}
+                  >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                       <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
                     ))}
@@ -274,11 +292,17 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <Label className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.children')}
                 </Label>
-                <Select value={children} onValueChange={setChildren}>
+                <Select value={children} onValueChange={setChildren} modal={true}>
                   <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-300 shadow-lg">
+                  <SelectContent 
+                    className="bg-white border-gray-300 shadow-lg z-[10001]"
+                    position="popper"
+                    side="bottom"
+                    sideOffset={4}
+                    avoidCollisions={true}
+                  >
                     {[0, 1, 2, 3, 4].map(num => (
                       <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
                     ))}
