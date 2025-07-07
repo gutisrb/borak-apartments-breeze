@@ -33,6 +33,23 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  // Prevent sheet from closing when clicking on calendar or select elements
+  const handleInteractOutside = (event: Event) => {
+    const target = event.target as Element;
+    
+    // Check if the click is on a calendar, select dropdown, or their content
+    if (
+      target.closest('[data-radix-popper-content-wrapper]') ||
+      target.closest('[data-radix-select-content]') ||
+      target.closest('[data-radix-popover-content]') ||
+      target.closest('.rdp') || // react-day-picker calendar
+      target.closest('[role="dialog"]') ||
+      target.closest('[role="listbox"]') ||
+      target.closest('[role="option"]')
+    ) {
+      event.preventDefault();
+    }
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -143,6 +160,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
       <SheetContent 
         side="right" 
         className="w-full sm:max-w-lg bg-white border-[#20425C] overflow-y-auto"
+        onInteractOutside={handleInteractOutside}
         style={{ 
           position: 'fixed',
           top: 0,
