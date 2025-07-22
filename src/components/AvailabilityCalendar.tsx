@@ -22,7 +22,7 @@ const AvailabilityCalendar = ({
   onDateSelect,
   selectedEndDate,
   onEndDateSelect,
-  className 
+  className,
   mode = 'single'
 }: AvailabilityCalendarProps) => {
   const { t } = useTranslation();
