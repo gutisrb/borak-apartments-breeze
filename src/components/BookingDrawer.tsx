@@ -270,7 +270,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <Label className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.adults')}
                 </Label>
-                <Select value={adults} onValueChange={setAdults} modal={true}>
+                <Select value={adults} onValueChange={setAdults}>
                   <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>
@@ -292,7 +292,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <Label className="text-[#0C1930] font-app font-medium text-sm">
                   {t('booking.children')}
                 </Label>
-                <Select value={children} onValueChange={setChildren} modal={true}>
+                <Select value={children} onValueChange={setChildren}>
                   <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
                     <SelectValue />
                   </SelectTrigger>

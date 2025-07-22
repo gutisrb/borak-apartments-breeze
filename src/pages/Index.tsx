@@ -117,6 +117,7 @@ const LandingPage = () => {
         {isBookingOpen && unitToBook && (
           <BookingDrawer
             apartment={unitToBook}
+            isOpen={isBookingOpen}
             onClose={handleCloseBooking}
           />
         )}

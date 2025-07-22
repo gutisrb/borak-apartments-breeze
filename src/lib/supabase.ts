@@ -17,6 +17,8 @@ export interface Unit {
   size_m2?: number
   images?: string[]
   amenities?: string[]
+  location?: string
+  featured?: boolean
 }
 
 export interface Booking {
