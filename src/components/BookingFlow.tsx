@@ -154,7 +154,7 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                         onInteractOutside={(e) => e.preventDefault()}
                         onPointerDownOutside={(e) => e.preventDefault()}
                         onFocusOutside={(e) => e.preventDefault()}
-                        onOpenChange={(open) => {
+                        onChange={(open) => {
                           if (open) {
                             handleCalendarOpen(unit.id);
                           } else {
@@ -267,7 +267,7 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                         onInteractOutside={(e) => e.preventDefault()}
                         onPointerDownOutside={(e) => e.preventDefault()}
                         onFocusOutside={(e) => e.preventDefault()}
-                        onOpenChange={(open) => {
+                        onChange={(open) => {
                           if (open) {
                             handleCalendarOpen(unit.id);
                           } else {

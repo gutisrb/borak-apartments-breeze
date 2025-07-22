@@ -156,5 +156,57 @@
     "4": {
       "description": "Discover our spacious family apartment with multiple bedrooms and a large terrace. Designed for larger groups, featuring premium amenities and breathtaking views of the Adriatic coastline."
     }
+  },
+  "availability": {
+    "loading": "Loading availability...",
+    "error": "Error loading availability",
+    "booked": "Booked dates",
+    "available": "Available",
+    "select": "Select dates",
+    "title": "Availability Calendar"
+  },
+  "bookingFlow": {
+    "title": "Our Apartments",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "featured": "Featured",
+    "checkAvailability": "Check Availability",
+    "availability": "Check Available Dates",
+    "bookNow": "Book Now",
+    "instantBooking": "Instant Booking Available",
+    "bookProperty": "Book {{name}}",
+    "nights": "{{nights}} nights"
+  },
+  "booking": {
+    "title": "Reserve Apartment",
+    "checkin": "Check-in Date",
+    "checkout": "Check-out Date",
+    "adults": "Adults",
+    "children": "Children",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "submit": "Submit Reservation",
+    "submitting": "Submitting...",
+    "success": "Reservation Successful!",
+    "successDesc": "Thank you for your reservation. We will contact you shortly to confirm your booking.",
+    "error": "Reservation Error",
+    "errorDesc": "There was an error submitting your reservation. Please try again later.",
+    "selectDates": "Please select check-in and check-out dates.",
+    "invalidDates": "Check-out date must be after check-in date.",
+    "fillRequired": "Please fill in all required fields.",
+    "pickDate": "Pick a date",
+    "dates": "Dates",
+    "guestInfo": "Guest Information",
+    "stayLength": "{{nights}} night stay",
+    "priceSummary": "Price Summary",
+    "nights": "nights",
+    "cleaningFee": "Cleaning Fee",
+    "serviceFee": "Service Fee",
+    "total": "Total",
+    "freeCancellation": "Free cancellation up to 7 days before check-in",
+    "securePayment": "Secure payment",
+    "processing": "Processing payment...",
+    "confirmBooking": "Confirm Booking & Pay"
   }
 }

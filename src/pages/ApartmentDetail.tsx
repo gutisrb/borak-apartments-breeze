@@ -3,12 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft, ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
+import { Users, Square, Wifi, Car, Utensils, Snowflake, ArrowLeft, ChevronLeft, ChevronRight, X, ZoomIn, Calendar } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit } from '@/lib/supabase';
 import BookingDrawer from '@/components/BookingDrawer';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useRealtimeBookings } from '@/hooks/useBookings';
+import AvailabilityCalendar from '@/components/AvailabilityCalendar';
 
 const ApartmentDetail = () => {
   const { slug, lang } = useParams<{ slug: string; lang: string }>();
@@ -282,22 +284,35 @@ const ApartmentDetail = () => {
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.amenities')}</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {apartment.amenities?.map((amenity, index) => {
-                    const IconComponent = amenityIcons[amenity as keyof typeof amenityIcons] || Square;
-                    return (
-                      <Badge 
-                        key={index} 
-                        variant="secondary" 
-                        className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
-                      >
-                        <IconComponent className="h-4 w-4" />
-                        {t(`amenity.${amenity.toLowerCase().replace(/\s+/g, '_')}`)}
-                      </Badge>
-                    );
-                  })}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.amenities')}</h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {apartment.amenities?.map((amenity, index) => {
+                      const IconComponent = amenityIcons[amenity as keyof typeof amenityIcons] || Square;
+                      return (
+                        <Badge 
+                          key={index} 
+                          variant="secondary" 
+                          className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
+                        >
+                          <IconComponent className="h-4 w-4" />
+                          {t(`amenity.${amenity.toLowerCase().replace(/\s+/g, '_')}`)}
+                        </Badge>
+                      );
+                    })}
+                  </div>
+                </div>
+                
+                {/* Real-time Availability Calendar */}
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair flex items-center">
+                    <Calendar className="mr-2 h-5 w-5 text-[#FFBE24]" />
+                    {t('availability.title')}
+                  </h3>
+                  <div className="bg-[#F4F9FD] p-4 rounded-lg">
+                    <AvailabilityCalendar unit={apartment} />
+                  </div>
                 </div>
               </div>
             </div>

@@ -48,7 +48,7 @@ export const useTranslation = () => {
     }
   }, [lang]);
 
-  const t = (key: string, options?: { count?: number; size?: number }): string => {
+  const t = (key: string, options?: { count?: number; size?: number; name?: string; nights?: number }): string => {
     let translation = i18n.t(key, options);
     
     // Ensure we always return a string
@@ -68,6 +68,12 @@ export const useTranslation = () => {
     }
     if (options?.size !== undefined) {
       translation = translation.replace('{{size}}', options.size.toString());
+    }
+    if (options?.name !== undefined) {
+      translation = translation.replace('{{name}}', options.name.toString());
+    }
+    if (options?.nights !== undefined) {
+      translation = translation.replace('{{nights}}', options.nights.toString());
     }
     
     return translation;
