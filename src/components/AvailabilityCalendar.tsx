@@ -10,14 +10,20 @@ interface AvailabilityCalendarProps {
   unit: Unit;
   selectedDate?: Date;
   onDateSelect?: (date: Date | undefined) => void;
+  selectedEndDate?: Date;
+  onEndDateSelect?: (date: Date | undefined) => void;
   className?: string;
+  mode?: 'single' | 'range';
 }
 
 const AvailabilityCalendar = ({ 
   unit, 
   selectedDate, 
   onDateSelect,
+  selectedEndDate,
+  onEndDateSelect,
   className 
+  mode = 'single'
 }: AvailabilityCalendarProps) => {
   const { t } = useTranslation();
   const { data: bookings, loading, error, isDateAvailable } = useRealtimeBookings(unit.id);
@@ -48,10 +54,30 @@ const AvailabilityCalendar = ({
     );
   };
 
+  const handleDateSelect = (date: Date | undefined) => {
+    if (mode === 'range') {
+      if (!selectedDate || (selectedDate && selectedEndDate)) {
+        // Start new selection
+        onDateSelect?.(date);
+        onEndDateSelect?.(undefined);
+      } else if (selectedDate && !selectedEndDate) {
+        // Select end date
+        if (date && date > selectedDate) {
+          onEndDateSelect?.(date);
+        } else {
+          // If selected date is before start date, make it the new start date
+          onDateSelect?.(date);
+          onEndDateSelect?.(undefined);
+        }
+      }
+    } else {
+      onDateSelect?.(date);
+    }
+  };
   if (loading) {
     return (
       <div className="flex items-center justify-center p-6 min-h-[350px]">
-        <div className="animate-pulse text-[#0077B6]">{t('availability.loading')}</div>
+        <div className="animate-pulse text-[#0077B6]">Loading availability...</div>
       </div>
     );
   }
@@ -59,7 +85,7 @@ const AvailabilityCalendar = ({
   if (error) {
     return (
       <div className="flex items-center justify-center p-6 min-h-[350px]">
-        <div className="text-red-500">{t('availability.error')}</div>
+        <div className="text-red-500">Error loading availability</div>
       </div>
     );
   }
@@ -69,22 +95,33 @@ const AvailabilityCalendar = ({
       <Calendar
         mode="single"
         selected={selectedDate}
-        onSelect={onDateSelect}
+        onSelect={handleDateSelect}
         disabled={[
           { before: new Date() },
           (date) => isDateUnavailable(date)
         ]}
         className={cn("rounded-md p-3 pointer-events-auto")}
         modifiers={{
-          booked: disabledDates
+          booked: disabledDates,
+          selected_range: selectedDate && selectedEndDate ? 
+            Array.from({ length: dayjs(selectedEndDate).diff(selectedDate, 'day') + 1 }, (_, i) => 
+              dayjs(selectedDate).add(i, 'day').toDate()
+            ) : []
         }}
         modifiersClassNames={{
-          booked: "bg-red-100 text-red-600 opacity-70"
+          booked: "bg-red-100 text-red-600 opacity-70",
+          selected_range: "bg-blue-100 text-blue-800"
         }}
         footer={
           <div className="pt-4 flex items-center text-xs">
             <div className="h-3 w-3 rounded-full bg-red-100 mr-2"></div>
-            <span className="text-[#20425C]">{t('availability.booked')}</span>
+            <span className="text-[#20425C]">Booked</span>
+            {mode === 'range' && (
+              <>
+                <div className="h-3 w-3 rounded-full bg-blue-100 mr-2 ml-4"></div>
+                <span className="text-[#20425C]">Selected dates</span>
+              </>
+            )}
           </div>
         }
       />

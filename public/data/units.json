@@ -1,75 +1,70 @@
 {
   "units": [
     {
-      "id": "08dd8128-006d-4201-a1e4-948ced31df32",
+      "id": "property-1",
       "name": "Apartment 01—Balcony Sea View",
-      "max_guests": 4,
+      "max_guests": 2,
       "size_m2": 65,
-      "price_per_night": 120,
+      "price_per_night": 90,
       "description": "Modern apartment with stunning sea views, fully equipped kitchen, and private balcony overlooking the Adriatic.",
       "images": [
         "/lovable-uploads/7339c339-ce6a-41a7-b2c0-68c73a549560.png",
         "/lovable-uploads/784c3d02-1359-4ce9-9e21-9ce69495bff7.png",
         "/lovable-uploads/0f60e0c0-e5c1-4e88-98f7-d09dea6e8864.png"
       ],
-      "amenities": ["Sea View", "Kitchen", "WiFi", "AC", "Balcony", "Parking"],
       "location": "Brač"
     },
     {
-      "id": "4fb56dd7-919a-45f2-b87c-b991c1864563", 
+      "id": "property-2", 
       "name": "Apartment 02—Garden Terrace",
-      "max_guests": 6,
+      "max_guests": 2,
       "size_m2": 80,
-      "price_per_night": 140,
+      "price_per_night": 90,
       "description": "Spacious apartment with private garden terrace, perfect for families.",
       "images": [
         "/lovable-uploads/e2e41bd7-d4d7-464e-9b5a-fb958417521a.png",
         "/lovable-uploads/339a8eee-df9f-42b5-b779-383e6517ad33.png"
       ],
-      "amenities": ["Garden View", "Terrace", "Kitchen", "WiFi", "AC", "Parking"],
       "location": "Brač"
     },
     {
-      "id": "8303953c-423f-45c9-bbb8-fab223838a69",
+      "id": "property-3",
       "name": "Apartment 03—Premium Suite", 
-      "max_guests": 4,
+      "max_guests": 2,
       "size_m2": 75,
-      "price_per_night": 160,
+      "price_per_night": 90,
       "description": "Luxury suite with panoramic sea views and premium furnishings.",
       "images": [
         "/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png",
         "/lovable-uploads/0ed2d36a-7632-4869-ac20-e95064f4a508.png"
       ],
-      "amenities": ["Panoramic View", "Beach Access", "Premium Kitchen", "WiFi", "AC", "Parking"],
       "location": "Brač"
     },
     {
-      "id": "41989a7d-5fa5-4f68-bf94-ac63114244db",
+      "id": "property-4",
       "name": "Apartment 04—Family Retreat",
-      "max_guests": 8, 
+      "max_guests": 2, 
       "size_m2": 95,
-      "price_per_night": 180,
+      "price_per_night": 90,
       "description": "Large family apartment with multiple bedrooms and spacious living areas.",
       "images": [
         "/lovable-uploads/bf0e5e79-170a-4134-8bd6-c4b40d0b7277.png",
         "/lovable-uploads/ef22bf17-253a-4915-ae4f-f55e52d38c1b.png"
       ],
-      "amenities": ["Multiple Bedrooms", "Large Terrace", "Full Kitchen", "WiFi", "AC", "Parking"],
       "location": "Brač"
     },
     {
-      "id": "c2c7add3-fb6b-4d7a-8926-6afea98aaf5c",
+      "id": "property-5",
       "name": "Apartment 05—Luxury Penthouse",
-      "max_guests": 10,
+      "max_guests": 4,
       "size_m2": 120,
-      "price_per_night": 240,
+      "price_per_night": 120,
       "description": "Expansive penthouse apartment with panoramic views, private rooftop terrace, premium amenities and luxury furnishings perfect for extended family stays.",
       "images": [
         "/lovable-uploads/79272b68-db54-475f-8369-71219cd4cb46.png",
         "/lovable-uploads/caaa6a44-547d-4ce5-9557-e33e5ed23016.png",
         "/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
       ],
-      "amenities": ["Panoramic View", "Rooftop Terrace", "Premium Kitchen", "WiFi", "AC", "Parking", "Hot Tub", "Private Entrance"],
       "location": "Brač",
       "featured": true
     }

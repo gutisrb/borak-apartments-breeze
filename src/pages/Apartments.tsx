@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Users, Square } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit } from '@/lib/supabase';
@@ -101,22 +100,6 @@ const Apartments = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {apartment.amenities?.slice(0, 3).map((amenity, index) => (
-                      <Badge 
-                        key={index} 
-                        variant="secondary" 
-                        className="bg-[#F4F9FD] text-[#0C1930] font-app border-0"
-                      >
-                        {t(`amenity.${amenity.toLowerCase().replace(/\s+/g, '_')}`)}
-                      </Badge>
-                    ))}
-                    {apartment.amenities && apartment.amenities.length > 3 && (
-                      <Badge variant="secondary" className="bg-[#F4F9FD] text-[#0C1930] font-app border-0">
-                        +{apartment.amenities.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
 
                   <Link to={`/${lang || 'en'}/apartments/${getApartmentSlug(apartment)}`}>
                     <Button className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">

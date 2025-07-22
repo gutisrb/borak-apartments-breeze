@@ -7,7 +7,7 @@ import isBetween from 'dayjs/plugin/isBetween'
 // Extend dayjs with isBetween plugin
 dayjs.extend(isBetween)
 
-export const useRealtimeBookings = (unitId?: string) => {
+export const useRealtimeBookings = (propertyId?: string) => {
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -19,10 +19,11 @@ export const useRealtimeBookings = (unitId?: string) => {
         let query = supabase
           .from('bookings')
           .select('*')
-          .eq('status', 'confirmed')
+          .not('end_date', 'is', null)
+          .not('start_date', 'is', null)
 
-        if (unitId) {
-          query = query.eq('unit_id', unitId)
+        if (propertyId) {
+          query = query.eq('property_id', propertyId)
         }
 
         const { data, error } = await query
@@ -47,7 +48,7 @@ export const useRealtimeBookings = (unitId?: string) => {
           event: '*', 
           schema: 'public', 
           table: 'bookings',
-          filter: unitId ? `unit_id=eq.${unitId}` : undefined
+          filter: propertyId ? `property_id=eq.${propertyId}` : undefined
         }, 
         () => {
           fetchBookings()
@@ -58,13 +59,13 @@ export const useRealtimeBookings = (unitId?: string) => {
     return () => {
       subscription.unsubscribe()
     }
-  }, [unitId])
+  }, [propertyId])
 
-  const isDateAvailable = (date: Date, unitId: string) => {
+  const isDateAvailable = (date: Date, propertyId: string) => {
     const targetDate = dayjs(date).format('YYYY-MM-DD')
     
     return !bookings.some(booking => {
-      if (booking.unit_id !== unitId) return false
+      if (booking.property_id !== propertyId) return false
       
       const startDate = dayjs(booking.start_date).format('YYYY-MM-DD')
       const endDate = dayjs(booking.end_date).format('YYYY-MM-DD')

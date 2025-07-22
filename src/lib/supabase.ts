@@ -16,21 +16,17 @@ export interface Unit {
   price_per_night?: number
   size_m2?: number
   images?: string[]
-  amenities?: string[]
   location?: string
   featured?: boolean
 }
 
 export interface Booking {
   id: string
-  unit_id: string
+  property_id: string
   start_date: string
   end_date: string
   source: string
-  status: 'pending' | 'confirmed' | 'cancelled'
-  guest_name?: string
-  guest_email?: string
-  guest_phone?: string
-  adults?: number
-  children?: number
+  user_id: string
+  channel?: string
+  external_uid?: string
 }

@@ -3,15 +3,13 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { X, Calendar as CalendarIcon, CheckCircle } from 'lucide-react';
-import { format } from 'date-fns';
+import { X, CheckCircle } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit, supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
+import AvailabilityCalendar from './AvailabilityCalendar';
+import { format } from 'date-fns';
 
 interface BookingDrawerProps {
   apartment: Unit;
@@ -68,7 +66,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
       const { error } = await supabase
         .from('bookings')
         .insert({
-          unit_id: apartment.id,
+          property_id: apartment.id,
           start_date: format(checkIn, 'yyyy-MM-dd'),
           end_date: format(checkOut, 'yyyy-MM-dd'),
           source: 'website',
@@ -185,83 +183,24 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
           </SheetHeader>
 
           <form onSubmit={handleSubmit} className="space-y-6 px-6 pb-6">
-            {/* Date Selection */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="checkin" className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.checkin')}
-                </Label>
-                <Popover modal={true}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal h-10 text-sm",
-                        "border-gray-300 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6]",
-                        !checkIn && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
-                      {checkIn ? format(checkIn, 'MMM dd') : t('booking.pickDate')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent 
-                    className="w-auto p-0 bg-white border-gray-300 shadow-lg z-[10001]" 
-                    align="start"
-                    side="bottom"
-                    sideOffset={4}
-                    avoidCollisions={true}
-                    onOpenAutoFocus={(e) => e.preventDefault()}
-                  >
-                    <Calendar
-                      mode="single"
-                      selected={checkIn}
-                      onSelect={setCheckIn}
-                      disabled={(date) => date < new Date()}
-                      initialFocus
-                      className="rounded-md border-0"
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="checkout" className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.checkout')}
-                </Label>
-                <Popover modal={true}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal h-10 text-sm",
-                        "border-gray-300 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6]",
-                        !checkOut && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4 text-[#0077B6]" />
-                      {checkOut ? format(checkOut, 'MMM dd') : t('booking.pickDate')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent 
-                    className="w-auto p-0 bg-white border-gray-300 shadow-lg z-[10001]" 
-                    align="start"
-                    side="bottom"
-                    sideOffset={4}
-                    avoidCollisions={true}
-                    onOpenAutoFocus={(e) => e.preventDefault()}
-                  >
-                    <Calendar
-                      mode="single"
-                      selected={checkOut}
-                      onSelect={setCheckOut}
-                      disabled={(date) => date <= (checkIn || new Date())}
-                      initialFocus
-                      className="rounded-md border-0"
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
+            {/* Calendar for Date Selection */}
+            <div className="space-y-2">
+              <Label className="text-[#0C1930] font-app font-medium text-sm">
+                Select Your Dates
+              </Label>
+              <AvailabilityCalendar 
+                unit={apartment}
+                selectedDate={checkIn}
+                onDateSelect={setCheckIn}
+                selectedEndDate={checkOut}
+                onEndDateSelect={setCheckOut}
+                mode="range"
+              />
+              {checkIn && checkOut && (
+                <div className="text-sm text-[#0077B6] font-medium mt-2">
+                  {format(checkIn, 'MMM dd')} - {format(checkOut, 'MMM dd')}
+                </div>
+              )}
             </div>
 
             {/* Guest Selection */}
