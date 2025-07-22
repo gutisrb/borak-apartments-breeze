@@ -15,7 +15,7 @@
       "location": "Brač"
     },
     {
-      "id": "b2c3d4e5-f6g7-8901-2345-678901bcdefg",
+      "id": "b2c3d4e5-f6a7-8901-2345-678901bcdef0",
       "name": "Apartment 02—Garden Terrace",
       "max_guests": 2,
       "size_m2": 80,
@@ -28,7 +28,7 @@
       "location": "Brač"
     },
     {
-      "id": "c3d4e5f6-g7h8-9012-3456-789012cdefgh",
+      "id": "c3d4e5f6-a7b8-9012-3456-789012cdef01",
       "name": "Apartment 03—Premium Suite", 
       "max_guests": 2,
       "size_m2": 75,
@@ -41,7 +41,7 @@
       "location": "Brač"
     },
     {
-      "id": "d4e5f6g7-h8i9-0123-4567-890123defghi",
+      "id": "d4e5f6a7-b8c9-0123-4567-890123def012",
       "name": "Apartment 04—Family Retreat",
       "max_guests": 2, 
       "size_m2": 95,
@@ -54,7 +54,7 @@
       "location": "Brač"
     },
     {
-      "id": "e5f6g7h8-i9j0-1234-5678-901234efghij",
+      "id": "e5f6a7b8-c9d0-1234-5678-901234ef0123",
       "name": "Apartment 05—Luxury Penthouse",
       "max_guests": 4,
       "size_m2": 120,
