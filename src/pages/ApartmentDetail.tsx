@@ -8,7 +8,7 @@ import { Unit } from '@/lib/supabase';
 import BookingDrawer from '@/components/BookingDrawer';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
+import AvailabilityCalendar from '@/components/AvailabilityCalendar';
 
 const ApartmentDetail = () => {
   const { slug, lang } = useParams<{ slug: string; lang: string }>();
@@ -267,17 +267,8 @@ const ApartmentDetail = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.amenities')}</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {apartment.amenities?.map((amenity, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center gap-2 p-3 bg-[#F4F9FD] text-[#0C1930] font-app rounded-lg"
-                    >
-                      {amenity}
-                    </div>
-                  ))}
-                </div>
+                <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">Availability Calendar</h3>
+                <AvailabilityCalendar unit={apartment} />
               </div>
             </div>
 

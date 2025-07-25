@@ -8,7 +8,7 @@ import { X, CheckCircle } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Unit, supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
-
+import AvailabilityCalendar from './AvailabilityCalendar';
 import { format } from 'date-fns';
 
 interface BookingDrawerProps {
@@ -183,32 +183,24 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
           </SheetHeader>
 
           <form onSubmit={handleSubmit} className="space-y-6 px-6 pb-6">
-            {/* Date Selection */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.checkin')}
-                </Label>
-                <Input
-                  type="date"
-                  value={checkIn ? format(checkIn, 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : undefined)}
-                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
-                  min={format(new Date(), 'yyyy-MM-dd')}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.checkout')}
-                </Label>
-                <Input
-                  type="date"
-                  value={checkOut ? format(checkOut, 'yyyy-MM-dd') : ''}
-                  onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : undefined)}
-                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
-                  min={checkIn ? format(new Date(checkIn.getTime() + 24 * 60 * 60 * 1000), 'yyyy-MM-dd') : format(new Date(), 'yyyy-MM-dd')}
-                />
-              </div>
+            {/* Calendar for Date Selection */}
+            <div className="space-y-2">
+              <Label className="text-[#0C1930] font-app font-medium text-sm">
+                Select Your Dates
+              </Label>
+              <AvailabilityCalendar 
+                unit={apartment}
+                selectedDate={checkIn}
+                onDateSelect={setCheckIn}
+                selectedEndDate={checkOut}
+                onEndDateSelect={setCheckOut}
+                mode="range"
+              />
+              {checkIn && checkOut && (
+                <div className="text-sm text-[#0077B6] font-medium mt-2">
+                  {format(checkIn, 'MMM dd')} - {format(checkOut, 'MMM dd')}
+                </div>
+              )}
             </div>
 
             {/* Guest Selection */}

@@ -18,7 +18,6 @@ export interface Unit {
   images?: string[]
   location?: string
   featured?: boolean
-  amenities?: string[]
 }
 
 export interface Booking {
