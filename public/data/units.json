@@ -16,7 +16,8 @@
         "/lovable-uploads/Photo 9.7.25., 14 00 35.jpg",
         "/lovable-uploads/Photo 9.7.25., 14 00 27.jpg"
       ],
-      "location": "Brač"
+      "location": "Brač",
+      "amenities": ["WiFi", "AC", "Kitchen", "Parking", "Sea View", "Balcony"]
     },
     {
       "id": "b2c3d4e5-f6a7-8901-2345-678901bcdef0",
@@ -29,7 +30,8 @@
         "/lovable-uploads/e2e41bd7-d4d7-464e-9b5a-fb958417521a.png",
         "/lovable-uploads/339a8eee-df9f-42b5-b779-383e6517ad33.png"
       ],
-      "location": "Brač"
+      "location": "Brač",
+      "amenities": ["WiFi", "AC", "Full Kitchen", "Parking", "Garden View", "Terrace"]
     },
     {
       "id": "c3d4e5f6-a7b8-9012-3456-789012cdef01",
@@ -42,27 +44,29 @@
         "/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png",
         "/lovable-uploads/0ed2d36a-7632-4869-ac20-e95064f4a508.png"
       ],
-      "location": "Brač"
+      "location": "Brač",
+      "amenities": ["WiFi", "AC", "Premium Kitchen", "Parking", "Panoramic View", "Beach Access"]
     },
     {
       "id": "d4e5f6a7-b8c9-0123-4567-890123def012",
       "name": "Apartment 04—Family Retreat",
-      "max_guests": 2, 
+      "max_guests": 4, 
       "size_m2": 95,
-      "price_per_night": 90,
+      "price_per_night": 110,
       "description": "Large family apartment with multiple bedrooms and spacious living areas.",
       "images": [
         "/lovable-uploads/bf0e5e79-170a-4134-8bd6-c4b40d0b7277.png",
         "/lovable-uploads/ef22bf17-253a-4915-ae4f-f55e52d38c1b.png"
       ],
-      "location": "Brač"
+      "location": "Brač",
+      "amenities": ["WiFi", "AC", "Full Kitchen", "Parking", "Multiple Bedrooms", "Large Terrace"]
     },
     {
       "id": "e5f6a7b8-c9d0-1234-5678-901234ef0123",
       "name": "Apartment 05—Luxury Penthouse",
-      "max_guests": 4,
+      "max_guests": 6,
       "size_m2": 120,
-      "price_per_night": 120,
+      "price_per_night": 150,
       "description": "Expansive penthouse apartment with panoramic views, private rooftop terrace, premium amenities and luxury furnishings perfect for extended family stays.",
       "images": [
         "/lovable-uploads/79272b68-db54-475f-8369-71219cd4cb46.png",
@@ -70,7 +74,8 @@
         "/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
       ],
       "location": "Brač",
-      "featured": true
+      "featured": true,
+      "amenities": ["WiFi", "AC", "Premium Kitchen", "Parking", "Panoramic View", "Large Terrace", "Multiple Bedrooms"]
     }
   ]
 }
