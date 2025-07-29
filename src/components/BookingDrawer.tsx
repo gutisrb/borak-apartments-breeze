@@ -106,7 +106,6 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   setCheckIn(undefined);
   setCheckOut(undefined);
   setAdults('2');
-  setChildren('0');
   setName('');
   setEmail('');
   setPhone('');
