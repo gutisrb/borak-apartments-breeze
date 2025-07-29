@@ -17,7 +17,7 @@ const CallToActionSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/lovable-uploads/e2e41bd7-d4d7-464e-9b5a-fb958417521a.png"
+          src="/lovable-uploads/IMG-20250622-WA0009.jpg"
           alt="Luxury Croatian coastline"
           className="h-full w-full object-cover"
           loading="lazy"
