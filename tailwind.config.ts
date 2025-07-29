@@ -94,12 +94,24 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'ken-burns': {
+					'0%': {
+						transform: 'scale(1) translate(0, 0)'
+					},
+					'50%': {
+						transform: 'scale(1.08) translate(-1%, -1%)'
+					},
+					'100%': {
+						transform: 'scale(1.15) translate(-2%, -2%)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out'
+				'fade-in': 'fade-in 0.6s ease-out',
+				'ken-burns': 'ken-burns 20s ease-in-out infinite'
 			}
 		}
 	},

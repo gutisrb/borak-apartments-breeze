@@ -1,25 +1,82 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const heroImages = [
-  '/lovable-uploads/2e5e5b90-bd2c-40f0-a4a3-9f27a291f27a.png',
-  '/lovable-uploads/e2e41bd7-d4d7-464e-9b5a-fb958417521a.png',
-  '/lovable-uploads/0ed2d36a-7632-4869-ac20-e95064f4a508.png'
+  '/lovable-uploads/hero-brac-1.jpeg',
+  '/lovable-uploads/hero-brac-2.jpg',
+  '/lovable-uploads/hero-brac-3.jpg',
+  '/lovable-uploads/hero-brac-4.jpg',
+  '/lovable-uploads/hero-brac-5.jpg'
 ];
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(new Array(heroImages.length).fill(false));
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
   const { t } = useTranslation();
 
+  // Preload images
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 8000);
-
-    return () => clearInterval(interval);
+    heroImages.forEach((src, index) => {
+      const img = new Image();
+      img.onload = () => {
+        setImagesLoaded(prev => {
+          const newState = [...prev];
+          newState[index] = true;
+          return newState;
+        });
+      };
+      img.src = src;
+    });
   }, []);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      }, 6000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused]);
+
+  // Touch/swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }
+    if (isRightSwipe) {
+      setCurrentImage((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    }
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentImage(index);
+  };
 
   const scrollToApartments = () => {
     const apartmentsSection = document.getElementById('apartments');
@@ -29,21 +86,40 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden">
-      {/* Image Slider */}
+    <section 
+      id="hero" 
+      className="relative h-screen w-full overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Enhanced Image Slider with Ken Burns Effect */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-2000 ${
-              index === currentImage ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              index === currentImage ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
             }`}
+            style={{
+              transform: index === currentImage ? 'scale(1.05)' : 'scale(1)',
+              transition: 'all 8s ease-in-out',
+            }}
           >
             <img
               src={image}
-              alt={`Luxury Croatian seaside apartments ${index + 1}`}
-              className="h-full w-full object-cover"
+              alt={`Beautiful Croatian coast and apartments on Brač island ${index + 1}`}
+              className={`h-full w-full object-cover transition-all duration-1000 ${
+                imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
+              } ${
+                index === currentImage ? 'animate-ken-burns' : ''
+              }`}
               loading={index === 0 ? 'eager' : 'lazy'}
+              style={{
+                willChange: 'transform',
+              }}
             />
           </div>
         ))}
@@ -71,6 +147,24 @@ const HeroSection = () => {
               {t('hero.explore')}
             </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Carousel Navigation Indicators */}
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex space-x-3">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${
+                index === currentImage
+                  ? 'bg-white shadow-lg scale-110'
+                  : 'bg-white/40 hover:bg-white/60'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
 
