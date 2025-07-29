@@ -240,7 +240,8 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   </SelectContent>
                 </Select>
               </div>
-
+            </div>
+            
             {/* Contact Information */}
             <div className="space-y-4">
               <div className="space-y-2">
