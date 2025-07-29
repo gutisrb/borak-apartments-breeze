@@ -94,7 +94,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/79272b68-db54-475f-8369-71219cd4cb46.png"
+              src="/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
               alt="Borak Apartments"
               className="h-20 md:h-24 w-auto object-contain cursor-pointer transition-transform hover:scale-105"
               onClick={handleLogoClick}
