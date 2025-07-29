@@ -9,7 +9,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { Unit, supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 import AvailabilityCalendar from './AvailabilityCalendar';
-import { format } from 'date-fns';
+import { format } from 'date-fns'; 
 
 interface BookingDrawerProps {
   apartment: Unit;
