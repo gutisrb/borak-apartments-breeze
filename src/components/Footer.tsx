@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/c5281623-4a84-4fe6-bd17-194e2bc50061.png"
+              src="/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
               alt="Borak Apartments - Luxury Croatian Retreat" 
               className="h-24 md:h-[140px] w-auto mb-6 object-contain"
               width="320"
