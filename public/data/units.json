@@ -2,7 +2,7 @@
   "units": [
     {
       "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-      "name": "Apartment 01—Balcony Sea View",
+      "name": "Apartment 01",
       "max_guests": 2,
       "size_m2": 30,
       "price_per_night": 90,
@@ -20,7 +20,7 @@
     },
     {
       "id": "b2c3d4e5-f6a7-8901-2345-678901bcdef0",
-      "name": "Apartment 02—Garden Terrace",
+      "name": "Apartment 02",
       "max_guests": 2,
       "size_m2": 30,
       "price_per_night": 90,
@@ -39,7 +39,7 @@
     },
     {
       "id": "c3d4e5f6-a7b8-9012-3456-789012cdef01",
-      "name": "Apartment 03—Premium Suite", 
+      "name": "Apartment 03", 
       "max_guests": 2,
       "size_m2": 30,
       "price_per_night": 90,
@@ -57,7 +57,7 @@
     },
     {
       "id": "d4e5f6a7-b8c9-0123-4567-890123def012",
-      "name": "Apartment 04—Family Retreat",
+      "name": "Apartment 04",
       "max_guests": 2, 
       "size_m2": 30,
       "price_per_night": 90,
@@ -75,7 +75,7 @@
     },
     {
       "id": "e5f6a7b8-c9d0-1234-5678-901234ef0123",
-      "name": "Apartment 05—Luxury Penthouse",
+      "name": "Apartment 05",
       "max_guests": 4,
       "size_m2": 40,
       "price_per_night": 120,
