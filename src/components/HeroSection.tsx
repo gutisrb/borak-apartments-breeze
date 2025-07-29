@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const heroImages = [
-  '/lovable-uploads/hero-brac-1.jpeg',
-  '/lovable-uploads/hero-brac-2.jpg',
-  '/lovable-uploads/hero-brac-3.jpg',
-  '/lovable-uploads/hero-brac-4.jpg',
-  '/lovable-uploads/hero-brac-5.jpg'
+  '/hero-brac-1.jpg',
+  '/hero-brac-2.jpg',
+  '/hero-brac-3.jpg',
+  '/hero-brac-4.jpg',
+  '/hero-brac-5.jpg'
 ];
 
 const HeroSection = () => {
@@ -95,30 +95,24 @@ const HeroSection = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Enhanced Image Slider with Ken Burns Effect */}
+      {/* Smooth Image Carousel */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentImage ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImage ? 'opacity-100' : 'opacity-0'
             }`}
-            style={{
-              transform: index === currentImage ? 'scale(1.05)' : 'scale(1)',
-              transition: 'all 8s ease-in-out',
-            }}
           >
             <img
               src={image}
               alt={`Beautiful Croatian coast and apartments on Brač island ${index + 1}`}
-              className={`h-full w-full object-cover transition-all duration-1000 ${
+              className={`h-full w-full object-cover ${
                 imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
-              } ${
-                index === currentImage ? 'animate-ken-burns' : ''
               }`}
               loading={index === 0 ? 'eager' : 'lazy'}
               style={{
-                willChange: 'transform',
+                transition: 'opacity 1s ease-in-out',
               }}
             />
           </div>
