@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const heroImages = [
-  '/hero-brac-1.jpg',
-  '/hero-brac-2.jpg',
-  '/hero-brac-3.jpg',
-  '/hero-brac-4.jpg',
-  '/hero-brac-5.jpg'
+  '/lovable-uploads/hero-brac-1.jpeg',
+  '/lovable-uploads/hero-brac-2.jpg',
+  '/lovable-uploads/hero-brac-3.jpg',
+  '/lovable-uploads/hero-brac-4.jpg',
+  '/lovable-uploads/hero-brac-5.jpg'
 ];
 
 const HeroSection = () => {

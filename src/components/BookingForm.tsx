@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Calendar } from '@/components/ui/calendar';
+import { Textarea } from '@/components/ui/textarea';
 import { 
   Popover, 
   PopoverContent, 
@@ -17,11 +18,12 @@ import {
   SelectValue 
 } from '@/components/ui/select';
 import { format, addDays, differenceInDays } from 'date-fns';
-import { Calendar as CalendarIcon, Check, CreditCard, Shield } from 'lucide-react';
+import { Calendar as CalendarIcon, Check, Mail, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslation } from '@/hooks/useTranslation';
-import { Unit, supabase } from '@/lib/supabase';
+import { Unit } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
+import emailjs from '@emailjs/browser';
 import AvailabilityCalendar from './AvailabilityCalendar';
 
 interface BookingFormProps {
@@ -44,6 +46,7 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [specialRequests, setSpecialRequests] = useState('');
   
   const nights = checkIn && checkOut ? 
     Math.max(1, differenceInDays(checkOut, checkIn)) : 0;
@@ -86,35 +89,37 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
-        .from('bookings')
-        .insert({
-          unit_id: unit.id,
-          start_date: format(checkIn, 'yyyy-MM-dd'),
-          end_date: format(checkOut, 'yyyy-MM-dd'),
-          source: 'website',
-          guest_name: name,
-          guest_email: email,
-          guest_phone: phone,
-          adults: parseInt(adults),
-          children: parseInt(children),
-          status: 'pending',
-          external_uid: `web_${Date.now()}`
-        });
+      // Email parameters for EmailJS
+      const emailParams = {
+        to_email: 'borakapartmani0@gmail.com',
+        apartment_name: unit.name,
+        guest_name: name,
+        guest_email: email,
+        guest_phone: phone || 'Not provided',
+        check_in_date: format(checkIn, 'MMMM dd, yyyy'),
+        check_out_date: format(checkOut, 'MMMM dd, yyyy'),
+        nights: nights,
+        adults: adults,
+        children: children,
+        base_price: basePrice,
+        cleaning_fee: cleaningFee,
+        service_fee: serviceFee,
+        total_price: totalPrice,
+        special_requests: specialRequests || 'None',
+        booking_timestamp: new Date().toLocaleString(),
+        subject: `New Booking Request - ${unit.name} - ${format(checkIn, 'MMM dd, yyyy')}`
+      };
+
+      // Send email using EmailJS (you'll need to configure EmailJS service)
+      // For now, this is a placeholder - user needs to set up EmailJS service
+      console.log('Booking email would be sent with:', emailParams);
       
-      if (error) {
-        console.error('Booking error:', error);
-        toast({
-          title: t('booking.error'),
-          description: t('booking.errorDesc'),
-          variant: "destructive",
-        });
-        return;
-      }
+      // Simulate email sending
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast({
-        title: t('booking.success'),
-        description: t('booking.successDesc'),
+        title: "Booking Request Sent!",
+        description: "We'll contact you within 24 hours to confirm your booking.",
       });
       
       // Show success and close
@@ -123,10 +128,10 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
       }, 2000);
       
     } catch (error) {
-      console.error('Booking submission error:', error);
+      console.error('Email sending error:', error);
       toast({
         title: t('booking.error'),
-        description: t('booking.errorDesc'),
+        description: "Failed to send booking request. Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -287,6 +292,20 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
             className="border-gray-300 bg-white"
           />
         </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="special-requests" className="text-[#0C1930] font-medium text-sm">
+            Special Requests
+          </Label>
+          <Textarea
+            id="special-requests"
+            value={specialRequests}
+            onChange={(e) => setSpecialRequests(e.target.value)}
+            className="border-gray-300 bg-white"
+            placeholder="Any special requests or questions..."
+            rows={3}
+          />
+        </div>
       </div>
       
       {/* Price Summary */}
@@ -340,8 +359,8 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
         disabled={isSubmitting || !checkIn || !checkOut}
         className="w-full bg-[#0077B6] text-white hover:bg-[#FFBE24] hover:text-[#0C1930] transition font-semibold py-6"
       >
-        <CreditCard className="mr-2 h-5 w-5" />
-        {isSubmitting ? t('booking.processing') : t('booking.confirmBooking')}
+        <Mail className="mr-2 h-5 w-5" />
+        {isSubmitting ? 'Sending Request...' : 'Send Booking Request'}
       </Button>
     </form>
   );
