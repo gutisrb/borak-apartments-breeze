@@ -23,7 +23,6 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const [checkIn, setCheckIn] = useState<Date>();
   const [checkOut, setCheckOut] = useState<Date>();
   const [adults, setAdults] = useState('2');
-  const [children, setChildren] = useState('0');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -62,59 +61,75 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
 
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('bookings')
-        .insert({
-          property_id: apartment.id,
-          start_date: format(checkIn, 'yyyy-MM-dd'),
-          end_date: format(checkOut, 'yyyy-MM-dd'),
-          source: 'website',
-          user_id: crypto.randomUUID(),
-          channel: 'direct',
-          external_uid: `web_${Date.now()}`
-        });
+   try {
+  // Calculate nights and price
+  const nights = checkIn && checkOut ? Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24))) : 0;
+  const basePrice = nights * (apartment.price_per_night || 100);
+  const cleaningFee = 50;
+  const serviceFee = Math.floor(basePrice * 0.1);
+  const totalPrice = basePrice + cleaningFee + serviceFee;
 
-      if (error) {
-        console.error('Booking error:', error);
-        toast({
-          title: t('booking.error'),
-          description: t('booking.errorDesc'),
-          variant: "destructive",
-        });
-        return;
-      }
+  // Send email using EmailJS
+  const emailData = {
+    guest_name: name,
+    guest_email: email,
+    guest_phone: phone,
+    apartment_name: apartment.name,
+    check_in: format(checkIn, 'yyyy-MM-dd'),
+    check_out: format(checkOut, 'yyyy-MM-dd'),
+    adults: adults,
+    total_nights: nights,
+    total_price: totalPrice,
+    booking_date: new Date().toLocaleString()
+  };
 
-      setShowSuccess(true);
-      
-      // Clear form
-      setCheckIn(undefined);
-      setCheckOut(undefined);
-      setAdults('2');
-      setChildren('0');
-      setName('');
-      setEmail('');
-      setPhone('');
+  const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      service_id: 'service_li7uydk',
+      template_id: 'template_wej8qwt',
+      user_id: 'TsQLwgQ4gJqpaGTtH',
+      template_params: emailData
+    })
+  });
 
-      // Auto close after 3 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
-        onClose();
-      }, 3000);
+  if (!response.ok) {
+    throw new Error('Email sending failed');
+  }
 
-      toast({
-        title: t('booking.success'),
-        description: t('booking.successDesc'),
-      });
+  setShowSuccess(true);
+  
+  // Clear form
+  setCheckIn(undefined);
+  setCheckOut(undefined);
+  setAdults('2');
+  setChildren('0');
+  setName('');
+  setEmail('');
+  setPhone('');
 
-    } catch (error) {
-      console.error('Booking submission error:', error);
-      toast({
-        title: t('booking.error'),
-        description: t('booking.errorDesc'),
-        variant: "destructive",
-      });
-    } finally {
+  // Auto close after 3 seconds
+  setTimeout(() => {
+    setShowSuccess(false);
+    onClose();
+  }, 3000);
+
+  toast({
+    title: t('booking.success'),
+    description: "Booking request sent! We'll contact you within 24 hours.",
+  });
+
+} catch (error) {
+  console.error('Email sending error:', error);
+  toast({
+    title: t('booking.error'),
+    description: "Failed to send booking request. Please try again.",
+    variant: "destructive",
+  });
+} finally {
       setIsSubmitting(false);
     }
   };
@@ -226,29 +241,6 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   </SelectContent>
                 </Select>
               </div>
-
-              <div className="space-y-2">
-                <Label className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.children')}
-                </Label>
-                <Select value={children} onValueChange={setChildren}>
-                  <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent 
-                    className="bg-white border-gray-300 shadow-lg z-[10001]"
-                    position="popper"
-                    side="bottom"
-                    sideOffset={4}
-                    avoidCollisions={true}
-                  >
-                    {[0, 1, 2, 3, 4].map(num => (
-                      <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
 
             {/* Contact Information */}
             <div className="space-y-4">
