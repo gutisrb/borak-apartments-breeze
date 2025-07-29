@@ -111,19 +111,21 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
             <div>
               <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.amenities')}</h3>
               <div className="grid grid-cols-2 gap-3">
-                {apartment.amenities?.map((amenity, index) => {
-                  const IconComponent = amenityIcons[amenity as keyof typeof amenityIcons] || Square;
-                  return (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
-                    >
-                      <IconComponent className="h-4 w-4" />
-                      {amenity}
-                    </Badge>
-                  );
-                })}
+                {/* Static amenities since no amenities in Unit interface */}
+                <Badge 
+                  variant="secondary" 
+                  className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
+                >
+                  <Wifi className="h-4 w-4" />
+                  Free WiFi
+                </Badge>
+                <Badge 
+                  variant="secondary" 
+                  className="flex items-center gap-2 p-3 justify-start bg-[#F4F9FD] text-[#0C1930] font-app border-0"
+                >
+                  <Car className="h-4 w-4" />
+                  Parking
+                </Badge>
               </div>
             </div>
           </div>

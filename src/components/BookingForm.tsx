@@ -205,7 +205,7 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
         
         {checkIn && checkOut && (
           <div className="text-sm text-[#20425C] font-medium">
-            {t('booking.stayLength', { nights })}
+            {nights} night{nights !== 1 ? 's' : ''}
           </div>
         )}
       </div>

@@ -117,16 +117,13 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                     <h3 className="text-xl font-playfair font-bold mb-2 text-[#0C1930]">{unit.name}</h3>
                     <p className="text-[#20425C] mb-4">{unit.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {unit.amenities?.slice(0, 4).map((amenity, index) => (
-                        <Badge key={index} variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
-                          {amenity}
-                        </Badge>
-                      ))}
-                      {(unit.amenities?.length || 0) > 4 && (
-                        <Badge variant="outline" className="bg-transparent text-[#0077B6] border-[#0077B6]">
-                          +{(unit.amenities?.length || 0) - 4} more
-                        </Badge>
-                      )}
+                      {/* Static amenities since no amenities in Unit interface */}
+                      <Badge variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
+                        Free WiFi
+                      </Badge>
+                      <Badge variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
+                        Parking
+                      </Badge>
                     </div>
                     <div className="flex items-center gap-4 text-sm text-[#20425C] mb-4">
                       <div className="flex items-center gap-1">
@@ -154,13 +151,6 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                         onInteractOutside={(e) => e.preventDefault()}
                         onPointerDownOutside={(e) => e.preventDefault()}
                         onFocusOutside={(e) => e.preventDefault()}
-                        onOpenChange={(open) => {
-                          if (open) {
-                            handleCalendarOpen(unit.id);
-                          } else {
-                            handleCalendarClose();
-                          }
-                        }}
                       >
                         <div className="p-2 bg-white">
                           <h4 className="text-sm font-medium mb-2 text-[#0C1930]">
@@ -235,11 +225,13 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                   </div>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {unit.amenities?.slice(0, 4).map((amenity, index) => (
-                      <Badge key={index} variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
-                        {amenity}
-                      </Badge>
-                    ))}
+                    {/* Static amenities since no amenities in Unit interface */}
+                    <Badge variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
+                      Free WiFi
+                    </Badge>
+                    <Badge variant="outline" className="bg-[#F4F9FD] text-[#20425C] border-[#E2EDF3]">
+                      Parking
+                    </Badge>
                   </div>
                   
                   <div className="flex items-center gap-4 text-sm text-[#20425C] mb-4">
@@ -267,13 +259,6 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
                         onInteractOutside={(e) => e.preventDefault()}
                         onPointerDownOutside={(e) => e.preventDefault()}
                         onFocusOutside={(e) => e.preventDefault()}
-                        onOpenChange={(open) => {
-                          if (open) {
-                            handleCalendarOpen(unit.id);
-                          } else {
-                            handleCalendarClose();
-                          }
-                        }}
                       >
                         <div className="p-2 bg-white">
                           <h4 className="text-sm font-medium mb-2 text-[#0C1930]">
@@ -308,7 +293,7 @@ const BookingFlow = ({ units }: BookingFlowProps) => {
           <SheetContent className="sm:max-w-md md:max-w-lg overflow-y-auto">
             <SheetHeader>
               <SheetTitle className="font-playfair text-[#0C1930]">
-                {t('bookingFlow.bookProperty', { name: selectedUnit.name })}
+                Book {selectedUnit.name}
               </SheetTitle>
             </SheetHeader>
             <div className="py-6">
