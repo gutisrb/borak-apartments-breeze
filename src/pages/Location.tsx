@@ -186,6 +186,11 @@ const Location = () => {
 
               {/* Supetar */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                  <img 
+                  src="/lovable-uploads/unnamed.jpg" 
+                  alt="Stone Quarries"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
                 <div className="p-6">
                   <div className="flex items-center mb-3">
                     <MapPin className="w-6 h-6 text-[#0077B6] mr-3" />
@@ -201,6 +206,11 @@ const Location = () => {
 
               {/* Traditional Villages */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                  <img 
+                  src="/lovable-uploads/skrip-otok-brac-112-1414412857_big.jpg" 
+                  alt="Stone Quarries"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
                 <div className="p-6">
                   <div className="flex items-center mb-3">
                     <Clock className="w-6 h-6 text-[#0077B6] mr-3" />
