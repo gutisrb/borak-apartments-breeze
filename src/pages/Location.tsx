@@ -268,13 +268,13 @@ const Location = () => {
         </section>
 
         {/* Getting There */}
-        <section className="section-padding bg-[#0C1930] text-white">
+        <section className="section-padding bg-gradient-to-br from-[#0C1930] to-[#20425C] text-white">
           <div className="container-luxury">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair text-white">
                 {t('locationPage.gettingThere.title')}
               </h2>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto font-app">
+              <p className="text-xl text-white max-w-3xl mx-auto font-app">
                 {t('locationPage.gettingThere.subtitle')}
               </p>
             </div>
@@ -282,30 +282,30 @@ const Location = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <Ship className="w-12 h-12 text-[#FFBE24] mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-playfair">
+                <h3 className="text-xl font-bold mb-3 font-playfair text-white">
                   {t('locationPage.gettingThere.ferry.title')}
                 </h3>
-                <p className="text-white/80 leading-relaxed font-app">
+                <p className="text-white leading-relaxed font-app">
                   {t('locationPage.gettingThere.ferry.description')}
                 </p>
               </div>
 
               <div className="text-center">
                 <Plane className="w-12 h-12 text-[#FFBE24] mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-playfair">
+                <h3 className="text-xl font-bold mb-3 font-playfair text-white">
                   {t('locationPage.gettingThere.airport.title')}
                 </h3>
-                <p className="text-white/80 leading-relaxed font-app">
+                <p className="text-white leading-relaxed font-app">
                   {t('locationPage.gettingThere.airport.description')}
                 </p>
               </div>
 
               <div className="text-center">
                 <Car className="w-12 h-12 text-[#FFBE24] mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-playfair">
+                <h3 className="text-xl font-bold mb-3 font-playfair text-white">
                   {t('locationPage.gettingThere.carFerry.title')}
                 </h3>
-                <p className="text-white/80 leading-relaxed font-app">
+                <p className="text-white leading-relaxed font-app">
                   {t('locationPage.gettingThere.carFerry.description')}
                 </p>
               </div>

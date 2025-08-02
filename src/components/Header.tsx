@@ -15,7 +15,7 @@ const Header = () => {
   const { lang } = useParams<{ lang: string }>();
 
   // Check if we're on apartment pages to always show dark background
-  const isApartmentPage = location.pathname.includes('/apartments');
+  const isApartmentPage = location.pathname.includes('/apartments') || location.pathname.includes('/location');
 
   useEffect(() => {
     const handleScroll = () => {
