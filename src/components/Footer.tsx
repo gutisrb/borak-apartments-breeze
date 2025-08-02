@@ -29,26 +29,26 @@ const Footer = () => {
               <div>
                 <div className="font-medium text-white mb-1">{t('footer.address')}</div>
                 <div className="text-sm leading-relaxed">
-                  Supetar, Island of Brač<br />
+                  Sutivan, Vilota 16 Brač<br />
                   21400, Croatia
                 </div>
               </div>
               <div>
                 <div className="font-medium text-white mb-1">{t('footer.phone')}</div>
                 <a 
-                  href="tel:+385123456789" 
+                  href="tel:+381 65 2909492" 
                   className="text-sm hover:text-accent transition-colors"
                 >
-                  +385 12 345 6789
+                  +381 65 2909492
                 </a>
               </div>
               <div>
                 <div className="font-medium text-white mb-1">{t('footer.email')}</div>
                 <a 
-                  href="mailto:reservations@borakapartments.com" 
+                  href="mailto:borakapartmani0@gmail.com" 
                   className="text-sm hover:text-accent transition-colors"
                 >
-                  reservations@borakapartments.com
+                  borakapartmani0@gmail.com
                 </a>
               </div>
             </div>
