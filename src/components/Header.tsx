@@ -116,7 +116,7 @@ const Header = () => {
               {t('nav.apartments')}
             </button>
             <button
-              onClick={() => scrollToSection('location')}
+              onClick={() => handleNavigation(`/${lang || 'en'}/location`)}
               className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
               {t('nav.location')}
@@ -192,7 +192,7 @@ const Header = () => {
                 {t('nav.apartments')}
               </button>
               <button
-                onClick={() => scrollToSection('location')}
+                onClick={() => handleNavigation(`/${lang || 'en'}/location`)}
                 className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.location')}

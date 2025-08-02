@@ -151,5 +151,101 @@
     "4": {
       "description": "Otkrijte naš prostrani porodični apartman sa više spavaćih soba i velikom terasom. Dizajniran za veće grupe, sa premijum sadržajima i zadivljujućim pogledom na jadransku obalu."
     }
+  },
+  "locationPage": {
+    "title": "Otkrijte otok Brač",
+    "hero": {
+      "title": "Otkrijte otok Brač",
+      "subtitle": "Hrvatska skrivena dragulj u Jadranskom moru, gdje se drevne tradicije susreću s netaknutom prirodnom ljepotom.",
+      "cta": "Istražite naše apartmane"
+    },
+    "about": {
+      "title": "O otoku Brač",
+      "description1": "Brač je treći najveći otok u Jadranskom moru i najveći otok u Dalmaciji, Hrvatska. Ovaj prekrasni vapnenački otok proteže se 48 kilometara u duljinu i 14 kilometara u širinu, smješten je samo kratku vožnju trajektom od Splita.",
+      "description2": "S poviješću koja seže u neolitsko doba, Brač je kontinuirano naseljen tisućama godina. Otok je svjetski poznat po iznimnom bijelom vapnencu koji se kopa od antičkih vremena i koristi u poznatim zgradama poput Dioklecijanove palače u Splitu, Bijele kuće u Washingtonu i sjedišta UN-a u New Yorku.",
+      "length": "Duljina otoka",
+      "width": "Maksimalna širina"
+    },
+    "attractions": {
+      "title": "Poznate atrakcije",
+      "subtitle": "Otkrijte prirodna čuda i kulturne blaga koja čine otok Brač istinski posebnim.",
+      "zlatniRat": {
+        "title": "Plaža Zlatni rat",
+        "description": "Najpoznatija hrvatska plaža, ovaj jedinstveni zlatni rt stalno mijenja oblik s vjetrovima i strujama. UNESCO zaštićena i međunarodno priznata kao jedna od najljepših europskih plaža."
+      },
+      "vidovaGora": {
+        "title": "Vidova gora",
+        "description": "Na 778 metara, ovo je najviša točka među svim jadranskim otocima, nudi prekrasan panoramski pogled na obalu, susjedne otoke i planine na kopnu."
+      },
+      "stoneQuarries": {
+        "title": "Povijesni kamenolomi",
+        "description": "Izvor svjetski poznatog bračkog kamena, ovi drevni kamenolomi pružali su građevinski materijal za ikonične strukture diljem svijeta više od 2000 godina."
+      },
+      "bol": {
+        "title": "Grad Bol",
+        "description": "Šarmantni lučki gradić dom poznatog dominikanskog samostana iz 15. stoljeća, nudi savršen spoj povijesti, kulture i mediteranske atmosfere."
+      },
+      "supetar": {
+        "title": "Supetar",
+        "description": "Glavna luka otoka i najveći grad s prekrasnom kamenom arhitekturom, mirnim šetnicama i autentičnim hrvatskim obalnim šarmom."
+      },
+      "villages": {
+        "title": "Tradicionalna sela",
+        "description": "Istražite autentičan otočni život u povijesnim selima poput Škripa, Milne i Ložišća, gdje su tradicionalna kamena arhitektura i lokalni običaji prekrasno očuvani."
+      }
+    },
+    "activities": {
+      "title": "Aktivnosti i iskustva",
+      "subtitle": "Od avanturističkih sportova do kulturnih otkrića, Brač nudi nezaboravna iskustva za svakog putnika.",
+      "waterSports": {
+        "title": "Raj vodenih sportova",
+        "description": "Brač je poznat po idealnim uvjetima vjetra, posebno popodnevnim maestralom koji ga čini svjetskim odredištem za jedrenje na dasci, kitesurfing i jedrenje."
+      },
+      "hiking": {
+        "title": "Planinarenje i priroda",
+        "description": "Otkrijte slikovite staze koje vode do Vidove gore, obalne šetnje s prekrasnim pogledom na more i skrivene putove kroz maslinike i borove šume."
+      },
+      "culture": {
+        "title": "Kulturno naslijeđe",
+        "description": "Posjetite drevne samostane, istražite tradicionalne radionice kamenorezaca i naučite o bogatoj povijesti otoka u lokalnim muzejima i arheološkim nalazištima."
+      },
+      "localProducts": {
+        "title": "Lokalni delikates",
+        "description": "Kušajte jedinstveno maslinovo ulje buhavicu, okusite lokalna vina od autohtnih sorti grožđa i uživajte u tradicionalnoj hrvatskoj kuhinji s fresh morskim plodovima."
+      },
+      "beachLife": {
+        "title": "Raj plaža",
+        "description": "Osim Zlatnog rata, otkrijte brojne netaknute plaže i skrivene uvale s kristalno čistom vodom savršene za kupanje, ronjenje i opuštanje."
+      }
+    },
+    "gettingThere": {
+      "title": "Kako doći do Brača",
+      "subtitle": "Lagan pristup iz Splita i drugih hrvatskih odredišta čini Brač savršenim otočnim bijegom.",
+      "ferry": {
+        "title": "Trajekt iz Splita",
+        "description": "Redovite trajektne linije povezuju Split sa Supetrom u samo 50 minuta. Česti polasci tijekom cijele godine s trajektima za putnike i automobile."
+      },
+      "airport": {
+        "title": "Aerodrom Brač",
+        "description": "Sezonski letovi iz Zagreba i odabranih europskih gradova slijeću direktno na otok, čineći međunarodni pristup pogodnim tijekom ljetnih mjeseci."
+      },
+      "carFerry": {
+        "title": "Auto-trajekt",
+        "description": "Dovedite svoj automobil na trajekt za potpunu slobodu istraživanja otoka ili iznajmite automobil lokalno za otkrivanje skrivenih plaža i planinskih sela."
+      }
+    },
+    "culture": {
+      "title": "Lokalna kultura i način života",
+      "description1": "Brač zadržava autentičan mediteranski način života gdje je tradicionalno naslijeđe kamenorezaca još uvijek živo danas. Tempo života na otoku poziva vas da usporite i prigrlit ćete hrvatski koncept 'pomalo' - polako i opušteno.",
+      "description2": "Doživite pravu hrvatsku gostoljubivost u obiteljskim konobama, sudjelujte u lokalnim festivalima koji slave berbu grožđa i maslina i budite svjedoci tradicionalnih ribarskih brodova koji se vraćaju s dnevnim ulovom.",
+      "cta": "Rezervirajte svoj otočni bijeg"
+    },
+    "whyChoose": {
+      "title": "Zašto odabrati Brač?",
+      "reason1": "Manje gužvan od Hvara ili Korčule, nudi autentično hrvatsko otočno iskustvo",
+      "reason2": "Plaže svjetske klase uključujući poznati Zlatni rat",
+      "reason3": "Bogato kulturno naslijeđe s 2000 godina kontinuiranog naseljavanja",
+      "reason4": "Savršen za aktivne avanture i mirno opuštanje"
+    }
   }
 }

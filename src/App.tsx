@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import ApartmentDetail from "./pages/ApartmentDetail";
 import Apartments from "./pages/Apartments";
+import Location from "./pages/Location";
 import NotFound from "./pages/NotFound";
 import LanguageWrapper from "./components/LanguageWrapper";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/:lang" element={<LanguageWrapper><Index /></LanguageWrapper>} />
           <Route path="/:lang/apartments" element={<LanguageWrapper><Apartments /></LanguageWrapper>} />
           <Route path="/:lang/apartments/:slug" element={<LanguageWrapper><ApartmentDetail /></LanguageWrapper>} />
+          <Route path="/:lang/location" element={<LanguageWrapper><Location /></LanguageWrapper>} />
           
           {/* 404 route */}
           <Route path="*" element={<NotFound />} />

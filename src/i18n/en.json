@@ -156,5 +156,101 @@
     "4": {
       "description": "Discover our spacious family apartment with multiple bedrooms and a large terrace. Designed for larger groups, featuring premium amenities and breathtaking views of the Adriatic coastline."
     }
+  },
+  "locationPage": {
+    "title": "Discover Brač Island",
+    "hero": {
+      "title": "Discover Brač Island",
+      "subtitle": "Croatia's hidden gem in the Adriatic Sea, where ancient traditions meet pristine natural beauty.",
+      "cta": "Explore Our Apartments"
+    },
+    "about": {
+      "title": "About Brač Island",
+      "description1": "Brač is the third-largest island in the Adriatic Sea and the largest island in Dalmatia, Croatia. This stunning limestone island stretches 48 kilometers in length and 14 kilometers in width, located just a short ferry ride from Split.",
+      "description2": "With a history dating back to Neolithic times, Brač has been continuously inhabited for thousands of years. The island is world-renowned for its exceptional white limestone, quarried since ancient times and used in famous buildings like Diocletian's Palace in Split, the White House in Washington D.C., and the UN headquarters in New York.",
+      "length": "Island Length",
+      "width": "Maximum Width"
+    },
+    "attractions": {
+      "title": "Famous Attractions",
+      "subtitle": "Discover the natural wonders and cultural treasures that make Brač Island truly special.",
+      "zlatniRat": {
+        "title": "Zlatni Rat Beach",
+        "description": "Croatia's most famous beach, this unique golden cape constantly changes shape with the winds and currents. UNESCO protected and internationally acclaimed as one of Europe's most beautiful beaches."
+      },
+      "vidovaGora": {
+        "title": "Vidova Gora",
+        "description": "At 778 meters, this is the highest point among all Adriatic islands, offering breathtaking panoramic views of the coastline, neighboring islands, and the mainland mountains."
+      },
+      "stoneQuarries": {
+        "title": "Historic Stone Quarries",
+        "description": "The source of world-famous Brač stone, these ancient quarries have provided building material for iconic structures around the globe for over 2,000 years."
+      },
+      "bol": {
+        "title": "Bol Town",
+        "description": "A charming harbor town home to the famous Dominican monastery from the 15th century, offering a perfect blend of history, culture, and Mediterranean atmosphere."
+      },
+      "supetar": {
+        "title": "Supetar",
+        "description": "The island's main port and largest town, featuring beautiful stone architecture, peaceful promenades, and authentic Croatian coastal charm."
+      },
+      "villages": {
+        "title": "Traditional Villages",
+        "description": "Explore authentic island life in historic villages like Škrip, Milna, and Ložišća, where traditional stone architecture and local customs are beautifully preserved."
+      }
+    },
+    "activities": {
+      "title": "Activities & Experiences",
+      "subtitle": "From adventure sports to cultural discoveries, Brač offers unforgettable experiences for every traveler.",
+      "waterSports": {
+        "title": "Water Sports Paradise",
+        "description": "Brač is famous for its ideal wind conditions, particularly the afternoon Maestral winds that make it a world-class destination for windsurfing, kitesurfing, and sailing."
+      },
+      "hiking": {
+        "title": "Hiking & Nature",
+        "description": "Discover scenic trails leading to Vidova Gora, coastal walks with stunning sea views, and hidden paths through olive groves and pine forests."
+      },
+      "culture": {
+        "title": "Cultural Heritage",
+        "description": "Visit ancient monasteries, explore traditional stone carving workshops, and learn about the island's rich history at local museums and archaeological sites."
+      },
+      "localProducts": {
+        "title": "Local Delicacies",
+        "description": "Taste the unique buhavica olive oil, sample local wines from indigenous grape varieties, and enjoy traditional Croatian cuisine with fresh seafood and island specialties."
+      },
+      "beachLife": {
+        "title": "Beach Paradise",
+        "description": "Beyond Zlatni Rat, discover numerous pristine beaches and secluded coves with crystal-clear waters perfect for swimming, snorkeling, and relaxation."
+      }
+    },
+    "gettingThere": {
+      "title": "Getting to Brač",
+      "subtitle": "Easy access from Split and other Croatian destinations makes Brač the perfect island getaway.",
+      "ferry": {
+        "title": "Ferry from Split",
+        "description": "Regular ferry services connect Split to Supetar in just 50 minutes. Frequent departures year-round with both passenger and car ferries available."
+      },
+      "airport": {
+        "title": "Brač Airport",
+        "description": "Seasonal flights from Zagreb and select European cities land directly on the island, making international access convenient during summer months."
+      },
+      "carFerry": {
+        "title": "Car Ferry",
+        "description": "Bring your car on the ferry for ultimate island exploration freedom, or rent a car locally to discover hidden beaches and mountain villages."
+      }
+    },
+    "culture": {
+      "title": "Local Culture & Lifestyle",
+      "description1": "Brač maintains an authentic Mediterranean lifestyle where traditional stone carving heritage is still alive today. The island's pace of life invites you to slow down and embrace the Croatian concept of 'pomalo' - taking it easy.",
+      "description2": "Experience genuine Croatian hospitality in family-run konobas (taverns), participate in local festivals celebrating wine and olive harvest, and witness traditional fishing boats returning with the day's catch.",
+      "cta": "Book Your Island Escape"
+    },
+    "whyChoose": {
+      "title": "Why Choose Brač?",
+      "reason1": "Less crowded than Hvar or Korčula, offering authentic Croatian island experience",
+      "reason2": "World-class beaches including the famous Zlatni Rat",
+      "reason3": "Rich cultural heritage with 2,000 years of continuous habitation",
+      "reason4": "Perfect for both active adventures and peaceful relaxation"
+    }
   }
 }
