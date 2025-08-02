@@ -166,6 +166,11 @@ const Location = () => {
 
               {/* Bol Town */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                  <img 
+                  src="/lovable-uploads/Bol-Loza-01-DJI_0064.jpg" 
+                  alt="Stone Quarries"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
                 <div className="p-6">
                   <div className="flex items-center mb-3">
                     <Anchor className="w-6 h-6 text-[#0077B6] mr-3" />
