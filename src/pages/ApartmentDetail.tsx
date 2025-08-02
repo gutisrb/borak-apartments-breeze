@@ -261,7 +261,9 @@ const ApartmentDetail = () => {
 
                 <div className="mt-6">
                   <p className="text-[#20425C] leading-relaxed font-app">
-                    {t(`apartment.${apartment.id}.description`)}
+                   <p className="text-[#20425C] mb-6 leading-relaxed font-app">
+  {apartment.description}
+</p>
                   </p>
                 </div>
               </div>
