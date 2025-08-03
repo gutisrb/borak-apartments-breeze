@@ -247,14 +247,14 @@ const ApartmentDetail = () => {
                 <h3 className="text-xl font-semibold text-[#0C1930] mb-4 font-playfair">{t('modal.details')}</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <Users className="h-5 w-5 text-[#FFBE24]" />
+                    <Users className="h-5 w-5 text-link" />
                     <span className="font-app text-[#20425C]">{t('modal.guests', { count: apartment.max_guests })}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Square className="h-5 w-5 text-[#FFBE24]" />
+                    <Square className="h-5 w-5 text-link" />
                     <span className="font-app text-[#20425C]">{t('modal.size', { size: apartment.size_m2 })}</span>
                   </div>
-                  <div className="text-2xl font-bold text-[#FFBE24] font-app">
+                  <div className="text-2xl font-bold text-success font-app">
                     €{apartment.price_per_night}{t('modal.perNight')}
                   </div>
                 </div>

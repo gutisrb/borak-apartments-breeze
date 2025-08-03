@@ -137,6 +137,104 @@
     "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefinisan gde se Mediteran susreće sa modernom elegancijom.",
     "book": "Rezervišite boravak"
   },
+  "locationPage": {
+    "title": "Ostrvo Brač - Lokacija",
+    "hero": {
+      "title": "Otkrijte magiju ostrva Brač",
+      "subtitle": "Treće po veličini ostrvo u Jadranskom moru, dom čuvene plaže Zlatni Rat i tradicionalne kamene arhitekture",
+      "cta": "Rezervišite boravak"
+    },
+    "about": {
+      "title": "O ostrvu Brač",
+      "content": "Brač je treće po veličini ostrvo u Jadranskom moru, smesteno u centralnom delu hrvatske obale. Sa 48 km dužine i 14 km širine, ovo ostrvo nudi savršenu kombinaciju kristalno čiste vode, bogatog kulturnog nasleđa i autentičnog mediteranskog života.",
+      "heritage": "Ostrvo je naseljeno od neolitskog doba i čuveno je po svojim kamenim kamenolomima. Kamen sa Brača korišćen je za gradnju Dioklecijanove palate u Splitu, Bele kuće u Vašingtonu i sedišta UN u Njujorku.",
+      "landscape": "Od Vidove gore, najviše tačke jadranskih ostrva (778m), do netaknute obale sa skrivenim uvalama, Brač nudi spektakularne prirodne lepote koje čekaju da budu istražene."
+    },
+    "attractions": {
+      "title": "Čuvene atrakcije",
+      "zlatniRat": {
+        "title": "Plaža Zlatni Rat",
+        "description": "Najpoznatija plaža u Hrvatskoj, zaštićena od strane UNESCO-a, čuven po svom obliku koji se menja pod uticajem morskih struja i vetrova."
+      },
+      "vidovaGora": {
+        "title": "Vidova Gora",
+        "description": "Najviša tačka jadranskih ostrva sa panoramskim pogledom na Hvar, Korčulu i kontinentalnu Hrvatsku."
+      },
+      "stoneQuarries": {
+        "title": "Istorijski kamenolomi",
+        "description": "Tradicija kamenoklesarstva stara preko 2000 godina, izvor kamena za svetski poznate građevine."
+      },
+      "bol": {
+        "title": "Grad Bol",
+        "description": "Šarmantno primorsko mesto sa dominikanskim manastirom iz 15. veka i tradicionalnom kamenom arhitekturom."
+      },
+      "supetar": {
+        "title": "Supetar",
+        "description": "Glavni trajektni port ostrva sa prekrasnom kamenom arhitekturom i živopisnom lukom."
+      },
+      "villages": {
+        "title": "Tradicionalna sela",
+        "description": "Škrip, Milna, Ložišća - autentična ostrvoska sela koja čuvaju tradiciju i mediteranski način života."
+      }
+    },
+    "activities": {
+      "title": "Aktivnosti i iskustva",
+      "watersports": {
+        "title": "Vodeni sportovi",
+        "description": "Windsurfing, kite surfing, jedrenje - idealno za ljubitelje čuvenih maestralnih vetrova."
+      },
+      "hiking": {
+        "title": "Planinarenje",
+        "description": "Staze do Vidove gore, obalni putevi, istraživanje netaknute prirode sa spektakularnim pogledima."
+      },
+      "culture": {
+        "title": "Kulturne znamenitosti",
+        "description": "Stari manastiri, tradicija kamenoklesarstva, lokalni muzeji sa bogatim nasleđem."
+      },
+      "localProducts": {
+        "title": "Lokalni proizvodi",
+        "description": "Jedinstveno buhavica maslinovo ulje, lokalna vina, tradicionalna gastronomija."
+      },
+      "beaches": {
+        "title": "Plaže",
+        "description": "Osim Zlatnog Rata, brojne netaknute plaže sa kristalno čistom vodom duž cele obale."
+      }
+    },
+    "gettingThere": {
+      "title": "Kako doći",
+      "ferry": {
+        "title": "Trajektne veze",
+        "description": "Redovne linije iz Splita (1 sat) i Makarske. Dostupni auto-trajekti i putničke linije."
+      },
+      "airport": {
+        "title": "Avio saobraćaj",
+        "description": "Aerodrom Brač sa sezonskim letovima tokom letnje sezone."
+      },
+      "interIsland": {
+        "title": "Međuostrvske veze",
+        "description": "Veze sa susednim ostrvima Hvar i Korčula tokom turističke sezone."
+      }
+    },
+    "culture": {
+      "title": "Lokalna kultura i način života",
+      "heritage": {
+        "title": "Nasleđe kamenoklesarstva",
+        "description": "Tradicija vezana za obradu kamena koja se prenosi kroz generacije."
+      },
+      "lifestyle": {
+        "title": "Mediteranski način života",
+        "description": "Opušten ritam života, autentična gastromija, tradicionalne vrednosti."
+      },
+      "events": {
+        "title": "Lokalni festivali",
+        "description": "Tradicionalni festivali, kulturne manifestacije, lokalne priredbe tokom godine."
+      },
+      "hospitality": {
+        "title": "Gostoprimstvo",
+        "description": "Autentično hrvatsko gostoprimstvo u manje turističkom okruženju."
+      }
+    }
+  },
   "footer": {
     "description": "Doživite vrhunac hrvatskog primorskog luksuza. Naša ekskluzivna kolekcija apartmana nudi zahtevnim putnicima nenadmašan odmor gde se mediteranska elegancija spaja sa modernom sofisticiranošću.",
     "contact": "Kontakt",

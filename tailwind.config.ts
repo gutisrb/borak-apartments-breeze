@@ -29,6 +29,8 @@ export default {
 				secondary: '#20425C',
 				accent: '#FFBE24',
 				link: '#0077B6',
+				success: 'hsl(var(--success))',
+				'success-foreground': 'hsl(var(--success-foreground))',
 				mist: '#F4F9FD',
 				surface: '#FFFFFF',
 				destructive: {
