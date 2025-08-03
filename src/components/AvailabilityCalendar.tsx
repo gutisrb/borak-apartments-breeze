@@ -34,7 +34,7 @@ const AvailabilityCalendar = ({
   const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
-    if (!loading && bookings.length > 0) {
+    if (!loading && bookings) {
       // Generate all booked dates for the next 6 months
       const blockedDates: Date[] = [];
       const today = new Date();

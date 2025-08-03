@@ -62,12 +62,10 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
     setIsSubmitting(true);
 
    try {
-  // Calculate nights and price
+  // Calculate nights and price correctly
   const nights = checkIn && checkOut ? Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24))) : 0;
-  const basePrice = nights * (apartment.price_per_night || 100);
-  const cleaningFee = 50;
-  const serviceFee = Math.floor(basePrice * 0.1);
-  const totalPrice = basePrice + cleaningFee + serviceFee;
+  const pricePerNight = apartment.price_per_night; // Use exact price from apartment data
+  const totalPrice = nights * pricePerNight;
 
   // Send email using EmailJS
   const emailData = {
@@ -77,8 +75,9 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
     apartment_name: apartment.name,
     check_in: format(checkIn, 'yyyy-MM-dd'),
     check_out: format(checkOut, 'yyyy-MM-dd'),
-    adults: adults,
+    adults: apartment.max_guests, // Use apartment capacity instead of form input
     total_nights: nights,
+    price_per_night: pricePerNight,
     total_price: totalPrice,
     booking_date: new Date().toLocaleString()
   };
@@ -105,7 +104,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   // Clear form
   setCheckIn(undefined);
   setCheckOut(undefined);
-  setAdults('2');
+  setAdults(apartment.max_guests.toString());
   setName('');
   setEmail('');
   setPhone('');
@@ -181,19 +180,9 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
       >
         <div className="relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#FFBE24] h-full">
           <SheetHeader className="mb-6 pt-4 px-6">
-            <div className="flex items-center justify-between">
-              <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
-                {t('booking.title')} - {apartment.name}
-              </SheetTitle>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:bg-[#F4F9FD] h-8 w-8"
-                onClick={onClose}
-              >
-                <X className="w-5 h-5 text-[#20425C]" />
-              </Button>
-            </div>
+            <SheetTitle className="text-xl font-bold text-[#0C1930] font-playfair">
+              {t('booking.title')} - {apartment.name}
+            </SheetTitle>
           </SheetHeader>
 
           <form onSubmit={handleSubmit} className="space-y-6 px-6 pb-6">
@@ -217,28 +206,12 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
               )}
             </div>
 
-            {/* Guest Selection */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label className="text-[#0C1930] font-app font-medium text-sm">
-                  {t('booking.adults')}
-                </Label>
-                <Select value={adults} onValueChange={setAdults}>
-                  <SelectTrigger className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent 
-                    className="bg-white border-gray-300 shadow-lg z-[10001]"
-                    position="popper"
-                    side="bottom"
-                    sideOffset={4}
-                    avoidCollisions={true}
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
-                      <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            {/* Guest Info - Capacity is pre-determined based on apartment */}
+            <div className="bg-[#F4F9FD] p-3 rounded-lg">
+              <div className="text-sm text-[#0C1930] font-medium">
+                {apartment.name === 'Apartment 05' 
+                  ? `Capacity: Up to ${apartment.max_guests} guests` 
+                  : `Capacity: ${apartment.max_guests} guests`}
               </div>
             </div>
             

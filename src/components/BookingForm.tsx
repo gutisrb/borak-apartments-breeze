@@ -51,10 +51,7 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
   const nights = checkIn && checkOut ? 
     Math.max(1, differenceInDays(checkOut, checkIn)) : 0;
   
-  const basePrice = nights * (unit.price_per_night || 0);
-  const cleaningFee = 50;
-  const serviceFee = Math.floor(basePrice * 0.1);
-  const totalPrice = basePrice + cleaningFee + serviceFee;
+  const totalPrice = nights * unit.price_per_night; // Simplified correct pricing
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,12 +96,9 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
         check_in_date: format(checkIn, 'MMMM dd, yyyy'),
         check_out_date: format(checkOut, 'MMMM dd, yyyy'),
         nights: nights,
-        adults: adults,
-        children: children,
-        base_price: basePrice,
-        cleaning_fee: cleaningFee,
-        service_fee: serviceFee,
-        total_price: totalPrice,
+        adults: unit.max_guests, // Use apartment capacity
+        price_per_night: unit.price_per_night,
+        total_price: nights * unit.price_per_night, // Correct pricing calculation
         special_requests: specialRequests || 'None',
         booking_timestamp: new Date().toLocaleString(),
         subject: `New Booking Request - ${unit.name} - ${format(checkIn, 'MMM dd, yyyy')}`
@@ -215,41 +209,15 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
         )}
       </div>
       
-      {/* Guest Information */}
+      {/* Guest Information - Capacity is pre-determined */}
       <div className="space-y-4">
         <h3 className="font-medium text-[#0C1930]">{t('booking.guestInfo')}</h3>
         
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label className="text-[#0C1930] font-medium text-sm">
-              {t('booking.adults')}
-            </Label>
-            <Select value={adults} onValueChange={setAdults}>
-              <SelectTrigger className="border-gray-300 bg-white">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
-                  <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="space-y-2">
-            <Label className="text-[#0C1930] font-medium text-sm">
-              {t('booking.children')}
-            </Label>
-            <Select value={children} onValueChange={setChildren}>
-              <SelectTrigger className="border-gray-300 bg-white">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {[0, 1, 2, 3, 4].map(num => (
-                  <SelectItem key={num} value={num.toString()}>{num}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+        <div className="bg-[#F4F9FD] p-3 rounded-lg">
+          <div className="text-sm text-[#0C1930] font-medium">
+            {unit.name === 'Apartment 05' 
+              ? `Capacity: Up to ${unit.max_guests} guests` 
+              : `Capacity: ${unit.max_guests} guests`}
           </div>
         </div>
         
@@ -316,25 +284,15 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-[#20425C]">
-                €{unit.price_per_night} x {nights} {t('booking.nights')}
+                €{unit.price_per_night} x {nights} {nights === 1 ? 'night' : 'nights'}
               </span>
-              <span className="text-[#0C1930] font-medium">€{basePrice}</span>
-            </div>
-            
-            <div className="flex justify-between">
-              <span className="text-[#20425C]">{t('booking.cleaningFee')}</span>
-              <span className="text-[#0C1930] font-medium">€{cleaningFee}</span>
-            </div>
-            
-            <div className="flex justify-between">
-              <span className="text-[#20425C]">{t('booking.serviceFee')}</span>
-              <span className="text-[#0C1930] font-medium">€{serviceFee}</span>
+              <span className="text-[#0C1930] font-medium">€{totalPrice}</span>
             </div>
             
             <Separator className="my-2" />
             
             <div className="flex justify-between font-semibold">
-              <span className="text-[#0C1930]">{t('booking.total')}</span>
+              <span className="text-[#0C1930]">Total</span>
               <span className="text-[#0C1930]">€{totalPrice}</span>
             </div>
           </div>

@@ -28,6 +28,64 @@
   "location": {
     "title": "Naša lokacija",
     "description": "Otkrijte čari Brača",
+    "hero": {
+      "title": "Otkrijte ostrvo Brač",
+      "subtitle": "Treće najveće ostrvo u Jadranu čeka vas sa besprekorno čistim morima, istorijskim gradovima i mediteranskim šarmom koji se protende vekovima."
+    },
+    "about": {
+      "title": "O ostrvu Brač",
+      "content": "Ostrvo Brač, dugačko 48 km i široko 14 km, treće je najveće ostrvo u Jadranu i deo je Dalmatinske regije. Smešteno nasuprot Splita, naseljeno je od neolitskog doba i poznato po svojim čuvenim kamenoloima čiji je kamen korišćen za Dioklecijanovu palatu, Belu kuću i sedište UN-a."
+    },
+    "attractions": {
+      "title": "Čuvene atrakcije",
+      "zlatniRat": {
+        "title": "Plaža Zlatni rat",
+        "description": "Najpoznatija plaža Hrovatske, konstantno menja oblik, pod zaštitom UNESCO-a"
+      },
+      "vidovaGora": {
+        "title": "Vidova gora", 
+        "description": "Najviša tačka među jadranskim ostrvima sa panoramskim pogledom"
+      },
+      "stoneQuarries": {
+        "title": "Istorijski kamneolomi",
+        "description": "Izvor kamena za Dioklecijanovu palatu, Belu kuću, UN sedište"
+      },
+      "bol": {
+        "title": "Grad Bol",
+        "description": "Očarajući lučki grad sa dominikanskim samostanom"
+      },
+      "supetar": {
+        "title": "Supetar",
+        "description": "Glavni trajektni port sa prelepom kamenom arhitekturom"
+      }
+    },
+    "activities": {
+      "title": "Aktivnosti i doživljaji",
+      "waterSports": {
+        "title": "Vodeni sportovi",
+        "description": "Windsurfing, kitesurfing, jedrenje (čuveni maestral vetrovi)"
+      },
+      "hiking": {
+        "title": "Planinarenje",
+        "description": "Staze ka Vidovoj gori, obalne šetnje, istraživanje prirode"
+      },
+      "culture": {
+        "title": "Kulturni objekti",
+        "description": "Drevni samostani, tradicija klesanja kamena, lokalni muzeji"
+      },
+      "beaches": {
+        "title": "Plaže",
+        "description": "Brojne netaknute plaže van Zlatnog rata"
+      }
+    },
+    "gettingThere": {
+      "title": "Kako doći",
+      "description": "Trajektne veze iz Splita (1 sat) i Makarske. Informacije o auto-trajektima i putničkim trajektima. Aerodrom (sezonski letovi)."
+    },
+    "culture": {
+      "title": "Lokalna kultura i način života",
+      "description": "Tradicionalno nasleđe klesanja kamena, mediteranski način života, lokalni festivali, autentična hrvatska gostoprimljivost."
+    },
     "highlights": {
       "prime": {
         "title": "Vrhunska lokacija",

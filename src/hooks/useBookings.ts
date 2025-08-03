@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase, Booking } from '@/lib/supabase'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
@@ -61,7 +61,7 @@ export const useRealtimeBookings = (propertyId?: string) => {
     }
   }, [propertyId])
 
-  const isDateAvailable = (date: Date, propertyId: string) => {
+  const isDateAvailable = useCallback((date: Date, propertyId: string) => {
     const targetDate = dayjs(date).format('YYYY-MM-DD')
     
     return !bookings.some(booking => {
@@ -72,7 +72,7 @@ export const useRealtimeBookings = (propertyId?: string) => {
       
       return dayjs(targetDate).isBetween(startDate, endDate, 'day', '[]')
     })
-  }
+  }, [bookings])
 
   return {
     data: bookings,
