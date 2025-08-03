@@ -255,7 +255,9 @@ const ApartmentDetail = () => {
                     <span className="font-app text-[#20425C]">{t('modal.size', { size: apartment.size_m2 })}</span>
                   </div>
                   <div className="text-2xl font-bold text-success font-app">
-                    €{apartment.price_per_night}{t('modal.perNight')}
+                    <span className="text-2xl font-bold text-[#0077B6] font-app">
+                      €{apartment.price_per_night}{t('modal.perNight')}
+                    </span>
                   </div>
                 </div>
 

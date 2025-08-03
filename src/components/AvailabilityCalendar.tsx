@@ -148,7 +148,7 @@ const AvailabilityCalendar = ({
 
       {/* Calendar container with transition */}
       <div className={cn(
-        "relative overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-200",
+        "relative overflow-hidden rounded-xl border border-[#E2EDF3] bg-white shadow-sm transition-all duration-200",
         isNavigating && "opacity-75"
       )}>
         <Calendar
@@ -161,42 +161,42 @@ const AvailabilityCalendar = ({
             { before: new Date() },
             (date) => isDateUnavailable(date)
           ]}
-          className={cn("p-4 pointer-events-auto w-full")}
+          className={cn("p-4 pointer-events-auto w-full bg-white")}
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
             month: "space-y-4",
-            caption: "flex justify-center pt-1 relative items-center mb-4",
-            caption_label: "text-lg font-semibold text-foreground",
+            caption: "flex justify-center pt-1 relative items-center mb-4 bg-white",
+            caption_label: "text-lg font-semibold text-[#0C1930]",
             nav: "space-x-1 flex items-center",
             nav_button: cn(
-              "h-9 w-9 bg-transparent p-0 opacity-70 hover:opacity-100 hover:bg-accent hover:text-accent-foreground rounded-md transition-all duration-200 border border-transparent hover:border-border"
+              "h-9 w-9 bg-white p-0 opacity-70 hover:opacity-100 hover:bg-[#F4F9FD] hover:text-[#0C1930] rounded-md transition-all duration-200 border border-transparent hover:border-[#E2EDF3]"
             ),
             nav_button_previous: "absolute left-1",
             nav_button_next: "absolute right-1",
             table: "w-full border-collapse space-y-1",
-            head_row: "flex mb-2",
-            head_cell: "text-muted-foreground rounded-md w-10 font-medium text-sm text-center",
+            head_row: "flex mb-2 bg-white",
+            head_cell: "text-[#20425C] rounded-md w-10 font-medium text-sm text-center",
             row: "flex w-full mt-1",
             cell: cn(
               "relative h-10 w-10 text-center text-sm p-0 focus-within:relative focus-within:z-20",
-              "[&:has([aria-selected])]:bg-accent/50 [&:has([aria-selected].day-outside)]:bg-accent/30",
+              "[&:has([aria-selected])]:bg-[#0077B6]/10 [&:has([aria-selected].day-outside)]:bg-[#0077B6]/5",
               "[&:has([aria-selected].day-range-end)]:rounded-r-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md"
             ),
             day: cn(
-              "h-10 w-10 p-0 font-normal aria-selected:opacity-100 rounded-md transition-all duration-200",
-              "hover:bg-accent hover:text-accent-foreground hover:scale-105 hover:shadow-sm",
-              "focus:bg-accent focus:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+              "h-10 w-10 p-0 font-normal aria-selected:opacity-100 rounded-md transition-all duration-200 text-[#0C1930] bg-white",
+              "hover:bg-[#F4F9FD] hover:text-[#0C1930] hover:scale-105 hover:shadow-sm",
+              "focus:bg-[#F4F9FD] focus:text-[#0C1930] focus:outline-none focus:ring-2 focus:ring-[#0077B6] focus:ring-offset-2",
               "disabled:pointer-events-none disabled:opacity-30"
             ),
             day_range_end: "day-range-end",
             day_selected: cn(
-              "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
-              "focus:bg-primary focus:text-primary-foreground shadow-md scale-105"
+              "bg-[#0077B6] text-white hover:bg-[#0077B6] hover:text-white",
+              "focus:bg-[#0077B6] focus:text-white shadow-md scale-105"
             ),
-            day_today: "bg-accent text-accent-foreground font-semibold border border-primary/20",
-            day_outside: "text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-            day_disabled: "text-muted-foreground opacity-30 cursor-not-allowed",
-            day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+            day_today: "bg-[#FFBE24] text-[#0C1930] font-semibold border border-[#0077B6]/20",
+            day_outside: "text-[#20425C] opacity-50 aria-selected:bg-[#0077B6]/10 aria-selected:text-[#20425C] aria-selected:opacity-30",
+            day_disabled: "text-[#20425C] opacity-30 cursor-not-allowed",
+            day_range_middle: "aria-selected:bg-[#0077B6]/10 aria-selected:text-[#0C1930]",
             day_hidden: "invisible",
           }}
           modifiers={{
@@ -209,25 +209,25 @@ const AvailabilityCalendar = ({
           }}
           modifiersClassNames={{
             booked: cn(
-              "bg-destructive/10 text-destructive hover:bg-destructive/20",
+              "bg-red-100 text-red-600 hover:bg-red-200",
               "cursor-not-allowed relative",
-              "before:absolute before:inset-0 before:bg-destructive/5 before:rounded-md"
+              "before:absolute before:inset-0 before:bg-red-50 before:rounded-md"
             ),
             selected_range: cn(
-              "bg-primary/15 text-primary hover:bg-primary/25",
+              "bg-[#0077B6]/15 text-[#0C1930] hover:bg-[#0077B6]/25",
               "transition-colors duration-200"
             ),
             range_start: cn(
-              "bg-primary text-primary-foreground rounded-l-md",
-              "hover:bg-primary/90 shadow-md scale-105"
+              "bg-[#0077B6] text-white rounded-l-md",
+              "hover:bg-[#0077B6]/90 shadow-md scale-105"
             ),
             range_end: cn(
-              "bg-primary text-primary-foreground rounded-r-md",
-              "hover:bg-primary/90 shadow-md scale-105"
+              "bg-[#0077B6] text-white rounded-r-md",
+              "hover:bg-[#0077B6]/90 shadow-md scale-105"
             ),
             range_middle: cn(
-              "bg-primary/15 text-primary rounded-none",
-              "hover:bg-primary/25"
+              "bg-[#0077B6]/15 text-[#0C1930] rounded-none",
+              "hover:bg-[#0077B6]/25"
             )
           }}
           components={{
@@ -237,26 +237,26 @@ const AvailabilityCalendar = ({
         />
 
         {/* Enhanced Footer */}
-        <div className="px-4 pb-4 border-t border-border bg-muted/30">
+        <div className="px-4 pb-4 border-t border-[#E2EDF3] bg-[#F4F9FD]">
           <div className="pt-4 flex flex-wrap items-center gap-4 text-xs">
             <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-primary shadow-sm"></div>
-              <span className="text-foreground font-medium">Available</span>
+              <div className="h-3 w-3 rounded-full bg-[#0077B6] shadow-sm"></div>
+              <span className="text-[#0C1930] font-medium">Available</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-destructive/60 shadow-sm"></div>
-              <span className="text-foreground font-medium">Booked</span>
+              <div className="h-3 w-3 rounded-full bg-red-400 shadow-sm"></div>
+              <span className="text-[#0C1930] font-medium">Booked</span>
             </div>
             {mode === 'range' && (selectedDate || selectedEndDate) && (
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-primary/30 shadow-sm"></div>
-                <span className="text-foreground font-medium">Selected Range</span>
+                <div className="h-3 w-3 rounded-full bg-[#0077B6]/30 shadow-sm"></div>
+                <span className="text-[#0C1930] font-medium">Selected Range</span>
               </div>
             )}
           </div>
           
           {mode === 'range' && (
-            <div className="mt-3 text-xs text-muted-foreground">
+            <div className="mt-3 text-xs text-[#20425C]">
               {!selectedDate ? 
                 "Select your check-in date" : 
                 !selectedEndDate ? 

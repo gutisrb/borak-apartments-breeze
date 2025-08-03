@@ -97,7 +97,7 @@ const Apartments = () => {
                   </p>
 
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-2xl font-bold text-[#FFBE24] font-app">
+                    <div className="text-2xl font-bold text-[#0077B6] font-app">
                       €{apartment.price_per_night}{t('modal.perNight')}
                     </div>
                   </div>

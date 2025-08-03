@@ -195,7 +195,27 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
                   selected={checkOut}
                   onSelect={setCheckOut}
                   disabled={(date) => date <= (checkIn || new Date())}
-                  className={cn("rounded-md p-3 pointer-events-auto")}
+                  className={cn("rounded-md p-3 pointer-events-auto bg-white")}
+                  classNames={{
+                    months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+                    month: "space-y-4 bg-white",
+                    caption: "flex justify-center pt-1 relative items-center mb-4 bg-white",
+                    caption_label: "text-lg font-semibold text-[#0C1930]",
+                    nav: "space-x-1 flex items-center",
+                    nav_button: "h-9 w-9 bg-white p-0 opacity-70 hover:opacity-100 hover:bg-[#F4F9FD] hover:text-[#0C1930] rounded-md transition-all duration-200 border border-transparent hover:border-[#E2EDF3]",
+                    nav_button_previous: "absolute left-1",
+                    nav_button_next: "absolute right-1",
+                    table: "w-full border-collapse space-y-1 bg-white",
+                    head_row: "flex mb-2 bg-white",
+                    head_cell: "text-[#20425C] rounded-md w-10 font-medium text-sm text-center",
+                    row: "flex w-full mt-1",
+                    cell: "relative h-10 w-10 text-center text-sm p-0 focus-within:relative focus-within:z-20",
+                    day: "h-10 w-10 p-0 font-normal aria-selected:opacity-100 rounded-md transition-all duration-200 text-[#0C1930] bg-white hover:bg-[#F4F9FD] hover:text-[#0C1930] focus:bg-[#F4F9FD] focus:text-[#0C1930] focus:outline-none disabled:pointer-events-none disabled:opacity-30",
+                    day_selected: "bg-[#0077B6] text-white hover:bg-[#0077B6] hover:text-white focus:bg-[#0077B6] focus:text-white shadow-md scale-105",
+                    day_today: "bg-[#FFBE24] text-[#0C1930] font-semibold border border-[#0077B6]/20",
+                    day_outside: "text-[#20425C] opacity-50",
+                    day_disabled: "text-[#20425C] opacity-30 cursor-not-allowed",
+                  }}
                 />
               </PopoverContent>
             </Popover>
