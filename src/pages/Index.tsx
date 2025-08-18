@@ -98,7 +98,7 @@ const LandingPage = () => {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-luxury-off-white">
+      <main className="min-h-screen bg-white">
         <HeroSection />
         <IntroductionSection />
         <ApartmentSelector onViewDetails={handleViewDetails} />
