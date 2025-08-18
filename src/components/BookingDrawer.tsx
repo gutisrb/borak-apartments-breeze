@@ -207,12 +207,20 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
             </div>
 
             {/* Guest Info - Capacity is pre-determined based on apartment */}
-            <div className="bg-[#F4F9FD] p-3 rounded-lg">
+            <div className="bg-[#F4F9FD] p-3 rounded-lg space-y-2">
               <div className="text-sm text-[#0C1930] font-medium">
                 {apartment.name === 'Apartment 05' 
                   ? `Capacity: Up to ${apartment.max_guests} guests` 
                   : `Capacity: ${apartment.max_guests} guests`}
               </div>
+              {checkIn && checkOut && (
+                <div className="text-sm">
+                  <span className="text-[#0C1930] font-medium">Price: </span>
+                  <span className="text-green-600 font-semibold">
+                    €{apartment.name === 'Apartment 05' ? 120 : 90} × {Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))} nights = €{(apartment.name === 'Apartment 05' ? 120 : 90) * Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))}
+                  </span>
+                </div>
+              )}
             </div>
             
             {/* Contact Information */}

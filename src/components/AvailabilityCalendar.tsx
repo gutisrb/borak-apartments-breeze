@@ -157,10 +157,7 @@ const AvailabilityCalendar = ({
           onSelect={handleDateSelect}
           month={currentMonth}
           onMonthChange={handleMonthChange}
-          disabled={[
-            { before: new Date() },
-            (date) => isDateUnavailable(date)
-          ]}
+          disabled={(date) => date < new Date() || isDateUnavailable(date)}
           className={cn("p-4 pointer-events-auto w-full bg-white")}
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
@@ -210,8 +207,8 @@ const AvailabilityCalendar = ({
           modifiersClassNames={{
             booked: cn(
               "bg-red-100 text-red-600 hover:bg-red-200",
-              "cursor-not-allowed relative",
-              "before:absolute before:inset-0 before:bg-red-50 before:rounded-md"
+              "cursor-not-allowed relative opacity-50",
+              "before:absolute before:inset-0 before:bg-red-100 before:rounded-md"
             ),
             selected_range: cn(
               "bg-[#0077B6]/15 text-[#0C1930] hover:bg-[#0077B6]/25",
@@ -219,11 +216,11 @@ const AvailabilityCalendar = ({
             ),
             range_start: cn(
               "bg-[#0077B6] text-white rounded-l-md",
-              "hover:bg-[#0077B6]/90 shadow-md scale-105"
+              "hover:bg-[#0077B6] shadow-md"
             ),
             range_end: cn(
-              "bg-[#0077B6] text-white rounded-r-md",
-              "hover:bg-[#0077B6]/90 shadow-md scale-105"
+              "bg-[#0077B6] text-white rounded-r-md", 
+              "hover:bg-[#0077B6] shadow-md"
             ),
             range_middle: cn(
               "bg-[#0077B6]/15 text-[#0C1930] rounded-none",
@@ -239,10 +236,6 @@ const AvailabilityCalendar = ({
         {/* Enhanced Footer */}
         <div className="px-4 pb-4 border-t border-[#E2EDF3] bg-[#F4F9FD]">
           <div className="pt-4 flex flex-wrap items-center gap-4 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-[#0077B6] shadow-sm"></div>
-              <span className="text-[#0C1930] font-medium">Available</span>
-            </div>
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-red-400 shadow-sm"></div>
               <span className="text-[#0C1930] font-medium">Booked</span>
