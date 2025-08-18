@@ -41,7 +41,7 @@ const ApartmentSelector = ({ onViewDetails }: ApartmentSelectorProps) => {
 
   if (loading) {
     return (
-      <section id="apartments" className="section-padding bg-gradient-to-b from-white to-[hsl(var(--muted))]">
+      <section id="apartments" className="section-padding bg-gradient-to-b from-[hsl(var(--accent)/0.04)] to-[hsl(var(--accent)/0.12)]">
         <div className="container-luxury">
           <div className="text-center">
             <p className="text-[#20425C] font-app">Loading luxury apartments...</p>
@@ -52,7 +52,7 @@ const ApartmentSelector = ({ onViewDetails }: ApartmentSelectorProps) => {
   }
 
   return (
-    <section id="apartments" className="section-padding bg-gradient-to-b from-white to-[hsl(var(--muted))]">
+    <section id="apartments" className="section-padding bg-gradient-to-b from-[hsl(var(--accent)/0.04)] to-[hsl(var(--accent)/0.12)]">
       <div className="container-luxury">
         <div className="text-center mb-20">
           <h2 className="mb-6 animate-fade-in text-[#0C1930] font-playfair">

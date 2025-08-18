@@ -27,7 +27,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-bl from-white via-[hsl(var(--secondary)/0.5)] to-[hsl(var(--muted))]">
+    <section className="section-padding bg-gradient-to-bl from-[hsl(var(--accent)/0.08)] via-white to-[hsl(var(--accent)/0.15)]">
       <div className="container-luxury">
         <div className="text-center mb-20">
           <h2 className="mb-6 animate-fade-in text-[#0C1930] font-playfair">

@@ -5,7 +5,7 @@ const IntroductionSection = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="section-padding bg-gradient-to-br from-[hsl(var(--secondary))] to-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-white to-[hsl(var(--accent)/0.08)] relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

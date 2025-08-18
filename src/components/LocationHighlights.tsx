@@ -29,7 +29,7 @@ const LocationHighlights = () => {
   ];
 
   return (
-    <section id="location" className="section-padding bg-gradient-to-br from-[hsl(var(--accent)/0.05)] to-white">
+    <section id="location" className="section-padding bg-gradient-to-br from-white via-[hsl(var(--accent)/0.06)] to-[hsl(var(--accent)/0.10)]">
       <div className="container-luxury">
         <div className="text-center mb-20">
           <h2 className="mb-6 animate-fade-in text-[#0C1930] font-playfair">
