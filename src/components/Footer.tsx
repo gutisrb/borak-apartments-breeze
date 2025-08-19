@@ -57,7 +57,7 @@ const Footer = () => {
           {/* Quick Links & Social */}
           <div>
             <h4 className="text-xl font-playfair font-medium mb-6 text-white">{t('footer.experience')}</h4>
-            <div className="space-y-3 mb-8">
+            <div className="space-y-3 mb-6">
               <a 
                 href="#apartments" 
                 className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
@@ -76,6 +76,15 @@ const Footer = () => {
               >
                 {t('footer.reviews')}
               </a>
+            </div>
+
+            {/* Other Locations */}
+            <div className="mb-8">
+              <h5 className="font-medium text-white mb-3 text-sm">Lokacije</h5>
+              <div className="space-y-2">
+                <a href="/en" className="block text-white/70 hover:text-white transition-colors text-sm">Brač (Borak)</a>
+                <a href="/en/banja-vrujci" className="block text-white/70 hover:text-white transition-colors text-sm">Banja Vrujci</a>
+              </div>
             </div>
             
             <a 

@@ -122,6 +122,12 @@ const Header = () => {
               {t('nav.location')}
             </button>
             <button
+              onClick={() => handleNavigation(`/${lang || 'en'}/banja-vrujci`)}
+              className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
+            >
+              Banja Vrujci
+            </button>
+            <button
               onClick={() => scrollToSection('contact')}
               className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
@@ -196,6 +202,12 @@ const Header = () => {
                 className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
                 {t('nav.location')}
+              </button>
+              <button
+                onClick={() => handleNavigation(`/${lang || 'en'}/banja-vrujci`)}
+                className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
+              >
+                Banja Vrujci
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
