@@ -37,13 +37,13 @@
     --ring: 0 119 182; /* #0077B6 */
 
     /* Natural/Banja Vrujci Color System */
-    --nature-primary: 150 50 36; /* #2E8B57 */
+    --nature-primary: 46 139 87; /* #2E8B57 */
     --nature-primary-foreground: 255 255 255;
-    --nature-accent: 150 56 27; /* #1F6E3A */
+    --nature-accent: 31 110 58; /* #1F6E3A */
     --nature-accent-foreground: 255 255 255;
-    --nature-muted: 150 33 94; /* #E9F6EF */
-    --nature-muted-foreground: 150 56 27;
-    --nature-blue: 217 91 60; /* #3B82F6 */
+    --nature-muted: 233 246 239; /* #E9F6EF */
+    --nature-muted-foreground: 85 85 85;
+    --nature-blue: 59 130 246; /* #3B82F6 */
     --nature-blue-foreground: 255 255 255;
 
     --radius: 0.5rem;
@@ -99,13 +99,13 @@
     --sidebar-ring: 0 119 182;
 
     /* Natural/Banja Vrujci Color System (Dark Mode) */
-    --nature-primary: 150 50 36; /* #2E8B57 */
+    --nature-primary: 46 139 87; /* #2E8B57 */
     --nature-primary-foreground: 255 255 255;
-    --nature-accent: 150 56 27; /* #1F6E3A */
+    --nature-accent: 31 110 58; /* #1F6E3A */
     --nature-accent-foreground: 255 255 255;
-    --nature-muted: 150 33 94; /* #E9F6EF */
-    --nature-muted-foreground: 150 56 27;
-    --nature-blue: 217 91 60; /* #3B82F6 */
+    --nature-muted: 233 246 239; /* #E9F6EF */
+    --nature-muted-foreground: 85 85 85;
+    --nature-blue: 59 130 246; /* #3B82F6 */
     --nature-blue-foreground: 255 255 255;
   }
 }

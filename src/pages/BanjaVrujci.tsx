@@ -1,487 +1,582 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Header from '../components/Header';
+import ApartmentModal from '../components/ApartmentModal';
+import BookingDrawer from '../components/BookingDrawer';
+import Footer from '../components/Footer';
+import { Unit } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { Card } from '@/components/ui/card';
+import { Users, Square, MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
 
 const BanjaVrujci = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [unitToBook, setUnitToBook] = useState<Unit | null>(null);
+  const [units, setUnits] = useState<Unit[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null);
 
-  const galleryImages = [
-    { src: '/placeholder-gallery-1.jpg', alt: 'Priroda oko Banje Vrujci', caption: 'Prekrasna priroda oko kompleksa' },
-    { src: '/placeholder-gallery-2.jpg', alt: 'Termalni izvori', caption: 'Termalni izvori u blizini' },
-    { src: '/placeholder-gallery-3.jpg', alt: 'Šetnja kroz prirodu', caption: 'Staze za šetnju i planinarenje' },
-    { src: '/placeholder-gallery-4.jpg', alt: 'Kuća spolja', caption: 'Eksterijer naših apartmana' },
-    { src: '/placeholder-gallery-5.jpg', alt: 'Dnevna soba', caption: 'Udobne dnevne sobe' },
-    { src: '/placeholder-gallery-6.jpg', alt: 'Kuhinja', caption: 'Potpuno opremljena kuhinja' },
-    { src: '/placeholder-gallery-7.jpg', alt: 'Spavaća soba', caption: 'Komforne spavaće sobe' },
-    { src: '/placeholder-gallery-8.jpg', alt: 'Kupatilo', caption: 'Moderna kupatila' },
-    { src: '/placeholder-gallery-9.jpg', alt: 'Terasa', caption: 'Terasa sa pogledom na prirodu' },
-    { src: '/placeholder-gallery-10.jpg', alt: 'Parking', caption: 'Besplatan parking' },
-    { src: '/placeholder-gallery-11.jpg', alt: 'Lokalna hrana', caption: 'Lokalne specijalitete' },
-    { src: '/placeholder-gallery-12.jpg', alt: 'Aktivnosti', caption: 'Razne aktivnosti u prirodi' },
+  const heroImages = [
+    '/lovable-uploads/nature-park.jpeg',
+    '/lovable-uploads/hero-brac-1.jpeg',
+    '/lovable-uploads/hero-brac-2.jpg'
   ];
 
+  const galleryImages = [
+    { src: '/lovable-uploads/apartman1 (1).jpg', alt: 'Apartman enterijer', caption: 'Udobne dnevne sobe' },
+    { src: '/lovable-uploads/apartman1 (2).jpg', alt: 'Spavaća soba', caption: 'Komforne spavaće sobe' },
+    { src: '/lovable-uploads/apartman2 (1).jpg', alt: 'Kuhinja', caption: 'Potpuno opremljena kuhinja' },
+    { src: '/lovable-uploads/apartman2 (2).jpg', alt: 'Kupatilo', caption: 'Moderna kupatila' },
+    { src: '/lovable-uploads/nature-park.jpeg', alt: 'Priroda oko Banje Vrujci', caption: 'Prekrasna priroda oko kompleksa' },
+    { src: '/lovable-uploads/local-restaurant.jpg', alt: 'Lokalna hrana', caption: 'Lokalne specijalitete' }
+  ];
+
+  // Fetch units data
+  useEffect(() => {
+    const fetchUnits = async () => {
+      try {
+        const response = await fetch('/data/units-vrujci.json');
+        const data = await response.json();
+        setUnits(data.units);
+      } catch (error) {
+        console.error('Error fetching units:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUnits();
+  }, []);
+
+  // Auto-advance hero carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // SEO metadata
+  useEffect(() => {
+    document.title = 'Apartmani Banja Vrujci - Odmor u prirodi';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Apartmani u Banji Vrujci za odmor u prirodi. Termalni izvori, svež vazduh i tišina. Rezervišite Vaš boravak u prirodnom okruženju.');
+    }
+  }, []);
+
+  const handleViewDetails = (unit: Unit) => {
+    setSelectedUnit(unit);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedUnit(null);
+  };
+
+  const handleBookNow = (unit: Unit) => {
+    setUnitToBook(unit);
+    setSelectedUnit(null);
+    setIsBookingOpen(true);
+  };
+
+  const handleCloseBooking = () => {
+    setIsBookingOpen(false);
+    setUnitToBook(null);
+  };
+
+  const scrollToApartments = () => {
+    const apartmentsSection = document.getElementById('apartments');
+    if (apartmentsSection) {
+      apartmentsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-r from-[hsl(var(--nature-primary))] to-[hsl(var(--nature-accent))] opacity-90"></div>
-          <div className="absolute inset-0 bg-black/20"></div>
-          {/* IMAGE PLACEHOLDER: {IMAGE_HERO_VRUJCI} - Replace with panoramic nature/thermal springs image */}
-        </div>
-
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-playfair">
-            Apartmani — Banja Vrujci
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 font-app">
-            Odmor u prirodi — termalne vode, tišina i svež vazduh
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              className="bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white font-semibold px-8 py-4 rounded-lg text-lg"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Rezerviši / Pošalji upit
-            </Button>
-            <Button 
-              variant="outline"
-              className="border-[hsl(var(--nature-blue))] text-[hsl(var(--nature-blue))] hover:bg-[hsl(var(--nature-blue))] hover:text-white font-semibold px-8 py-4 rounded-lg text-lg"
-              onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Galerija
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Location Snapshot */}
-      <section className="py-12 bg-[hsl(var(--nature-muted))]">
-        <div className="container-luxury">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
-            <div className="flex items-center gap-3 text-center md:text-left">
-              <MapPin className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
-              <div>
-                <div className="font-semibold text-[hsl(var(--nature-accent))]">120km od Beograda</div>
-                <div className="text-sm text-[hsl(var(--nature-muted-foreground))]">1.5h vožnje</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-3 text-center md:text-left">
-              <Calendar className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
-              <div>
-                <div className="font-semibold text-[hsl(var(--nature-accent))]">Cela godina</div>
-                <div className="text-sm text-[hsl(var(--nature-muted-foreground))]">Najbolje: proleće-jesen</div>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-3 text-center md:text-left">
-              <div className="w-6 h-6 bg-[hsl(var(--nature-primary))] rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
-              <div>
-                <div className="font-semibold text-[hsl(var(--nature-accent))]">Termalni izvori</div>
-                <div className="text-sm text-[hsl(var(--nature-muted-foreground))]">5min hoda</div>
-              </div>
-            </div>
-
-            {/* Micro Map Placeholder */}
-            <div className="bg-white rounded-lg p-4 shadow-md">
-              <div className="w-full h-20 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
-                {/* IMAGE PLACEHOLDER: {IMAGE_MAP_VRUJCI} */}
-                Mapa lokacije
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing & Unit Summary */}
-      <section id="pricing" className="py-16 bg-white">
-        <div className="container-luxury">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
-              Cene i kapaciteti
-            </h2>
-            <p className="text-lg text-gray-600">Udobni apartmani u srcu prirode</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* First Floor Unit */}
-            <div className="bg-[hsl(var(--nature-muted))] rounded-xl p-8 shadow-lg">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-[hsl(var(--nature-accent))] font-playfair">Kuća, 1. sprat</h3>
-                  <p className="text-gray-600">Kapacitet: 5 osoba</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-[hsl(var(--nature-primary))]">50€</div>
-                  <div className="text-sm text-gray-500">po noći (radni dan)</div>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <p className="text-[hsl(var(--nature-accent))] font-medium mb-4">
-                  Kuća, 1. sprat — radni dan 50€ — 2 sobe (svaka sa 1 bračnim), 1 samac — kapacitet: 5 osoba.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-white rounded-lg p-2">
-                    <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-xs">
-                      {/* IMAGE PLACEHOLDER: {IMG_1SPRAT_1} */}
-                      Slika 1. sprat
-                    </div>
-                  </div>
-                  <div className="bg-white rounded-lg p-2">
-                    <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-xs">
-                      {/* IMAGE PLACEHOLDER: {IMG_1SPRAT_2} */}
-                      Slika 1. sprat
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Wifi className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Besplatan WiFi</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Car className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Besplatan parking</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <ChefHat className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Potpuno opremljena kuhinja</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Second Floor Unit */}
-            <div className="bg-[hsl(var(--nature-muted))] rounded-xl p-8 shadow-lg">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-[hsl(var(--nature-accent))] font-playfair">Kuća, 2. sprat</h3>
-                  <p className="text-gray-600">Kapacitet: 6 osoba</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-[hsl(var(--nature-primary))]">50€</div>
-                  <div className="text-sm text-gray-500">po noći (radni dan)</div>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <p className="text-[hsl(var(--nature-accent))] font-medium mb-4">
-                  Kuća, 2. sprat — radni dan 50€ — 2 bračna i 2 samca — kapacitet: 6 osoba.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-white rounded-lg p-2">
-                    <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-xs">
-                      {/* IMAGE PLACEHOLDER: {IMG_2SPRAT_1} */}
-                      Slika 2. sprat
-                    </div>
-                  </div>
-                  <div className="bg-white rounded-lg p-2">
-                    <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-xs">
-                      {/* IMAGE PLACEHOLDER: {IMG_2SPRAT_2} */}
-                      Slika 2. sprat
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Wifi className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Besplatan WiFi</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Car className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Besplatan parking</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <ChefHat className="w-4 h-4 text-[hsl(var(--nature-primary))]" />
-                    <span>Potpuno opremljena kuhinja</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Booking Status Warning */}
-          <div className="mt-8 p-6 bg-amber-50 border border-amber-200 rounded-lg">
-            <p className="text-amber-800 text-center">
-              <Calendar className="w-5 h-5 inline mr-2" />
-              Za rezervaciju i proveru dostupnosti, koristite kontakt formu ispod ili nas pozovite direktno.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section id="gallery" className="py-16 bg-[hsl(var(--nature-muted))]">
-        <div className="container-luxury">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
-              Galerija
-            </h2>
-            <p className="text-lg text-gray-600">Pogledajte naše apartmane i okolinu</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((image, index) => (
-              <div 
+      <main className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section id="hero" className="relative h-screen w-full overflow-hidden">
+          <div className="absolute inset-0">
+            {heroImages.map((image, index) => (
+              <div
                 key={index}
-                className="relative group cursor-pointer overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => setSelectedImage(index)}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImage ? 'opacity-100' : 'opacity-0'
+                }`}
               >
-                <div className="aspect-square bg-gray-200 flex items-center justify-center text-gray-500 text-xs">
-                  {/* IMAGE PLACEHOLDER: {GALLERY_IMG_${index + 1}} */}
-                  Galerija {index + 1}
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end">
-                  <div className="text-white p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm font-medium">{image.caption}</p>
-                  </div>
-                </div>
+                <img
+                  src={image}
+                  alt={`Banja Vrujci priroda ${index + 1}`}
+                  className="h-full w-full object-cover"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
               </div>
             ))}
           </div>
 
-          {/* Simple Lightbox */}
-          {selectedImage !== null && (
-            <div 
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedImage(null)}
-            >
-              <div className="relative max-w-4xl max-h-full">
-                <button 
-                  className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300"
-                  onClick={() => setSelectedImage(null)}
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--nature-accent))]/80 to-transparent" />
+
+          {/* Hero Content */}
+          <div className="relative z-10 flex h-full items-center justify-center">
+            <div className="text-center text-white px-6 max-w-5xl mx-auto">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl animate-fade-in mb-8 tracking-wide font-playfair font-bold text-white drop-shadow-2xl">
+                Apartmani — Banja Vrujci
+              </h1>
+              <h2 className="text-lg md:text-xl lg:text-2xl xl:text-3xl mb-12 font-app font-light max-w-4xl mx-auto leading-relaxed text-white/90 drop-shadow-md">
+                Odmor u prirodi — termalne vode, tišina i svež vazduh
+              </h2>
+              <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
+                <Button
+                  onClick={scrollToApartments}
+                  size="lg"
+                  className="bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app text-base md:text-lg px-12 py-5"
                 >
-                  ✕
-                </button>
-                <div className="bg-white rounded-lg p-2">
-                  <div className="w-full h-96 bg-gray-200 rounded flex items-center justify-center text-gray-500">
-                    {galleryImages[selectedImage]?.alt}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* How to Get There + Local Highlights */}
-      <section className="py-16 bg-white">
-        <div className="container-luxury">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
-                Kako doći
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
-                  <div>
-                    <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Autobusom iz Beograda</h4>
-                    <p className="text-gray-600">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
-                  <div>
-                    <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Automobilom</h4>
-                    <p className="text-gray-600">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
-                Aktivnosti u blizini
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs flex-shrink-0">
-                    {/* IMAGE PLACEHOLDER: {IMG_SPRINGS} */}
-                    Izvori
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Termalni izvori</h4>
-                    <p className="text-gray-600">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-xs flex-shrink-0">
-                    {/* IMAGE PLACEHOLDER: {IMG_TRAIL} */}
-                    Staza
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Planinarske staze</h4>
-                    <p className="text-gray-600">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-muted))] text-[hsl(var(--nature-primary))] rounded-lg p-4 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Domaća hrana</h4>
-                    <p className="text-gray-600">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
-                  </div>
-                </div>
+                  Pogledajte apartmane
+                </Button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Contact / Booking Form */}
-      <section id="contact" className="py-16 bg-[hsl(var(--nature-muted))]">
-        <div className="container-luxury">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
-              Kontakt i rezervacije
+          {/* Carousel Navigation Indicators */}
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex space-x-3">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImage(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImage
+                      ? 'bg-white shadow-lg scale-110'
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Introduction Section */}
+        <section className="section-padding bg-gradient-to-br from-[hsl(var(--nature-muted))] to-white">
+          <div className="container-luxury text-center">
+            <h2 className="mb-8 animate-fade-in text-[hsl(var(--nature-accent))] font-playfair text-3xl md:text-4xl font-bold">
+              Dobrodošli u Banju Vrujci
             </h2>
-            <p className="text-lg text-gray-600">Pošaljite upit ili nas pozovite direktno</p>
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
+              Uživajte u miru prirode, lековitim termalnim vodama i svежem vazduhu. Naši apartmani pružaju savršen odmor za sve koji traže bekstvo od gradske vreve.
+            </p>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-4">Kontakt informacije</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
-                    <span>+381 60 123 4567</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MessageCircle className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
-                    <span>banja.vrujci@apartmani.rs</span>
-                  </div>
+        {/* Location Snapshot */}
+        <section className="py-12 bg-white">
+          <div className="container-luxury">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+              <div className="flex items-center gap-3 text-center md:text-left">
+                <MapPin className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
+                <div>
+                  <div className="font-semibold text-[hsl(var(--nature-accent))]">120km od Beograda</div>
+                  <div className="text-sm text-gray-600">1.5h vožnje</div>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 text-center md:text-left">
+                <Calendar className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
+                <div>
+                  <div className="font-semibold text-[hsl(var(--nature-accent))]">Cela godina</div>
+                  <div className="text-sm text-gray-600">Najbolje: proleće-jesen</div>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 text-center md:text-left">
+                <div className="w-6 h-6 bg-[hsl(var(--nature-primary))] rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
+                <div>
+                  <div className="font-semibold text-[hsl(var(--nature-accent))]">Termalni izvori</div>
+                  <div className="text-sm text-gray-600">5min hoda</div>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  className="bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white flex items-center gap-2"
-                  onClick={() => window.open('tel:+38160123456')}
-                >
-                  <Phone className="w-4 h-4" />
-                  Pozovite nas
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="border-[hsl(var(--nature-blue))] text-[hsl(var(--nature-blue))] hover:bg-[hsl(var(--nature-blue))] hover:text-white flex items-center gap-2"
-                  onClick={() => window.open('https://wa.me/38160123456')}
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp
-                </Button>
-              </div>
-
-              {/* Admin Note */}
-              <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm">
-                <p className="font-medium text-amber-800 mb-2">Admin napomena:</p>
-                <p className="text-amber-700">
-                  IMAGE PLACEHOLDERS: {"{"}IMAGE_HERO_VRUJCI{"}"}, {"{"}IMG_1SPRAT_1{"}"}, {"{"}IMG_1SPRAT_2{"}"}, {"{"}IMG_2SPRAT_1{"}"}, {"{"}IMG_2SPRAT_2{"}"}, {"{"}GALLERY_IMG_1{"}"} kroz {"{"}GALLERY_IMG_12{"}"}, {"{"}IMG_TRAIL{"}"}, {"{"}IMG_SPRINGS{"}"}, {"{"}IMAGE_MAP_VRUJCI{"}"} - Replace with Dropbox images.
-                </p>
+              <div className="bg-[hsl(var(--nature-muted))] rounded-lg p-4 shadow-md">
+                <div className="w-full h-20 bg-white rounded flex items-center justify-center text-gray-500 text-sm">
+                  Mapa lokacije
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Booking Form */}
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-6">Pošaljite upit</h3>
-              <form className="space-y-6">
-                <input type="hidden" name="location" value="banja-vrujci" />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Ime i prezime</label>
-                    <input 
-                      type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      placeholder="Vaše ime"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input 
-                      type="email" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      placeholder="your@email.com"
-                    />
+        {/* Apartment Selector - Same as Borak but with Vrujci data */}
+        <section id="apartments" className="section-padding bg-gradient-to-b from-white to-[hsl(var(--nature-muted))]">
+          <div className="container-luxury">
+            <div className="text-center mb-20">
+              <h2 className="mb-6 animate-fade-in text-[hsl(var(--nature-accent))] font-playfair text-3xl md:text-4xl font-bold">
+                Naši apartmani
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
+                Udobni apartmani u srcu prirode, potpuno opremljeni za savršen odmor
+              </p>
+            </div>
+
+            {loading ? (
+              <div className="text-center">
+                <p className="text-gray-600 font-app">Učitavanje apartmana...</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+                {units.map((unit, index) => (
+                  <Card 
+                    key={unit.id} 
+                    className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border-[hsl(var(--nature-muted))] animate-fade-in"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={unit.images?.[0] || '/placeholder.svg'}
+                        alt={`${unit.name} - Apartman u Banji Vrujci`}
+                        className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-6 right-6 bg-[hsl(var(--nature-primary))] text-white px-4 py-2 rounded-full font-app font-medium shadow-lg">
+                        €{unit.price_per_night}/noć
+                      </div>
+                    </div>
+                    
+                    <div className="p-8">
+                      <h3 className="font-playfair text-[hsl(var(--nature-accent))] mb-4 text-xl md:text-2xl">
+                        {unit.name}
+                      </h3>
+                      
+                      <div className="flex items-center justify-between mb-6 text-gray-600">
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-5 w-5 text-[hsl(var(--nature-primary))]" />
+                          <span className="font-app">Do {unit.max_guests} osoba</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Square className="h-5 w-5 text-[hsl(var(--nature-primary))]" />
+                          <span className="font-app">{unit.size_m2}m²</span>
+                        </div>
+                      </div>
+
+                      <p className="text-gray-600 mb-6 font-app leading-relaxed">
+                        {unit.description}
+                      </p>
+                      
+                      <Button
+                        onClick={() => handleViewDetails(unit)}
+                        className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold"
+                      >
+                        Pogledaj detalje
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Gallery */}
+        <section id="gallery" className="py-16 bg-[hsl(var(--nature-muted))]">
+          <div className="container-luxury">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
+                Galerija
+              </h2>
+              <p className="text-lg text-gray-600">Pogledajte naše apartmane i okolinu</p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index}
+                  className="relative group cursor-pointer overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={() => setSelectedGalleryImage(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end">
+                    <div className="text-white p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-sm font-medium">{image.caption}</p>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
-                  <input 
-                    type="tel" 
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                    placeholder="+381..."
+            {/* Lightbox */}
+            {selectedGalleryImage !== null && (
+              <div 
+                className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                onClick={() => setSelectedGalleryImage(null)}
+              >
+                <div className="relative max-w-4xl max-h-full">
+                  <button 
+                    className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300"
+                    onClick={() => setSelectedGalleryImage(null)}
+                  >
+                    ✕
+                  </button>
+                  <img
+                    src={galleryImages[selectedGalleryImage]?.src}
+                    alt={galleryImages[selectedGalleryImage]?.alt}
+                    className="max-w-full max-h-full object-contain rounded-lg"
                   />
                 </div>
+              </div>
+            )}
+          </div>
+        </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Datum dolaska</label>
-                    <input 
-                      type="date" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                    />
+        {/* Location Highlights */}
+        <section className="py-16 bg-white">
+          <div className="container-luxury">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
+                  Kako doći
+                </h2>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                    <div>
+                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Autobusom iz Beograda</h4>
+                      <p className="text-gray-600">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Datum odlaska</label>
-                    <input 
-                      type="date" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                    />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                    <div>
+                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Automobilom</h4>
+                      <p className="text-gray-600">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Broj gostiju</label>
-                  <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent">
-                    <option>1 osoba</option>
-                    <option>2 osobe</option>
-                    <option>3 osobe</option>
-                    <option>4 osobe</option>
-                    <option>5 osoba</option>
-                    <option>6 osoba</option>
-                  </select>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
+                  Aktivnosti u blizini
+                </h2>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <img 
+                      src="/lovable-uploads/nature-park.jpeg"
+                      alt="Termalni izvori"
+                      className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Termalni izvori</h4>
+                      <p className="text-gray-600">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <img 
+                      src="/lovable-uploads/nature-park.jpeg"
+                      alt="Planinarske staze"
+                      className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Planinarske staze</h4>
+                      <p className="text-gray-600">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-muted))] text-[hsl(var(--nature-primary))] rounded-lg p-4 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Domaća hrana</h4>
+                      <p className="text-gray-600">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
+                    </div>
+                  </div>
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Poruka</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                    placeholder="Dodatne informacije ili posebni zahtevi..."
-                  ></textarea>
-                </div>
-
-                <Button 
-                  type="submit"
-                  className="w-full bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white py-3 text-lg font-semibold"
-                >
-                  Pošaljite upit
-                </Button>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        {/* Call to Action Section */}
+        <section className="relative h-96 md:h-[500px] overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/lovable-uploads/nature-park.jpeg"
+              alt="Priroda oko Banje Vrujci"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--nature-accent))]/80 via-[hsl(var(--nature-accent))]/65 to-transparent" />
+          <div className="relative z-10 flex h-full items-center justify-center">
+            <div className="text-center text-white px-6 max-w-4xl mx-auto">
+              <h2 className="mb-6 text-white animate-fade-in font-playfair text-3xl md:text-4xl lg:text-5xl font-bold">
+                Rezervišite Vaš odmor u prirodi
+              </h2>
+              <p className="text-lg md:text-xl mb-10 font-app font-light leading-relaxed animate-fade-in text-white/90">
+                Uživajte u termalnim vodama, svežem vazduhu i tišini prirode
+              </p>
+              <Button
+                onClick={scrollToApartments}
+                size="lg"
+                className="bg-[hsl(var(--nature-primary))] text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Rezervišite sada
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact / Booking Form */}
+        <section id="contact" className="py-16 bg-[hsl(var(--nature-muted))]">
+          <div className="container-luxury">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
+                Kontakt i rezervacije
+              </h2>
+              <p className="text-lg text-gray-600">Pošaljite upit ili nas pozovite direktno</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-4">Kontakt informacije</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
+                      <span>+381 60 123 4567</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <MessageCircle className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
+                      <span>banja.vrujci@apartmani.rs</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    className="bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white flex items-center gap-2"
+                    onClick={() => window.open('tel:+38160123456')}
+                  >
+                    <Phone className="w-4 h-4" />
+                    Pozovite nas
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="border-[hsl(var(--nature-blue))] text-[hsl(var(--nature-blue))] hover:bg-[hsl(var(--nature-blue))] hover:text-white flex items-center gap-2"
+                    onClick={() => window.open('https://wa.me/38160123456')}
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-6">Pošaljite upit</h3>
+                <form className="space-y-6">
+                  <input type="hidden" name="location" value="banja-vrujci" />
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Ime i prezime</label>
+                      <input 
+                        type="text" 
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                        placeholder="Vaše ime"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                      <input 
+                        type="email" 
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+                    <input 
+                      type="tel" 
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                      placeholder="+381..."
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Datum dolaska</label>
+                      <input 
+                        type="date" 
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Datum odlaska</label>
+                      <input 
+                        type="date" 
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Broj gostiju</label>
+                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent">
+                      <option>1 osoba</option>
+                      <option>2 osobe</option>
+                      <option>3 osobe</option>
+                      <option>4 osobe</option>
+                      <option>5 osoba</option>
+                      <option>6 osoba</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Poruka</label>
+                    <textarea 
+                      rows={4}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
+                      placeholder="Dodatne informacije ili posebni zahtevi..."
+                    ></textarea>
+                  </div>
+
+                  <Button 
+                    type="submit"
+                    className="w-full bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white py-3 text-lg font-semibold"
+                  >
+                    Pošaljite upit
+                  </Button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {selectedUnit && (
+          <ApartmentModal
+            apartment={selectedUnit}
+            onClose={handleCloseModal}
+            onBookNow={handleBookNow}
+          />
+        )}
+
+        {isBookingOpen && unitToBook && (
+          <BookingDrawer
+            apartment={unitToBook}
+            isOpen={isBookingOpen}
+            onClose={handleCloseBooking}
+          />
+        )}
+      </main>
+      
       <Footer />
-    </div>
+    </>
   );
 };
 
