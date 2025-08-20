@@ -241,13 +241,13 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="py-16 bg-[hsl(var(--nature-muted))]">
+        <section id="gallery" className="py-16 bg-[hsl(var(--nature-primary))]">
           <div className="container-luxury">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-muted-foreground))] mb-4 font-playfair">
+              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-primary-foreground))] mb-4 font-playfair">
                 Galerija
               </h2>
-              <p className="text-lg text-[hsl(var(--nature-muted-foreground))]">Pogledajte naše apartmane i okolinu</p>
+              <p className="text-lg text-[hsl(var(--nature-primary-foreground))]">Pogledajte naše apartmane i okolinu</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
