@@ -93,7 +93,7 @@ const BanjaVrujci = () => {
 
   return (
     <>
-      <Header />
+      <Header location="vrujci" />
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
         <section id="hero" className="relative h-screen w-full overflow-hidden">

@@ -20,6 +20,9 @@ const ApartmentDetail = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [galleryImageIndex, setGalleryImageIndex] = useState(0);
+  
+  // Detect if we're in Vrujci location based on URL
+  const isVrujciLocation = window.location.pathname.includes('/banja-vrujci');
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -30,7 +33,9 @@ const ApartmentDetail = () => {
     const loadApartment = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/data/units.json');
+        // Load data from appropriate file based on location
+        const dataFile = isVrujciLocation ? '/data/units-vrujci.json' : '/data/units.json';
+        const response = await fetch(dataFile);
         const data = await response.json();
         const found = data.units.find((unit: Unit) => 
           unit.name.toLowerCase().replace(/[^a-z0-9]/g, '-') === slug
@@ -38,7 +43,8 @@ const ApartmentDetail = () => {
         setApartment(found || null);
         
         if (found) {
-          document.title = `${found.name} - Borak Apartments`;
+          const locationName = isVrujciLocation ? 'Banja Vrujci' : 'Borak Apartments';
+          document.title = `${found.name} - ${locationName}`;
           const metaDescription = document.querySelector('meta[name="description"]');
           if (metaDescription) {
             metaDescription.setAttribute('content', `${found.description} - €${found.price_per_night}/night`);
@@ -52,7 +58,7 @@ const ApartmentDetail = () => {
     };
 
     loadApartment();
-  }, [slug]);
+  }, [slug, isVrujciLocation]);
 
   // Handle escape key for gallery
   useEffect(() => {
@@ -86,7 +92,7 @@ const ApartmentDetail = () => {
   if (loading) {
     return (
       <>
-        <Header />
+        <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#0077B6] mx-auto mb-4"></div>
@@ -101,7 +107,7 @@ const ApartmentDetail = () => {
   if (!apartment) {
     return (
       <>
-        <Header />
+        <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.notFound')}</h1>
@@ -164,11 +170,11 @@ const ApartmentDetail = () => {
 
   return (
     <>
-      <Header />
+      <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
       <main className="min-h-screen bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
         <div className="container-luxury py-8">
           <Button 
-            onClick={() => navigate(`/${lang || 'en'}/apartments`)} 
+            onClick={() => navigate(isVrujciLocation ? `/${lang || 'en'}/banja-vrujci/apartments` : `/${lang || 'en'}/apartments`)} 
             variant="ghost" 
             className="mb-6 text-[#0077B6] hover:text-[#0C1930] hover:bg-white/50"
           >

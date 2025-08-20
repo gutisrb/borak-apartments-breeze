@@ -79,7 +79,16 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
     const basePath = getLocationBasePath();
     
     if (path.startsWith('#')) {
-      scrollToSection(path.substring(1));
+      // Only scroll to sections if we're on the home page
+      if (window.location.pathname === `/${lang || 'en'}${basePath}`) {
+        scrollToSection(path.substring(1));
+      } else {
+        // Navigate to home first, then scroll
+        navigate(`/${lang || 'en'}${basePath}`);
+        setTimeout(() => {
+          scrollToSection(path.substring(1));
+        }, 100);
+      }
     } else {
       const fullPath = path === '/' ? `/${lang || 'en'}${basePath}` : `/${lang || 'en'}${basePath}${path}`;
       if (fullPath === `/${lang || 'en'}${basePath}`) {
@@ -97,8 +106,9 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
 
   const handleLocationChange = (newLocation: 'brac' | 'vrujci') => {
     const targetPath = newLocation === 'vrujci' ? '/banja-vrujci' : '';
-    navigate(`/${lang}${targetPath}`);
+    navigate(`/${lang || 'en'}${targetPath}`);
     setIsLocationOpen(false);
+    setIsMenuOpen(false);
   };
 
   const handleLogoClick = () => {
