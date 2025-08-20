@@ -187,26 +187,26 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Apartment Selector - Same as Borak but with Vrujci data */}
-        <section id="apartments" className="section-padding bg-[hsl(var(--nature-muted))]">
+        <section id="apartments" className="section-padding bg-[hsl(var(--nature-primary))]">
           <div className="container-luxury">
             <div className="text-center mb-20">
-              <h2 className="mb-6 animate-fade-in text-black font-playfair text-3xl md:text-4xl font-bold">
+              <h2 className="mb-6 animate-fade-in text-[hsl(var(--nature-primary-foreground))] font-playfair text-3xl md:text-4xl font-bold">
                 Naši apartmani
               </h2>
-              <p className="text-lg md:text-xl text-black max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
+              <p className="text-lg md:text-xl text-[hsl(var(--nature-primary-foreground))] max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
                 Udobni apartmani u srcu prirode, potpuno opremljeni za savršen odmor
               </p>
             </div>
 
             {loading ? <div className="text-center">
-                <p className="text-black font-app">Učitavanje apartmana...</p>
+                <p className="text-[hsl(var(--nature-primary-foreground))] font-app">Učitavanje apartmana...</p>
               </div> : <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                 {units.map((unit, index) => <Card key={unit.id} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border-[hsl(var(--nature-muted))] animate-fade-in" style={{
               animationDelay: `${index * 0.2}s`
             }}>
                     <div className="relative overflow-hidden">
                       <img src={unit.images?.[0] || '/placeholder.svg'} alt={`${unit.name} - Apartman u Banji Vrujci`} className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                      <div className="absolute top-6 right-6 bg-[hsl(var(--nature-primary))] text-white px-4 py-2 rounded-full font-app font-medium shadow-lg">
+                      <div className="absolute top-6 right-6 bg-[hsl(var(--nature-accent))] text-white px-4 py-2 rounded-full font-app font-medium shadow-lg">
                         €{unit.price_per_night}/noć
                       </div>
                     </div>
@@ -218,11 +218,11 @@ const BanjaVrujci = () => {
                       
                       <div className="flex items-center justify-between mb-6 text-gray-600">
                         <div className="flex items-center space-x-2">
-                          <Users className="h-5 w-5 text-[hsl(var(--nature-primary))]" />
+                          <Users className="h-5 w-5 text-[hsl(var(--nature-accent))]" />
                           <span className="font-app">Do {unit.max_guests} osoba</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Square className="h-5 w-5 text-[hsl(var(--nature-primary))]" />
+                          <Square className="h-5 w-5 text-[hsl(var(--nature-accent))]" />
                           <span className="font-app">{unit.size_m2}m²</span>
                         </div>
                       </div>
@@ -231,7 +231,7 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold">
+                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition font-app font-semibold">
                         Pogledaj detalje
                       </Button>
                     </div>
@@ -241,13 +241,13 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="py-16 bg-[hsl(var(--nature-blue))]">
+        <section id="gallery" className="py-16 bg-[hsl(var(--nature-muted))]">
           <div className="container-luxury">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 font-playfair">
+              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-muted-foreground))] mb-4 font-playfair">
                 Galerija
               </h2>
-              <p className="text-lg text-black">Pogledajte naše apartmane i okolinu</p>
+              <p className="text-lg text-[hsl(var(--nature-muted-foreground))]">Pogledajte naše apartmane i okolinu</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -274,57 +274,57 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Location Highlights */}
-        <section className="py-16 bg-[hsl(var(--nature-muted))]">
+        <section className="py-16 bg-[hsl(var(--nature-blue))]">
           <div className="container-luxury">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 font-playfair">
+                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-blue-foreground))] mb-8 font-playfair">
                   Kako doći
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-[hsl(var(--nature-accent))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
                     <div>
-                      <h4 className="font-semibold text-black mb-2">Autobusom iz Beograda</h4>
-                      <p className="text-black">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
+                      <h4 className="font-semibold text-[hsl(var(--nature-blue-foreground))] mb-2">Autobusom iz Beograda</h4>
+                      <p className="text-[hsl(var(--nature-blue-foreground))]">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="bg-[hsl(var(--nature-accent))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
                     <div>
-                      <h4 className="font-semibold text-black mb-2">Automobilom</h4>
-                      <p className="text-black">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
+                      <h4 className="font-semibold text-[hsl(var(--nature-blue-foreground))] mb-2">Automobilom</h4>
+                      <p className="text-[hsl(var(--nature-blue-foreground))]">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 font-playfair">
+                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-blue-foreground))] mb-8 font-playfair">
                   Aktivnosti u blizini
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <img src="/lovable-uploads/nature-park.jpeg" alt="Termalni izvori" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-black mb-2">Termalni izvori</h4>
-                      <p className="text-black">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
+                      <h4 className="font-semibold text-[hsl(var(--nature-blue-foreground))] mb-2">Termalni izvori</h4>
+                      <p className="text-[hsl(var(--nature-blue-foreground))]">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
                     <img src="/lovable-uploads/nature-park.jpeg" alt="Planinarske staze" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-black mb-2">Planinarske staze</h4>
-                      <p className="text-black">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
+                      <h4 className="font-semibold text-[hsl(var(--nature-blue-foreground))] mb-2">Planinarske staze</h4>
+                      <p className="text-[hsl(var(--nature-blue-foreground))]">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
                     <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-accent))] text-white rounded-lg p-4 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-black mb-2">Domaća hrana</h4>
-                      <p className="text-black">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
+                      <h4 className="font-semibold text-[hsl(var(--nature-blue-foreground))] mb-2">Domaća hrana</h4>
+                      <p className="text-[hsl(var(--nature-blue-foreground))]">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
                     </div>
                   </div>
                 </div>

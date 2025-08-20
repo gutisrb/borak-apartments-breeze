@@ -37,7 +37,7 @@ const VrujciApartments = () => {
   return (
     <>
       <Header location="vrujci" />
-      <main className="min-h-screen bg-[hsl(var(--nature-blue))] pt-20 relative overflow-hidden">
+      <main className="min-h-screen bg-[hsl(var(--nature-primary))] pt-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -47,10 +47,10 @@ const VrujciApartments = () => {
         
         <div className="container-luxury py-16 relative">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 font-playfair">
+            <h1 className="text-4xl md:text-5xl font-bold text-[hsl(var(--nature-primary-foreground))] mb-6 font-playfair">
               Apartmani — Banja Vrujci
             </h1>
-            <p className="text-lg text-black max-w-3xl mx-auto font-app leading-relaxed">
+            <p className="text-lg text-[hsl(var(--nature-primary-foreground))] max-w-3xl mx-auto font-app leading-relaxed">
               Odkrijte udobne apartmane u srcu prirode, u blizini termalnih izvora.
             </p>
           </div>
@@ -74,11 +74,11 @@ const VrujciApartments = () => {
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-black mb-4 font-playfair">
+                  <h3 className="text-2xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
                     {apartment.name}
                   </h3>
 
-                  <div className="flex items-center gap-6 mb-6 text-black">
+                  <div className="flex items-center gap-6 mb-6 text-gray-600">
                     <div className="flex items-center gap-2">
                       <Users className="h-5 w-5 text-[hsl(var(--nature-accent))]" />
                       <span className="font-app">{apartment.max_guests} osoba</span>
@@ -89,7 +89,7 @@ const VrujciApartments = () => {
                     </div>
                   </div>
 
-                  <p className="text-black mb-6 leading-relaxed font-app">
+                  <p className="text-gray-600 mb-6 leading-relaxed font-app">
                     {apartment.description}
                   </p>
 
@@ -100,7 +100,7 @@ const VrujciApartments = () => {
                   </div>
 
                   <Link to={`/${lang || 'en'}/banja-vrujci/apartments/${getApartmentSlug(apartment)}`}>
-                    <Button className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
+                    <Button className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
                       Pogledaj detalje
                     </Button>
                   </Link>
