@@ -37,8 +37,8 @@
     --ring: 0 119 182; /* #0077B6 */
 
     /* Natural/Banja Vrujci Color System - Spa Colors Only */
-    --nature-primary: 187 247 208; /* Very Light Green #bbf7d0 */
-    --nature-primary-foreground: 22 101 52; /* Dark Green text for contrast */
+    --nature-primary: 151 60 45; /* #2eb774 - Your specified green */
+    --nature-primary-foreground: 255 255 255; /* White text for better contrast */
     --nature-accent: 22 101 52; /* Dark Forest Green #166534 */
     --nature-accent-foreground: 255 255 255; /* White text */
     --nature-muted: 220 252 231; /* Pale Green #dcfce7 */
