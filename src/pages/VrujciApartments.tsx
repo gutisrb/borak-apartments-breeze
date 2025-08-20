@@ -37,7 +37,7 @@ const VrujciApartments = () => {
   return (
     <>
       <Header location="vrujci" />
-      <main className="min-h-screen bg-gradient-to-br from-vrujci-bg via-white to-vrujci-light pt-20 relative overflow-hidden">
+      <main className="min-h-screen bg-[hsl(var(--nature-blue))] pt-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -47,10 +47,10 @@ const VrujciApartments = () => {
         
         <div className="container-luxury py-16 relative">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-vrujci-dark mb-6 font-playfair">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 font-playfair">
               Apartmani — Banja Vrujci
             </h1>
-            <p className="text-lg text-vrujci-text max-w-3xl mx-auto font-app leading-relaxed">
+            <p className="text-lg text-black max-w-3xl mx-auto font-app leading-relaxed">
               Odkrijte udobne apartmane u srcu prirode, u blizini termalnih izvora.
             </p>
           </div>
@@ -59,7 +59,7 @@ const VrujciApartments = () => {
             {apartments.map((apartment) => (
               <div
                 key={apartment.id}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 group relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-vrujci-primary before:to-vrujci-accent transform hover:scale-[1.02]"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 group relative before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[hsl(var(--nature-accent))] transform hover:scale-[1.02]"
               >
                 <div className="relative overflow-hidden">
                   {apartment.images && apartment.images[0] && (
@@ -74,33 +74,33 @@ const VrujciApartments = () => {
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-vrujci-dark mb-4 font-playfair">
+                  <h3 className="text-2xl font-bold text-black mb-4 font-playfair">
                     {apartment.name}
                   </h3>
 
-                  <div className="flex items-center gap-6 mb-6 text-vrujci-text">
+                  <div className="flex items-center gap-6 mb-6 text-black">
                     <div className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-vrujci-accent" />
+                      <Users className="h-5 w-5 text-[hsl(var(--nature-accent))]" />
                       <span className="font-app">{apartment.max_guests} osoba</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Square className="h-5 w-5 text-vrujci-accent" />
+                      <Square className="h-5 w-5 text-[hsl(var(--nature-accent))]" />
                       <span className="font-app">{apartment.size_m2}m²</span>
                     </div>
                   </div>
 
-                  <p className="text-vrujci-text mb-6 leading-relaxed font-app">
+                  <p className="text-black mb-6 leading-relaxed font-app">
                     {apartment.description}
                   </p>
 
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-2xl font-bold text-vrujci-primary font-app">
+                    <div className="text-2xl font-bold text-[hsl(var(--nature-accent))] font-app">
                       €{apartment.price_per_night}/noć
                     </div>
                   </div>
 
                   <Link to={`/${lang || 'en'}/banja-vrujci/apartments/${getApartmentSlug(apartment)}`}>
-                    <Button className="w-full bg-vrujci-primary text-white hover:bg-vrujci-accent transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
+                    <Button className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
                       Pogledaj detalje
                     </Button>
                   </Link>
@@ -110,7 +110,7 @@ const VrujciApartments = () => {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer location="vrujci" />
     </>
   );
 };

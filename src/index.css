@@ -36,15 +36,15 @@
     --input: 244 249 253;
     --ring: 0 119 182; /* #0077B6 */
 
-    /* Natural/Banja Vrujci Color System - Light Green & Light Blue */
-    --nature-primary: 72 187 120; /* #48BB78 - Light Green */
-    --nature-primary-foreground: 255 255 255;
-    --nature-accent: 22 101 52; /* #166534 - Dark Green for header/footer */
-    --nature-accent-foreground: 255 255 255;
-    --nature-muted: 134 239 172; /* #86EFAC - Light Green */
-    --nature-muted-foreground: 255 255 255;
-    --nature-blue: 147 197 253; /* #93C5FD - Light Blue */
-    --nature-blue-foreground: 255 255 255;
+    /* Natural/Banja Vrujci Color System - Only Green and Blue */
+    --nature-primary: 134 239 172; /* Light Green */
+    --nature-primary-foreground: 0 0 0; /* Black text */
+    --nature-accent: 21 128 61; /* Dark Green for header/footer */
+    --nature-accent-foreground: 255 255 255; /* White text */
+    --nature-muted: 134 239 172; /* Light Green */
+    --nature-muted-foreground: 0 0 0; /* Black text */
+    --nature-blue: 147 197 253; /* Light Blue */
+    --nature-blue-foreground: 0 0 0; /* Black text */
 
     --radius: 0.5rem;
 
