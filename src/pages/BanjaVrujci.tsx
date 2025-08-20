@@ -138,42 +138,42 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Introduction Section */}
-        <section className="section-padding bg-gradient-to-br from-[hsl(var(--nature-muted))] to-white">
+        <section className="section-padding bg-[hsl(var(--nature-muted))]">
           <div className="container-luxury text-center">
-            <h2 className="mb-8 animate-fade-in text-[hsl(var(--nature-accent))] font-playfair text-3xl md:text-4xl font-bold">
+            <h2 className="mb-8 animate-fade-in text-white font-playfair text-3xl md:text-4xl font-bold">
               Dobrodošli u Banju Vrujci
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
+            <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
               Uživajte u miru prirode, lековitim termalnim vodama i svежem vazduhu. Naši apartmani pružaju savršen odmor za sve koji traže bekstvo od gradske vreve.
             </p>
           </div>
         </section>
 
         {/* Location Snapshot */}
-        <section className="py-12 bg-white">
+        <section className="py-12 bg-[hsl(var(--nature-blue))]">
           <div className="container-luxury">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
               <div className="flex items-center gap-3 text-center md:text-left">
-                <MapPin className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
+                <MapPin className="w-6 h-6 text-white" />
                 <div>
-                  <div className="font-semibold text-[hsl(var(--nature-accent))]">120km od Beograda</div>
-                  <div className="text-sm text-gray-600">1.5h vožnje</div>
+                  <div className="font-semibold text-white">120km od Beograda</div>
+                  <div className="text-sm text-white/80">1.5h vožnje</div>
                 </div>
               </div>
               
               <div className="flex items-center gap-3 text-center md:text-left">
-                <Calendar className="w-6 h-6 text-[hsl(var(--nature-primary))]" />
+                <Calendar className="w-6 h-6 text-white" />
                 <div>
-                  <div className="font-semibold text-[hsl(var(--nature-accent))]">Cela godina</div>
-                  <div className="text-sm text-gray-600">Najbolje: proleće-jesen</div>
+                  <div className="font-semibold text-white">Cela godina</div>
+                  <div className="text-sm text-white/80">Najbolje: proleće-jesen</div>
                 </div>
               </div>
               
               <div className="flex items-center gap-3 text-center md:text-left">
-                <div className="w-6 h-6 bg-[hsl(var(--nature-primary))] rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
+                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-[hsl(var(--nature-accent))] text-xs font-bold">T</div>
                 <div>
-                  <div className="font-semibold text-[hsl(var(--nature-accent))]">Termalni izvori</div>
-                  <div className="text-sm text-gray-600">5min hoda</div>
+                  <div className="font-semibold text-white">Termalni izvori</div>
+                  <div className="text-sm text-white/80">5min hoda</div>
                 </div>
               </div>
 
@@ -187,19 +187,19 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Apartment Selector - Same as Borak but with Vrujci data */}
-        <section id="apartments" className="section-padding bg-gradient-to-b from-white to-[hsl(var(--nature-muted))]">
+        <section id="apartments" className="section-padding bg-[hsl(var(--nature-blue))]">
           <div className="container-luxury">
             <div className="text-center mb-20">
-              <h2 className="mb-6 animate-fade-in text-[hsl(var(--nature-accent))] font-playfair text-3xl md:text-4xl font-bold">
+              <h2 className="mb-6 animate-fade-in text-white font-playfair text-3xl md:text-4xl font-bold">
                 Naši apartmani
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-app leading-relaxed animate-fade-in">
                 Udobni apartmani u srcu prirode, potpuno opremljeni za savršen odmor
               </p>
             </div>
 
             {loading ? <div className="text-center">
-                <p className="text-gray-600 font-app">Učitavanje apartmana...</p>
+                <p className="text-white/90 font-app">Učitavanje apartmana...</p>
               </div> : <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                 {units.map((unit, index) => <Card key={unit.id} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border-[hsl(var(--nature-muted))] animate-fade-in" style={{
               animationDelay: `${index * 0.2}s`
@@ -244,10 +244,10 @@ const BanjaVrujci = () => {
         <section id="gallery" className="py-16 bg-[hsl(var(--nature-muted))]">
           <div className="container-luxury">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">
                 Galerija
               </h2>
-              <p className="text-lg text-gray-600">Pogledajte naše apartmane i okolinu</p>
+              <p className="text-lg text-white/90">Pogledajte naše apartmane i okolinu</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -274,57 +274,57 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Location Highlights */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[hsl(var(--nature-blue))]">
           <div className="container-luxury">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-playfair">
                   Kako doći
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                    <div className="bg-white text-[hsl(var(--nature-accent))] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
                     <div>
-                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Autobusom iz Beograda</h4>
-                      <p className="text-gray-600">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
+                      <h4 className="font-semibold text-white mb-2">Autobusom iz Beograda</h4>
+                      <p className="text-white/90">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-[hsl(var(--nature-primary))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                    <div className="bg-white text-[hsl(var(--nature-accent))] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
                     <div>
-                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Automobilom</h4>
-                      <p className="text-gray-600">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
+                      <h4 className="font-semibold text-white mb-2">Automobilom</h4>
+                      <p className="text-white/90">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-8 font-playfair">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-playfair">
                   Aktivnosti u blizini
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <img src="/lovable-uploads/nature-park.jpeg" alt="Termalni izvori" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Termalni izvori</h4>
-                      <p className="text-gray-600">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
+                      <h4 className="font-semibold text-white mb-2">Termalni izvori</h4>
+                      <p className="text-white/90">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
                     <img src="/lovable-uploads/nature-park.jpeg" alt="Planinarske staze" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Planinarske staze</h4>
-                      <p className="text-gray-600">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
+                      <h4 className="font-semibold text-white mb-2">Planinarske staze</h4>
+                      <p className="text-white/90">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-muted))] text-[hsl(var(--nature-primary))] rounded-lg p-4 flex-shrink-0" />
+                    <ChefHat className="w-16 h-16 bg-white text-[hsl(var(--nature-accent))] rounded-lg p-4 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Domaća hrana</h4>
-                      <p className="text-gray-600">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
+                      <h4 className="font-semibold text-white mb-2">Domaća hrana</h4>
+                      <p className="text-white/90">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>
                     </div>
                   </div>
                 </div>

@@ -39,11 +39,11 @@
     /* Natural/Banja Vrujci Color System - Light Green & Light Blue */
     --nature-primary: 72 187 120; /* #48BB78 - Light Green */
     --nature-primary-foreground: 255 255 255;
-    --nature-accent: 56 178 172; /* #38B2AC - Light Blue/Teal */
+    --nature-accent: 22 101 52; /* #166534 - Dark Green for header/footer */
     --nature-accent-foreground: 255 255 255;
-    --nature-muted: 240 253 244; /* #F0FDF4 - Very Light Green */
-    --nature-muted-foreground: 85 85 85;
-    --nature-blue: 129 190 255; /* #81BEFF - Light Blue */
+    --nature-muted: 134 239 172; /* #86EFAC - Light Green */
+    --nature-muted-foreground: 255 255 255;
+    --nature-blue: 147 197 253; /* #93C5FD - Light Blue */
     --nature-blue-foreground: 255 255 255;
 
     --radius: 0.5rem;
