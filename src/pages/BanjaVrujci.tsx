@@ -232,7 +232,7 @@ const BanjaVrujci = () => {
                       </p>
                       
                       <Button 
-                        onClick={() => window.location.href = `/en/banja-vrujci/apartments/${unit.name.toLowerCase().replace(/\s+/g, '-').replace(/—/g, '').replace(/[^\w-]/g, '')}`} 
+                        onClick={() => window.location.href = `/en/banja-vrujci/apartments/${unit.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`} 
                         className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition font-app font-semibold"
                       >
                         Pogledaj detalje
