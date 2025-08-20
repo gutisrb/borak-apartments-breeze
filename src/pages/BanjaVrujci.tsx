@@ -8,7 +8,6 @@ import { Unit } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Users, Square, MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
-
 const BanjaVrujci = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -17,21 +16,32 @@ const BanjaVrujci = () => {
   const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null);
-
-  const heroImages = [
-    '/lovable-uploads/nature-park.jpeg',
-    '/lovable-uploads/hero-brac-1.jpeg',
-    '/lovable-uploads/hero-brac-2.jpg'
-  ];
-
-  const galleryImages = [
-    { src: '/lovable-uploads/apartman1 (1).jpg', alt: 'Apartman enterijer', caption: 'Udobne dnevne sobe' },
-    { src: '/lovable-uploads/apartman1 (2).jpg', alt: 'Spavaća soba', caption: 'Komforne spavaće sobe' },
-    { src: '/lovable-uploads/apartman2 (1).jpg', alt: 'Kuhinja', caption: 'Potpuno opremljena kuhinja' },
-    { src: '/lovable-uploads/apartman2 (2).jpg', alt: 'Kupatilo', caption: 'Moderna kupatila' },
-    { src: '/lovable-uploads/nature-park.jpeg', alt: 'Priroda oko Banje Vrujci', caption: 'Prekrasna priroda oko kompleksa' },
-    { src: '/lovable-uploads/local-restaurant.jpg', alt: 'Lokalna hrana', caption: 'Lokalne specijalitete' }
-  ];
+  const heroImages = ['/lovable-uploads/nature-park.jpeg', '/lovable-uploads/hero-brac-1.jpeg', '/lovable-uploads/hero-brac-2.jpg'];
+  const galleryImages = [{
+    src: '/lovable-uploads/apartman1 (1).jpg',
+    alt: 'Apartman enterijer',
+    caption: 'Udobne dnevne sobe'
+  }, {
+    src: '/lovable-uploads/apartman1 (2).jpg',
+    alt: 'Spavaća soba',
+    caption: 'Komforne spavaće sobe'
+  }, {
+    src: '/lovable-uploads/apartman2 (1).jpg',
+    alt: 'Kuhinja',
+    caption: 'Potpuno opremljena kuhinja'
+  }, {
+    src: '/lovable-uploads/apartman2 (2).jpg',
+    alt: 'Kupatilo',
+    caption: 'Moderna kupatila'
+  }, {
+    src: '/lovable-uploads/nature-park.jpeg',
+    alt: 'Priroda oko Banje Vrujci',
+    caption: 'Prekrasna priroda oko kompleksa'
+  }, {
+    src: '/lovable-uploads/local-restaurant.jpg',
+    alt: 'Lokalna hrana',
+    caption: 'Lokalne specijalitete'
+  }];
 
   // Fetch units data
   useEffect(() => {
@@ -52,7 +62,7 @@ const BanjaVrujci = () => {
   // Auto-advance hero carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      setCurrentImage(prev => (prev + 1) % heroImages.length);
     }, 6000);
     return () => clearInterval(interval);
   }, []);
@@ -65,55 +75,38 @@ const BanjaVrujci = () => {
       metaDescription.setAttribute('content', 'Apartmani u Banji Vrujci za odmor u prirodi. Termalni izvori, svež vazduh i tišina. Rezervišite Vaš boravak u prirodnom okruženju.');
     }
   }, []);
-
   const handleViewDetails = (unit: Unit) => {
     setSelectedUnit(unit);
   };
-
   const handleCloseModal = () => {
     setSelectedUnit(null);
   };
-
   const handleBookNow = (unit: Unit) => {
     setUnitToBook(unit);
     setSelectedUnit(null);
     setIsBookingOpen(true);
   };
-
   const handleCloseBooking = () => {
     setIsBookingOpen(false);
     setUnitToBook(null);
   };
-
   const scrollToApartments = () => {
     const apartmentsSection = document.getElementById('apartments');
     if (apartmentsSection) {
-      apartmentsSection.scrollIntoView({ behavior: 'smooth' });
+      apartmentsSection.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <>
+  return <>
       <Header location="vrujci" />
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
         <section id="hero" className="relative h-screen w-full overflow-hidden">
           <div className="absolute inset-0">
-            {heroImages.map((image, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  index === currentImage ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <img
-                  src={image}
-                  alt={`Banja Vrujci priroda ${index + 1}`}
-                  className="h-full w-full object-cover"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                />
-              </div>
-            ))}
+            {heroImages.map((image, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-100' : 'opacity-0'}`}>
+                <img src={image} alt={`Banja Vrujci priroda ${index + 1}`} className="h-full w-full object-cover" loading={index === 0 ? 'eager' : 'lazy'} />
+              </div>)}
           </div>
 
           {/* Dark Gradient Overlay */}
@@ -129,11 +122,7 @@ const BanjaVrujci = () => {
                 Odmor u prirodi — termalne vode, tišina i svež vazduh
               </h2>
               <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
-                <Button
-                  onClick={scrollToApartments}
-                  size="lg"
-                  className="bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app text-base md:text-lg px-12 py-5"
-                >
+                <Button onClick={scrollToApartments} size="lg" className="bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app text-base md:text-lg px-12 py-5">
                   Pogledajte apartmane
                 </Button>
               </div>
@@ -143,17 +132,7 @@ const BanjaVrujci = () => {
           {/* Carousel Navigation Indicators */}
           <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
             <div className="flex space-x-3">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImage(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentImage
-                      ? 'bg-white shadow-lg scale-110'
-                      : 'bg-white/40 hover:bg-white/60'
-                  }`}
-                />
-              ))}
+              {heroImages.map((_, index) => <button key={index} onClick={() => setCurrentImage(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImage ? 'bg-white shadow-lg scale-110' : 'bg-white/40 hover:bg-white/60'}`} />)}
             </div>
           </div>
         </section>
@@ -219,25 +198,14 @@ const BanjaVrujci = () => {
               </p>
             </div>
 
-            {loading ? (
-              <div className="text-center">
+            {loading ? <div className="text-center">
                 <p className="text-gray-600 font-app">Učitavanje apartmana...</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-                {units.map((unit, index) => (
-                  <Card 
-                    key={unit.id} 
-                    className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border-[hsl(var(--nature-muted))] animate-fade-in"
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
+              </div> : <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+                {units.map((unit, index) => <Card key={unit.id} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border-[hsl(var(--nature-muted))] animate-fade-in" style={{
+              animationDelay: `${index * 0.2}s`
+            }}>
                     <div className="relative overflow-hidden">
-                      <img
-                        src={unit.images?.[0] || '/placeholder.svg'}
-                        alt={`${unit.name} - Apartman u Banji Vrujci`}
-                        className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
-                      />
+                      <img src={unit.images?.[0] || '/placeholder.svg'} alt={`${unit.name} - Apartman u Banji Vrujci`} className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                       <div className="absolute top-6 right-6 bg-[hsl(var(--nature-primary))] text-white px-4 py-2 rounded-full font-app font-medium shadow-lg">
                         €{unit.price_per_night}/noć
                       </div>
@@ -263,17 +231,12 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button
-                        onClick={() => handleViewDetails(unit)}
-                        className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold"
-                      >
+                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold">
                         Pogledaj detalje
                       </Button>
                     </div>
-                  </Card>
-                ))}
-              </div>
-            )}
+                  </Card>)}
+              </div>}
           </div>
         </section>
 
@@ -288,48 +251,25 @@ const BanjaVrujci = () => {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {galleryImages.map((image, index) => (
-                <div 
-                  key={index}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => setSelectedGalleryImage(index)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
+              {galleryImages.map((image, index) => <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg bg-white shadow-lg hover:shadow-xl transition-all duration-300" onClick={() => setSelectedGalleryImage(index)}>
+                  <img src={image.src} alt={image.alt} className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end">
                     <div className="text-white p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <p className="text-sm font-medium">{image.caption}</p>
                     </div>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             {/* Lightbox */}
-            {selectedGalleryImage !== null && (
-              <div 
-                className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-                onClick={() => setSelectedGalleryImage(null)}
-              >
+            {selectedGalleryImage !== null && <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedGalleryImage(null)}>
                 <div className="relative max-w-4xl max-h-full">
-                  <button 
-                    className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300"
-                    onClick={() => setSelectedGalleryImage(null)}
-                  >
+                  <button className="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300" onClick={() => setSelectedGalleryImage(null)}>
                     ✕
                   </button>
-                  <img
-                    src={galleryImages[selectedGalleryImage]?.src}
-                    alt={galleryImages[selectedGalleryImage]?.alt}
-                    className="max-w-full max-h-full object-contain rounded-lg"
-                  />
+                  <img src={galleryImages[selectedGalleryImage]?.src} alt={galleryImages[selectedGalleryImage]?.alt} className="max-w-full max-h-full object-contain rounded-lg" />
                 </div>
-              </div>
-            )}
+              </div>}
           </div>
         </section>
 
@@ -365,11 +305,7 @@ const BanjaVrujci = () => {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <img 
-                      src="/lovable-uploads/nature-park.jpeg"
-                      alt="Termalni izvori"
-                      className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-                    />
+                    <img src="/lovable-uploads/nature-park.jpeg" alt="Termalni izvori" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Termalni izvori</h4>
                       <p className="text-gray-600">Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres.</p>
@@ -377,11 +313,7 @@ const BanjaVrujci = () => {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <img 
-                      src="/lovable-uploads/nature-park.jpeg"
-                      alt="Planinarske staze"
-                      className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-                    />
+                    <img src="/lovable-uploads/nature-park.jpeg" alt="Planinarske staze" className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-[hsl(var(--nature-accent))] mb-2">Planinarske staze</h4>
                       <p className="text-gray-600">Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare.</p>
@@ -405,153 +337,14 @@ const BanjaVrujci = () => {
         <CallToActionSection />
 
         {/* Contact / Booking Form */}
-        <section id="contact" className="py-16 bg-[hsl(var(--nature-muted))]">
-          <div className="container-luxury">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--nature-accent))] mb-4 font-playfair">
-                Kontakt i rezervacije
-              </h2>
-              <p className="text-lg text-gray-600">Pošaljite upit ili nas pozovite direktno</p>
-            </div>
+        
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-4">Kontakt informacije</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
-                      <span>+381 60 123 4567</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <MessageCircle className="w-5 h-5 text-[hsl(var(--nature-primary))]" />
-                      <span>banja.vrujci@apartmani.rs</span>
-                    </div>
-                  </div>
-                </div>
+        {selectedUnit && <ApartmentModal apartment={selectedUnit} onClose={handleCloseModal} onBookNow={handleBookNow} />}
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    className="bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white flex items-center gap-2"
-                    onClick={() => window.open('tel:+38160123456')}
-                  >
-                    <Phone className="w-4 h-4" />
-                    Pozovite nas
-                  </Button>
-                  <Button 
-                    variant="outline"
-                    className="border-[hsl(var(--nature-blue))] text-[hsl(var(--nature-blue))] hover:bg-[hsl(var(--nature-blue))] hover:text-white flex items-center gap-2"
-                    onClick={() => window.open('https://wa.me/38160123456')}
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="text-xl font-semibold text-[hsl(var(--nature-accent))] mb-6">Pošaljite upit</h3>
-                <form className="space-y-6">
-                  <input type="hidden" name="location" value="banja-vrujci" />
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Ime i prezime</label>
-                      <input 
-                        type="text" 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                        placeholder="Vaše ime"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                      <input 
-                        type="email" 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
-                    <input 
-                      type="tel" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      placeholder="+381..."
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Datum dolaska</label>
-                      <input 
-                        type="date" 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Datum odlaska</label>
-                      <input 
-                        type="date" 
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Broj gostiju</label>
-                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent">
-                      <option>1 osoba</option>
-                      <option>2 osobe</option>
-                      <option>3 osobe</option>
-                      <option>4 osobe</option>
-                      <option>5 osoba</option>
-                      <option>6 osoba</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Poruka</label>
-                    <textarea 
-                      rows={4}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[hsl(var(--nature-primary))] focus:border-transparent"
-                      placeholder="Dodatne informacije ili posebni zahtevi..."
-                    ></textarea>
-                  </div>
-
-                  <Button 
-                    type="submit"
-                    className="w-full bg-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-accent))] text-white py-3 text-lg font-semibold"
-                  >
-                    Pošaljite upit
-                  </Button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {selectedUnit && (
-          <ApartmentModal
-            apartment={selectedUnit}
-            onClose={handleCloseModal}
-            onBookNow={handleBookNow}
-          />
-        )}
-
-        {isBookingOpen && unitToBook && (
-          <BookingDrawer
-            apartment={unitToBook}
-            isOpen={isBookingOpen}
-            onClose={handleCloseBooking}
-          />
-        )}
+        {isBookingOpen && unitToBook && <BookingDrawer apartment={unitToBook} isOpen={isBookingOpen} onClose={handleCloseBooking} />}
       </main>
       
       <Footer location="vrujci" />
-    </>
-  );
+    </>;
 };
-
 export default BanjaVrujci;
