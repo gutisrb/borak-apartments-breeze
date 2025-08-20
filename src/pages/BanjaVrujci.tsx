@@ -140,10 +140,10 @@ const BanjaVrujci = () => {
         {/* Introduction Section */}
         <section className="section-padding bg-[hsl(var(--nature-muted))]">
           <div className="container-luxury text-center">
-            <h2 className="mb-8 animate-fade-in text-black font-playfair text-3xl md:text-4xl font-bold">
+            <h2 className="mb-8 animate-fade-in text-[hsl(var(--nature-muted-foreground))] font-playfair text-3xl md:text-4xl font-bold">
               Dobrodošli u Banju Vrujci
             </h2>
-            <p className="text-lg md:text-xl text-black max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
+            <p className="text-lg md:text-xl text-[hsl(var(--nature-muted-foreground))] max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
               Uživajte u miru prirode, lековitim termalnim vodama i svежem vazduhu. Naši apartmani pružaju savršen odmor za sve koji traže bekstvo od gradske vreve.
             </p>
           </div>
@@ -154,31 +154,31 @@ const BanjaVrujci = () => {
           <div className="container-luxury">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
               <div className="flex items-center gap-3 text-center md:text-left">
-                <MapPin className="w-6 h-6 text-black" />
+                <MapPin className="w-6 h-6 text-[hsl(var(--nature-blue-foreground))]" />
                 <div>
-                  <div className="font-semibold text-black">120km od Beograda</div>
-                  <div className="text-sm text-black">1.5h vožnje</div>
+                  <div className="font-semibold text-[hsl(var(--nature-blue-foreground))]">120km od Beograda</div>
+                  <div className="text-sm text-[hsl(var(--nature-blue-foreground))]">1.5h vožnje</div>
                 </div>
               </div>
               
               <div className="flex items-center gap-3 text-center md:text-left">
-                <Calendar className="w-6 h-6 text-black" />
+                <Calendar className="w-6 h-6 text-[hsl(var(--nature-blue-foreground))]" />
                 <div>
-                  <div className="font-semibold text-black">Cela godina</div>
-                  <div className="text-sm text-black">Najbolje: proleće-jesen</div>
+                  <div className="font-semibold text-[hsl(var(--nature-blue-foreground))]">Cela godina</div>
+                  <div className="text-sm text-[hsl(var(--nature-blue-foreground))]">Najbolje: proleće-jesen</div>
                 </div>
               </div>
               
               <div className="flex items-center gap-3 text-center md:text-left">
-                <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
+                <div className="w-6 h-6 bg-[hsl(var(--nature-accent))] rounded-full flex items-center justify-center text-white text-xs font-bold">T</div>
                 <div>
-                  <div className="font-semibold text-black">Termalni izvori</div>
-                  <div className="text-sm text-black">5min hoda</div>
+                  <div className="font-semibold text-[hsl(var(--nature-blue-foreground))]">Termalni izvori</div>
+                  <div className="text-sm text-[hsl(var(--nature-blue-foreground))]">5min hoda</div>
                 </div>
               </div>
 
-              <div className="bg-[hsl(var(--nature-muted))] rounded-lg p-4 shadow-md">
-                <div className="w-full h-20 bg-white rounded flex items-center justify-center text-gray-500 text-sm">
+              <div className="bg-[hsl(var(--nature-primary))] rounded-lg p-4 shadow-md">
+                <div className="w-full h-20 bg-white rounded flex items-center justify-center text-[hsl(var(--nature-accent))] text-sm font-semibold">
                   Mapa lokacije
                 </div>
               </div>

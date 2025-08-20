@@ -36,15 +36,15 @@
     --input: 244 249 253;
     --ring: 0 119 182; /* #0077B6 */
 
-    /* Natural/Banja Vrujci Color System - Only Green and Blue */
-    --nature-primary: 134 239 172; /* Light Green */
-    --nature-primary-foreground: 0 0 0; /* Black text */
-    --nature-accent: 21 128 61; /* Dark Green for header/footer */
+    /* Natural/Banja Vrujci Color System - Spa Colors Only */
+    --nature-primary: 187 247 208; /* Very Light Green #bbf7d0 */
+    --nature-primary-foreground: 22 101 52; /* Dark Green text for contrast */
+    --nature-accent: 22 101 52; /* Dark Forest Green #166534 */
     --nature-accent-foreground: 255 255 255; /* White text */
-    --nature-muted: 134 239 172; /* Light Green */
-    --nature-muted-foreground: 0 0 0; /* Black text */
-    --nature-blue: 147 197 253; /* Light Blue */
-    --nature-blue-foreground: 0 0 0; /* Black text */
+    --nature-muted: 220 252 231; /* Pale Green #dcfce7 */
+    --nature-muted-foreground: 22 101 52; /* Dark Green text */
+    --nature-blue: 186 230 253; /* Light Sky Blue #bae6fd */
+    --nature-blue-foreground: 7 89 133; /* Dark Blue text for contrast */
 
     --radius: 0.5rem;
 
@@ -98,14 +98,14 @@
     --sidebar-border: 32 66 92;
     --sidebar-ring: 0 119 182;
 
-    /* Natural/Banja Vrujci Color System (Dark Mode) - Light Green & Light Blue */
-    --nature-primary: 72 187 120; /* #48BB78 - Light Green */
+    /* Natural/Banja Vrujci Color System (Dark Mode) - Spa Colors Only */
+    --nature-primary: 34 197 94; /* Green #22c55e */
     --nature-primary-foreground: 255 255 255;
-    --nature-accent: 56 178 172; /* #38B2AC - Light Blue/Teal */
+    --nature-accent: 21 128 61; /* Dark Green #15803d */
     --nature-accent-foreground: 255 255 255;
-    --nature-muted: 240 253 244; /* #F0FDF4 - Very Light Green */
-    --nature-muted-foreground: 85 85 85;
-    --nature-blue: 129 190 255; /* #81BEFF - Light Blue */
+    --nature-muted: 20 83 45; /* Dark Forest Green #14532d */
+    --nature-muted-foreground: 255 255 255;
+    --nature-blue: 14 116 144; /* Dark Teal #0e7490 */
     --nature-blue-foreground: 255 255 255;
   }
 }
