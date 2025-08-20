@@ -18,22 +18,6 @@ const BanjaVrujci = () => {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null);
   const heroImages = ['/lovable-uploads/nature-park.jpeg', '/lovable-uploads/hero-brac-1.jpeg', '/lovable-uploads/hero-brac-2.jpg'];
   const galleryImages = [{
-    src: '/lovable-uploads/apartman1 (1).jpg',
-    alt: 'Apartman enterijer',
-    caption: 'Udobne dnevne sobe'
-  }, {
-    src: '/lovable-uploads/apartman1 (2).jpg',
-    alt: 'Spavaća soba',
-    caption: 'Komforne spavaće sobe'
-  }, {
-    src: '/lovable-uploads/apartman2 (1).jpg',
-    alt: 'Kuhinja',
-    caption: 'Potpuno opremljena kuhinja'
-  }, {
-    src: '/lovable-uploads/apartman2 (2).jpg',
-    alt: 'Kupatilo',
-    caption: 'Moderna kupatila'
-  }, {
     src: '/lovable-uploads/2d2e0dc1-fa32-4ba8-b7ff-e0c556bb0d40.png',
     alt: 'Terasa sa kaminom',
     caption: 'Prekrasna terasa sa kaminom'
