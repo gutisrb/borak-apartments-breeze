@@ -161,7 +161,7 @@ const AvailabilityCalendar = ({
           className={cn("p-4 pointer-events-auto w-full bg-white")}
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-            month: "space-y-4 bg-white",
+            month: "space-y-4",
             caption: "flex justify-center pt-1 relative items-center mb-4 bg-white",
             caption_label: "text-lg font-semibold text-[#0C1930]",
             nav: "space-x-1 flex items-center",
@@ -170,7 +170,7 @@ const AvailabilityCalendar = ({
             ),
             nav_button_previous: "absolute left-1",
             nav_button_next: "absolute right-1",
-            table: "w-full border-collapse space-y-1 bg-white",
+            table: "w-full border-collapse space-y-1",
             head_row: "flex mb-2 bg-white",
             head_cell: "text-[#20425C] rounded-md w-10 font-medium text-sm text-center",
             row: "flex w-full mt-1",
@@ -190,7 +190,7 @@ const AvailabilityCalendar = ({
               "bg-[#0077B6] text-white hover:bg-[#0077B6] hover:text-white",
               "focus:bg-[#0077B6] focus:text-white shadow-md scale-105"
             ),
-            day_today: "bg-[#0077B6]/20 text-[#0C1930] font-semibold border border-[#0077B6]/30",
+            day_today: "bg-[#FFBE24] text-[#0C1930] font-semibold border border-[#0077B6]/20",
             day_outside: "text-[#20425C] opacity-50 aria-selected:bg-[#0077B6]/10 aria-selected:text-[#20425C] aria-selected:opacity-30",
             day_disabled: "text-[#20425C] opacity-30 cursor-not-allowed",
             day_range_middle: "aria-selected:bg-[#0077B6]/10 aria-selected:text-[#0C1930]",
@@ -234,7 +234,7 @@ const AvailabilityCalendar = ({
         />
 
         {/* Enhanced Footer */}
-        <div className="px-4 pb-4 border-t border-[#E2EDF3] bg-white">
+        <div className="px-4 pb-4 border-t border-[#E2EDF3] bg-[#F4F9FD]">
           <div className="pt-4 flex flex-wrap items-center gap-4 text-xs">
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-red-400 shadow-sm"></div>
