@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import ApartmentModal from '../components/ApartmentModal';
 import BookingDrawer from '../components/BookingDrawer';
+import CallToActionSection from '../components/CallToActionSection';
 import Footer from '../components/Footer';
 import { Unit } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
@@ -401,34 +402,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Call to Action Section */}
-        <section className="relative h-96 md:h-[500px] overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src="/lovable-uploads/nature-park.jpeg"
-              alt="Priroda oko Banje Vrujci"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--nature-accent))]/80 via-[hsl(var(--nature-accent))]/65 to-transparent" />
-          <div className="relative z-10 flex h-full items-center justify-center">
-            <div className="text-center text-white px-6 max-w-4xl mx-auto">
-              <h2 className="mb-6 text-white animate-fade-in font-playfair text-3xl md:text-4xl lg:text-5xl font-bold">
-                Rezervišite Vaš odmor u prirodi
-              </h2>
-              <p className="text-lg md:text-xl mb-10 font-app font-light leading-relaxed animate-fade-in text-white/90">
-                Uživajte u termalnim vodama, svežem vazduhu i tišini prirode
-              </p>
-              <Button
-                onClick={scrollToApartments}
-                size="lg"
-                className="bg-[hsl(var(--nature-primary))] text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                Rezervišite sada
-              </Button>
-            </div>
-          </div>
-        </section>
+        <CallToActionSection />
 
         {/* Contact / Booking Form */}
         <section id="contact" className="py-16 bg-[hsl(var(--nature-muted))]">
