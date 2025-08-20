@@ -143,7 +143,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
               onClick={() => handleNavigation('/location')}
               className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
-              {locationType === 'vrujci' ? 'O Banji Vrujci' : t('nav.location')}
+              {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
@@ -164,17 +164,23 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
               </button>
               
               {isLocationOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[160px] z-50">
+                <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[160px] z-50">
                   {locations.map((loc) => (
                     <button
                       key={loc.key}
-                      onClick={() => handleLocationChange(loc.key as 'brac' | 'vrujci')}
-                      className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
-                        locationType === loc.key ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                      onClick={() => locationType !== loc.key ? handleLocationChange(loc.key as 'brac' | 'vrujci') : null}
+                      disabled={locationType === loc.key}
+                      className={`flex items-center space-x-3 w-full px-4 py-2 text-left transition-colors ${
+                        locationType === loc.key 
+                          ? 'bg-blue-50 text-blue-600 cursor-not-allowed opacity-75' 
+                          : 'text-gray-700 hover:bg-gray-50 cursor-pointer'
                       }`}
                     >
                       <span>{loc.flag}</span>
                       <span className="font-app">{loc.name}</span>
+                      {locationType === loc.key && (
+                        <span className="ml-auto text-xs text-blue-500">✓</span>
+                      )}
                     </button>
                   ))}
                 </div>
@@ -252,7 +258,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
                 onClick={() => handleNavigation('/location')}
                 className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
-                {locationType === 'vrujci' ? 'O Banji Vrujci' : t('nav.location')}
+                {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
@@ -268,15 +274,23 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
                   <button
                     key={loc.key}
                     onClick={() => {
-                      handleLocationChange(loc.key as 'brac' | 'vrujci');
-                      setIsMenuOpen(false);
+                      if (locationType !== loc.key) {
+                        handleLocationChange(loc.key as 'brac' | 'vrujci');
+                        setIsMenuOpen(false);
+                      }
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:text-[#FFBE24] hover:bg-white/10 transition-colors rounded-lg ${
-                      locationType === loc.key ? 'text-[#FFBE24]' : 'text-white'
+                    disabled={locationType === loc.key}
+                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left transition-colors rounded-lg ${
+                      locationType === loc.key 
+                        ? 'text-[#FFBE24] cursor-not-allowed opacity-75' 
+                        : 'text-white hover:text-[#FFBE24] hover:bg-white/10 cursor-pointer'
                     }`}
                   >
                     <span>{loc.flag}</span>
                     <span className="font-app">{loc.name}</span>
+                    {locationType === loc.key && (
+                      <span className="ml-auto text-xs text-[#FFBE24]">✓</span>
+                    )}
                   </button>
                 ))}
               </div>
