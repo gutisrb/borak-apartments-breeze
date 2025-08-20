@@ -22,7 +22,7 @@ const Location = () => {
 
   return (
     <>
-      <Header />
+      <Header location="brac" />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative h-[70vh] bg-gradient-to-br from-[#0C1930] via-[#0077B6] to-[#20425C] overflow-hidden">
