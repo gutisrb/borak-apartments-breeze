@@ -231,7 +231,10 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition font-app font-semibold">
+                      <Button 
+                        onClick={() => window.location.href = `/en/banja-vrujci/apartments/${unit.name.toLowerCase().replace(/\s+/g, '-').replace(/—/g, '').replace(/[^\w-]/g, '')}`} 
+                        className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition font-app font-semibold"
+                      >
                         Pogledaj detalje
                       </Button>
                     </div>
