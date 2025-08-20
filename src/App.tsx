@@ -10,6 +10,9 @@ import ApartmentDetail from "./pages/ApartmentDetail";
 import Apartments from "./pages/Apartments";
 import Location from "./pages/Location";
 import BanjaVrujci from "./pages/BanjaVrujci";
+import BanjaVrujciApartments from "./pages/BanjaVrujciApartments";
+import BanjaVrujciApartmentDetail from "./pages/BanjaVrujciApartmentDetail";
+import BanjaVrujciLocation from "./pages/BanjaVrujciLocation";
 import NotFound from "./pages/NotFound";
 import LanguageWrapper from "./components/LanguageWrapper";
 
@@ -31,6 +34,9 @@ const App = () => (
           <Route path="/:lang/apartments/:slug" element={<LanguageWrapper><ApartmentDetail /></LanguageWrapper>} />
           <Route path="/:lang/location" element={<LanguageWrapper><Location /></LanguageWrapper>} />
           <Route path="/:lang/banja-vrujci" element={<LanguageWrapper><BanjaVrujci /></LanguageWrapper>} />
+          <Route path="/:lang/banja-vrujci/apartments" element={<LanguageWrapper><BanjaVrujciApartments /></LanguageWrapper>} />
+          <Route path="/:lang/banja-vrujci/apartments/:slug" element={<LanguageWrapper><BanjaVrujciApartmentDetail /></LanguageWrapper>} />
+          <Route path="/:lang/banja-vrujci/location" element={<LanguageWrapper><BanjaVrujciLocation /></LanguageWrapper>} />
           
           {/* 404 route */}
           <Route path="*" element={<NotFound />} />

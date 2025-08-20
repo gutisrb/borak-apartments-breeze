@@ -195,7 +195,7 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
                   selected={checkOut}
                   onSelect={setCheckOut}
                   disabled={(date) => date <= (checkIn || new Date())}
-                  className={cn("rounded-md p-3 pointer-events-auto bg-white")}
+                  className="rounded-md p-3 pointer-events-auto bg-white"
                   classNames={{
                     months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
                     month: "space-y-4 bg-white",
@@ -212,7 +212,7 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
                     cell: "relative h-10 w-10 text-center text-sm p-0 focus-within:relative focus-within:z-20",
                     day: "h-10 w-10 p-0 font-normal aria-selected:opacity-100 rounded-md transition-all duration-200 text-[#0C1930] bg-white hover:bg-[#F4F9FD] hover:text-[#0C1930] focus:bg-[#F4F9FD] focus:text-[#0C1930] focus:outline-none disabled:pointer-events-none disabled:opacity-30",
                     day_selected: "bg-[#0077B6] text-white hover:bg-[#0077B6] hover:text-white focus:bg-[#0077B6] focus:text-white shadow-md scale-105",
-                    day_today: "bg-[#FFBE24] text-[#0C1930] font-semibold border border-[#0077B6]/20",
+                    day_today: "bg-[#0077B6]/20 text-[#0C1930] font-semibold border border-[#0077B6]/30",
                     day_outside: "text-[#20425C] opacity-50",
                     day_disabled: "text-[#20425C] opacity-30 cursor-not-allowed",
                   }}

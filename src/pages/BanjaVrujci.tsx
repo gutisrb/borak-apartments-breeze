@@ -69,6 +69,10 @@ const BanjaVrujci = () => {
     setSelectedUnit(unit);
   };
 
+  const getApartmentSlug = (apartment: Unit) => {
+    return apartment.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  };
+
   const handleCloseModal = () => {
     setSelectedUnit(null);
   };
@@ -264,10 +268,18 @@ const BanjaVrujci = () => {
                       
                       <Button
                         onClick={() => handleViewDetails(unit)}
-                        className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold"
+                        className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold mr-2"
                       >
                         Pogledaj detalje
                       </Button>
+                      <Link to={`/${lang || 'en'}/banja-vrujci/apartments/${getApartmentSlug(apartment)}`}>
+                        <Button 
+                          variant="outline"
+                          className="w-full mt-2 border-[hsl(var(--nature-primary))] text-[hsl(var(--nature-primary))] hover:bg-[hsl(var(--nature-primary))] hover:text-white transition font-app font-semibold"
+                        >
+                          Detaljan pregled
+                        </Button>
+                      </Link>
                     </div>
                   </Card>
                 ))}
@@ -422,9 +434,25 @@ const BanjaVrujci = () => {
               <Button
                 onClick={scrollToApartments}
                 size="lg"
-                className="bg-[hsl(var(--nature-primary))] text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-[hsl(var(--nature-primary))] text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105 mr-4"
               >
                 Rezervišite sada
+              </Button>
+              <Button
+                onClick={() => navigate(`/${lang || 'en'}/banja-vrujci/location`)}
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in"
+              >
+                Saznajte više
+              </Button>
+              <Button
+                onClick={() => navigate(`/${lang || 'en'}/banja-vrujci/apartments`)}
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-[hsl(var(--nature-accent))] transition font-app text-base md:text-lg px-12 py-5"
+              >
+                Svi apartmani
               </Button>
             </div>
           </div>

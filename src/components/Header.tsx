@@ -1,7 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin } from 'lucide-react';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
@@ -9,6 +15,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isLocationOpen, setIsLocationOpen] = useState(false);
   const { t, changeLanguage, currentLang } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,6 +23,27 @@ const Header = () => {
 
   // Check if we're on apartment pages to always show dark background
   const isApartmentPage = location.pathname.includes('/apartments') || location.pathname.includes('/location');
+
+  // Determine current location based on URL
+  const isBanjaVrujci = location.pathname.includes('/banja-vrujci');
+  const currentLocation = isBanjaVrujci ? 'banja-vrujci' : 'brac';
+
+  const locations = [
+    { 
+      key: 'brac', 
+      name: 'Brač', 
+      flag: '🇭🇷', 
+      path: `/${lang || 'en'}` 
+    },
+    { 
+      key: 'banja-vrujci', 
+      name: 'Banja Vrujci', 
+      flag: '🇷🇸', 
+      path: `/${lang || 'en'}/banja-vrujci` 
+    }
+  ];
+
+  const currentLocationData = locations.find(l => l.key === currentLocation) || locations[0];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +87,14 @@ const Header = () => {
   const handleLanguageChange = (langCode: string) => {
     changeLanguage(langCode);
     setIsLanguageOpen(false);
+  };
+
+  const handleLocationChange = (locationKey: string) => {
+    const locationData = locations.find(l => l.key === locationKey);
+    if (locationData) {
+      navigate(locationData.path);
+    }
+    setIsLocationOpen(false);
   };
 
   const handleNavigation = (path: string) => {
@@ -122,10 +158,10 @@ const Header = () => {
               {t('nav.location')}
             </button>
             <button
-              onClick={() => handleNavigation(`/${lang || 'en'}/banja-vrujci`)}
+              onClick={() => handleNavigation(isBanjaVrujci ? `/${lang || 'en'}/banja-vrujci/location` : `/${lang || 'en'}/location`)}
               className="text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30"
             >
-              Banja Vrujci
+              {t('nav.location')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
@@ -133,6 +169,31 @@ const Header = () => {
             >
               {t('nav.contact')}
             </button>
+
+            {/* Location Selector */}
+            <DropdownMenu open={isLocationOpen} onOpenChange={setIsLocationOpen}>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center space-x-2 text-white hover:text-[#FFBE24] transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:border-[#FFBE24]/30">
+                  <MapPin className="w-4 h-4" />
+                  <span>{currentLocationData.flag} {currentLocationData.name}</span>
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[180px] z-50">
+                {locations.map((location) => (
+                  <DropdownMenuItem
+                    key={location.key}
+                    onClick={() => handleLocationChange(location.key)}
+                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors cursor-pointer ${
+                      currentLocation === location.key ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                    }`}
+                  >
+                    <span>{location.flag}</span>
+                    <span className="font-app">{location.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {/* Language Selector */}
             <div className="relative">
@@ -164,7 +225,7 @@ const Header = () => {
             </div>
 
             <Button 
-              onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
+              onClick={() => handleNavigation(isBanjaVrujci ? `/${lang || 'en'}/banja-vrujci/apartments` : `/${lang || 'en'}/apartments`)}
               className="bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl"
             >
               {t('nav.book')}
@@ -204,10 +265,10 @@ const Header = () => {
                 {t('nav.location')}
               </button>
               <button
-                onClick={() => handleNavigation(`/${lang || 'en'}/banja-vrujci`)}
+                onClick={() => handleNavigation(isBanjaVrujci ? `/${lang || 'en'}/banja-vrujci/location` : `/${lang || 'en'}/location`)}
                 className="block text-white hover:text-[#FFBE24] transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10"
               >
-                Banja Vrujci
+                {t('nav.location')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
@@ -215,6 +276,23 @@ const Header = () => {
               >
                 {t('nav.contact')}
               </button>
+              
+              {/* Mobile Location Selector */}
+              <div className="border-t border-white/10 pt-4">
+                <div className="text-white/60 text-sm font-app mb-2 px-4">Our Locations:</div>
+                {locations.map((location) => (
+                  <button
+                    key={location.key}
+                    onClick={() => handleLocationChange(location.key)}
+                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:text-[#FFBE24] hover:bg-white/10 transition-colors rounded-lg ${
+                      currentLocation === location.key ? 'text-[#FFBE24]' : 'text-white'
+                    }`}
+                  >
+                    <span>{location.flag}</span>
+                    <span className="font-app">{location.name}</span>
+                  </button>
+                ))}
+              </div>
               
               {/* Mobile Language Selector */}
               <div className="border-t border-white/10 pt-4">
@@ -234,7 +312,7 @@ const Header = () => {
               </div>
               
               <Button 
-                onClick={() => handleNavigation(`/${lang || 'en'}/apartments`)}
+                onClick={() => handleNavigation(isBanjaVrujci ? `/${lang || 'en'}/banja-vrujci/apartments` : `/${lang || 'en'}/apartments`)}
                 className="w-full bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold mt-4 mx-4 max-w-[calc(100%-2rem)]"
               >
                 {t('nav.book')}
