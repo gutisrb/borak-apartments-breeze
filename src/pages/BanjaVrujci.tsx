@@ -34,6 +34,30 @@ const BanjaVrujci = () => {
     alt: 'Kupatilo',
     caption: 'Moderna kupatila'
   }, {
+    src: '/lovable-uploads/2d2e0dc1-fa32-4ba8-b7ff-e0c556bb0d40.png',
+    alt: 'Terasa sa kaminom',
+    caption: 'Prekrasna terasa sa kaminom'
+  }, {
+    src: '/lovable-uploads/08c005d7-0471-4fc8-a026-667707f5e90d.png',
+    alt: 'Pogled sa terase',
+    caption: 'Panoramski pogled sa terase'
+  }, {
+    src: '/lovable-uploads/a7d0a416-2ccf-48c3-b68b-9aec258120ec.png',
+    alt: 'Spoljašnji izgled kuće',
+    caption: 'Spoljašnji izgled apartmana'
+  }, {
+    src: '/lovable-uploads/034dbca3-d17d-4308-8cd5-38c9e8fbbc44.png',
+    alt: 'Pokrivena terasa',
+    caption: 'Pokrivena terasa za odmor'
+  }, {
+    src: '/lovable-uploads/2448e077-df37-4910-bccc-ad594365db78.png',
+    alt: 'Dvorište sa ljuljaškama',
+    caption: 'Dvorište sa ljuljaškama za decu'
+  }, {
+    src: '/lovable-uploads/d254438a-adaa-4148-a872-04668073af49.png',
+    alt: 'Zadnja strana kuće',
+    caption: 'Zadnja strana sa roštiljem'
+  }, {
     src: '/lovable-uploads/nature-park.jpeg',
     alt: 'Priroda oko Banje Vrujci',
     caption: 'Prekrasna priroda oko kompleksa'
