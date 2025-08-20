@@ -1,11 +1,17 @@
 
 import { useTranslation } from '@/hooks/useTranslation';
 
-const Footer = () => {
+interface FooterProps {
+  location?: 'brac' | 'vrujci';
+}
+
+const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
   const { t } = useTranslation();
   
   return (
-    <footer id="contact" className="bg-primary text-white py-10">
+    <footer id="contact" className={`${
+      location === 'vrujci' ? 'bg-[hsl(var(--nature-accent))]' : 'bg-primary'
+    } text-white py-10`}>
       <div className="container-luxury">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Description */}

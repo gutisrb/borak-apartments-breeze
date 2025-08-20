@@ -549,7 +549,7 @@ const BanjaVrujci = () => {
         )}
       </main>
       
-      <Footer />
+      <Footer location="vrujci" />
     </>
   );
 };
