@@ -41,8 +41,10 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
               <div>
                 <div className="font-medium text-white mb-1">{t('footer.address')}</div>
                 <div className="text-sm leading-relaxed">
-                  Sutivan, Vilota 16 Brač<br />
-                  21400, Croatia
+                  {location === 'vrujci' 
+                    ? "Vrujci, Komšina 7B"
+                    : "Sutivan, Vilota 16 Brač 21400, Croatia"
+                  }
                 </div>
               </div>
               <div>
