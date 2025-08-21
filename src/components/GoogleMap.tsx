@@ -94,9 +94,6 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
     return (
       <div className={props.className || "w-full h-64 bg-gray-100 rounded p-4"}>
         <div className="text-center">
-          <p className="text-gray-600 mb-4">
-            To display the map, please enter your Google Maps API key:
-          </p>
           <div className="max-w-md mx-auto">
             <input
               type="text"
