@@ -18,29 +18,29 @@ const BanjaVrujci = () => {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null);
   const heroImages = ['/lovable-uploads/bdf41256-bd5e-434c-a348-5107e71c071d.png', '/lovable-uploads/a38854c1-75d5-4e79-92a3-04ffc69b8f63.png', '/lovable-uploads/5f80961c-6b95-49ad-aa2a-1cc9177bea64.png'];
   const galleryImages = [{
-    src: '/lovable-uploads/apartman1 (1).jpg',
-    alt: 'Apartman enterijer',
-    caption: 'Udobne dnevne sobe'
+    src: '/lovable-uploads/df5f14c8-38c3-480c-812a-60cdbf63d047.png',
+    alt: 'Pogled na planine i okruženje',
+    caption: 'Prekrasan pogled na planine'
   }, {
-    src: '/lovable-uploads/apartman1 (2).jpg',
-    alt: 'Spavaća soba',
-    caption: 'Komforne spavaće sobe'
+    src: '/lovable-uploads/2f61f899-0267-4fdb-8b83-4d3e80604327.png',
+    alt: 'Pokrivena terasa za obedovanje',
+    caption: 'Pokrivena terasa sa kamenim zidovima'
   }, {
-    src: '/lovable-uploads/apartman2 (1).jpg',
-    alt: 'Kuhinja',
-    caption: 'Potpuno opremljena kuhinja'
+    src: '/lovable-uploads/1513f292-471d-4ed7-85ab-4a932dc6f685.png',
+    alt: 'Pogled sa balkona na selo',
+    caption: 'Panoramski pogled sa terase'
   }, {
-    src: '/lovable-uploads/apartman2 (2).jpg',
-    alt: 'Kupatilo',
-    caption: 'Moderna kupatila'
+    src: '/lovable-uploads/8f201980-199b-41d3-960b-fa0dde14a132.png',
+    alt: 'Terasa za obedovanje',
+    caption: 'Prostor za opuštanje i obedovanje'
   }, {
-    src: '/lovable-uploads/nature-park.jpeg',
-    alt: 'Priroda oko Banje Vrujci',
-    caption: 'Prekrasna priroda oko kompleksa'
+    src: '/lovable-uploads/d59ba270-fd7f-4b45-910c-bc634d99f61a.png',
+    alt: 'Dvorište sa ljuljaškama',
+    caption: 'Dvorište sa ljuljaškama i spravama'
   }, {
-    src: '/lovable-uploads/local-restaurant.jpg',
-    alt: 'Lokalna hrana',
-    caption: 'Lokalne specijalitete'
+    src: '/lovable-uploads/e2dac9fe-98dd-4faf-9a76-d805ef0704d0.png',
+    alt: 'Spoljašnja terasa sa roštiljem',
+    caption: 'Spoljašnja terasa sa roštiljem'
   }];
 
   // Fetch units data
