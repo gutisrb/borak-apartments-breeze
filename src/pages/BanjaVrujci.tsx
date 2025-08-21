@@ -140,7 +140,7 @@ const BanjaVrujci = () => {
         {/* Introduction Section */}
         <section className="section-padding bg-[hsl(var(--nature-muted))]">
           <div className="container-luxury text-center">
-            <h2 className="mb-8 animate-fade-in text-black font-playfair text-3xl md:text-4xl font-bold">
+            <h2 className="mb-8 animate-fade-in text-[hsl(var(--nature-header-footer))] font-playfair text-3xl md:text-4xl font-bold">
               Dobrodošli u Banju Vrujci
             </h2>
             <p className="text-lg md:text-xl text-black max-w-4xl mx-auto font-app leading-relaxed animate-fade-in">
@@ -244,10 +244,10 @@ const BanjaVrujci = () => {
         <section id="gallery" className="py-16 bg-[hsl(var(--nature-gallery))]">
           <div className="container-luxury">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 font-playfair">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">
                 Galerija
               </h2>
-              <p className="text-lg text-black">Pogledajte naše apartmane i okolinu</p>
+              <p className="text-lg text-white">Pogledajte naše apartmane i okolinu</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
