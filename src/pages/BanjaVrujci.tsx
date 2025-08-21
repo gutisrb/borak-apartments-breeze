@@ -21,7 +21,7 @@ const BanjaVrujci = () => {
   const [loading, setLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<number | null>(null);
-  const heroImages = ['/lovable-uploads/bdf41256-bd5e-434c-a348-5107e71c071d.png', '/lovable-uploads/a38854c1-75d5-4e79-92a3-04ffc69b8f63.png', '/lovable-uploads/5f80961c-6b95-49ad-aa2a-1cc9177bea64.png'];
+  const heroImages = ['/lovable-uploads/4ac120a3-0019-44f8-a2b2-79671561afb1.png', '/lovable-uploads/a38854c1-75d5-4e79-92a3-04ffc69b8f63.png', '/lovable-uploads/5f80961c-6b95-49ad-aa2a-1cc9177bea64.png'];
   const galleryImages = [{
     src: '/lovable-uploads/df5f14c8-38c3-480c-812a-60cdbf63d047.png',
     alt: 'Pogled na planine i okruženje',
