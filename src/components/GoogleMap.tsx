@@ -1,23 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Wrapper } from '@googlemaps/react-wrapper';
-
 declare global {
   interface Window {
     google: any;
   }
 }
-
 interface GoogleMapProps {
-  center: { lat: number; lng: number };
+  center: {
+    lat: number;
+    lng: number;
+  };
   zoom: number;
   address?: string;
   className?: string;
 }
-
-const MapComponent: React.FC<GoogleMapProps> = ({ center, zoom, address, className }) => {
+const MapComponent: React.FC<GoogleMapProps> = ({
+  center,
+  zoom,
+  address,
+  className
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>();
-
   useEffect(() => {
     if (ref.current && !map && window.google) {
       const newMap = new window.google.maps.Map(ref.current, {
@@ -27,13 +31,13 @@ const MapComponent: React.FC<GoogleMapProps> = ({ center, zoom, address, classNa
         streetViewControl: true,
         fullscreenControl: true,
         zoomControl: true,
-        styles: [
-          {
-            featureType: 'poi',
-            elementType: 'labels',
-            stylers: [{ visibility: 'on' }]
-          }
-        ]
+        styles: [{
+          featureType: 'poi',
+          elementType: 'labels',
+          stylers: [{
+            visibility: 'on'
+          }]
+        }]
       });
 
       // Add marker
@@ -41,21 +45,17 @@ const MapComponent: React.FC<GoogleMapProps> = ({ center, zoom, address, classNa
         position: center,
         map: newMap,
         title: address || 'Location',
-        animation: window.google.maps.Animation.DROP,
+        animation: window.google.maps.Animation.DROP
       });
-
       setMap(newMap);
     }
   }, [ref, map, center, zoom, address]);
-
   return <div ref={ref} className={className} />;
 };
-
-const GoogleMap: React.FC<GoogleMapProps> = (props) => {
+const GoogleMap: React.FC<GoogleMapProps> = props => {
   const [apiKey, setApiKey] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
-
   useEffect(() => {
     // Try to get API key from localStorage for now
     const fetchApiKey = async () => {
@@ -72,37 +72,23 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
         setLoading(false);
       }
     };
-
     fetchApiKey();
   }, []);
-
   const handleApiKeySubmit = (key: string) => {
     localStorage.setItem('google_maps_api_key', key);
     setApiKey(key);
     setError('');
   };
-
   if (loading) {
-    return (
-      <div className={props.className || "w-full h-64 bg-gray-100 rounded flex items-center justify-center"}>
+    return <div className={props.className || "w-full h-64 bg-gray-100 rounded flex items-center justify-center"}>
         <div className="text-gray-500">Loading map...</div>
-      </div>
-    );
+      </div>;
   }
-
   if (error || !apiKey) {
-    return (
-      <div className={props.className || "w-full h-64 bg-gray-100 rounded flex items-center justify-center"}>
-        <div className="text-gray-500">Map unavailable</div>
-      </div>
-    );
+    return;
   }
-
-  return (
-    <Wrapper apiKey={apiKey}>
+  return <Wrapper apiKey={apiKey}>
       <MapComponent {...props} />
-    </Wrapper>
-  );
+    </Wrapper>;
 };
-
 export default GoogleMap;
