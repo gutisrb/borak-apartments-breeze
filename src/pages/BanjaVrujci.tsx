@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import ApartmentModal from '../components/ApartmentModal';
 import BookingDrawer from '../components/BookingDrawer';
@@ -10,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Users, Square, MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
 const BanjaVrujci = () => {
+  const navigate = useNavigate();
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [unitToBook, setUnitToBook] = useState<Unit | null>(null);
@@ -235,7 +237,7 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app font-semibold">
+                      <Button onClick={() => navigate('/sr/banja-vrujci/apartments')} className="w-full bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app font-semibold">
                         Pogledaj detalje
                       </Button>
                     </div>
