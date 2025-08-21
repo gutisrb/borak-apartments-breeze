@@ -73,22 +73,22 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
             <h4 className="text-xl font-playfair font-medium mb-6 text-white">{t('footer.experience')}</h4>
             <div className="space-y-3 mb-6">
               <a 
-                href="#apartments" 
+                href={location === 'vrujci' ? '/en/banja-vrujci/apartments' : '#apartments'} 
                 className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
                 {t('footer.apartments')}
               </a>
               <a 
-                href="#location" 
+                href={location === 'vrujci' ? '/en/banja-vrujci/location' : '#location'} 
                 className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
                 {t('footer.location')}
               </a>
               <a 
-                href="#testimonials" 
+                href={location === 'vrujci' ? '#gallery' : '#testimonials'} 
                 className="block text-white/80 hover:text-accent transition-colors text-sm font-app"
               >
-                {t('footer.reviews')}
+                {location === 'vrujci' ? 'Galerija' : t('footer.reviews')}
               </a>
             </div>
 
