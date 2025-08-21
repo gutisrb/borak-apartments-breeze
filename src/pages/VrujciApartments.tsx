@@ -37,7 +37,7 @@ const VrujciApartments = () => {
   return (
     <>
       <Header location="vrujci" />
-      <main className="min-h-screen bg-[hsl(var(--nature-primary))] pt-20 relative overflow-hidden">
+      <main className="min-h-screen bg-[hsl(var(--nature-muted))] pt-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -47,10 +47,10 @@ const VrujciApartments = () => {
         
         <div className="container-luxury py-16 relative">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-[hsl(var(--nature-primary-foreground))] mb-6 font-playfair">
+            <h1 className="text-4xl md:text-5xl font-bold text-[hsl(var(--nature-accent))] mb-6 font-playfair">
               Apartmani — Banja Vrujci
             </h1>
-            <p className="text-lg text-[hsl(var(--nature-primary-foreground))] max-w-3xl mx-auto font-app leading-relaxed">
+            <p className="text-lg text-[hsl(var(--nature-accent))] max-w-3xl mx-auto font-app leading-relaxed">
               Odkrijte udobne apartmane u srcu prirode, u blizini termalnih izvora.
             </p>
           </div>
