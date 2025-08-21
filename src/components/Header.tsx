@@ -174,16 +174,6 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
             >
               {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className={`text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                locationType === 'vrujci' 
-                  ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                  : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-              }`}
-            >
-              {t('nav.contact')}
-            </button>
 
             {/* Location Selector */}
             <div className="relative">
@@ -310,14 +300,6 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
                 }`}
               >
                 {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className={`block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 ${
-                  locationType === 'vrujci' ? 'hover:text-[hsl(var(--nature-primary))]' : 'hover:text-[#FFBE24]'
-                }`}
-              >
-                {t('nav.contact')}
               </button>
               
               {/* Mobile Location Selector */}
