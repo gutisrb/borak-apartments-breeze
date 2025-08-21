@@ -17,8 +17,11 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
-              alt="Borak Apartments - Luxury Croatian Retreat" 
+              src={location === 'vrujci' 
+                ? "/lovable-uploads/6193ae0f-8e32-49f1-8ac0-b6c65f9826cb.png"
+                : "/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
+              }
+              alt={location === 'vrujci' ? "Borak Apartmani" : "Borak Apartments - Luxury Croatian Retreat"}
               className="h-24 md:h-[140px] w-auto mb-6 object-contain"
               width="320"
               height="140"

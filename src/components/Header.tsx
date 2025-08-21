@@ -132,8 +132,11 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
-              alt="Borak Apartments"
+              src={locationType === 'vrujci' 
+                ? "/lovable-uploads/6193ae0f-8e32-49f1-8ac0-b6c65f9826cb.png"
+                : "/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
+              }
+              alt={locationType === 'vrujci' ? "Borak Apartmani" : "Borak Apartments"}
               className="h-20 md:h-24 w-auto object-contain cursor-pointer transition-transform hover:scale-105"
               onClick={handleLogoClick}
             />
