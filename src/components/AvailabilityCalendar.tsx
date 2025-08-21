@@ -3,7 +3,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { useRealtimeBookings } from '@/hooks/useBookings';
 import { cn } from '@/lib/utils';
 import { useTranslation } from '@/hooks/useTranslation';
-import { Unit } from '@/lib/supabase';
+import { Unit, supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { X, Calendar as CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import dayjs from 'dayjs';
@@ -28,12 +28,43 @@ const AvailabilityCalendar = ({
   mode = 'single'
 }: AvailabilityCalendarProps) => {
   const { t } = useTranslation();
-  const { data: bookings, loading, error, isDateAvailable } = useRealtimeBookings(unit.id);
+  const [resolvedPropertyId, setResolvedPropertyId] = useState<string | null>(null);
+  const { data: bookings, loading, error, isDateAvailable } = useRealtimeBookings(resolvedPropertyId || undefined);
   const [disabledDates, setDisabledDates] = useState<Date[]>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [isNavigating, setIsNavigating] = useState(false);
 
+  // Resolve Supabase property UUID from unit info (handles local ids like 'vrujci-01')
   useEffect(() => {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (uuidRegex.test(unit.id)) {
+      setResolvedPropertyId(unit.id);
+      return;
+    }
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    (async () => {
+      try {
+        let query: any = supabase.from('properties').select('id,name,location');
+        if (unit.location) {
+          // Filter by location to avoid matching Brač properties
+          query = query.eq('location', unit.location);
+        }
+        const { data, error } = await query;
+        if (error) throw error;
+        const match = (data || []).find((p: any) => normalize(p.name || '') === normalize(unit.name));
+        setResolvedPropertyId(match?.id || null);
+      } catch (e) {
+        console.error('Failed to resolve property id', e);
+        setResolvedPropertyId(null);
+      }
+    })();
+  }, [unit.id, unit.name, unit.location]);
+
+  useEffect(() => {
+    if (!resolvedPropertyId) {
+      setDisabledDates([]);
+      return;
+    }
     if (!loading && bookings) {
       // Generate all booked dates for the next 6 months
       const blockedDates: Date[] = [];
@@ -43,14 +74,14 @@ const AvailabilityCalendar = ({
       
       // For each day in the next 6 months, check if it's available
       for (let day = new Date(today); day <= sixMonthsLater; day.setDate(day.getDate() + 1)) {
-        if (!isDateAvailable(new Date(day), unit.id)) {
+        if (!isDateAvailable(new Date(day), resolvedPropertyId)) {
           blockedDates.push(new Date(day));
         }
       }
       
       setDisabledDates(blockedDates);
     }
-  }, [bookings, loading, unit.id, isDateAvailable]);
+  }, [bookings, loading, resolvedPropertyId, isDateAvailable]);
 
   const isDateUnavailable = (date: Date) => {
     return disabledDates.some(disabledDate => 
