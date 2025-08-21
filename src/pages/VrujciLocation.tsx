@@ -27,7 +27,7 @@ const VrujciLocation = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
             style={{
-              backgroundImage: "url('/lovable-uploads/nature-park.jpeg')",
+              backgroundImage: "url('/lovable-uploads/681ca572-04c4-4e3a-ab61-cada40e2265d.png')",
               filter: 'brightness(0.7)'
             }}
           />
