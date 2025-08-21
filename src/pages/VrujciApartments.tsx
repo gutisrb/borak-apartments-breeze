@@ -37,7 +37,7 @@ const VrujciApartments = () => {
   return (
     <>
       <Header location="vrujci" />
-      <main className="min-h-screen bg-[hsl(var(--nature-muted))] pt-20 relative overflow-hidden">
+      <main className="min-h-screen bg-green-50 pt-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -100,7 +100,7 @@ const VrujciApartments = () => {
                   </div>
 
                   <Link to={`/${lang || 'en'}/banja-vrujci/apartments/${getApartmentSlug(apartment)}`}>
-                    <Button className="w-full bg-[hsl(var(--nature-accent))] text-white hover:bg-[hsl(var(--nature-primary))] hover:text-[hsl(var(--nature-primary-foreground))] transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
+                    <Button className="w-full bg-green-600 text-white hover:bg-green-700 transition-all duration-300 font-app font-semibold shadow-lg hover:shadow-xl">
                       Pogledaj detalje
                     </Button>
                   </Link>
