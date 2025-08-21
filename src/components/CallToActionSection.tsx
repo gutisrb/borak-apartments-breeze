@@ -17,8 +17,8 @@ const CallToActionSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/lovable-uploads/IMG-20250622-WA0009.jpg"
-          alt="Luxury Croatian coastline"
+          src="/lovable-uploads/3aedc1a5-72bb-40b5-9427-531811fbe777.png"
+          alt="Banja Vrujci mountain view with terrace"
           className="h-full w-full object-cover"
           loading="lazy"
         />
@@ -31,18 +31,18 @@ const CallToActionSection = () => {
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center text-white px-6 max-w-4xl mx-auto">
           <h2 className="mb-6 text-white animate-fade-in font-playfair text-3xl md:text-4xl lg:text-5xl font-bold">
-            {t('cta.title')}
+            Rezervišite svoj odmor u prirodi
           </h2>
           <p className="text-lg md:text-xl mb-10 font-app font-light leading-relaxed animate-fade-in text-white/90">
-            {t('cta.description')}
+            Uživajte u termalnim vodama, svežem vazduhu i tišini planina. Vaš savršen odmor u Banji Vrujci vas čeka.
           </p>
           <Button
             onClick={scrollToApartments}
             size="lg"
-            className="bg-[#FFBE24] text-[#0C1930] hover:bg-[#0077B6] hover:text-white transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105"
-            aria-label="Book your luxury stay"
+            className="bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105"
+            aria-label="Rezervišite boravak u Banji Vrujci"
           >
-            {t('cta.book')}
+            Rezervišite odmah
           </Button>
         </div>
       </div>
