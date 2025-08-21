@@ -237,7 +237,10 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button onClick={() => navigate('/sr/banja-vrujci/apartments')} className="w-full bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app font-semibold">
+                      <Button onClick={() => {
+                        const slug = unit.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                        navigate(`/sr/banja-vrujci/apartments/${slug}`);
+                      }} className="w-full bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app font-semibold">
                         Pogledaj detalje
                       </Button>
                     </div>
