@@ -4,6 +4,7 @@ import ApartmentModal from '../components/ApartmentModal';
 import BookingDrawer from '../components/BookingDrawer';
 import CallToActionSection from '../components/CallToActionSection';
 import Footer from '../components/Footer';
+import GoogleMap from '../components/GoogleMap';
 import { Unit } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -177,10 +178,13 @@ const BanjaVrujci = () => {
                 </div>
               </div>
 
-              <div className="bg-[hsl(var(--nature-muted))] rounded-lg p-4 shadow-md">
-                <div className="w-full h-20 bg-white rounded flex items-center justify-center text-gray-500 text-sm">
-                  Mapa lokacije
-                </div>
+              <div className="bg-[hsl(var(--nature-muted))] rounded-lg shadow-md overflow-hidden">
+                <GoogleMap
+                  center={{ lat: 44.1147, lng: 19.9886 }}
+                  zoom={15}
+                  address="Vrujci, Komšina 7b, Popadić"
+                  className="w-full h-20"
+                />
               </div>
             </div>
           </div>
