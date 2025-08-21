@@ -138,7 +138,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Introduction Section */}
-        <section className="section-padding bg-[hsl(var(--nature-muted))]">
+        <section className="section-padding bg-white">
           <div className="container-luxury text-center">
             <h2 className="mb-8 animate-fade-in text-[hsl(var(--nature-header-footer))] font-playfair text-3xl md:text-4xl font-bold">
               Dobrodošli u Banju Vrujci
