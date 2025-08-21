@@ -10,6 +10,8 @@ import { Unit } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Users, Square, MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 const BanjaVrujci = () => {
   const navigate = useNavigate();
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
@@ -271,9 +273,12 @@ const BanjaVrujci = () => {
             </div>
 
             {/* Lightbox */}
-            {selectedGalleryImage !== null && <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedGalleryImage(null)}>
-                
-              </div>}
+            <Lightbox
+              open={selectedGalleryImage !== null}
+              close={() => setSelectedGalleryImage(null)}
+              slides={galleryImages.map(img => ({ src: img.src }))}
+              index={selectedGalleryImage || 0}
+            />
           </div>
         </section>
 
