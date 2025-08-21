@@ -37,14 +37,11 @@
     --ring: 0 119 182; /* #0077B6 */
 
     /* Natural/Banja Vrujci Color System - Spa Colors Only */
-    --nature-primary: 34 197 94; /* Fresh Green #22c55e */
-    --nature-primary-foreground: 255 255 255; /* White text for better contrast */
-    --nature-accent: 21 128 61; /* Forest Green #15803d */
-    --nature-accent-foreground: 255 255 255; /* White text */
+    --nature-header-footer: 31 110 58; /* Dark green #1f6e3a for header/footer */
+    --nature-gallery: 106 220 222; /* Light blue #6adcde for gallery */
+    --nature-apartments: 61 153 73; /* Medium green #3d9949 for apartments */
     --nature-muted: 220 252 231; /* Pale Green #dcfce7 */
     --nature-muted-foreground: 21 128 61; /* Forest Green text */
-    --nature-blue: 186 230 253; /* Light Sky Blue #bae6fd */
-    --nature-blue-foreground: 7 89 133; /* Dark Blue text for contrast */
 
     --radius: 0.5rem;
 
@@ -99,14 +96,11 @@
     --sidebar-ring: 0 119 182;
 
     /* Natural/Banja Vrujci Color System (Dark Mode) - Spa Colors Only */
-    --nature-primary: 34 197 94; /* Green #22c55e */
-    --nature-primary-foreground: 255 255 255;
-    --nature-accent: 21 128 61; /* Dark Green #15803d */
-    --nature-accent-foreground: 255 255 255;
+    --nature-header-footer: 31 110 58; /* Dark green #1f6e3a for header/footer */
+    --nature-gallery: 106 220 222; /* Light blue #6adcde for gallery */
+    --nature-apartments: 61 153 73; /* Medium green #3d9949 for apartments */
     --nature-muted: 20 83 45; /* Dark Forest Green #14532d */
     --nature-muted-foreground: 255 255 255;
-    --nature-blue: 14 116 144; /* Dark Teal #0e7490 */
-    --nature-blue-foreground: 255 255 255;
   }
 }
 

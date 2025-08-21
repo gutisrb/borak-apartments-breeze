@@ -123,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled || isApartmentPage 
         ? locationType === 'vrujci' 
-          ? 'bg-[hsl(var(--nature-accent))] shadow-lg' 
+          ? 'bg-[hsl(var(--nature-header-footer))] shadow-lg' 
           : 'bg-[#0C1930] shadow-lg'
         : 'bg-transparent'
     }`}>
@@ -258,7 +258,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
               onClick={() => handleNavigation('/apartments')}
               className={`${
                 locationType === 'vrujci' 
-                  ? 'bg-[hsl(var(--nature-primary))] hover:bg-white text-white hover:text-[hsl(var(--nature-accent))]' 
+                  ? 'bg-[hsl(var(--nature-apartments))] hover:bg-white text-white hover:text-[hsl(var(--nature-header-footer))]' 
                   : 'bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white'
               } transition-all duration-300 font-app font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl`}
             >
@@ -281,7 +281,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
         {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className={`md:hidden ${
-              locationType === 'vrujci' ? 'bg-[hsl(var(--nature-accent))]' : 'bg-[#0C1930]'
+              locationType === 'vrujci' ? 'bg-[hsl(var(--nature-header-footer))]' : 'bg-[#0C1930]'
             } border-t border-white/10`}>
             <nav className="py-4 space-y-4">
               <button
@@ -378,7 +378,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
                 onClick={() => handleNavigation('/apartments')}
                 className={`w-full ${
                   locationType === 'vrujci' 
-                    ? 'bg-[hsl(var(--nature-primary))] hover:bg-white text-white hover:text-[hsl(var(--nature-accent))]' 
+                    ? 'bg-[hsl(var(--nature-apartments))] hover:bg-white text-white hover:text-[hsl(var(--nature-header-footer))]' 
                     : 'bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white'
                 } transition-all duration-300 font-app font-semibold mt-4 mx-4 max-w-[calc(100%-2rem)]`}
               >

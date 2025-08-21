@@ -10,7 +10,7 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
   
   return (
     <footer id="contact" className={`${
-      location === 'vrujci' ? 'bg-[hsl(var(--nature-accent))]' : 'bg-primary'
+      location === 'vrujci' ? 'bg-[hsl(var(--nature-header-footer))]' : 'bg-primary'
     } text-white py-10`}>
       <div className="container-luxury">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">

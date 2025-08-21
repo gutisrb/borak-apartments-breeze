@@ -110,7 +110,7 @@ const BanjaVrujci = () => {
           </div>
 
           {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--nature-accent))]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--nature-header-footer))]/80 to-transparent" />
 
           {/* Hero Content */}
           <div className="relative z-10 flex h-full items-center justify-center">
@@ -122,7 +122,7 @@ const BanjaVrujci = () => {
                 Odmor u prirodi — termalne vode, tišina i svež vazduh
               </h2>
               <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
-                <Button onClick={scrollToApartments} size="lg" className="bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app text-base md:text-lg px-12 py-5">
+                <Button onClick={scrollToApartments} size="lg" className="bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app text-base md:text-lg px-12 py-5">
                   Pogledajte apartmane
                 </Button>
               </div>
@@ -150,7 +150,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Location Snapshot */}
-        <section className="py-12 bg-[hsl(var(--nature-blue))]">
+        <section className="py-12 bg-[hsl(var(--nature-gallery))]">
           <div className="container-luxury">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
               <div className="flex items-center gap-3 text-center md:text-left">
@@ -187,7 +187,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Apartment Selector - Same as Borak but with Vrujci data */}
-        <section id="apartments" className="section-padding bg-[hsl(var(--nature-muted))]">
+        <section id="apartments" className="section-padding bg-[hsl(var(--nature-apartments))]">
           <div className="container-luxury">
             <div className="text-center mb-20">
               <h2 className="mb-6 animate-fade-in text-black font-playfair text-3xl md:text-4xl font-bold">
@@ -231,7 +231,7 @@ const BanjaVrujci = () => {
                         {unit.description}
                       </p>
                       
-                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-primary))] text-white hover:bg-[hsl(var(--nature-accent))] transition font-app font-semibold">
+                      <Button onClick={() => handleViewDetails(unit)} className="w-full bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))] transition font-app font-semibold">
                         Pogledaj detalje
                       </Button>
                     </div>
@@ -241,7 +241,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="py-16 bg-[hsl(var(--nature-blue))]">
+        <section id="gallery" className="py-16 bg-[hsl(var(--nature-gallery))]">
           <div className="container-luxury">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 font-playfair">
@@ -278,14 +278,14 @@ const BanjaVrujci = () => {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-[hsl(var(--nature-accent))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                    <div className="bg-[hsl(var(--nature-apartments))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
                     <div>
                       <h4 className="font-semibold text-black mb-2">Autobusom iz Beograda</h4>
                       <p className="text-black">Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-[hsl(var(--nature-accent))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                    <div className="bg-[hsl(var(--nature-apartments))] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
                     <div>
                       <h4 className="font-semibold text-black mb-2">Automobilom</h4>
                       <p className="text-black">Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h).</p>
@@ -316,7 +316,7 @@ const BanjaVrujci = () => {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-accent))] text-white rounded-lg p-4 flex-shrink-0" />
+                    <ChefHat className="w-16 h-16 bg-[hsl(var(--nature-apartments))] text-white rounded-lg p-4 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-black mb-2">Domaća hrana</h4>
                       <p className="text-black">Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima.</p>

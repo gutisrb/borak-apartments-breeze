@@ -23,7 +23,7 @@ const VrujciLocation = () => {
       <Header location="vrujci" />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative h-[70vh] bg-[hsl(var(--nature-accent))] overflow-hidden">
+        <section className="relative h-[70vh] bg-[hsl(var(--nature-apartments))] overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
             style={{
@@ -31,7 +31,7 @@ const VrujciLocation = () => {
               filter: 'brightness(0.7)'
             }}
           />
-          <div className="absolute inset-0 bg-[hsl(var(--nature-accent))]/80" />
+          <div className="absolute inset-0 bg-[hsl(var(--nature-apartments))]/80" />
           
           <div className="relative z-10 container-luxury h-full flex items-center">
             <div className="max-w-3xl">
@@ -41,9 +41,9 @@ const VrujciLocation = () => {
               <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-app animate-fade-in">
                 Otkrijte čari termalne banje u srcu netaknute prirode Srbije
               </p>
-              <Button 
+                <Button 
                 onClick={handleBookingNavigation}
-                className="bg-[hsl(var(--nature-primary))] hover:bg-white text-white hover:text-black px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 animate-fade-in"
+                className="bg-[hsl(var(--nature-apartments))] hover:bg-white text-white hover:text-black px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 animate-fade-in"
               >
                 Rezervišite odmor
               </Button>
@@ -68,11 +68,11 @@ const VrujciLocation = () => {
                 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[hsl(var(--nature-accent))] mb-2 font-playfair">27-37°C</div>
+                    <div className="text-3xl font-bold text-[hsl(var(--nature-apartments))] mb-2 font-playfair">27-37°C</div>
                     <div className="text-black font-app">Temperatura izvora</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-[hsl(var(--nature-accent))] mb-2 font-playfair">120km</div>
+                    <div className="text-3xl font-bold text-[hsl(var(--nature-apartments))] mb-2 font-playfair">120km</div>
                     <div className="text-black font-app">Od Beograda</div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const VrujciLocation = () => {
         </section>
 
         {/* Attractions */}
-        <section className="section-padding bg-[hsl(var(--nature-blue))]">
+        <section className="section-padding bg-[hsl(var(--nature-gallery))]">
           <div className="container-luxury">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 font-playfair">
@@ -104,12 +104,12 @@ const VrujciLocation = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Thermal Springs */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-accent))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-apartments))] flex items-center justify-center">
                   <Droplets className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <Droplets className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <Droplets className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Termalni izvori
                     </h3>
@@ -122,12 +122,12 @@ const VrujciLocation = () => {
 
               {/* Nature Trails */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-primary))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-gallery))] flex items-center justify-center">
                   <TreePine className="w-16 h-16 text-black" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <TreePine className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <TreePine className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Prirodne staze
                     </h3>
@@ -140,12 +140,12 @@ const VrujciLocation = () => {
 
               {/* Mountain Views */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-accent))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-apartments))] flex items-center justify-center">
                   <Mountain className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <Mountain className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <Mountain className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Planinski pogledi
                     </h3>
@@ -158,12 +158,12 @@ const VrujciLocation = () => {
 
               {/* Local Culture */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-primary))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-gallery))] flex items-center justify-center">
                   <Star className="w-16 h-16 text-black" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <Star className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <Star className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Lokalna kultura
                     </h3>
@@ -176,12 +176,12 @@ const VrujciLocation = () => {
 
               {/* Wellness */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-accent))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-apartments))] flex items-center justify-center">
                   <Clock className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <Clock className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <Clock className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Wellness centar
                     </h3>
@@ -194,12 +194,12 @@ const VrujciLocation = () => {
 
               {/* Nature Park */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                <div className="h-48 bg-[hsl(var(--nature-primary))] flex items-center justify-center">
+                <div className="h-48 bg-[hsl(var(--nature-gallery))] flex items-center justify-center">
                   <MapPin className="w-16 h-16 text-black" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <MapPin className="w-6 h-6 text-[hsl(var(--nature-accent))] mr-3" />
+                    <MapPin className="w-6 h-6 text-[hsl(var(--nature-apartments))] mr-3" />
                     <h3 className="text-xl font-bold text-black font-playfair">
                       Park prirode
                     </h3>
@@ -214,7 +214,7 @@ const VrujciLocation = () => {
         </section>
 
         {/* Getting There */}
-        <section className="section-padding bg-[hsl(var(--nature-accent))] text-white">
+        <section className="section-padding bg-[hsl(var(--nature-apartments))] text-white">
           <div className="container-luxury">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair text-white">
@@ -276,7 +276,7 @@ const VrujciLocation = () => {
                 
                 <Button 
                   onClick={handleBookingNavigation}
-                  className="bg-[hsl(var(--nature-accent))] hover:bg-[hsl(var(--nature-primary))] text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
+                  className="bg-[hsl(var(--nature-apartments))] hover:bg-[hsl(var(--nature-gallery))] text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300"
                 >
                   Rezervišite svoj boravak
                 </Button>
@@ -288,19 +288,19 @@ const VrujciLocation = () => {
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <div className="w-2 h-2 bg-[hsl(var(--nature-accent))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[hsl(var(--nature-apartments))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
                     <span className="text-black font-app">Prirodni termalni izvori sa lekovitim svojstvima</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="w-2 h-2 bg-[hsl(var(--nature-accent))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[hsl(var(--nature-apartments))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
                     <span className="text-black font-app">Čist vazduh i netaknuta priroda</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="w-2 h-2 bg-[hsl(var(--nature-accent))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[hsl(var(--nature-apartments))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
                     <span className="text-black font-app">Moderni wellness sadržaji</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="w-2 h-2 bg-[hsl(var(--nature-accent))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[hsl(var(--nature-apartments))] rounded-full mt-3 mr-4 flex-shrink-0"></div>
                     <span className="text-black font-app">Aktivnosti u prirodi tokom cele godine</span>
                   </li>
                 </ul>
