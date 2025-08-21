@@ -92,32 +92,8 @@ const GoogleMap: React.FC<GoogleMapProps> = (props) => {
 
   if (error || !apiKey) {
     return (
-      <div className={props.className || "w-full h-64 bg-gray-100 rounded p-4"}>
-        <div className="text-center">
-          <div className="max-w-md mx-auto">
-            <input
-              type="text"
-              placeholder="Enter Google Maps API key"
-              className="w-full px-3 py-2 border border-gray-300 rounded mb-2"
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  handleApiKeySubmit((e.target as HTMLInputElement).value);
-                }
-              }}
-            />
-            <p className="text-xs text-gray-500">
-              Get your API key from{' '}
-              <a 
-                href="https://console.cloud.google.com/google/maps-apis/credentials" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                Google Cloud Console
-              </a>
-            </p>
-          </div>
-        </div>
+      <div className={props.className || "w-full h-64 bg-gray-100 rounded flex items-center justify-center"}>
+        <div className="text-gray-500">Map unavailable</div>
       </div>
     );
   }
