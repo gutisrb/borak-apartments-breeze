@@ -52,7 +52,7 @@ const VrujciLocation = () => {
         </section>
 
         {/* About Banja Vrujci */}
-        <section className="section-padding bg-[hsl(var(--nature-muted))]">
+        <section className="section-padding bg-white">
           <div className="container-luxury">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
