@@ -17,11 +17,17 @@ const LanguageWrapper = ({ children }: { children: React.ReactNode }) => {
       // Check if user previously had a language preference when switching between locations
       const storedLang = localStorage.getItem('borak-lang');
       
-      // Default language logic: Serbian unless user came from another location with a different language
+      // Default language logic: Serbian for Vrujci, otherwise based on preference
       let preferredLang = 'sr'; // Default to Serbian
       
-      // If user has a stored language preference, use it (maintains language across location switches)
-      if (storedLang && supportedLanguages.includes(storedLang)) {
+      // Check if this is a Vrujci route
+      const isVrujciRoute = location.pathname.includes('/banja-vrujci') || location.pathname.includes('/vrujci');
+      
+      if (isVrujciRoute) {
+        // For Vrujci routes, always default to Serbian
+        preferredLang = 'sr';
+      } else if (storedLang && supportedLanguages.includes(storedLang)) {
+        // For other routes, use stored preference if available
         preferredLang = storedLang;
       } else {
         // First time visitor - use browser language if supported, otherwise Serbian
