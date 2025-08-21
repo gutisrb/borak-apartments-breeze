@@ -80,8 +80,8 @@ const VrujciLocation = () => {
               
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/local-restaurant.jpg" 
-                  alt="Banja Vrujci priroda"
+                  src="/lovable-uploads/7925bdc6-61dd-40cc-a534-7e5d6f0698cf.png" 
+                  alt="Banja Vrujci iz vazduha - pogled na selo i okolinu"
                   className="w-full h-96 object-cover rounded-2xl shadow-2xl"
                 />
               </div>
