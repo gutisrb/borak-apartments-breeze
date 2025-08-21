@@ -1,7 +1,283 @@
 
 {
+  "nav": {
+    "home": "Startseite",
+    "apartments": "Apartments",
+    "location": "Standort",
+    "contact": "Kontakt",
+    "book": "Buchen"
+  },
   "hero": {
-    "title": "Exklusive Apartments an der Küste Kroatiens",
+    "title": "Ihr exklusiver kroatischer Küstenurlaub",
+    "subtitle": "Luxusapartments, wo Himmel und Meer aufeinandertreffen",
+    "explore": "Apartments entdecken"
+  },
+  "intro": {
+    "title": "Ein unvergesslicher Aufenthalt",
+    "description": "An den unberührten Küsten der Insel Brač gelegen, bietet unsere exklusive Kollektion von Luxusapartments einen unvergleichlichen Rückzugsort, wo mediterrane Eleganz auf moderne Raffinesse trifft."
+  },
+  "introduction": {
+    "title": "Ein unvergesslicher Aufenthalt",
+    "description": "An den unberührten Küsten der Insel Brač gelegen, bietet unsere exklusive Kollektion von Luxusapartments einen unvergleichlichen Rückzugsort, wo mediterrane Eleganz auf moderne Raffinesse trifft."
+  },
+  "apartmentSelector": {
+    "title": "Wählen Sie Ihr perfektes Refugium",
+    "subtitle": "Vier verschiedene Apartments, jedes bietet kompromisslosen Komfort und atemberaubende Ausblicke auf die Adria",
+    "viewDetails": "Details und Verfügbarkeit anzeigen"
+  },
+  "location": {
+    "title": "Unser Standort",
+    "description": "Entdecken Sie die Reize von Brač",
+    "highlights": {
+      "prime": {
+        "title": "Erstklassige Lage",
+        "description": "Nur wenige Schritte von unberührten Stränden und kristallklarem Wasser entfernt"
+      },
+      "beach": {
+        "title": "Strandzugang",
+        "description": "Direkter Zugang zu versteckten Buchten und Schwimmplätzen"
+      },
+      "climate": {
+        "title": "Ganzjährige Schönheit",
+        "description": "Perfektes mediterranes Klima mit über 300 Sonnentagen"
+      },
+      "views": {
+        "title": "Malerische Aussichten",
+        "description": "Atemberaubende Panoramablicke auf die Adria"
+      }
+    },
+    "discover": {
+      "title": "Entdecken Sie die Insel Brač",
+      "description": "Im Herzen der Adria gelegen, bietet die Insel Brač eine perfekte Mischung aus natürlicher Schönheit, reicher Geschichte und modernem Luxus. Vom berühmten Strand Zlatni Rat bis zu alten Steinbrüchen birgt jede Ecke dieses kroatischen Paradieses eine Geschichte, die entdeckt werden will."
+    }
+  },
+  "testimonials": {
+    "title": "Was unsere Gäste sagen",
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "Der unglaublichste Aufenthalt, den wir je erlebt haben. Das Apartment war atemberaubend und die Aussicht absolut spektakulär. Wir kommen definitiv wieder!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Belgrade, Serbia",
+      "text": "Perfekter Ort für einen Urlaub! Das Apartment war luxuriös und komfortabel, und der Meerblick war unvergesslich. Sehr empfehlenswert!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "Munich, Germany",
+      "text": "Wunderbare Unterkunft mit atemberaubendem Meerblick. Alles war perfekt organisiert und sehr sauber. Vielen Dank!"
+    }
+  },
+  "cta": {
+    "title": "Finden Sie Ihre perfekten Termine",
+    "description": "Ihr exklusiver kroatischer Kurzurlaub erwartet Sie. Erleben Sie neu definierten Luxus, wo das Mittelmeer auf moderne Eleganz trifft.",
+    "book": "Aufenthalt buchen"
+  },
+  "callToAction": {
+    "title": "Finden Sie Ihre perfekten Termine",
+    "description": "Ihr exklusiver kroatischer Kurzurlaub erwartet Sie. Erleben Sie neu definierten Luxus, wo das Mittelmeer auf moderne Eleganz trifft.",
+    "book": "Aufenthalt buchen"
+  },
+  "footer": {
+    "description": "Erleben Sie den Höhepunkt kroatischen Küstenluxus. Unsere exklusive Apartmentkollektion bietet anspruchsvollen Reisenden einen unvergleichlichen Rückzugsort, wo mediterrane Eleganz auf moderne Raffinesse trifft.",
+    "contact": "Kontakt",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "experience": "Erfahrung",
+    "apartments": "Luxusapartments",
+    "location": "Erstklassige Lage",
+    "reviews": "Gästebewertungen"
+  },
+  "booking": {
+    "title": "Buchen",
+    "checkin": "Anreisedatum",
+    "checkout": "Abreisedatum",
+    "adults": "Erwachsene",
+    "children": "Kinder",
+    "name": "Vor- und Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon (optional)",
+    "submit": "Buchungsanfrage senden",
+    "submitting": "Wird gesendet...",
+    "success": "Anfrage gesendet!",
+    "successDesc": "Wir werden bald die Verfügbarkeit bestätigen.",
+    "error": "Fehler",
+    "errorDesc": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+    "selectDates": "Bitte wählen Sie Anreise- und Abreisedatum",
+    "invalidDates": "Das Abreisedatum muss nach dem Anreisedatum liegen",
+    "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus",
+    "pickDate": "Datum wählen"
+  },
+  "modal": {
+    "details": "Details",
+    "guests": "Bis zu {{count}} Gäste",
+    "size": "{{size}}m² Fläche",
+    "perNight": "/Nacht",
+    "amenities": "Apartment-Ausstattung",
+    "reserve": "Apartment reservieren"
+  },
+  "apartment": {
+    "viewDetails": "Details anzeigen",
+    "bookNow": "Jetzt buchen",
+    "backToHome": "Zurück zu den Apartments",
+    "notFound": "Apartment nicht gefunden",
+    "loading": "Apartment wird geladen...",
+    "1": {
+      "description": "Entfliehen Sie in unser elegantes Ein-Zimmer-Apartment mit großzügiger Terrasse und atemberaubendem Meerblick. Perfekt für Paare, die einen romantischen Kurzurlaub mit modernen Annehmlichkeiten und mediterranem Charme suchen."
+    },
+    "2": {
+      "description": "Genießen Sie den Luxus unseres Premium-Apartments mit zwei Schlafzimmern und Panorama-Meerblick. Ideal für Familien oder Gruppen, mit kompletter Küche, mehreren Balkonen und raffiniertem Küstendesign."
+    },
+    "3": {
+      "description": "Erleben Sie Komfort in unserem gemütlichen Studio-Apartment mit Gartenblick. Perfekt für Alleinreisende oder Paare, bietet moderne Annehmlichkeiten und eine ruhige Atmosphäre nur wenige Schritte vom Strand entfernt."
+    },
+    "4": {
+      "description": "Entdecken Sie unser geräumiges Familienapartment mit mehreren Schlafzimmern und großer Terrasse. Entworfen für größere Gruppen, mit Premium-Ausstattung und atemberaubenden Blicken auf die Adriaküste."
+    }
+  },
+  "amenity": {
+    "wifi": "WLAN",
+    "ac": "Klimaanlage",
+    "kitchen": "Küche",
+    "parking": "Parkplatz",
+    "sea_view": "Meerblick",
+    "garden_view": "Gartenblick",
+    "panoramic_view": "Panoramablick",
+    "beach_access": "Strandzugang",
+    "balcony": "Balkon",
+    "terrace": "Terrasse",
+    "premium_kitchen": "Premium-Küche",
+    "multiple_bedrooms": "Mehrere Schlafzimmer",
+    "large_terrace": "Große Terrasse",
+    "full_kitchen": "Komplette Küche"
+  },
+  "vrujci": {
+    "hero": {
+      "title": "Apartments — Banja Vrujci",
+      "subtitle": "Naturerholung — Thermalwasser, Stille und frische Luft",
+      "explore": "Unsere Apartments ansehen"
+    },
+    "intro": {
+      "title": "Willkommen in Banja Vrujci",
+      "description": "Genießen Sie die Ruhe der Natur, heilendes Thermalwasser und frische Luft. Unsere Apartments bieten den perfekten Rückzugsort für alle, die der Stadthetze entfliehen möchten."
+    },
+    "location": {
+      "distance": "120km von Belgrad",
+      "duration": "1,5h Fahrt",
+      "season": "Ganzjährig",
+      "bestTime": "Beste Zeit: Frühling-Herbst",
+      "thermalSprings": "Thermalquellen",
+      "walkTime": "5min zu Fuß"
+    },
+    "apartments": {
+      "title": "Unsere Apartments",
+      "subtitle": "Komfortable Apartments im Herzen der Natur, komplett ausgestattet für den perfekten Rückzugsort",
+      "loading": "Apartments werden geladen...",
+      "viewDetails": "Details anzeigen",
+      "perNight": "/Nacht"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "subtitle": "Sehen Sie unsere Apartments und die Umgebung"
+    },
+    "activities": {
+      "title": "Anreise",
+      "subtitle": "Aktivitäten in der Nähe",
+      "bus": {
+        "title": "Mit dem Bus von Belgrad",
+        "description": "Direkte Linie Belgrad - Banja Vrujci, Fahrzeuge verkehren mehrmals täglich."
+      },
+      "car": {
+        "title": "Mit dem Auto",
+        "description": "Autobahn E75 bis Ljig, dann Regionalstraße nach Milova und Banja Vrujci (120km - 1,5h)."
+      },
+      "thermal": {
+        "title": "Thermalquellen",
+        "description": "Heilendes Thermalwasser (42°C) bekannt für seine therapeutischen Eigenschaften bei Rheuma und Stress."
+      },
+      "hiking": {
+        "title": "Wanderwege",
+        "description": "Markierte Wege durch die Wälder von Maljen mit schönen Ausblicken auf das Kolubara-Tal."
+      },
+      "food": {
+        "title": "Lokale Küche",
+        "description": "Lokale Restaurants mit traditionellen serbischen Gerichten und hausgemachten Produkten."
+      }
+    },
+    "locationPage": {
+      "title": "Über Banja Vrujci | Vrujci Apartments",
+      "hero": {
+        "title": "Über Banja Vrujci",
+        "subtitle": "Entdecken Sie die Reize des Thermalbads im Herzen der unberührten serbischen Natur",
+        "cta": "Ihren Rückzugsort buchen"
+      },
+      "about": {
+        "title": "Banja Vrujci",
+        "description1": "Banja Vrujci ist ein berühmtes Thermalbad im malerischen Teil Westserbiens, an den Hängen des Valjevo-Gebirges gelegen. Dieser Ort ist ein perfekter Zufluchtsort für diejenigen, die Ruhe, Entspannung und natürliche Heilung suchen.",
+        "description2": "Thermalquellen mit Wassertemperaturen von 27°C bis 37°C sind bekannt für ihre heilenden Eigenschaften, besonders vorteilhaft für die Behandlung rheumatischer Erkrankungen und Hautprobleme.",
+        "temperature": "Quellentemperatur",
+        "distance": "Von Belgrad"
+      },
+      "attractions": {
+        "title": "Attraktionen und Aktivitäten",
+        "subtitle": "Entdecken Sie den Reichtum der Natur und Wellness-Einrichtungen",
+        "thermal": {
+          "title": "Thermalquellen",
+          "description": "Natürliche Thermalquellen mit heilenden Eigenschaften, ideal für Entspannung und Wellness."
+        },
+        "trails": {
+          "title": "Naturwege",
+          "description": "Spaziergänge durch unberührte Natur mit wunderschön gepflegten Wanderwegen."
+        },
+        "views": {
+          "title": "Bergblicke",
+          "description": "Spektakuläre Ausblicke auf die umliegenden Berge und das Kolubara-Tal."
+        },
+        "culture": {
+          "title": "Lokale Kultur",
+          "description": "Lernen Sie die reiche Tradition und Kultur dieses Teils Serbiens kennen."
+        },
+        "wellness": {
+          "title": "Wellness-Zentrum",
+          "description": "Moderne Wellness-Einrichtungen für vollständige Entspannung und Energieerneuerung."
+        },
+        "park": {
+          "title": "Naturpark",
+          "description": "Geschütztes Naturgebiet mit vielfältiger Flora und Fauna."
+        }
+      },
+      "gettingThere": {
+        "title": "Wie Sie nach Banja Vrujci gelangen",
+        "subtitle": "Leicht erreichbar aus allen Teilen Serbiens",
+        "car": {
+          "title": "Mit dem Auto",
+          "description": "120km von Belgrad, Autobahn A1 Ausfahrt Valjevo, dann Regionalstraßen."
+        },
+        "train": {
+          "title": "Mit dem Zug",
+          "description": "Bahnhof Lajkovac, dann mit Bus oder Taxi zum Spa."
+        },
+        "plane": {
+          "title": "Mit dem Flugzeug",
+          "description": "Flughafen Nikola Tesla Belgrad, dann Transfer oder Mietwagen."
+        }
+      },
+      "cta": {
+        "title": "Ihr perfekter Naturrückzugsort",
+        "description1": "Banja Vrujci bietet Ihnen eine einzigartige Kombination aus natürlichen Heilquellen, unberührter Natur und modernem Komfort.",
+        "description2": "Lassen Sie die Stadthetze hinter sich und tauchen Sie ein in die Ruhe und Stille dieses Naturparadieses.",
+        "bookButton": "Ihren Aufenthalt buchen",
+        "whyChoose": "Warum Vrujci wählen?",
+        "reason1": "Natürliche Thermalquellen mit heilenden Eigenschaften",
+        "reason2": "Saubere Luft und unberührte Natur",
+        "reason3": "Moderne Wellness-Einrichtungen",
+        "reason4": "Naturaktivitäten das ganze Jahr über"
+      }
+    }
+  }
+}
     "subtitle": "Entdecken Sie Luxus und Komfort in unseren erstklassigen Apartments auf der Insel Brač. Ihr idealer Rückzugsort am Meer erwartet Sie.",
     "explore": "Unsere Apartments erkunden"
   },

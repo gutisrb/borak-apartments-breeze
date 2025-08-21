@@ -8,6 +8,282 @@
     "book": "Rezerviraj"
   },
   "hero": {
+    "title": "Vaš ekskluzivni primorski odmor u Hrvatskoj",
+    "subtitle": "Luksuzni apartmani gdje se nebo spaja s morem",
+    "explore": "Istražite apartmane"
+  },
+  "intro": {
+    "title": "Nezaboravni bijeg",
+    "description": "Smješteni na netaknutim obalama otoka Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gdje se mediteranska elegancija spaja s modernom sofisticiranošću."
+  },
+  "introduction": {
+    "title": "Nezaboravni bijeg",
+    "description": "Smješteni na netaknutim obalama otoka Brač, naša ekskluzivna kolekcija luksuznih apartmana nudi nenadmašan odmor gdje se mediteranska elegancija spaja s modernom sofisticiranošću."
+  },
+  "apartmentSelector": {
+    "title": "Odaberite svoje savršeno utočište",
+    "subtitle": "Četiri različita apartmana, svaki nudi beskompromisnu udobnost i zadivljujuće poglede na Jadransko more",
+    "viewDetails": "Pogledajte detalje i dostupnost"
+  },
+  "location": {
+    "title": "Naša lokacija",
+    "description": "Otkrijte čari Brača",
+    "highlights": {
+      "prime": {
+        "title": "Vrhunska lokacija",
+        "description": "Koraci udaljenosti od netaknutih plaža i kristalno čiste vode"
+      },
+      "beach": {
+        "title": "Pristup plaži",
+        "description": "Direktan pristup skrivenim uvalama i mjestima za kupanje"
+      },
+      "climate": {
+        "title": "Cjelogodišnja ljepota",
+        "description": "Savršena mediteranska klima s preko 300 sunčanih dana"
+      },
+      "views": {
+        "title": "Slikoviti pogledi",
+        "description": "Zadivljujući panoramski pogledi na Jadransko more"
+      }
+    },
+    "discover": {
+      "title": "Otkrijte otok Brač",
+      "description": "Smješten u srcu Jadrana, otok Brač nudi savršen spoj prirodne ljepote, bogate povijesti i modernog luksuza. Od čuvene plaže Zlatni rat do drevnih kamenoloma, svaki kutak ovog hrvatskog raja krije priču koju treba otkriti."
+    }
+  },
+  "testimonials": {
+    "title": "Što kažu naši gosti",
+    "sarah": {
+      "name": "Sarah & Michael Thompson",
+      "location": "London, UK",
+      "text": "Najnevjerojatniji boravak koji smo ikad doživjeli. Apartman je bio zadivljujući, a pogledi apsolutno breathtaking. Definitivno ćemo se vratiti!"
+    },
+    "ana": {
+      "name": "Ana & Marko Petković",
+      "location": "Belgrade, Serbia",
+      "text": "Savršeno mjesto za odmor! Apartman je bio luksuzan i udoban, a pogled na more nezaboravan. Toplo preporučujemo!"
+    },
+    "hans": {
+      "name": "Hans & Greta Mueller",
+      "location": "Munich, Germany",
+      "text": "Divno smještaj s zadivljujućim pogledom na more. Sve je bilo savršeno organizirano i vrlo čisto. Hvala!"
+    }
+  },
+  "cta": {
+    "title": "Pronađite svoje savršene datume",
+    "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefiniran gdje se Mediteran susreće s modernom elegancijom.",
+    "book": "Rezervirajte boravak"
+  },
+  "callToAction": {
+    "title": "Pronađite svoje savršene datume",
+    "description": "Vaš ekskluzivni hrvatski odmor vas čeka. Doživite luksuz redefiniran gdje se Mediteran susreće s modernom elegancijom.",
+    "book": "Rezervirajte boravak"
+  },
+  "footer": {
+    "description": "Doživite vrhunac hrvatskog primorskog luksuza. Naša ekskluzivna kolekcija apartmana nudi zahtjevnim putnicima nenadmašan odmor gdje se mediteranska elegancija spaja s modernom sofisticiranošću.",
+    "contact": "Kontakt",
+    "address": "Adresa",
+    "phone": "Telefon",
+    "email": "Email",
+    "experience": "Iskustvo",
+    "apartments": "Luksuzni apartmani",
+    "location": "Vrhunska lokacija",
+    "reviews": "Recenzije gostiju"
+  },
+  "booking": {
+    "title": "Rezerviraj",
+    "checkin": "Datum dolaska",
+    "checkout": "Datum odlaska",
+    "adults": "Odrasli",
+    "children": "Djeca",
+    "name": "Ime i prezime",
+    "email": "Email",
+    "phone": "Telefon (opcijski)",
+    "submit": "Pošaljite zahtjev za rezervaciju",
+    "submitting": "Šalje se...",
+    "success": "Zahtjev je poslan!",
+    "successDesc": "Uskoro ćemo potvrditi dostupnost.",
+    "error": "Greška",
+    "errorDesc": "Nešto je pošlo po zlu. Molimo pokušajte ponovo.",
+    "selectDates": "Molimo odaberite datume dolaska i odlaska",
+    "invalidDates": "Datum odlaska mora biti nakon datuma dolaska",
+    "fillRequired": "Molimo popunite sva obavezna polja",
+    "pickDate": "Odaberite datum"
+  },
+  "modal": {
+    "details": "Detalji",
+    "guests": "Do {{count}} gostiju",
+    "size": "{{size}}m² površine",
+    "perNight": "/noć",
+    "amenities": "Sadržaj apartmana",
+    "reserve": "Rezerviraj apartman"
+  },
+  "apartment": {
+    "viewDetails": "Pogledaj detalje",
+    "bookNow": "Rezerviraj odmah",
+    "backToHome": "Nazad na apartmane",
+    "notFound": "Apartman nije pronađen",
+    "loading": "Učitavanje apartmana...",
+    "1": {
+      "description": "Pobjegnite u naš elegantan jednosobni apartman s prostranom terasom i zadivljujućim pogledom na more. Savršen za parove koji traže romantičan odmor s modernim sadržajima i mediteranskim šarmom."
+    },
+    "2": {
+      "description": "Uživajte u luksuzu našeg premium apartmana s dvije spavaće sobe i panoramskim pogledom na ocean. Idealan za obitelji ili grupe, s kompletnom kuhinjom, više balkona i sofisticiranim primorskim dizajnom."
+    },
+    "3": {
+      "description": "Doživite udobnost u našem ugodnom studio apartmanu s pogledom na vrt. Savršen za samostalne putnike ili parove, nudi moderne sadržaje i mirnu atmosferu na korak od plaže."
+    },
+    "4": {
+      "description": "Otkrijte naš prostrani obiteljski apartman s više spavaćih soba i velikom terasom. Dizajniran za veće grupe, s premium sadržajima i zadivljujućim pogledom na jadransku obalu."
+    }
+  },
+  "amenity": {
+    "wifi": "WiFi",
+    "ac": "Klima uređaj",
+    "kitchen": "Kuhinja",
+    "parking": "Parking",
+    "sea_view": "Pogled na more",
+    "garden_view": "Pogled na vrt",
+    "panoramic_view": "Panoramski pogled",
+    "beach_access": "Pristup plaži",
+    "balcony": "Balkon",
+    "terrace": "Terasa",
+    "premium_kitchen": "Premium kuhinja",
+    "multiple_bedrooms": "Više spavaćih soba",
+    "large_terrace": "Velika terasa",
+    "full_kitchen": "Kompletna kuhinja"
+  },
+  "vrujci": {
+    "hero": {
+      "title": "Apartmani — Banja Vrujci",
+      "subtitle": "Odmor u prirodi — termalne vode, tišina i svježi zrak",
+      "explore": "Pogledajte apartmane"
+    },
+    "intro": {
+      "title": "Dobrodošli u Banju Vrujci",
+      "description": "Uživajte u miru prirode, ljekovitim termalnim vodama i svježem zraku. Naši apartmani pružaju savršen odmor za sve koji traže bijeg od gradske vreve."
+    },
+    "location": {
+      "distance": "120km od Beograda",
+      "duration": "1.5h vožnje",
+      "season": "Cijela godina",
+      "bestTime": "Najbolje: proljeće-jesen",
+      "thermalSprings": "Termalni izvori",
+      "walkTime": "5min hoda"
+    },
+    "apartments": {
+      "title": "Naši apartmani",
+      "subtitle": "Udobni apartmani u srcu prirode, potpuno opremljeni za savršen odmor",
+      "loading": "Učitavanje apartmana...",
+      "viewDetails": "Pogledaj detalje",
+      "perNight": "/noć"
+    },
+    "gallery": {
+      "title": "Galerija",
+      "subtitle": "Pogledajte naše apartmane i okolinu"
+    },
+    "activities": {
+      "title": "Kako doći",
+      "subtitle": "Aktivnosti u blizini",
+      "bus": {
+        "title": "Autobusom iz Beograda",
+        "description": "Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno."
+      },
+      "car": {
+        "title": "Automobilom",
+        "description": "Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h)."
+      },
+      "thermal": {
+        "title": "Termalni izvori",
+        "description": "Ljekovita termalna voda (42°C) poznata po ljekovitim svojstvima za reumatizam i stres."
+      },
+      "hiking": {
+        "title": "Planinske staze",
+        "description": "Označene staze kroz šume Maljena s prekrasnim pogledima na dolinu Kolubare."
+      },
+      "food": {
+        "title": "Domaća hrana",
+        "description": "Lokalni restorani s tradicionalnim srpskim jelima i domaćim proizvodima."
+      }
+    },
+    "locationPage": {
+      "title": "O Banji Vrujci | Apartmani Vrujci",
+      "hero": {
+        "title": "O Banji Vrujci",
+        "subtitle": "Otkrijte čari termalne banje u srcu netaknute prirode Srbije",
+        "cta": "Rezervirajte odmor"
+      },
+      "about": {
+        "title": "Banja Vrujci",
+        "description1": "Banja Vrujci je poznata termalna banja smještena u slikovitom dijelu zapadne Srbije, na obroncima planine Valjevo. Ovo mjesto je savršeno utočište za one koji traže mir, opuštanje i prirodno liječenje.",
+        "description2": "Termalni izvori s temperaturom vode od 27°C do 37°C poznati su po svojim ljekovitim svojstvima, posebno korisnim za liječenje reumatskih bolesti i problema s kožom.",
+        "temperature": "Temperatura izvora",
+        "distance": "Od Beograda"
+      },
+      "attractions": {
+        "title": "Atrakcije i aktivnosti",
+        "subtitle": "Otkrijte bogatstvo prirode i wellness sadržaja",
+        "thermal": {
+          "title": "Termalni izvori",
+          "description": "Prirodni termalni izvori s ljekovitim svojstvima, idealni za opuštanje i wellness."
+        },
+        "trails": {
+          "title": "Prirodne staze",
+          "description": "Šetnje kroz netaknutu prirodu s prekrasno uređenim stazama za pješačenje."
+        },
+        "views": {
+          "title": "Planinski pogledi",
+          "description": "Spektakularni pogledi na okolne planine i dolinu Kolubare."
+        },
+        "culture": {
+          "title": "Lokalna kultura",
+          "description": "Upoznajte bogatu tradiciju i kulturu ovog dijela Srbije."
+        },
+        "wellness": {
+          "title": "Wellness centar",
+          "description": "Moderni wellness sadržaji za potpuno opuštanje i obnavljanje energije."
+        },
+        "park": {
+          "title": "Park prirode",
+          "description": "Zaštićeno prirodno područje s raznovrsnom florom i faunom."
+        }
+      },
+      "gettingThere": {
+        "title": "Kako doći do Banje Vrujci",
+        "subtitle": "Lako dostupna iz svih dijelova Srbije",
+        "car": {
+          "title": "Automobilom",
+          "description": "120km od Beograda, autoputa A1 izlaz Valjevo, zatim regionalnim putevima."
+        },
+        "train": {
+          "title": "Vlakom",
+          "description": "Željeznička stanica Lajkovac, zatim autobusom ili taksijem do banje."
+        },
+        "plane": {
+          "title": "Avionom",
+          "description": "Aerodrom Nikola Tesla Beograd, zatim transfer ili rent-a-car."
+        }
+      },
+      "cta": {
+        "title": "Vaš savršen odmor u prirodi",
+        "description1": "Banja Vrujci vam nudi jedinstvenu kombinaciju prirodnih ljekovitih izvora, netaknute prirode i modernog komfora.",
+        "description2": "Ostavite gradsku vrevu iza sebe i uronite u mir i tišinu ovog prirodnog raja.",
+        "bookButton": "Rezervirajte svoj boravak",
+        "whyChoose": "Zašto odabrati Vrujci?",
+        "reason1": "Prirodni termalni izvori s ljekovitim svojstvima",
+        "reason2": "Čist zrak i netaknuta priroda",
+        "reason3": "Moderni wellness sadržaji",
+        "reason4": "Aktivnosti u prirodi tijekom cijele godine"
+      }
+    }
+  }
+}
+    "apartments": "Apartmani",
+    "location": "Lokacija",
+    "contact": "Kontakt",
+    "book": "Rezerviraj"
+  },
+  "hero": {
     "title": "Luksuzni Apartmani na Braču",
     "subtitle": "Otkrijte savršeno mjesto za vaš odmor iz snova. Rezervirajte svoj boravak danas!",
     "explore": "Istražite Apartmane"

@@ -252,5 +252,129 @@
       "reason3": "Rich cultural heritage with 2,000 years of continuous habitation",
       "reason4": "Perfect for both active adventures and peaceful relaxation"
     }
+  },
+  "vrujci": {
+    "hero": {
+      "title": "Apartments — Banja Vrujci",
+      "subtitle": "Nature retreat — thermal waters, silence and fresh air",
+      "explore": "View our apartments"
+    },
+    "intro": {
+      "title": "Welcome to Banja Vrujci",
+      "description": "Enjoy the peace of nature, healing thermal waters and fresh air. Our apartments provide a perfect retreat for everyone seeking an escape from city bustle."
+    },
+    "location": {
+      "distance": "120km from Belgrade",
+      "duration": "1.5h drive",
+      "season": "All year round",
+      "bestTime": "Best: spring-autumn",
+      "thermalSprings": "Thermal springs",
+      "walkTime": "5min walk"
+    },
+    "apartments": {
+      "title": "Our apartments",
+      "subtitle": "Comfortable apartments in the heart of nature, fully equipped for a perfect retreat",
+      "loading": "Loading apartments...",
+      "viewDetails": "View details",
+      "perNight": "/night"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "subtitle": "View our apartments and surroundings"
+    },
+    "activities": {
+      "title": "How to get there",
+      "subtitle": "Nearby activities",
+      "bus": {
+        "title": "By bus from Belgrade",
+        "description": "Direct line Belgrade - Banja Vrujci, vehicles operate several times daily."
+      },
+      "car": {
+        "title": "By car",
+        "description": "Highway E75 to Ljig, then regional road towards Milova and Banja Vrujci (120km - 1.5h)."
+      },
+      "thermal": {
+        "title": "Thermal springs",
+        "description": "Healing thermal water (42°C) known for its therapeutic properties for rheumatism and stress."
+      },
+      "hiking": {
+        "title": "Hiking trails",
+        "description": "Marked trails through Maljen forests with beautiful views of Kolubara valley."
+      },
+      "food": {
+        "title": "Local cuisine",
+        "description": "Local restaurants with traditional Serbian dishes and homemade products."
+      }
+    },
+    "locationPage": {
+      "title": "About Banja Vrujci | Vrujci Apartments",
+      "hero": {
+        "title": "About Banja Vrujci",
+        "subtitle": "Discover the charms of thermal spa in the heart of pristine Serbian nature",
+        "cta": "Book your retreat"
+      },
+      "about": {
+        "title": "Banja Vrujci",
+        "description1": "Banja Vrujci is a famous thermal spa located in the picturesque part of western Serbia, on the slopes of Valjevo mountain. This place is a perfect refuge for those seeking peace, relaxation and natural healing.",
+        "description2": "Thermal springs with water temperature from 27°C to 37°C are known for their healing properties, particularly beneficial for treating rheumatic diseases and skin problems.",
+        "temperature": "Spring temperature",
+        "distance": "From Belgrade"
+      },
+      "attractions": {
+        "title": "Attractions and activities",
+        "subtitle": "Discover the wealth of nature and wellness facilities",
+        "thermal": {
+          "title": "Thermal springs",
+          "description": "Natural thermal springs with healing properties, ideal for relaxation and wellness."
+        },
+        "trails": {
+          "title": "Nature trails",
+          "description": "Walks through pristine nature with beautifully maintained walking paths."
+        },
+        "views": {
+          "title": "Mountain views",
+          "description": "Spectacular views of surrounding mountains and Kolubara valley."
+        },
+        "culture": {
+          "title": "Local culture",
+          "description": "Get to know the rich tradition and culture of this part of Serbia."
+        },
+        "wellness": {
+          "title": "Wellness center",
+          "description": "Modern wellness facilities for complete relaxation and energy renewal."
+        },
+        "park": {
+          "title": "Nature park",
+          "description": "Protected natural area with diverse flora and fauna."
+        }
+      },
+      "gettingThere": {
+        "title": "How to get to Banja Vrujci",
+        "subtitle": "Easily accessible from all parts of Serbia",
+        "car": {
+          "title": "By car",
+          "description": "120km from Belgrade, highway A1 exit Valjevo, then regional roads."
+        },
+        "train": {
+          "title": "By train",
+          "description": "Railway station Lajkovac, then by bus or taxi to the spa."
+        },
+        "plane": {
+          "title": "By plane",
+          "description": "Nikola Tesla Airport Belgrade, then transfer or car rental."
+        }
+      },
+      "cta": {
+        "title": "Your perfect nature retreat",
+        "description1": "Banja Vrujci offers you a unique combination of natural healing springs, pristine nature and modern comfort.",
+        "description2": "Leave the city bustle behind and immerse yourself in the peace and silence of this natural paradise.",
+        "bookButton": "Book your stay",
+        "whyChoose": "Why choose Vrujci?",
+        "reason1": "Natural thermal springs with healing properties",
+        "reason2": "Clean air and pristine nature",
+        "reason3": "Modern wellness facilities",
+        "reason4": "Nature activities throughout the year"
+      }
+    }
   }
 }

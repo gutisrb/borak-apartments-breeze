@@ -308,5 +308,129 @@
     "multiple_bedrooms": "Više spavaćih soba",
     "large_terrace": "Velika terasa",
     "full_kitchen": "Kompletna kuhinja"
+  },
+  "vrujci": {
+    "hero": {
+      "title": "Apartmani — Banja Vrujci",
+      "subtitle": "Odmor u prirodi — termalne vode, tišina i svež vazduh",
+      "explore": "Pogledajte apartmane"
+    },
+    "intro": {
+      "title": "Dobrodošli u Banju Vrujci",
+      "description": "Uživajte u miru prirode, lековitim termalnim vodama i svežem vazduhu. Naši apartmani pružaju savršen odmor za sve koji traže bekstvo od gradske vreve."
+    },
+    "location": {
+      "distance": "120km od Beograda",
+      "duration": "1.5h vožnje",
+      "season": "Cela godina",
+      "bestTime": "Najbolje: proleće-jesen",
+      "thermalSprings": "Termalni izvori",
+      "walkTime": "5min hoda"
+    },
+    "apartments": {
+      "title": "Naši apartmani",
+      "subtitle": "Udobni apartmani u srcu prirode, potpuno opremljeni za savršen odmor",
+      "loading": "Učitavanje apartmana...",
+      "viewDetails": "Pogledaj detalje",
+      "perNight": "/noć"
+    },
+    "gallery": {
+      "title": "Galerija",
+      "subtitle": "Pogledajte naše apartmane i okolinu"
+    },
+    "activities": {
+      "title": "Kako doći",
+      "subtitle": "Aktivnosti u blizini",
+      "bus": {
+        "title": "Autobusom iz Beograda",
+        "description": "Direktna linija Beograd - Banja Vrujci, vozila saobraćaju nekoliko puta dnevno."
+      },
+      "car": {
+        "title": "Automobilom",
+        "description": "Autoput E75 do Ljiga, zatim regionalni put prema Milovcu i Banji Vrujci (120km - 1.5h)."
+      },
+      "thermal": {
+        "title": "Termalni izvori",
+        "description": "Lековita termalna voda (42°C) poznata po lekovitim svojstvima za reumatizam i stres."
+      },
+      "hiking": {
+        "title": "Planinarske staze",
+        "description": "Označene staze kroz šume Maljena sa prelepim pogledima na dolinu Kolubare."
+      },
+      "food": {
+        "title": "Domaća hrana",
+        "description": "Lokalni restorani sa tradicionalnim srpskim jelima i domaćim proizvodima."
+      }
+    },
+    "locationPage": {
+      "title": "O Banji Vrujci | Apartmani Vrujci",
+      "hero": {
+        "title": "O Banji Vrujci",
+        "subtitle": "Otkrijte čari termalne banje u srcu netaknute prirode Srbije",
+        "cta": "Rezervišite odmor"
+      },
+      "about": {
+        "title": "Banja Vrujci",
+        "description1": "Banja Vrujci je poznata termalna banja smeštena u slikovitom delu zapadne Srbije, na obroncima planine Valjevo. Ovo mesto je savršeno utočište za one koji traže mir, opuštanje i prirodno lečenje.",
+        "description2": "Termalni izvori sa temperaturom vode od 27°C do 37°C poznati su po svojim lekovitim svojstvima, posebno korisnim za lečenje reumatskih oboljenja i problema sa kožom.",
+        "temperature": "Temperatura izvora",
+        "distance": "Od Beograda"
+      },
+      "attractions": {
+        "title": "Atrakcije i aktivnosti",
+        "subtitle": "Otkrijte bogatstvo prirode i wellness sadržaja",
+        "thermal": {
+          "title": "Termalni izvori",
+          "description": "Prirodni termalni izvori sa lekovitim svojstvima, idealni za opuštanje i wellness."
+        },
+        "trails": {
+          "title": "Prirodne staze",
+          "description": "Šetnje kroz netaknutu prirodu sa prelepo uređenim stazama za pešačenje."
+        },
+        "views": {
+          "title": "Planinski pogledi",
+          "description": "Spektakularni pogledi na okolne planine i dolinu Kolubare."
+        },
+        "culture": {
+          "title": "Lokalna kultura",
+          "description": "Upoznajte bogatu tradiciju i kulturu ovog dela Srbije."
+        },
+        "wellness": {
+          "title": "Wellness centar",
+          "description": "Moderni wellness sadržaji za potpuno opuštanje i obnavljanje energije."
+        },
+        "park": {
+          "title": "Park prirode",
+          "description": "Zaštićeno prirodno područje sa raznovrsnom florom i faunom."
+        }
+      },
+      "gettingThere": {
+        "title": "Kako doći do Banje Vrujci",
+        "subtitle": "Lako dostupna iz svih delova Srbije",
+        "car": {
+          "title": "Automobilom",
+          "description": "120km od Beograda, autoputem A1 izlaz Valjevo, zatim regionalnim putevima."
+        },
+        "train": {
+          "title": "Vozom",
+          "description": "Železnička stanica Lajkovac, zatim autobusom ili taksijem do banje."
+        },
+        "plane": {
+          "title": "Avionom",
+          "description": "Aerodrom Nikola Tesla Beograd, zatim transfer ili rent-a-car."
+        }
+      },
+      "cta": {
+        "title": "Vaš savršen odmor u prirodi",
+        "description1": "Banja Vrujci vam nudi jedinstvenu kombinaciju prirodnih lekovitih izvora, netaknute prirode i modernog komfora.",
+        "description2": "Ostavite gradsku vravu iza sebe i uronite u mir i tišinu ovog prirodnog raja.",
+        "bookButton": "Rezervišite svoj boravak",
+        "whyChoose": "Zašto odabrati Vrujci?",
+        "reason1": "Prirodni termalni izvori sa lekovitim svojstvima",
+        "reason2": "Čist vazduh i netaknuta priroda",
+        "reason3": "Moderni wellness sadržaji",
+        "reason4": "Aktivnosti u prirodi tokom cele godine"
+      }
+    }
   }
 }
