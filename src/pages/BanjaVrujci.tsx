@@ -269,7 +269,7 @@ const BanjaVrujci = () => {
         </section>
 
         {/* Location Highlights */}
-        <section className="py-16 bg-[hsl(var(--nature-muted))]">
+        <section className="py-16 bg-white">
           <div className="container-luxury">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
