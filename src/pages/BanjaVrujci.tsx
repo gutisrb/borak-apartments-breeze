@@ -6,7 +6,7 @@ import BookingDrawer from '../components/BookingDrawer';
 import CallToActionSection from '../components/CallToActionSection';
 import Footer from '../components/Footer';
 import GoogleMap from '../components/GoogleMap';
-import { Unit } from '@/lib/supabase';
+import { Unit, supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Users, Square, MapPin, Phone, Wifi, Car, ChefHat, Calendar, MessageCircle } from 'lucide-react';
@@ -52,11 +52,28 @@ const BanjaVrujci = () => {
   useEffect(() => {
     const fetchUnits = async () => {
       try {
-        const response = await fetch('/data/units-vrujci.json');
-        const data = await response.json();
-        setUnits(data.units);
+        setLoading(true);
+        const [jsonRes, supaRes] = await Promise.all([
+          fetch('/data/units-vrujci.json'),
+          supabase.from('properties').select('id,name,location,website_slug')
+        ]);
+        const data = await jsonRes.json();
+        const localUnits: Unit[] = data.units || [];
+
+        const { data: props, error: supaError } = supaRes as any;
+        if (supaError) throw supaError;
+
+        const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const supaNameSlugs = new Set((props || []).map((p: any) => normalize(p.name || '')));
+
+        const filtered = supaNameSlugs.size
+          ? localUnits.filter(u => supaNameSlugs.has(normalize(u.name)))
+          : localUnits;
+
+        setUnits(filtered);
       } catch (error) {
         console.error('Error fetching units:', error);
+        setUnits([]);
       } finally {
         setLoading(false);
       }

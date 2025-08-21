@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Users, Square } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
-import { Unit } from '@/lib/supabase';
+import { Unit, supabase } from '@/lib/supabase';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -19,9 +19,24 @@ const VrujciApartments = () => {
   useEffect(() => {
     const loadApartments = async () => {
       try {
-        const response = await fetch('/data/units-vrujci.json');
-        const data = await response.json();
-        setApartments(data.units || []);
+        const [jsonRes, supaRes] = await Promise.all([
+          fetch('/data/units-vrujci.json'),
+          supabase.from('properties').select('id,name,location,website_slug')
+        ]);
+        const data = await jsonRes.json();
+        const localUnits: Unit[] = data.units || [];
+
+        const { data: props, error: supaError } = supaRes as any;
+        if (supaError) throw supaError;
+
+        const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const supaNameSlugs = new Set((props || []).map((p: any) => normalize(p.name || '')));
+
+        const filtered = supaNameSlugs.size
+          ? localUnits.filter(u => supaNameSlugs.has(normalize(u.name)))
+          : localUnits;
+
+        setApartments(filtered);
       } catch (error) {
         console.error('Failed to load apartments:', error);
       }
