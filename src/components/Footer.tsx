@@ -27,7 +27,10 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
               height="140"
             />
             <p className="text-white/80 mb-8 leading-relaxed max-w-md font-app text-lg">
-              {t('footer.description')}
+              {location === 'vrujci' 
+                ? "Apartmani Borak u Banji Vrujci nude savršen odmor u prirodi sa termalnim vodama, svežim vazduhom i tišinom planina. Doživite autentični srpski gostoprimstvo u srcu prirode."
+                : t('footer.description')
+              }
             </p>
           </div>
 
