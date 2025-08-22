@@ -89,7 +89,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
     total_nights: nights,
     price_per_night: pricePerNight,
     total_price: totalPrice,
-    comment: comment || '', // Include comment field
+    additional_comments: comment || '', // Include comment field as additional_comments
     booking_date: new Date().toLocaleString()
   };
 
@@ -304,21 +304,19 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 />
               </div>
 
-              {/* Comment field - only for Banja Vrujci */}
-              {apartment.location === 'Banja Vrujci' && (
-                <div className="space-y-2">
-                  <Label htmlFor="comment" className="text-[#0C1930] font-app font-medium text-sm">
-                    Dodatni komentar (opciono)
-                  </Label>
-                  <Input
-                    id="comment"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Napišite dodatne zahteve ili komentare..."
-                    className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
-                  />
-                </div>
-              )}
+              {/* Comment field - for both locations */}
+              <div className="space-y-2">
+                <Label htmlFor="comment" className="text-[#0C1930] font-app font-medium text-sm">
+                  {apartment.location === 'Banja Vrujci' ? 'Dodatni komentar (opciono)' : 'Additional Comments (Optional)'}
+                </Label>
+                <Input
+                  id="comment"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder={apartment.location === 'Banja Vrujci' ? "Napišite dodatne zahteve ili komentare..." : "Write any additional requests or comments..."}
+                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
+                />
+              </div>
             </div>
 
             {/* Submit Button */}
