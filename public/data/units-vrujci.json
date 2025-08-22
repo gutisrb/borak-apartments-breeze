@@ -4,9 +4,9 @@
       "id": "vrujci-01",
       "name": "Apartman 1 — Prvi sprat",
       "max_guests": 5,
-      "size_m2": 60,
+      "size_m2": 50,
       "price_per_night": 50,
-      "description": "Apartman na prvom spratu sa kompletno opremljenom kuhinjom, besplatnim WiFi i parking mestom. Idealan za porodice do 5 osoba.",
+      "description": "Trosoban apartman na prvom spratu sa kompletno opremljenom kuhinjom, besplatnim WiFi i parking mestom. Idealan za porodice do 5 osoba.",
       "images": [
         "/lovable-uploads/dab211db-9e54-4d25-aaa2-290c1b654bdb.png",
         "/lovable-uploads/51ada8fc-7b61-40b9-a1a3-d1fdf1206ba4.png",
@@ -24,9 +24,9 @@
       "id": "vrujci-02",
       "name": "Apartman 2 — Drugi sprat",
       "max_guests": 6,
-      "size_m2": 70,
+      "size_m2": 50,
       "price_per_night": 50,
-      "description": "Prostran apartman na drugom spratu sa 2 bračna kreveta i 2 samca. Potpuno opremljen za ugodan boravak do 6 osoba.",
+      "description": "Prostran trosoban apartman na drugom spratu sa 2 bračna kreveta i 2 samca. Potpuno opremljen za ugodan boravak do 6 osoba.",
       "images": [
         "/lovable-uploads/a11ed6aa-34c4-46a9-96dd-b76f101ba8e7.png",
         "/lovable-uploads/566e4092-2add-4b4d-9d5f-420f8e506cbb.png",
