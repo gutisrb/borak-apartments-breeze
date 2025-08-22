@@ -26,6 +26,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -84,10 +85,11 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
     location: apartment.location || 'Brač', // Include location
     check_in: format(checkIn, 'yyyy-MM-dd'),
     check_out: format(checkOut, 'yyyy-MM-dd'),
-    adults: apartment.max_guests, // Use apartment capacity instead of form input
+    adults: apartment.location === 'Banja Vrujci' ? adults : apartment.max_guests, // Use form input for Vrujci, max capacity for Brač
     total_nights: nights,
     price_per_night: pricePerNight,
     total_price: totalPrice,
+    comment: comment || '', // Include comment field
     booking_date: new Date().toLocaleString()
   };
 
@@ -113,10 +115,11 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   // Clear form
   setCheckIn(undefined);
   setCheckOut(undefined);
-  setAdults(apartment.max_guests.toString());
+  setAdults('2');
   setName('');
   setEmail('');
   setPhone('');
+  setComment('');
 
   // Auto close after 3 seconds
   setTimeout(() => {
@@ -215,22 +218,49 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
               )}
             </div>
 
-            {/* Guest Info - Capacity is pre-determined based on apartment */}
-            <div className="bg-[#F4F9FD] p-3 rounded-lg space-y-2">
-              <div className="text-sm text-[#0C1930] font-medium">
-                {apartment.name === 'Apartment 05' 
-                  ? `Capacity: Up to ${apartment.max_guests} guests` 
-                  : `Capacity: ${apartment.max_guests} guests`}
+            {/* Guest Info - Different for Banja Vrujci */}
+            {apartment.location === 'Banja Vrujci' ? (
+              // Banja Vrujci - Input field for number of guests
+              <div className="space-y-2">
+                <Label htmlFor="guests" className="text-[#0C1930] font-app font-medium text-sm">
+                  Broj gostiju *
+                </Label>
+                <Input
+                  id="guests"
+                  type="number"
+                  min="1"
+                  max={apartment.max_guests}
+                  value={adults}
+                  onChange={(e) => setAdults(e.target.value)}
+                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
+                  required
+                />
+                <div className="text-xs text-gray-500">
+                  Maksimalno {apartment.max_guests} gostiju
+                </div>
               </div>
-              {checkIn && checkOut && (
+            ) : (
+              // Brač - Capacity display
+              <div className="bg-[#F4F9FD] p-3 rounded-lg space-y-2">
+                <div className="text-sm text-[#0C1930] font-medium">
+                  {apartment.name === 'Apartment 05' 
+                    ? `Capacity: Up to ${apartment.max_guests} guests` 
+                    : `Capacity: ${apartment.max_guests} guests`}
+                </div>
+              </div>
+            )}
+
+            {/* Price Display */}
+            {checkIn && checkOut && (
+              <div className="bg-[#F4F9FD] p-3 rounded-lg">
                 <div className="text-sm">
                   <span className="text-[#0C1930] font-medium">Price: </span>
                   <span className="text-green-600 font-semibold">
                     €{apartment.location === 'Banja Vrujci' ? 50 : (apartment.name === 'Apartment 05' ? 120 : 90)} × {Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))} nights = €{(apartment.location === 'Banja Vrujci' ? 50 : (apartment.name === 'Apartment 05' ? 120 : 90)) * Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))}
                   </span>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
             
             {/* Contact Information */}
             <div className="space-y-4">
@@ -273,6 +303,22 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                   className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
                 />
               </div>
+
+              {/* Comment field - only for Banja Vrujci */}
+              {apartment.location === 'Banja Vrujci' && (
+                <div className="space-y-2">
+                  <Label htmlFor="comment" className="text-[#0C1930] font-app font-medium text-sm">
+                    Dodatni komentar (opciono)
+                  </Label>
+                  <Input
+                    id="comment"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Napišite dodatne zahteve ili komentare..."
+                    className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Submit Button */}
