@@ -102,7 +102,7 @@ const Footer: React.FC<FooterProps> = ({ location = 'brac' }) => {
             </div>
             
             <a 
-              href="https://wa.me/385123456789" 
+              href="https://wa.me/381652909492" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 bg-link hover:bg-accent text-white hover:text-primary px-6 py-3 rounded-md transition-colors text-sm font-app font-medium focus-visible:ring-link"
