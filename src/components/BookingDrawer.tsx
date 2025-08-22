@@ -64,7 +64,15 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
    try {
   // Calculate nights and price correctly
   const nights = checkIn && checkOut ? Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24))) : 0;
-  const pricePerNight = apartment.price_per_night; // Use exact price from apartment data
+  
+  // Determine price based on location
+  let pricePerNight = 90; // Default Brač price
+  if (apartment.location === 'Banja Vrujci') {
+    pricePerNight = 50; // Vrujci price
+  } else if (apartment.name === 'Apartment 05') {
+    pricePerNight = 120; // Brač premium apartment
+  }
+  
   const totalPrice = nights * pricePerNight;
 
   // Send email using EmailJS
@@ -73,6 +81,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
     guest_email: email,
     guest_phone: phone,
     apartment_name: apartment.name,
+    location: apartment.location || 'Brač', // Include location
     check_in: format(checkIn, 'yyyy-MM-dd'),
     check_out: format(checkOut, 'yyyy-MM-dd'),
     adults: apartment.max_guests, // Use apartment capacity instead of form input
