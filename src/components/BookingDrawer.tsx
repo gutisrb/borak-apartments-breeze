@@ -217,7 +217,7 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 <div className="text-sm">
                   <span className="text-[#0C1930] font-medium">Price: </span>
                   <span className="text-green-600 font-semibold">
-                    €{apartment.name === 'Apartment 05' ? 120 : 90} × {Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))} nights = €{(apartment.name === 'Apartment 05' ? 120 : 90) * Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))}
+                    €{apartment.location === 'Banja Vrujci' ? 50 : (apartment.name === 'Apartment 05' ? 120 : 90)} × {Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))} nights = €{(apartment.location === 'Banja Vrujci' ? 50 : (apartment.name === 'Apartment 05' ? 120 : 90)) * Math.max(1, Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)))}
                   </span>
                 </div>
               )}
