@@ -133,7 +133,7 @@ const Header = () => {
               onClick={() => handleNavigation('/location')}
               className="text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:text-[#FFBE24] hover:border-[#FFBE24]/30"
             >
-              O Braču
+              {t('nav.location')}
             </button>
 
             {/* Language Selector */}
@@ -203,7 +203,7 @@ const Header = () => {
                 onClick={() => handleNavigation('/location')}
                 className="block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 hover:text-[#FFBE24]"
               >
-                O Braču
+                {t('nav.location')}
               </button>
               
               {/* Mobile Language Selector */}
