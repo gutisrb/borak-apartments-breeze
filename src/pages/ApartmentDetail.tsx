@@ -92,7 +92,7 @@ const ApartmentDetail = () => {
   if (loading) {
     return (
       <>
-        <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
+        <Header />
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#0077B6] mx-auto mb-4"></div>
@@ -107,7 +107,7 @@ const ApartmentDetail = () => {
   if (!apartment) {
     return (
       <>
-        <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
+        <Header />
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.notFound')}</h1>
@@ -170,7 +170,7 @@ const ApartmentDetail = () => {
 
   return (
     <>
-      <Header location={isVrujciLocation ? 'vrujci' : 'brac'} />
+      <Header />
       <main className="min-h-screen bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20">
         <div className="container-luxury py-8">
           <Button 
