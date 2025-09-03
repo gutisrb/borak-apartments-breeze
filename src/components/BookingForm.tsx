@@ -87,8 +87,9 @@ const BookingForm = ({ unit, initialDate, onClose }: BookingFormProps) => {
     
     try {
       // Email parameters for EmailJS
+      // NOTE: Make sure your EmailJS template uses {{to_email}} in the "To" field
       const emailParams = {
-        to_email: 'borakapartmani0@gmail.com',
+        to_email: 'apartmaniborak@web.de',
         apartment_name: unit.name,
         guest_name: name,
         guest_email: email,

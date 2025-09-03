@@ -77,7 +77,9 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
   const totalPrice = nights * pricePerNight;
 
   // Send email using EmailJS
+  // NOTE: Make sure your EmailJS template uses {{to_email}} in the "To" field
   const emailData = {
+    to_email: 'apartmaniborak@web.de',
     guest_name: name,
     guest_email: email,
     guest_phone: phone,
