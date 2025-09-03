@@ -37,8 +37,8 @@ const Footer: React.FC<FooterProps> = ({
               </div>
               <div>
                 <div className="font-medium text-white mb-1">{t('footer.email')}</div>
-                <a href="mailto:borakapartmani0@gmail.com" className="text-sm hover:text-accent transition-colors">
-                  borakapartmani0@gmail.com
+                <a href="mailto:ApartmaniBorak@web.de" className="text-sm hover:text-accent transition-colors">
+                  ApartmaniBorak@web.de
                 </a>
               </div>
             </div>
