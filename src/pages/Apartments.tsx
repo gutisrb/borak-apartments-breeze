@@ -37,7 +37,7 @@ const Apartments = () => {
 
   return (
     <>
-      <Header location="brac" />
+      <Header />
       <main className="min-h-screen bg-gradient-to-br from-[#F4F9FD] via-white to-[#E8F4F8] pt-20 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">

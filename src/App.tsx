@@ -9,9 +9,6 @@ import Index from "./pages/Index";
 import ApartmentDetail from "./pages/ApartmentDetail";
 import Apartments from "./pages/Apartments";
 import Location from "./pages/Location";
-import BanjaVrujci from "./pages/BanjaVrujci";
-import VrujciApartments from "./pages/VrujciApartments";
-import VrujciLocation from "./pages/VrujciLocation";
 import NotFound from "./pages/NotFound";
 import LanguageWrapper from "./components/LanguageWrapper";
 
@@ -27,17 +24,11 @@ const App = () => (
           {/* Default route redirects to user's preferred language */}
           <Route path="/" element={<Navigate to="/en" replace />} />
           
-          {/* Brač (main location) routes */}
+          {/* Brač routes */}
           <Route path="/:lang" element={<LanguageWrapper><Index /></LanguageWrapper>} />
           <Route path="/:lang/apartments" element={<LanguageWrapper><Apartments /></LanguageWrapper>} />
           <Route path="/:lang/apartments/:slug" element={<LanguageWrapper><ApartmentDetail /></LanguageWrapper>} />
           <Route path="/:lang/location" element={<LanguageWrapper><Location /></LanguageWrapper>} />
-          
-          {/* Banja Vrujci routes */}
-          <Route path="/:lang/banja-vrujci" element={<LanguageWrapper><BanjaVrujci /></LanguageWrapper>} />
-          <Route path="/:lang/banja-vrujci/apartments" element={<LanguageWrapper><VrujciApartments /></LanguageWrapper>} />
-          <Route path="/:lang/banja-vrujci/apartments/:slug" element={<LanguageWrapper><ApartmentDetail /></LanguageWrapper>} />
-          <Route path="/:lang/banja-vrujci/location" element={<LanguageWrapper><VrujciLocation /></LanguageWrapper>} />
           
           {/* 404 route */}
           <Route path="*" element={<NotFound />} />

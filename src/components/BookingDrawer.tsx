@@ -218,37 +218,14 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
               )}
             </div>
 
-            {/* Guest Info - Different for Banja Vrujci */}
-            {apartment.location === 'Banja Vrujci' ? (
-              // Banja Vrujci - Input field for number of guests
-              <div className="space-y-2">
-                <Label htmlFor="guests" className="text-[#0C1930] font-app font-medium text-sm">
-                  Broj gostiju *
-                </Label>
-                <Input
-                  id="guests"
-                  type="number"
-                  min="1"
-                  max={apartment.max_guests}
-                  value={adults}
-                  onChange={(e) => setAdults(e.target.value)}
-                  className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
-                  required
-                />
-                <div className="text-xs text-gray-500">
-                  Maksimalno {apartment.max_guests} gostiju
-                </div>
+            {/* Guest Info - Brač only */}
+            <div className="bg-[#F4F9FD] p-3 rounded-lg space-y-2">
+              <div className="text-sm text-[#0C1930] font-medium">
+                {apartment.name === 'Apartment 05' 
+                  ? `Capacity: Up to ${apartment.max_guests} guests` 
+                  : `Capacity: ${apartment.max_guests} guests`}
               </div>
-            ) : (
-              // Brač - Capacity display
-              <div className="bg-[#F4F9FD] p-3 rounded-lg space-y-2">
-                <div className="text-sm text-[#0C1930] font-medium">
-                  {apartment.name === 'Apartment 05' 
-                    ? `Capacity: Up to ${apartment.max_guests} guests` 
-                    : `Capacity: ${apartment.max_guests} guests`}
-                </div>
-              </div>
-            )}
+            </div>
 
             {/* Price Display */}
             {checkIn && checkOut && (
@@ -304,16 +281,16 @@ const BookingDrawer = ({ apartment, isOpen, onClose }: BookingDrawerProps) => {
                 />
               </div>
 
-              {/* Comment field - for both locations */}
+              {/* Comment field - Brač only */}
               <div className="space-y-2">
                 <Label htmlFor="comment" className="text-[#0C1930] font-app font-medium text-sm">
-                  {apartment.location === 'Banja Vrujci' ? 'Dodatni komentar (opciono)' : 'Additional Comments (Optional)'}
+                  Additional Comments (Optional)
                 </Label>
                 <Input
                   id="comment"
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  placeholder={apartment.location === 'Banja Vrujci' ? "Napišite dodatne zahteve ili komentare..." : "Write any additional requests or comments..."}
+                  placeholder="Write any additional requests or comments..."
                   className="border-gray-300 bg-white focus:ring-2 focus:ring-[#0077B6] focus:border-[#0077B6] h-10"
                 />
               </div>

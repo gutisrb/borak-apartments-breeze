@@ -1,15 +1,11 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, MapPin } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-interface HeaderProps {
-  location?: 'brac' | 'vrujci';
-}
-
-const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -39,10 +35,6 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
     { code: 'ru', name: 'Русский', flag: '🇷🇺' }
   ];
 
-  const locations = [
-    { key: 'brac', name: 'Brač', flag: '🇭🇷', path: '' },
-    { key: 'vrujci', name: 'Banja Vrujci', flag: '🇷🇸', path: '/banja-vrujci' },
-  ];
 
   const currentLanguage = languages.find(l => l.code === currentLang) || languages[0];
 
@@ -71,27 +63,22 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
     setIsLanguageOpen(false);
   };
 
-  const getLocationBasePath = () => {
-    return locationType === 'vrujci' ? '/banja-vrujci' : '';
-  };
 
   const handleNavigation = (path: string) => {
-    const basePath = getLocationBasePath();
-    
     if (path.startsWith('#')) {
       // Only scroll to sections if we're on the home page
-      if (window.location.pathname === `/${lang || 'en'}${basePath}`) {
+      if (window.location.pathname === `/${lang || 'en'}`) {
         scrollToSection(path.substring(1));
       } else {
         // Navigate to home first, then scroll
-        navigate(`/${lang || 'en'}${basePath}`);
+        navigate(`/${lang || 'en'}`);
         setTimeout(() => {
           scrollToSection(path.substring(1));
         }, 100);
       }
     } else {
-      const fullPath = path === '/' ? `/${lang || 'en'}${basePath}` : `/${lang || 'en'}${basePath}${path}`;
-      if (fullPath === `/${lang || 'en'}${basePath}`) {
+      const fullPath = path === '/' ? `/${lang || 'en'}` : `/${lang || 'en'}${path}`;
+      if (fullPath === `/${lang || 'en'}`) {
         // Navigate to home and scroll to top
         navigate(fullPath);
         setTimeout(() => {
@@ -104,16 +91,9 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
     setIsMenuOpen(false);
   };
 
-  const handleLocationChange = (newLocation: 'brac' | 'vrujci') => {
-    const targetPath = newLocation === 'vrujci' ? '/banja-vrujci' : '';
-    navigate(`/${lang || 'en'}${targetPath}`);
-    setIsLocationOpen(false);
-    setIsMenuOpen(false);
-  };
 
   const handleLogoClick = () => {
-    const basePath = getLocationBasePath();
-    navigate(`/${lang || 'en'}${basePath}`);
+    navigate(`/${lang || 'en'}`);
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
@@ -121,22 +101,15 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled || isApartmentPage 
-        ? locationType === 'vrujci' 
-          ? 'bg-[hsl(var(--nature-header-footer))] shadow-lg' 
-          : 'bg-[#0C1930] shadow-lg'
-        : 'bg-transparent'
+      isScrolled || isApartmentPage ? 'bg-[#0C1930] shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container-luxury">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src={locationType === 'vrujci' 
-                ? "/lovable-uploads/6193ae0f-8e32-49f1-8ac0-b6c65f9826cb.png"
-                : "/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
-              }
-              alt={locationType === 'vrujci' ? "Borak Apartmani" : "Borak Apartments"}
+              src="/lovable-uploads/9f7ca1cc-4273-4e0b-be11-d9c12ccb436a.png"
+              alt="Borak Apartments"
               className="h-20 md:h-24 w-auto object-contain cursor-pointer transition-transform hover:scale-105"
               onClick={handleLogoClick}
             />
@@ -146,83 +119,28 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => handleNavigation('/')}
-              className={`text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                locationType === 'vrujci' 
-                  ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                  : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-              }`}
+              className="text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:text-[#FFBE24] hover:border-[#FFBE24]/30"
             >
               {t('nav.home')}
             </button>
             <button
               onClick={() => handleNavigation('/apartments')}
-              className={`text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                locationType === 'vrujci' 
-                  ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                  : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-              }`}
+              className="text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:text-[#FFBE24] hover:border-[#FFBE24]/30"
             >
               {t('nav.apartments')}
             </button>
             <button
               onClick={() => handleNavigation('/location')}
-              className={`text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                locationType === 'vrujci' 
-                  ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                  : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-              }`}
+              className="text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:text-[#FFBE24] hover:border-[#FFBE24]/30"
             >
-              {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
+              O Braču
             </button>
-
-            {/* Location Selector */}
-            <div className="relative">
-              <button
-                onClick={() => setIsLocationOpen(!isLocationOpen)}
-                className={`flex items-center space-x-2 text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                  locationType === 'vrujci' 
-                    ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                    : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-                }`}
-              >
-                <MapPin className="w-4 h-4" />
-                <span>{locations.find(l => l.key === locationType)?.name}</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-              
-              {isLocationOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[160px] z-50">
-                  {locations.map((loc) => (
-                    <button
-                      key={loc.key}
-                      onClick={() => locationType !== loc.key ? handleLocationChange(loc.key as 'brac' | 'vrujci') : null}
-                      disabled={locationType === loc.key}
-                      className={`flex items-center space-x-3 w-full px-4 py-2 text-left transition-colors ${
-                        locationType === loc.key 
-                          ? 'bg-blue-50 text-blue-600 cursor-not-allowed opacity-75' 
-                          : 'text-gray-700 hover:bg-gray-50 cursor-pointer'
-                      }`}
-                    >
-                      <span>{loc.flag}</span>
-                      <span className="font-app">{loc.name}</span>
-                      {locationType === loc.key && (
-                        <span className="ml-auto text-xs text-blue-500">✓</span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
 
             {/* Language Selector */}
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className={`flex items-center space-x-2 text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent ${
-                  locationType === 'vrujci' 
-                    ? 'hover:text-[hsl(var(--nature-primary))] hover:border-[hsl(var(--nature-primary))]/30' 
-                    : 'hover:text-[#FFBE24] hover:border-[#FFBE24]/30'
-                }`}
+                className="flex items-center space-x-2 text-white transition-all duration-300 font-app font-medium px-4 py-2 rounded-lg hover:bg-white/10 border border-transparent hover:text-[#FFBE24] hover:border-[#FFBE24]/30"
               >
                 <span>{currentLanguage.flag}</span>
                 <span>{currentLanguage.name}</span>
@@ -249,11 +167,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
 
             <Button 
               onClick={() => handleNavigation('/apartments')}
-              className={`${
-                locationType === 'vrujci' 
-                  ? 'bg-[hsl(var(--nature-apartments))] hover:bg-white text-white hover:text-[hsl(var(--nature-header-footer))]' 
-                  : 'bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white'
-              } transition-all duration-300 font-app font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl`}
+              className="bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl"
             >
               {t('nav.book')}
             </Button>
@@ -262,9 +176,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden text-white transition-colors p-2 rounded-lg hover:bg-white/10 ${
-              locationType === 'vrujci' ? 'hover:text-[hsl(var(--nature-primary))]' : 'hover:text-[#FFBE24]'
-            }`}
+            className="md:hidden text-white transition-colors p-2 rounded-lg hover:bg-white/10 hover:text-[#FFBE24]"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -273,68 +185,26 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
 
         {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className={`md:hidden ${
-              locationType === 'vrujci' ? 'bg-[hsl(var(--nature-header-footer))]' : 'bg-[#0C1930]'
-            } border-t border-white/10`}>
+            <div className="md:hidden bg-[#0C1930] border-t border-white/10">
             <nav className="py-4 space-y-4">
               <button
                 onClick={() => handleNavigation('/')}
-                className={`block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 ${
-                  locationType === 'vrujci' ? 'hover:text-[hsl(var(--nature-primary))]' : 'hover:text-[#FFBE24]'
-                }`}
+                className="block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 hover:text-[#FFBE24]"
               >
                 {t('nav.home')}
               </button>
               <button
                 onClick={() => handleNavigation('/apartments')}
-                className={`block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 ${
-                  locationType === 'vrujci' ? 'hover:text-[hsl(var(--nature-primary))]' : 'hover:text-[#FFBE24]'
-                }`}
+                className="block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 hover:text-[#FFBE24]"
               >
                 {t('nav.apartments')}
               </button>
               <button
                 onClick={() => handleNavigation('/location')}
-                className={`block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 ${
-                  locationType === 'vrujci' ? 'hover:text-[hsl(var(--nature-primary))]' : 'hover:text-[#FFBE24]'
-                }`}
+                className="block text-white transition-colors font-app font-medium w-full text-left px-4 py-2 rounded-lg hover:bg-white/10 hover:text-[#FFBE24]"
               >
-                {locationType === 'vrujci' ? 'O Banji Vrujci' : 'O Braču'}
+                O Braču
               </button>
-              
-              {/* Mobile Location Selector */}
-              <div className="border-t border-white/10 pt-4">
-                <div className="text-white/60 text-sm font-app mb-2 px-4">Lokacije:</div>
-                {locations.map((loc) => (
-                  <button
-                    key={loc.key}
-                    onClick={() => {
-                      if (locationType !== loc.key) {
-                        handleLocationChange(loc.key as 'brac' | 'vrujci');
-                        setIsMenuOpen(false);
-                      }
-                    }}
-                    disabled={locationType === loc.key}
-                    className={`flex items-center space-x-3 w-full px-4 py-2 text-left transition-colors rounded-lg ${
-                      locationType === loc.key 
-                        ? locationType === 'vrujci' 
-                          ? 'text-[hsl(var(--nature-primary))] cursor-not-allowed opacity-75'
-                          : 'text-[#FFBE24] cursor-not-allowed opacity-75'
-                        : locationType === 'vrujci'
-                          ? 'text-white hover:text-[hsl(var(--nature-primary))] hover:bg-white/10 cursor-pointer'
-                          : 'text-white hover:text-[#FFBE24] hover:bg-white/10 cursor-pointer'
-                    }`}
-                  >
-                    <span>{loc.flag}</span>
-                    <span className="font-app">{loc.name}</span>
-                    {locationType === loc.key && (
-                      <span className={`ml-auto text-xs ${
-                        locationType === 'vrujci' ? 'text-[hsl(var(--nature-primary))]' : 'text-[#FFBE24]'
-                      }`}>✓</span>
-                    )}
-                  </button>
-                ))}
-              </div>
               
               {/* Mobile Language Selector */}
               <div className="border-t border-white/10 pt-4">
@@ -344,13 +214,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
                     key={language.code}
                     onClick={() => handleLanguageChange(language.code)}
                     className={`flex items-center space-x-3 w-full px-4 py-2 text-left hover:bg-white/10 transition-colors rounded-lg ${
-                      currentLang === language.code 
-                        ? locationType === 'vrujci' 
-                          ? 'text-[hsl(var(--nature-primary))]' 
-                          : 'text-[#FFBE24]'
-                        : locationType === 'vrujci'
-                          ? 'text-white hover:text-[hsl(var(--nature-primary))]'
-                          : 'text-white hover:text-[#FFBE24]'
+                      currentLang === language.code ? 'text-[#FFBE24]' : 'text-white hover:text-[#FFBE24]'
                     }`}
                   >
                     <span>{language.flag}</span>
@@ -361,11 +225,7 @@ const Header: React.FC<HeaderProps> = ({ location: locationType = 'brac' }) => {
               
               <Button 
                 onClick={() => handleNavigation('/apartments')}
-                className={`w-full ${
-                  locationType === 'vrujci' 
-                    ? 'bg-[hsl(var(--nature-apartments))] hover:bg-white text-white hover:text-[hsl(var(--nature-header-footer))]' 
-                    : 'bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white'
-                } transition-all duration-300 font-app font-semibold mt-4 mx-4 max-w-[calc(100%-2rem)]`}
+                className="w-full bg-[#FFBE24] hover:bg-[#0077B6] text-[#0C1930] hover:text-white transition-all duration-300 font-app font-semibold mt-4 mx-4 max-w-[calc(100%-2rem)]"
               >
                 {t('nav.book')}
               </Button>

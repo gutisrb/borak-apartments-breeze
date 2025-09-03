@@ -99,7 +99,7 @@ const ApartmentDetail = () => {
             <h1 className="text-2xl font-bold text-[#0C1930] mb-4 font-playfair">{t('apartment.loading')}</h1>
           </div>
         </div>
-        <Footer location={isVrujciLocation ? 'vrujci' : 'brac'} />
+        <Footer />
       </>
     );
   }
@@ -117,7 +117,7 @@ const ApartmentDetail = () => {
             </Button>
           </div>
         </div>
-        <Footer location={isVrujciLocation ? 'vrujci' : 'brac'} />
+        <Footer />
       </>
     );
   }
@@ -346,7 +346,7 @@ const ApartmentDetail = () => {
           />
         )}
       </main>
-      <Footer location={isVrujciLocation ? 'vrujci' : 'brac'} />
+      <Footer />
     </>
   );
 };
