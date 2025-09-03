@@ -153,6 +153,102 @@
     "large_terrace": "Velika terasa",
     "full_kitchen": "Kompletna kuhinja"
   },
+  "locationPage": {
+    "title": "Otkrijte otok Brač",
+    "hero": {
+      "title": "Otkrijte otok Brač",
+      "subtitle": "Hrvatska skrivena perla u Jadranskom moru, gdje se drevne tradicije susreću s netaknutom prirodnom ljepotom.",
+      "cta": "Istražite naše apartmane"
+    },
+    "about": {
+      "title": "O otoku Braču",
+      "description1": "Brač je treći najveći otok u Jadranskom moru i najveći otok u Dalmaciji, Hrvatska. Ovaj prekrasan vapnenčani otok proteže se 48 kilometara u duljinu i 14 kilometara u širinu, smješten je samo kratku vožnju trajektom od Splita.",
+      "description2": "S poviješću koja seže u neolitsko doba, Brač je kontinuirano nastanjen već tisućama godina. Otok je svjetski poznat po svojem iznimnom bijelom vapnencu, koji se vadi od antičkih vremena i koristi u poznatim zgradama poput Dioklecijanove palače u Splitu, Bijele kuće u Washingtonu D.C. i sjedišta UN-a u New Yorku.",
+      "length": "Duljina otoka",
+      "width": "Maksimalna širina"
+    },
+    "attractions": {
+      "title": "Poznate atrakcije",
+      "subtitle": "Otkrijte prirodne čuda i kulturna blaga koja čine otok Brač uistinu posebnim.",
+      "zlatniRat": {
+        "title": "Plaža Zlatni Rat",
+        "description": "Najpoznatija hrvatska plaža, ovaj jedinstveni zlatni rt stalno mijenja oblik s vjetrovima i strujama. Zaštićena od UNESCO-a i međunarodno proslavljena kao jedna od najljepših plaža Europe."
+      },
+      "vidovaGora": {
+        "title": "Vidova Gora",
+        "description": "Na 778 metara, ovo je najviša točka među svim jadranskim otocima, pružajući predivne panoramske poglede na obalu, susjedne otoke i planine na kopnu."
+      },
+      "stoneQuarries": {
+        "title": "Povijesni kamenolomi",
+        "description": "Izvor svjetski poznatog bračkog kamena, ovi drevni kamenolomi pružaju građevinski materijal za kultne strukture diljem svijeta više od 2.000 godina."
+      },
+      "bol": {
+        "title": "Grad Bol",
+        "description": "Šarmantni lučki grad dom poznatom dominikanskom samostanu iz 15. stoljeća, nudeći savršenu mješavinu povijesti, kulture i mediteranske atmosfere."
+      },
+      "supetar": {
+        "title": "Supetar",
+        "description": "Glavni otok luka i najveći grad, s prekrasnom kamenom arhitekturom, mirnim šetalištem i autentičnim hrvatskim obalnim šarmom."
+      },
+      "villages": {
+        "title": "Tradicionalna sela",
+        "description": "Istražite autentičan otočni život u povijesnim selima poput Škripa, Milne i Ložišća, gdje su tradicionalna kamena arhitektura i lokalni običaji prekrasno očuvani."
+      }
+    },
+    "activities": {
+      "title": "Aktivnosti i doživljaji",
+      "subtitle": "Od pustolovina do kulturnih otkrića, Brač nudi nezaboravna iskustva za svakog putnika.",
+      "waterSports": {
+        "title": "Raj vodenih sportova",
+        "description": "Brač je poznat po svojim idealnim uvjetima vjetra, osobito popodnevnim maestralskim vjetrovima koji ga čine svjetskim odredištem za jedrenje na dasci, kitesurf i jedriličarstvo."
+      },
+      "hiking": {
+        "title": "Planinarenje i priroda",
+        "description": "Otkrijte slikovite staze koje vode na Vidovu Goru, obalne šetnje s prekrasnim pogledom na more i skrivene putanje kroz maslinike i borove šume."
+      },
+      "culture": {
+        "title": "Kulturna baština",
+        "description": "Posjetite drevne samostane, istražite tradicionalne radionice za obradu kamena i učite o bogatoj povijesti otoka u lokalnim muzejima i arheološkim nalazištima."
+      },
+      "localProducts": {
+        "title": "Lokalni delicijesi",
+        "description": "Kušajte jedinstveno buhavica maslinovo ulje, probajte lokalna vina od autohtonih sorti grožđa i uživajte u tradicionalnoj hrvatskoj kuhinji s svježim plodovima mora i otočnim specijalitetima."
+      },
+      "beachLife": {
+        "title": "Raj plaže",
+        "description": "Osim Zlatnog Rata, otkrijte brojne netaknute plaže i izdvojene uvale s kristalno čistom vodom savršene za kupanje, ronjenje i opuštanje."
+      }
+    },
+    "gettingThere": {
+      "title": "Kako doći na Brač",
+      "subtitle": "Lagan pristup iz Splita i drugih hrvatskih odredišta čini Brač savršenim otočnim bekstvom.",
+      "ferry": {
+        "title": "Trajekt iz Splita",
+        "description": "Redovite trajektne usluge spajaju Split sa Supetrom u samo 50 minuta. Česti polasci tijekom cijele godine s putničkim i auto-trajektom dostupnim."
+      },
+      "airport": {
+        "title": "Zračna luka Brač",
+        "description": "Sezonski letovi iz Zagreba i odabranih europskih gradova slijeću izravno na otok, čineći međunarodni pristup pogodnim tijekom ljetnih mjeseci."
+      },
+      "carFerry": {
+        "title": "Auto-trajekt",
+        "description": "Dovedite svoj automobil na trajekt za ultimativnu slobodu istraživanja otoka ili unajmite automobil lokalno da otkrijete skrivene plaže i planinska sela."
+      }
+    },
+    "culture": {
+      "title": "Lokalna kultura i način života",
+      "description1": "Brač zadržava autentičan mediteranski način života gdje je tradicionalno nasljeđe obrade kamena još uvijek živo danas. Otočni tempo života poziva vas da uspore i prihvatite hrvatski koncept 'pomalo' - uzimanje na lak način.",
+      "description2": "Iskusite istinsko hrvatsko gostoprimstvo u obiteljskim konobarima (tavernama), sudjelujte u lokalnim festivalima koji slave vino i maslinu i svjedočite tradicionalnim ribarskim brodovima koji se vraćaju s dnevnim ulovom.",
+      "cta": "Rezervirajte svoj otočni bijeg"
+    },
+    "whyChoose": {
+      "title": "Zašto odabrati Brač?",
+      "reason1": "Manje prenapučen od Hvara ili Korčule, pružajući autentično hrvatsko otočno iskustvo",
+      "reason2": "Plaže svjetske klase uključujući poznatni Zlatni Rat",
+      "reason3": "Bogata kulturna baština s 2.000 godina kontinuirane naseljenosti",
+      "reason4": "Savršeno za aktivne pustolove i mirno opuštanje"
+    }
+  },
   "vrujci": {
     "hero": {
       "title": "Apartmani — Banja Vrujci",
