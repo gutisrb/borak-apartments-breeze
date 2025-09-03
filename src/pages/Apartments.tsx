@@ -91,9 +91,7 @@ const Apartments = () => {
                   </div>
 
                   <p className="text-[#20425C] mb-6 leading-relaxed font-app">
-                   <p className="text-[#20425C] mb-6 leading-relaxed font-app">
-  {apartment.description}
-</p>
+                    {t(`apartment.${apartment.id}.description`, apartment.description)}
                   </p>
 
                   <div className="flex items-center justify-between mb-6">

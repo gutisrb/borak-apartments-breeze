@@ -48,25 +48,29 @@ export const useTranslation = () => {
     }
   }, [lang]);
 
-  const t = (key: string, options?: { count?: number; size?: number }): string => {
-    let translation = i18n.t(key, options);
+  const t = (key: string, options?: { count?: number; size?: number } | string): string => {
+    let translation = i18n.t(key, typeof options === 'object' ? options : undefined);
     
     // Ensure we always return a string
     if (typeof translation !== 'string') {
       translation = key;
     }
     
-    // If translation returns the key (meaning it wasn't found), fall back to English
-    if (translation === key && currentLang !== 'en') {
-      const fallbackTranslation = i18n.t(key, { ...options, lng: 'en' });
-      translation = typeof fallbackTranslation === 'string' ? fallbackTranslation : key;
+    // If translation returns the key (meaning it wasn't found), fall back to provided string or English
+    if (translation === key) {
+      if (typeof options === 'string') {
+        return options; // Return fallback string
+      } else if (currentLang !== 'en') {
+        const fallbackTranslation = i18n.t(key, { ...(typeof options === 'object' ? options : {}), lng: 'en' });
+        translation = typeof fallbackTranslation === 'string' ? fallbackTranslation : key;
+      }
     }
     
     // Handle interpolation manually if needed
-    if (options?.count !== undefined) {
+    if (typeof options === 'object' && options?.count !== undefined) {
       translation = translation.replace('{{count}}', options.count.toString());
     }
-    if (options?.size !== undefined) {
+    if (typeof options === 'object' && options?.size !== undefined) {
       translation = translation.replace('{{size}}', options.size.toString());
     }
     

@@ -42,16 +42,10 @@ const CallToActionSection = () => {
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center text-white px-6 max-w-4xl mx-auto">
           <h2 className="mb-6 text-white animate-fade-in font-playfair text-3xl md:text-4xl lg:text-5xl font-bold">
-            {isVrujci 
-              ? "Rezervišite svoj odmor u prirodi"
-              : "Rezervišite svoj luksuzni odmor na Braču"
-            }
+            {t(isVrujci ? 'vrujci.callToAction.title' : 'callToAction.title')}
           </h2>
           <p className="text-lg md:text-xl mb-10 font-app font-light leading-relaxed animate-fade-in text-white/90">
-            {isVrujci 
-              ? "Uživajte u termalnim vodama, svežem vazduhu i tišini planina. Vaš savršen odmor u Banji Vrujci vas čeka."
-              : "Doživite čari Jadranskog mora, kamenih plaža i mediteranske kulture. Vaš luksuzni boravak na ostrvu Brač vas čeka."
-            }
+            {t(isVrujci ? 'vrujci.callToAction.description' : 'callToAction.description')}
           </p>
           <Button
             onClick={scrollToApartments}
@@ -60,12 +54,9 @@ const CallToActionSection = () => {
               ? 'bg-[hsl(var(--nature-apartments))] text-white hover:bg-[hsl(var(--nature-gallery))]'
               : 'bg-blue-600 text-white hover:bg-blue-700'
             } transition-all duration-300 font-app text-base md:text-lg px-12 py-5 animate-fade-in shadow-lg hover:shadow-xl transform hover:scale-105`}
-            aria-label={isVrujci 
-              ? "Rezervišite boravak u Banji Vrujci"
-              : "Rezervišite boravak na Braču"
-            }
+            aria-label={t(isVrujci ? 'vrujci.callToAction.buttonAria' : 'callToAction.buttonAria')}
           >
-            Rezervišite odmah
+            {t(isVrujci ? 'vrujci.callToAction.button' : 'callToAction.button')}
           </Button>
         </div>
       </div>

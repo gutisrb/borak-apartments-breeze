@@ -103,7 +103,7 @@ const ApartmentModal = ({ apartment, onClose, onBookNow }: ApartmentModalProps) 
 
               <div className="mt-6">
                 <p className="text-[#20425C] leading-relaxed font-app">
-                  {apartment.description}
+                  {t(`apartment.${apartment.id}.description`, apartment.description)}
                 </p>
               </div>
             </div>
